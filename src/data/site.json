@@ -1,0 +1,15 @@
+{
+  "name": "Cypherpunk Code",
+  "domain": "cypherpunk-code.ca",
+  "url": "https://cypherpunk-code.ca",
+  "tagline": "The open education index for Bitcoin, Monero & cypherpunk sovereignty",
+  "description": "A curated, searchable catalog of courses, papers, guides, and documentation for learning cryptocurrency, privacy technology, and cypherpunk philosophy — without the trading noise.",
+  "creator": {
+    "handle": "CHxmrBrother",
+    "url": "https://x.com/CHxmrBrother"
+  },
+  "donations": {
+    "bitcoin": "bc1qre5ureack5s6alknv8s7etza5z0rjupwkzctg6",
+    "monero": "43knj6uNiWHWfQ62WahXgV9UUgsouDif2CN6wbqN9X1eibab8EQRoAhTYdBwbctzenCW9jb6QNDUXJV7p39RGTjj2K1CZwH"
+  }
+}

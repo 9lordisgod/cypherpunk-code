@@ -1,0 +1,84 @@
+[
+  {
+    "id": "cypherpunk-foundations",
+    "title": "Cypherpunk Foundations",
+    "description": "Start with philosophy and history — understand why privacy, cryptography, and code matter before touching any wallet.",
+    "resourceIds": [
+      "cypherpunk-manifesto",
+      "crypto-anarchist-manifesto",
+      "nakamoto-institute-library",
+      "freenode-cypherpunk-archive",
+      "eff-surveillance-self-defense"
+    ],
+    "topics": ["cypherpunk", "privacy", "cryptography"]
+  },
+  {
+    "id": "bitcoin-sovereignty",
+    "title": "Bitcoin Sovereignty Path",
+    "description": "From whitepaper to full node — learn Bitcoin technically and run your own infrastructure.",
+    "resourceIds": [
+      "bitcoin-whitepaper",
+      "learn-me-a-bitcoin",
+      "mastering-bitcoin",
+      "bitcoin-org-getting-started",
+      "bitcoin-full-node",
+      "btc-session-tutorials"
+    ],
+    "topics": ["bitcoin", "nodes", "wallets"]
+  },
+  {
+    "id": "monero-privacy",
+    "title": "Monero Privacy Path",
+    "description": "Understand private money — Moneropedia concepts, wallet setup, Tor routing, and running your own node.",
+    "resourceIds": [
+      "moneropedia",
+      "fungibility-monero",
+      "ring-signatures-monero",
+      "monero-how",
+      "monero-user-guides",
+      "monero-tor-wallet",
+      "sethforprivacy-monero-node"
+    ],
+    "topics": ["monero", "privacy", "nodes"]
+  },
+  {
+    "id": "practical-opsec",
+    "title": "Practical OpSec Path",
+    "description": "Hands-on operational security — GPG, Tor, Tails, and compartmentalized computing.",
+    "resourceIds": [
+      "cypherpunk-school-101",
+      "gnu-privacy-handbook",
+      "pgp-best-practices",
+      "tor-project-docs",
+      "tails-os",
+      "qubes-os-intro"
+    ],
+    "topics": ["opsec", "privacy", "cryptography"]
+  },
+  {
+    "id": "bitcoin-privacy",
+    "title": "Bitcoin Privacy Techniques",
+    "description": "Bitcoin is transparent by default — learn CoinJoin, privacy wallets, and techniques to reclaim fungibility.",
+    "resourceIds": [
+      "bitcoin-fungibility-wiki",
+      "coinjoin-bitcoin",
+      "wasabi-wallet-docs",
+      "joinmarket",
+      "samourai-wallet"
+    ],
+    "topics": ["bitcoin", "privacy", "wallets"]
+  },
+  {
+    "id": "deep-cryptography",
+    "title": "Deep Cryptography",
+    "description": "Mathematical foundations for understanding protocols under the hood — university-level theory.",
+    "resourceIds": [
+      "danboneh-cryptography-coursera",
+      "mit-ocw-cryptography",
+      "applied-cryptography-schneier",
+      "monero-research-lab",
+      "signal-protocol"
+    ],
+    "topics": ["cryptography"]
+  }
+]

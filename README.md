@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cypherpunk Code
 
-## Getting Started
+Open education index for Bitcoin, Monero, and cypherpunk sovereignty.
 
-First, run the development server:
+**Domain:** [cypherpunk-code.ca](https://cypherpunk-code.ca)
+
+Curated by [@CHxmrBrother](https://x.com/CHxmrBrother).
+
+## Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Works on Vercel, Cloudflare Pages, or any Node host:
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Static export is possible later if you drop client-side search (currently uses React state).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customize
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| File | Purpose |
+|------|---------|
+| `src/data/resources.json` | Resource database (58 entries seeded) |
+| `src/data/paths.json` | Learning path sequences |
+| `src/data/site.json` | Site name, creator handle, donation addresses |
 
-## Deploy on Vercel
+Site name, domain, and donation addresses are configured in `site.json`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Pages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` — Homepage with featured resources
+- `/catalog` — Searchable, filterable catalog with CP Score
+- `/paths` — Curated learning paths
+- `/resource/[id]` — Resource detail pages
+- `/about` — About + donation info
+- `/model` — Business model analysis
+
+## Adding resources
+
+Add entries to `resources.json` following the schema in `src/lib/types.ts`. Rebuild to publish.
