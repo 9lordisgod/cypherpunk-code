@@ -56,16 +56,17 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/model" className="text-muted hover:text-foreground">
-                    Business Model
+                  <Link href="/roadmap" className="text-muted hover:text-foreground">
+                    Roadmap
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <p className="mt-8 border-t border-border pt-6 text-center text-xs text-muted">
-          Open catalog · No tracking · Privacy is a human right
+        <p className="mt-8 border-t border-border pt-6 text-center text-xs leading-relaxed text-muted">
+          Open archive database · Catalog maintained continuously · Content removal
+          on request · No tracking
         </p>
       </div>
     </footer>

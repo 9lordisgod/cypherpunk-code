@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArchiveNotice } from "@/components/ArchiveNotice";
 import { ResourceCard } from "@/components/ResourceCard";
 import {
   getFeaturedResources,
@@ -21,7 +22,7 @@ export default function HomePage() {
         <div className="grid-bg absolute inset-0 opacity-40" />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
-            Open Education Index
+            Cypherpunk Archive Database
           </p>
           <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
             Learn sovereignty.
@@ -43,7 +44,10 @@ export default function HomePage() {
               Learning paths
             </Link>
           </div>
-          <p className="mt-6 text-sm text-muted">
+          <div className="mt-6 max-w-2xl">
+            <ArchiveNotice />
+          </div>
+          <p className="mt-3 text-sm text-muted">
             Curated by{" "}
             <a
               href={site.creator.url}

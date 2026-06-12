@@ -1,3 +1,4 @@
+import { ArchiveNotice } from "@/components/ArchiveNotice";
 import { resources, site } from "@/lib/data";
 
 export const metadata = {
@@ -12,15 +13,43 @@ export default function AboutPage() {
       <h1 className="text-3xl font-bold">About {site.name}</h1>
       <p className="mt-4 text-lg text-muted">{site.tagline}</p>
 
+      <div className="mt-8">
+        <ArchiveNotice variant="full" />
+      </div>
+
       <div className="prose-cypher mt-10 space-y-6 text-foreground">
+        <section id="policy">
+          <h2 className="text-xl font-semibold">Archive mission</h2>
+          <p className="mt-2 leading-relaxed text-muted">
+            {site.name} is a public archive database of cypherpunk information
+            and education. We index and organize freely available material so
+            learners can find signal without wading through trading noise. This is
+            a reference tool — not financial advice, not a course provider, and
+            not affiliated with the projects listed unless noted.
+          </p>
+          <p className="mt-3 leading-relaxed text-muted">
+            The catalog is reviewed and updated on an ongoing basis. If any
+            rights holder, author, or project is unhappy with a listing, contact{" "}
+            <a
+              href={site.creator.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              @{site.creator.handle}
+            </a>{" "}
+            and the content will be pulled or corrected without delay.
+          </p>
+        </section>
+
         <section>
           <h2 className="text-xl font-semibold">What is this?</h2>
           <p className="mt-2 leading-relaxed text-muted">
-            {site.name} is an open education catalog for the cypherpunk and
-            cryptocurrency community. It indexes courses, papers, guides,
-            documentation, manifestos, podcasts, and events — with an editorial
-            &ldquo;Cypherpunk Score&rdquo; that filters out trading noise and
-            surfaces resources about privacy, sovereignty, and cryptography.
+            An open education index for the cypherpunk and cryptocurrency
+            community. Courses, papers, guides, documentation, manifestos,
+            podcasts, and events — with an editorial &ldquo;Cypherpunk
+            Score&rdquo; that surfaces resources about privacy, sovereignty, and
+            cryptography.
           </p>
         </section>
 
@@ -96,7 +125,8 @@ export default function AboutPage() {
         <section>
           <h2 className="text-xl font-semibold">Contribute</h2>
           <p className="mt-2 leading-relaxed text-muted">
-            Found a resource worth adding? Have a correction? Reach out via{" "}
+            Found a resource worth adding? Have a correction or removal request?
+            Reach out via{" "}
             <a
               href={site.creator.url}
               target="_blank"
@@ -105,8 +135,11 @@ export default function AboutPage() {
             >
               @{site.creator.handle}
             </a>
-            . Future versions will include a submission form and community
-            curation workflow.
+            . See the{" "}
+            <a href="/roadmap" className="text-accent hover:underline">
+              roadmap
+            </a>{" "}
+            for planned features including community submissions.
           </p>
         </section>
       </div>

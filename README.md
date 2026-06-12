@@ -43,7 +43,7 @@ Site name, domain, and donation addresses are configured in `site.json`.
 - `/paths` — Curated learning paths
 - `/resource/[id]` — Resource detail pages
 - `/about` — About + donation info
-- `/model` — Business model analysis
+- `/roadmap` — Project roadmap
 
 ## Adding resources
 

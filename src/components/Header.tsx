@@ -5,7 +5,7 @@ const nav = [
   { href: "/catalog", label: "Catalog" },
   { href: "/paths", label: "Learning Paths" },
   { href: "/about", label: "About" },
-  { href: "/model", label: "Business Model" },
+  { href: "/roadmap", label: "Roadmap" },
 ];
 
 export function Header() {
