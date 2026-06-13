@@ -132,6 +132,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="border-y border-border bg-[#0a100f] py-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="crt rounded p-6 md:p-8">
+            <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <div className="font-mono text-xs tracking-[3px] text-[#ffb347]">BETA TEST • SOLANA DEVNET USDC (FREE TEST TOKENS)</div>
+                <div className="mt-1 text-3xl font-bold tracking-tight text-[#00ff9f]">CIPHER ARENA</div>
+                <div className="max-w-md text-sm text-[#d4dce6] mt-1">Retro computer game. Cryptographic adversarial training on Solana Devnet. Use free test USDC from faucet.circle.com. Deposit/play/withdraw Devnet USDC. Powered by Race Protocol. Skin-in-the-game lessons in game theory + verifiable randomness. Test / simulation only for now.</div>
+              </div>
+              <Link
+                href="/arena"
+                className="mt-2 inline-block rounded border-2 border-[#00ff9f] bg-[#0a100f] px-8 py-3 font-mono text-sm text-[#00ff9f] hover:bg-[#00ff9f] hover:text-[#0a100f] md:mt-0"
+              >
+                BOOT ARENA v0.1 (DEVNET TEST — FREE USDC) →
+              </Link>
+            </div>
+            <div className="mt-3 text-[10px] text-[#8b9cb0]">Pure computer game framing. Educational simulation. No gambling language or mechanics. All actions on-chain and auditable.</div>
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-border bg-card">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <div className="flex flex-wrap items-center justify-center gap-8 text-center">

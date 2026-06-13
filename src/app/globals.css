@@ -48,3 +48,192 @@ body {
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 70%);
 }
+
+/* =========================================================
+   CIPHER ARENA — RETRO COMPUTER GAME AESTHETIC (CRT + PHOSPHOR)
+   Zero gambling vibe. Pure 80s-90s mainframe adversarial training sim.
+   ========================================================= */
+
+:root {
+  --phosphor: #00ff9f;
+  --phosphor-dim: #00cc7a;
+  --crt-bg: #0a100f;
+  --crt-bezel: #111a18;
+  --amber: #ffb347;
+}
+
+.crt {
+  background: var(--crt-bg);
+  color: var(--phosphor);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  text-shadow: 0 0 3px var(--phosphor), 0 0 8px var(--phosphor-dim);
+  position: relative;
+  overflow: hidden;
+  border: 8px solid var(--crt-bezel);
+  box-shadow: 
+    0 0 0 2px #222,
+    inset 0 0 80px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(0, 255, 159, 0.08);
+  image-rendering: pixelated;
+}
+
+.crt::before {
+  /* Subtle vignette + old glass */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.35) 80%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.crt::after {
+  /* Classic CRT scanlines + flicker */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 255, 159, 0.035) 3px,
+    rgba(0, 255, 159, 0.035) 4px
+  );
+  pointer-events: none;
+  z-index: 3;
+  animation: crt-flicker 1.2s infinite linear;
+}
+
+@keyframes crt-flicker {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 1; }
+  92% { opacity: 0.92; }
+}
+
+.phosphor {
+  color: var(--phosphor);
+  text-shadow: 0 0 4px var(--phosphor);
+}
+
+.terminal-header {
+  background: #111a18;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.arena-button {
+  font-family: var(--font-mono);
+  background: #0f1a17;
+  color: var(--phosphor);
+  border: 2px solid var(--phosphor);
+  padding: 10px 18px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 60ms linear;
+  box-shadow: 0 0 0 1px rgba(0, 255, 159, 0.2) inset;
+}
+
+.arena-button:hover {
+  background: var(--phosphor);
+  color: #0a100f;
+  box-shadow: 0 0 12px var(--phosphor);
+}
+
+.arena-button:active {
+  transform: translateY(1px);
+}
+
+.arena-button.secondary {
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+.arena-button.secondary:hover {
+  border-color: var(--phosphor);
+  color: var(--phosphor);
+  background: #0f1a17;
+}
+
+.packet {
+  width: 78px;
+  height: 108px;
+  background: #0c1513;
+  border: 3px solid var(--phosphor);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 0 1px #111 inset, 0 4px 0 #111;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  user-select: none;
+}
+
+.packet.revealed {
+  background: #111a18;
+  border-color: var(--amber);
+  color: var(--amber);
+  text-shadow: 0 0 4px var(--amber);
+}
+
+.packet.back {
+  background: repeating-linear-gradient(
+    135deg,
+    #0c1513,
+    #0c1513 6px,
+    #111a18 6px,
+    #111a18 11px
+  );
+}
+
+.packet .glyph {
+  font-size: 28px;
+  opacity: 0.9;
+}
+
+.ledger {
+  font-variant-numeric: tabular-nums;
+}
+
+.log-line {
+  font-size: 11px;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.log-line.sys {
+  color: var(--amber);
+  opacity: 1;
+}
+
+.agent-row {
+  font-size: 12px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.sovereignty-badge {
+  font-size: 9px;
+  padding: 1px 6px;
+  border: 1px solid var(--phosphor);
+  background: rgba(0, 255, 159, 0.06);
+  letter-spacing: 0.5px;
+}
+
+.boot-text {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.boot-text .cursor {
+  animation: boot-cursor 900ms step-end infinite;
+}
+
+@keyframes boot-cursor {
+  50% { opacity: 0; }
+}
