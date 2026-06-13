@@ -16,6 +16,7 @@ interface ArenaProgress {
   totalBurned: number;
   completedNodes: string[];
   lastNode?: string;
+  nodePools?: Record<string, number>;
   timestamp: number;
 }
 
@@ -119,6 +120,17 @@ export default function CipherArenaPage() {
   const [totalHands, setTotalHands] = useState(0);
   const [totalBurned, setTotalBurned] = useState(0);
   const [completedNodes, setCompletedNodes] = useState<string[]>([]);
+
+  // Dynamic node pools for the arena (accumulates real burns + simulated contributions)
+  // Initialized from static NODES, then updated live and persisted
+  const [nodePools, setNodePools] = useState<Record<string, number>>(() => {
+    const init: Record<string, number> = {};
+    NODES.forEach((node) => {
+      init[node.id] = node.pool;
+    });
+    return init;
+  });
+
   const [showEdu, setShowEdu] = useState(false);
   const [showRecord, setShowRecord] = useState(false);
   const [eduContent, setEduContent] = useState({ title: '', body: '' });
@@ -215,10 +227,12 @@ export default function CipherArenaPage() {
     // Record completion for persistent training record
     setCompletedNodes(prev => prev.includes(node.id) ? prev : [...prev, node.id]);
 
+    // Use dynamic pool (accumulated from real burns + sim contributions)
+    const currentPool = getNodePool(node.id);
     // Reset table state for fresh simulation instance
     setYourPackets(createMockPackets(true));
     setCommunity(COMMUNITY_TEMPLATE.map(p => ({...p})));
-    setPot(node.pool * 0.18);
+    setPot(currentPool * 0.18);
     setYourStack(2.1); // demo starting stack (was randomized; fixed to satisfy render purity)
     setOppStack(2.4);
     setLog([]);
@@ -286,6 +300,11 @@ export default function CipherArenaPage() {
 
     setTotalBurned(b => b + amount); // persistent training record
 
+    // Accumulate to the node's real-time pool (so lobby shows actual growth)
+    if (currentNode) {
+      addToNodePool(currentNode.id, amount);
+    }
+
     const actionLabel = action === 'escalate' ? 'ESCALATE' : 'COMMIT';
     const logMsg = `${actionLabel} — burned ${amount} USDC (tx: ${signature}). Pool now ${newPot.toFixed(2)}`;
     appendLog(logMsg, 'you');
@@ -351,6 +370,13 @@ export default function CipherArenaPage() {
 
     setTotalHands(h => h + 1);
 
+    // Simulate other agents / new players contributing USDC to the node pool
+    // (makes the displayed pools grow over time as "real" activity, not frozen)
+    if (currentNode) {
+      const otherPlayersContribution = 0.08 + Math.random() * 0.22;
+      addToNodePool(currentNode.id, otherPlayersContribution);
+    }
+
     const gainedXp = youWon ? 42 : 28;
     const newXp = xp + gainedXp;
     setXp(newXp);
@@ -409,8 +435,18 @@ export default function CipherArenaPage() {
     totalBurned,
     completedNodes,
     lastNode: currentNode?.id,
+    nodePools,
     timestamp: Date.now(),
   });
+
+  const getNodePool = (id: string) => nodePools[id] ?? NODES.find((n) => n.id === id)?.pool ?? 0;
+
+  const addToNodePool = (id: string, amount: number) => {
+    setNodePools((prev) => ({
+      ...prev,
+      [id]: (prev[id] || getNodePool(id)) + amount,
+    }));
+  };
 
   const saveLocal = (addr: string, p: ArenaProgress) => {
     try {
@@ -503,7 +539,7 @@ export default function CipherArenaPage() {
       const p = buildProgress();
       saveLocal(addr, p);
     }
-  }, [xp, level, badges, totalHands, totalBurned, completedNodes, connected, publicKey, currentNode]);
+  }, [xp, level, badges, totalHands, totalBurned, completedNodes, nodePools, connected, publicKey, currentNode]);
 
   // Load progress (local + optional signed server fetch) when wallet connects
   useEffect(() => {
@@ -523,6 +559,7 @@ export default function CipherArenaPage() {
         if (p.totalHands != null) setTotalHands(p.totalHands);
         if (p.totalBurned != null) setTotalBurned(p.totalBurned);
         if (p.completedNodes) setCompletedNodes(p.completedNodes);
+        if (p.nodePools) setNodePools((prev) => ({ ...prev, ...p.nodePools }));
         didRestore = true;
         appendLog(`Welcome back. Local training record loaded for ${addr.slice(0, 4)}...${addr.slice(-4)}.`, 'sys');
       }
@@ -539,6 +576,7 @@ export default function CipherArenaPage() {
         setTotalHands(serverP.totalHands || 0);
         setTotalBurned(serverP.totalBurned || 0);
         if (serverP.completedNodes) setCompletedNodes(serverP.completedNodes);
+        if (serverP.nodePools) setNodePools((prev) => ({ ...prev, ...serverP.nodePools }));
         didRestore = true;
         appendLog(`Cloud training record synced (signed by wallet).`, 'sys');
         // push back to local + server (in case local was ahead)
@@ -600,6 +638,11 @@ export default function CipherArenaPage() {
       setYourStack(s => s + amount);
 
       setTotalBurned(b => b + amount); // persistent training record
+
+      // Accumulate to the node's real-time pool
+      if (currentNode) {
+        addToNodePool(currentNode.id, amount);
+      }
 
       // Refetch real balance (it should now be lower)
       await fetchRealUsdcBalance(publicKey);
@@ -721,7 +764,7 @@ export default function CipherArenaPage() {
                     
                     <div className="mt-4 flex items-baseline justify-between text-sm">
                       <div>AGENTS: <span className="text-white">{node.agents}</span></div>
-                      <div>POOL: <span className="text-white tabular-nums">{node.pool.toFixed(2)}</span> USDC</div>
+                      <div>POOL: <span className="text-white tabular-nums">{getNodePool(node.id).toFixed(2)}</span> USDC</div>
                     </div>
                     <div className="mt-1 text-xs text-[#8b9cb0]">STATUS: {node.status} • MIN CLEARANCE: {node.clearance}</div>
 
