@@ -1,5 +1,7 @@
 # Cypherpunk Code
 
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
 Open education index for Bitcoin, Monero, and cypherpunk sovereignty.
 
 **Domain:** [cypherpunk-code.ca](https://cypherpunk-code.ca)
