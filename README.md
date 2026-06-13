@@ -64,3 +64,18 @@ Without it the app falls back to `clusterApiUrl('devnet')` (public, works but le
 ## Adding resources
 
 Add entries to `resources.json` following the schema in `src/lib/types.ts`. Rebuild to publish.
+
+## License
+
+This project is licensed under the **GNU Affero General Public License v3.0** (AGPL-3.0).
+
+See the [LICENSE](LICENSE) file for details.
+
+This means:
+- You are free to use, modify, and distribute the code.
+- If you run a modified version as a network service (e.g. a hosted version of the site or Arena), you must make the corresponding source available to users.
+- The license ensures the project remains open and aligned with cypherpunk principles of transparency and sovereignty.
+
+## Security
+
+If you discover a security vulnerability, please report it responsibly. See `SECURITY.md` (or open an issue with details if no file exists yet).
