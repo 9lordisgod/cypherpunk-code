@@ -137,18 +137,18 @@ export default function HomePage() {
           <div className="crt rounded p-6 md:p-8">
             <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
               <div>
-                <div className="font-mono text-xs tracking-[3px] text-[#ffb347]">BETA TEST • SOLANA DEVNET USDC (FREE TEST TOKENS)</div>
+                <div className="font-mono text-xs tracking-[3px] text-[#ffb347]">REAL DEVNET TX • SOLANA DEVNET USDC (FREE TEST TOKENS)</div>
                 <div className="mt-1 text-3xl font-bold tracking-tight text-[#00ff9f]">CIPHER ARENA</div>
-                <div className="max-w-md text-sm text-[#d4dce6] mt-1">Retro computer game. Cryptographic adversarial training on Solana Devnet. Use free test USDC from faucet.circle.com. Burn devnet USDC on-chain as irreversible skin-in-the-game commitment (v0.1 demo). Local simulation of hands + verifiable concepts. Full on-chain Race Protocol integration next. Educational only.</div>
+                <div className="max-w-md text-sm text-[#d4dce6] mt-1">Retro computer game. Cryptographic adversarial training. Your poker COMMIT/ESCALATE moves burn real devnet USDC on-chain (real tx + hash via Helius). Hand resolution is local educational sim of Race Protocol mechanics. Use free test USDC from faucet.circle.com. Skin-in-the-game for sovereignty + game theory lessons.</div>
               </div>
               <Link
                 href="/arena"
                 className="mt-2 inline-block rounded border-2 border-[#00ff9f] bg-[#0a100f] px-8 py-3 font-mono text-sm text-[#00ff9f] hover:bg-[#00ff9f] hover:text-[#0a100f] md:mt-0"
               >
-                BOOT ARENA v0.1 (DEVNET TEST — FREE USDC) →
+                BOOT ARENA v0.2 (REAL BURNS + SIM) →
               </Link>
             </div>
-            <div className="mt-3 text-[10px] text-[#8b9cb0]">Pure computer game framing. Educational simulation. No gambling language or mechanics. All actions on-chain and auditable.</div>
+            <div className="mt-3 text-[10px] text-[#8b9cb0]">Pure computer game framing + real on-chain burns for your actions. Educational. No gambling language. Tx hashes are real and auditable on devnet explorer.</div>
           </div>
         </div>
       </section>

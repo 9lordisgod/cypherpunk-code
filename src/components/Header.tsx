@@ -4,7 +4,7 @@ import { site } from "@/lib/data";
 const nav: Array<{ href: string; label: string; badge?: string }> = [
   { href: "/catalog", label: "Catalog" },
   { href: "/paths", label: "Learning Paths" },
-  { href: "/arena", label: "CIPHER ARENA", badge: "v0.1" },
+  { href: "/arena", label: "CIPHER ARENA", badge: "v0.2" },
   { href: "/about", label: "About" },
   { href: "/roadmap", label: "Roadmap" },
 ];
