@@ -18,7 +18,7 @@ export function WalletProviders({ children }: { children: React.ReactNode }) {
     () => [
       new PhantomWalletAdapter(),
     ],
-    [network]
+    []
   );
 
   return (

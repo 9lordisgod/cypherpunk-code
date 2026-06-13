@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { CatalogClient } from "@/components/CatalogClient";
 import { resources } from "@/lib/data";
 
@@ -15,7 +16,15 @@ export default function CatalogPage() {
           slider to cut trading fluff and surface cypherpunk signal.
         </p>
       </div>
-      <CatalogClient resources={resources} />
+      <Suspense
+        fallback={
+          <div className="rounded-lg border border-border bg-card p-12 text-center text-muted">
+            Loading catalog...
+          </div>
+        }
+      >
+        <CatalogClient resources={resources} />
+      </Suspense>
     </div>
   );
 }
