@@ -57,7 +57,7 @@ Without it the app falls back to `clusterApiUrl('devnet')` (public, works but le
 - `/resource/[id]` — Resource detail pages
 - `/about` — About + donation info
 - `/roadmap` — Project roadmap
-- `/arena` — Cipher Arena: connect Phantom (Solana devnet only), play the poker hand. Every COMMIT or ESCALATE burns real devnet USDC via on-chain transaction (real tx signature + confirmation). The resolution/settlement is a local simulation of Race Protocol mechanics for fast learning. Get test USDC: https://faucet.circle.com/
+- `/arena` — Cipher Arena: connect Phantom (Solana devnet), play the poker hand. COMMIT/ESCALATE actions perform real devnet USDC burns (tx + sig). Hand resolution and settlement are local simulation of Race Protocol. Get test USDC: https://faucet.circle.com/
 
   Recommended for reliable txs while playing: set `NEXT_PUBLIC_HELIUS_API_KEY` (or full `NEXT_PUBLIC_SOLANA_RPC_URL`) in `.env.local` / Vercel env. Public cluster RPC works but can be slow/rate-limited for interactive burns.
 

@@ -8,18 +8,14 @@ import { PublicKey, Transaction } from '@solana/web3.js';
 import { createBurnCheckedInstruction, getAssociatedTokenAddress } from '@solana/spl-token';
 
 // =========================================================
-// CIPHER ARENA — v0.2  (REAL DEVNET TX + LOCAL EDUCATIONAL SIM)
-// Retro computer game / cryptographic adversarial training simulator.
-// Built on top of cypherpunk-code. Zero gambling language or vibes.
-// Skin-in-the-game: your COMMIT / ESCALATE actions in the poker hand
-// trigger REAL on-chain burns of devnet USDC (via Phantom).
-// The hand resolution, opponent logic, reveals and settlement math are
-// local simulation (for fast educational pacing + Race Protocol demo).
-// Full on-chain Race Protocol tables (deposits to GameAccounts, P2P shuffles,
-// on-chain settlements) are the intended next step.
-// Uses Solana Devnet USDC (mint 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU).
-// Get test tokens: https://faucet.circle.com/ (Solana Devnet)
-// Configure better RPC: set NEXT_PUBLIC_HELIUS_API_KEY or NEXT_PUBLIC_SOLANA_RPC_URL.
+// CIPHER ARENA — v0.2
+// Retro computer game + cryptographic adversarial training simulator.
+// COMMIT / ESCALATE actions trigger real devnet USDC burns (on-chain via Phantom).
+// Hand resolution / opponent / settlement = fast local simulation of Race Protocol.
+// Next: full on-chain GameAccounts + P2P shuffles + settlements.
+// Devnet USDC mint: 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU
+// Get test tokens: https://faucet.circle.com/
+// Set NEXT_PUBLIC_HELIUS_API_KEY for reliable RPC during play.
 // =========================================================
 
 type Phase = 'boot' | 'lobby' | 'table' | 'settled';
@@ -53,11 +49,10 @@ const NODES: ArenaNode[] = [
   { id: 'node-003', label: 'NODE-003 • SOVEREIGNTY PROVING GROUND', agents: 2, pool: 0.67, status: 'STABLE', clearance: 'VETERAN' },
 ];
 
-const DEVNET_USDC_MINT = '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU'; // Official USDC on Solana Devnet (SPL token) — use with Circle faucet https://faucet.circle.com/
+const DEVNET_USDC_MINT = '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU'; // Solana devnet USDC (Circle faucet)
 
-// NOTE: v0.1 uses on-chain *burn* (permanent destruction of the test tokens) as the skin-in-the-game mechanism.
-// This demonstrates irreversible commitment without needing a live escrow/pot program yet.
-// (Dead treasury const removed; real Race Protocol GameAccount deposits + on-chain settlement planned for later version.)
+// NOTE: On-chain burn of devnet USDC is the skin-in-the-game mechanism for now (irreversible commitment).
+// Full Race Protocol GameAccount deposits + on-chain settlement planned later.
 
 const SUITS = [
   { s: 'NODE', g: '⬡' },
@@ -169,14 +164,13 @@ export default function CipherArenaPage() {
     const lines = [
       'CYPHER CODE ARCHIVE — PROTOCOL INTERFACE LOADED',
       'RACE PROTOCOL CORE v0.2.x — MULTI-PARTY RANDOMIZATION ACTIVE',
-      'SOLANA DEVNET — TEST USDC LEDGER (FOR SAFE PLAYER/TESTER FUNDING)',
+      'SOLANA DEVNET — TEST USDC LEDGER',
       'AGENT CALLSIGN: [REDACTED] • CLEARANCE: FIELD-07',
       'INITIALIZING P2P ENTROPY SOURCE...',
       'LOADING GAME BUNDLE: race-holdem-core (WASM)',
-      'TRANSPORT: SOLANA DEVNET • TOKEN: DEVNET USDC (4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU)',
-      'THIS IS AN EDUCATIONAL CRYPTOGRAPHIC SIMULATION.',
-      'SKIN-IN-THE-GAME PARTICIPATION ONLY. NO GAMBLING OFFERED.',
-      'ALL RANDOMNESS VERIFIABLE VIA RACE P2P PROTOCOL.',
+      'TRANSPORT: SOLANA DEVNET • TOKEN: DEVNET USDC',
+      'SKIN-IN-THE-GAME SIM. ACTIONS = ON-CHAIN BURNS.',
+      'RACE PROTOCOL RANDOMNESS. LOCAL RESOLUTION FOR PACING.',
       'BOOT COMPLETE. ENTERING MAIN TERMINAL.',
     ];
 
@@ -214,8 +208,8 @@ export default function CipherArenaPage() {
 
     appendLog(`BOOTING SIMULATION INSTANCE ${node.id.toUpperCase()}`, 'sys');
     appendLog(`RACE P2P RANDOMIZATION COMPLETE — DECK SHUFFLE VERIFIED`, 'sys');
-    appendLog(`AGENTS CONNECTED: ${node.agents} • READY. Your moves will burn real devnet USDC.`, 'sys');
-    appendLog('PRE-COMMIT PHASE — YOUR MOVE, AGENT. (real tx on commit/escalate)', 'sys');
+    appendLog(`AGENTS CONNECTED: ${node.agents} • READY. Moves burn real devnet USDC.`, 'sys');
+    appendLog('PRE-COMMIT PHASE — YOUR MOVE, AGENT. (on-chain burn on commit/escalate)', 'sys');
   }
 
   function revealCommunity(upTo: number) {
@@ -226,9 +220,8 @@ export default function CipherArenaPage() {
     setYourPackets(prev => prev.map(p => ({ ...p, revealed: true })));
   }
 
-  // Core "game" actions — heavily gamified / rethemed.
-  // COMMIT and ESCALATE now perform REAL devnet USDC burns (on-chain tx + hash).
-  // Opponent responses + final settlement math remain local sim for education speed.
+  // Core actions. COMMIT/ESCALATE perform real devnet USDC burns (on-chain).
+  // Opponent + settlement remain local sim for pacing.
   async function performAction(action: 'commit' | 'escalate' | 'abort') {
     if (toAct !== 'you' || phase !== 'table' || !connected) {
       if (!connected) alert('Connect Phantom to make moves in the simulation.');
@@ -247,10 +240,9 @@ export default function CipherArenaPage() {
       return;
     }
 
-    // === REAL ON-CHAIN CONSUMPTION ===
-    // This is the key fix: playing poker now burns real devnet tokens with real tx.
+    // Real on-chain burn for the action.
     if (realUsdcBalance < amount) {
-      alert(`You need at least ${amount} more real devnet USDC to ${action.toUpperCase()}. Get from https://faucet.circle.com/`);
+      alert(`Need ${amount} more devnet USDC to ${action.toUpperCase()}. Get from faucet.circle.com`);
       return;
     }
 
@@ -260,7 +252,7 @@ export default function CipherArenaPage() {
       signature = await burnDevnetUsdc(amount);
     } catch (err: any) {
       console.error('Burn tx failed during action', err);
-      alert('On-chain burn failed. Move not executed. ' + (err.message || ''));
+      alert('Burn tx failed. Move not executed. ' + (err.message || ''));
       setIsTxPending(false);
       return;
     }
@@ -273,7 +265,7 @@ export default function CipherArenaPage() {
     setPot(newPot);
 
     const actionLabel = action === 'escalate' ? 'ESCALATE' : 'COMMIT';
-    const logMsg = `${actionLabel} — BURNED ${amount} real devnet USDC on-chain (tx: ${signature}). Pool now ${newPot.toFixed(2)} USDC (DEVNET)`;
+    const logMsg = `${actionLabel} — burned ${amount} USDC (tx: ${signature}). Pool now ${newPot.toFixed(2)}`;
     appendLog(logMsg, 'you');
 
     // Advance round + opponent "response" (local sim)
@@ -305,8 +297,8 @@ export default function CipherArenaPage() {
       setPot(oppNewPot);
 
       appendLog(oppAction === 'escalate' 
-        ? `OPPONENT AGENT ESCALATES +0.21 USDC (DEVNET). POOL NOW ${oppNewPot.toFixed(2)} USDC (DEVNET)`
-        : `OPPONENT COMMITS 0.09 USDC (DEVNET).`, 'agent');
+        ? `OPPONENT ESCALATES +0.21. POOL NOW ${oppNewPot.toFixed(2)}`
+        : `OPPONENT COMMITS 0.09.`, 'agent');
 
       setToAct('you');
 
@@ -318,13 +310,13 @@ export default function CipherArenaPage() {
           if (youWin) {
             const finalStack = newYourStack + winnerPot;
             setYourStack(finalStack);
-            appendLog(`SETTLEMENT COMPLETE — YOU TAKE THE POOL. +${winnerPot.toFixed(2)} USDC (DEVNET) [local sim resolution]`, 'you');
-            endHand('Optimal information management demonstrated. +42 MASTERY XP', true);
+            appendLog(`SETTLEMENT — YOU TAKE THE POOL. +${winnerPot.toFixed(2)} [local sim]`, 'you');
+            endHand('Optimal information management demonstrated.', true);
           } else {
             const finalOpp = oppNewStack + winnerPot;
             setOppStack(finalOpp);
-            appendLog(`SETTLEMENT COMPLETE — OPPONENT CLAIMS POOL. [local sim resolution]`, 'agent');
-            endHand('Strong play. Protocol lessons logged. +28 MASTERY XP', false);
+            appendLog(`SETTLEMENT — OPPONENT CLAIMS POOL. [local sim]`, 'agent');
+            endHand('Strong play. Protocol lessons logged.', false);
           }
         }, 650);
       }
@@ -364,8 +356,8 @@ export default function CipherArenaPage() {
   }
 
   function withdrawAndReturn() {
-    // Real consumption already happened via the burn txs for your actions. No "refund" because this is skin-in-game educational burn (no on-chain pot held).
-    appendLog('EXITING SIMULATION — Real burns for your actions already confirmed on devnet. No additional on-chain movement on exit (educational mode).', 'sys');
+    // Burns already executed on-chain for prior actions (no pot held here).
+    appendLog('EXITING — Burns for your actions already confirmed on devnet.', 'sys');
     setTimeout(() => {
       setPhase('lobby');
       setCurrentNode(null);
@@ -378,9 +370,8 @@ export default function CipherArenaPage() {
     window.open(`/catalog?topic=${topic.toLowerCase().includes('game') ? 'general-crypto' : 'cryptography'}`, '_blank');
   }
 
-  // Reusable: burns real devnet USDC from connected wallet. Returns the tx signature on success.
-  // This is the "real blockchain tx" part for skin-in-the-game.
-  // Each poker COMMIT/ESCALATE in the hand burns the corresponding amount on-chain.
+  // Burns real devnet USDC from connected wallet. Returns tx signature.
+  // Called on COMMIT/ESCALATE (and extra allocation). Skin-in-game via permanent burn.
   async function burnDevnetUsdc(amount: number): Promise<string> {
     if (!connected || !publicKey || !wallet) {
       throw new Error('Wallet not connected');
@@ -434,7 +425,7 @@ export default function CipherArenaPage() {
       // Refetch real balance (it should now be lower)
       await fetchRealUsdcBalance(publicKey);
 
-      appendLog(`BURNED +${amount} real devnet USDC (tx: ${signature}) — extra allocation to your ledger. Tokens permanently destroyed as commitment demo.`, 'sys');
+      appendLog(`BURNED +${amount} USDC (tx: ${signature}) — extra allocation.`, 'sys');
 
     } catch (err: unknown) {
       console.error(err);
@@ -451,7 +442,7 @@ export default function CipherArenaPage() {
     <div className="min-h-[100dvh] bg-[#070b0f] text-[#00ff9f] selection:bg-[#00e67633] selection:text-[#00ff9f]">
       {/* Top chrome — feels like an old terminal menu */}
       <div className="border-b border-[#1a2530] bg-[#0a100f] px-4 py-2 font-mono text-[10px] tracking-[2px] text-[#00cc7a]">
-        CYPHER ARENA v0.2 • REAL DEVNET TX BURNS ON PLAY • RACE PROTOCOL • SOLANA DEVNET USDC • AGENT TRAINING • faucet.circle.com
+        CYPHER ARENA v0.2 • RACE PROTOCOL SIM • ADVERSARIAL TRAINING • SOLANA DEVNET
         <span className="ml-4 text-[#8b9cb0]">
           RPC: {process.env.NEXT_PUBLIC_SOLANA_RPC_URL ? 'CUSTOM' : process.env.NEXT_PUBLIC_HELIUS_API_KEY ? 'HELIUS ✓' : 'PUBLIC (slow)'}
         </span>
@@ -459,39 +450,23 @@ export default function CipherArenaPage() {
 
       <div className="mx-auto max-w-7xl px-4 pb-12 pt-6">
         {/* HEADER / STATUS BAR */}
-        <div className="mb-4 flex items-center justify-between border-b border-[#1a2530] pb-3">
-          <div>
-            <div className="font-mono text-2xl font-bold tracking-[-1.5px] text-[#00ff9f]">CIPHER ARENA</div>
-            <div className="text-[10px] text-[#8b9cb0] -mt-1">ADVERSARIAL COMMITMENT TRAINING • POWERED BY RACE PROTOCOL</div>
-          </div>
-          <div className="text-right font-mono text-xs">
-            <div>AGENT CLEARANCE: LEVEL {level} • FIELD</div>
-            <div className="text-[#00cc7a]">MASTERY XP: {xp} • {badges.length} BADGES</div>
-          </div>
+        <div className="mb-4 border-b border-[#1a2530] pb-3">
+          <div className="font-mono text-2xl font-bold tracking-[-1.5px] text-[#00ff9f]">CIPHER ARENA</div>
+          <div className="text-[10px] text-[#8b9cb0] -mt-1">ADVERSARIAL COMMITMENT TRAINING • POWERED BY RACE PROTOCOL</div>
         </div>
 
-        {/* PERMANENT FRAMING — REAL DEVNET TX CONSUMPTION ON POKER ACTIONS */}
-        <div className="mb-6 rounded border border-[#00ff9f22] bg-[#0a100f] p-4 text-[12px] leading-tight">
-          <strong className="text-[#ffb347]">THIS IS A COMPUTER GAME + REAL ON-CHAIN SKIN-IN-THE-GAME.</strong> Cryptographic adversarial training simulator. 
-          <span className="text-[#ffb347] font-semibold"> Your COMMIT and ESCALATE moves during the hand execute real burns of devnet USDC (actual tx + signature on Solana devnet via Helius).</span>
-          The poker resolution, opponent agent, reveals, and final "settlement" math run locally in-browser as a high-fidelity simulation of what a real Race Protocol hand feels like.
-          <span className="block mt-1 text-[#8b9cb0]">No house edge. This is skin-in-the-game training for sovereignty, game theory, verifiable randomness, and commitment schemes.</span>
-          <span className="mt-1 block text-[#ffb347]">CONNECT PHANTOM (DEVNET) → FUND WITH REAL DEVNET USDC (faucet.circle.com + tiny devnet SOL for fees) → PLAY POKER ACTIONS = REAL TOKEN BURNS (tx hashes in log).</span>
-          <span className="mt-1 block text-xs text-[#8b9cb0]">Devnet USDC Mint: <span className="font-mono text-[#00ff9f]">{DEVNET_USDC_MINT}</span>. For reliable txs during play set NEXT_PUBLIC_HELIUS_API_KEY (recommended).</span>
-        </div>
-
-        {/* REAL WALLET CONNECT + REAL TX CONSUMPTION */}
+        {/* WALLET + DEVNET USDC (skin-in-the-game: COMMIT/ESCALATE = real burns) */}
         <div className="mb-6 rounded border-2 border-[#ffb347] bg-[#0a100f] p-4">
-          <div className="font-mono text-[#ffb347] text-xs tracking-[2px] mb-2">PHANTOM WALLET REQUIRED • DEVNET USDC ONLY • ACTIONS = REAL BURNS</div>
+          <div className="font-mono text-[#ffb347] text-xs tracking-[2px] mb-2">CONNECT PHANTOM (DEVNET) • FUND WITH TEST USDC • ACTIONS BURN TOKENS ON-CHAIN</div>
           
           {!connected ? (
             <div>
               <p className="text-sm mb-3">
-                Connect your <strong>Phantom wallet</strong> on Solana Devnet. Every COMMIT or ESCALATE you make while playing the poker hand will trigger a <strong>real on-chain burn</strong> of devnet USDC (you will sign in wallet, tx will be confirmed on devnet, signature shown in log).
+                Connect <strong>Phantom</strong> (Solana Devnet). Your COMMIT and ESCALATE actions execute real devnet USDC burns (signed tx + confirmed on-chain, tx hash logged).
               </p>
               <WalletMultiButton className="arena-button !px-6 !py-2" />
               <p className="mt-2 text-xs text-[#8b9cb0]">
-                Every COMMIT or ESCALATE you make while playing the poker hand will trigger a <strong>real on-chain burn</strong> of devnet USDC (you sign in wallet, tx confirmed on devnet via Helius, signature shown in log). The hand logic is a fast local simulation. <span className="text-[#ffb347]">You need a tiny amount of devnet SOL in the same wallet for transaction fees.</span>
+                Hand resolution, opponent, and settlement math run as a fast local simulation. <span className="text-[#ffb347]">Include a few cents of devnet SOL for fees.</span> Get test USDC: <a href="https://faucet.circle.com/" target="_blank" className="underline">faucet.circle.com</a>.
               </p>
             </div>
           ) : (
@@ -501,7 +476,7 @@ export default function CipherArenaPage() {
                 <div className="font-mono text-sm text-[#00ff9f]">{publicKey?.toBase58().slice(0, 4)}...{publicKey?.toBase58().slice(-4)}</div>
               </div>
               <div className="flex-1">
-                <div className="text-xs text-[#8b9cb0]">YOUR REAL DEVNET USDC BALANCE</div>
+                <div className="text-xs text-[#8b9cb0]">YOUR DEVNET USDC BALANCE</div>
                 <div className="font-mono text-xl font-bold text-[#ffb347]">
                   {isLoadingBalance ? '...' : realUsdcBalance.toFixed(2)} USDC
                 </div>
@@ -517,7 +492,7 @@ export default function CipherArenaPage() {
 
           {connected && realUsdcBalance < 0.3 && (
             <div className="mt-3 text-xs text-[#ffb347] border border-[#ffb347] p-2">
-              You need real devnet USDC (and a few cents of devnet SOL for tx fees) in your Phantom. Every COMMIT/ESCALATE burns the amount on-chain. Get free test tokens: https://faucet.circle.com/ (Solana Devnet + USDC).
+              Low balance. Get free devnet USDC + tiny SOL for fees at https://faucet.circle.com/ (Solana Devnet).
             </div>
           )}
         </div>
@@ -537,7 +512,7 @@ export default function CipherArenaPage() {
           {/* LOBBY — Main terminal listing active simulation nodes */}
           {phase === 'lobby' && (
             <div>
-              <div className="terminal-header mb-4 px-4 py-2 text-xs tracking-[3px]">MAIN TERMINAL — ACTIVE SIMULATION NODES — DEVNET USDC LEDGER (TEST ONLY)</div>
+              <div className="terminal-header mb-4 px-4 py-2 text-xs tracking-[3px]">MAIN TERMINAL — ACTIVE SIMULATION NODES</div>
 
               <div className="grid gap-4 md:grid-cols-3">
                 {NODES.map(node => (
@@ -549,7 +524,7 @@ export default function CipherArenaPage() {
                         return;
                       }
                       if (realUsdcBalance < 0.3) {
-                        alert('You need real devnet USDC in Phantom. Playing poker will burn USDC on-chain for each of your COMMIT/ESCALATE actions. Get test USDC from faucet.circle.com');
+                        alert('Need devnet USDC in Phantom (and SOL for fees). Get from faucet.circle.com (Solana Devnet). Actions burn on COMMIT/ESCALATE.');
                         return;
                       }
                       bootIntoNode(node);
@@ -561,7 +536,7 @@ export default function CipherArenaPage() {
                     
                     <div className="mt-4 flex items-baseline justify-between text-sm">
                       <div>AGENTS: <span className="text-white">{node.agents}</span></div>
-                      <div>POOL: <span className="text-white tabular-nums">{node.pool.toFixed(2)}</span> USDC (DEVNET)</div>
+                      <div>POOL: <span className="text-white tabular-nums">{node.pool.toFixed(2)}</span> USDC</div>
                     </div>
                     <div className="mt-1 text-xs text-[#8b9cb0]">STATUS: {node.status} • MIN CLEARANCE: {node.clearance}</div>
 
@@ -573,12 +548,12 @@ export default function CipherArenaPage() {
               </div>
 
               <div className="mt-6 border-t border-[#1a2530] pt-4 text-xs text-[#8b9cb0]">
-                All nodes run the same open Race Protocol game bundle (race-holdem core). Every shuffle is a multi-party cryptographic computation. In the real integration every settlement would be an on-chain tx. Your poker actions here already produce real verifiable devnet tx hashes for the commitments.
+                All nodes run the same open Race Protocol game bundle (race-holdem core). Shuffles are multi-party cryptographic. Your actions here produce real devnet tx hashes. Full on-chain GameAccounts + settlement on the roadmap.
               </div>
 
               <div className="mt-3 text-[10px]">
                 <Link href="/catalog?topic=cryptography" className="underline hover:text-white">Study the primitives →</Link> • 
-                <span className="ml-2">Devnet USDC. Set HELIUS key for faster/more reliable tx confirms during play. Mainnet confidential.</span>
+                <span className="ml-2">Devnet USDC. Set HELIUS key for reliable txs. (Mainnet confidential.)</span>
               </div>
             </div>
           )}
@@ -593,7 +568,7 @@ export default function CipherArenaPage() {
                   <span className="ml-3 text-[#ffb347]">ROUND {round + 1}/4</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div>ENTROPY POOL: <span className="ledger text-lg font-bold text-white">{pot.toFixed(3)}</span> USDC (DEVNET)</div>
+                  <div>ENTROPY POOL: <span className="ledger text-lg font-bold text-white">{pot.toFixed(3)}</span> USDC</div>
                   <button onClick={() => { setPhase('lobby'); setCurrentNode(null); }} className="arena-button secondary text-[10px] py-1 px-3">DISCONNECT</button>
                 </div>
               </div>
@@ -623,8 +598,8 @@ export default function CipherArenaPage() {
                   </div>
 
                   <div className="mt-4 font-mono text-xs">
-                    YOUR LEDGER: <span className="ledger text-lg font-bold text-white">{yourStack.toFixed(3)}</span> USDC (DEVNET)<br />
-                    OPPONENT LEDGER: <span className="ledger text-lg font-bold text-[#ffb347]">{oppStack.toFixed(3)}</span> USDC (DEVNET)
+                    YOUR LEDGER: <span className="ledger text-lg font-bold text-white">{yourStack.toFixed(3)}</span> USDC<br />
+                    OPPONENT LEDGER: <span className="ledger text-lg font-bold text-[#ffb347]">{oppStack.toFixed(3)}</span> USDC
                   </div>
 
                   {/* Gamification HUD */}
@@ -672,14 +647,14 @@ export default function CipherArenaPage() {
                         onClick={() => performAction('commit')}
                         className="arena-button flex-1 disabled:opacity-40 disabled:cursor-not-allowed"
                       >
-                        {isTxPending ? 'SIGNING TX...' : 'COMMIT 0.09 USDC (DEVNET)'}
+                        {isTxPending ? 'SIGNING TX...' : 'COMMIT (0.09 USDC)'}
                       </button>
                       <button
                         disabled={!isYouActing}
                         onClick={() => performAction('escalate')}
                         className="arena-button flex-1 disabled:opacity-40 disabled:cursor-not-allowed"
                       >
-                        {isTxPending ? 'SIGNING TX...' : 'ESCALATE +0.18 USDC (DEVNET)'}
+                        {isTxPending ? 'SIGNING TX...' : 'ESCALATE (+0.18 USDC)'}
                       </button>
                       <button
                         disabled={!isYouActing}
@@ -696,17 +671,17 @@ export default function CipherArenaPage() {
                         disabled={!connected || realUsdcBalance < 0.5 || isTxPending}
                         className="arena-button secondary text-xs py-1 px-3 disabled:opacity-40"
                       >
-                        {isTxPending ? 'TX PENDING...' : 'BURN 0.50 REAL DEVNET USDC (extra stack / on-chain)'}
+                        {isTxPending ? 'TX PENDING...' : 'ADD 0.50 (burn for extra stack)'}
                       </button>
                       <button onClick={withdrawAndReturn} disabled={isTxPending} className="arena-button secondary text-xs py-1 px-3 disabled:opacity-40">WITHDRAW &amp; EXIT TO LOBBY</button>
                     </div>
 
                     <div className="mt-1 text-[10px] text-[#8b9cb0]">
-                      Your poker actions (COMMIT / ESCALATE) now execute <strong>real on-chain burns</strong> of devnet USDC (tx signature logged, balance actually drops). Opponent logic + settlement math = local educational simulation only. View txs on explorer.solana.com/?cluster=devnet. Full Race on-chain GameAccounts + settlements next.
+                      COMMIT/ESCALATE execute real devnet USDC burns (tx logged). Opponent + settlement are local sim. View on explorer.solana.com/?cluster=devnet. Full on-chain Race settlement next.
                     </div>
 
                     <div className="mt-2 text-[10px] text-[#8b9cb0]">
-                      Real wallet + live balance via Helius RPC. Need devnet SOL for fees + USDC for value.
+                      Live balance via RPC. Devnet SOL + USDC required.
                     </div>
                   </div>
                 </div>
@@ -727,9 +702,9 @@ export default function CipherArenaPage() {
 
               {phase === 'settled' && (
                 <div className="mt-4 border-t border-[#00ff9f33] pt-4">
-                  <div className="text-[#ffb347] text-sm">HAND COMPLETE — REAL TX BURNS FOR YOUR ACTIONS + LOCAL SIM SETTLEMENT</div>
+                  <div className="text-[#ffb347] text-sm">HAND COMPLETE — BURNS LOGGED • LOCAL SIM SETTLEMENT</div>
                   <button onClick={withdrawAndReturn} disabled={isTxPending} className="arena-button mt-3 disabled:opacity-40">EXIT SIMULATION</button>
-                  <div className="text-xs mt-2 text-[#8b9cb0]">Your commits/escalates burned real devnet USDC (see protocol log for tx hashes). Settlement &amp; opponent were local sim for teaching purposes. Real Race Protocol full on-chain integration next.</div>
+                  <div className="text-xs mt-2 text-[#8b9cb0]">Your actions burned devnet USDC (txs in log). Settlement was local sim. Full on-chain Race next.</div>
                 </div>
               )}
             </div>
@@ -748,7 +723,7 @@ export default function CipherArenaPage() {
             <Link href="/paths" className="rounded border border-[#00ff9f22] px-3 py-1 text-xs hover:border-[#00ff9f] hover:text-white">ALL LEARNING PATHS</Link>
           </div>
           <div className="mt-3 text-[10px] text-[#8b9cb0]">
-            Real burns happen on your in-game actions (COMMIT/ESCALATE). Hand logic = local sim for educational clarity. Real Race full on-chain tables + deposits + settlements are the roadmap item.
+            Actions (COMMIT/ESCALATE) burn real devnet USDC. Resolution runs local for clarity. Full on-chain tables + settlement on roadmap.
           </div>
         </div>
       </div>
@@ -772,7 +747,7 @@ export default function CipherArenaPage() {
       )}
 
       <div className="text-center py-8 text-[10px] text-[#8b9cb0] border-t border-[#1a2530] mt-8">
-        v0.2 • REAL DEVNET USDC BURNS ON POKER ACTIONS (tx logged) • LOCAL SIM FOR SETTLEMENT/OPPONENT • SOLANA DEVNET • faucet.circle.com • RACE PROTOCOL (full integration next) • Use HELIUS key for prod-like RPC
+        v0.2 • DEVNET USDC BURNS ON ACTIONS (tx logged) • LOCAL SIM • RACE PROTOCOL • HELIUS KEY RECOMMENDED FOR RELIABLE TXS
       </div>
     </div>
   );
