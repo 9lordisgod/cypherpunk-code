@@ -6,7 +6,7 @@ We aim to support the latest main branch for security updates.
 
 ## Reporting a Vulnerability
 
-If you believe you have found a security vulnerability in Cypherpunk Code (including the Cipher Arena, wallet integration, burns, progress system, or any other component), please report it responsibly.
+If you believe you have found a security vulnerability in Cypherpunk Code, please report it responsibly.
 
 **Do not** open a public GitHub issue for security vulnerabilities.
 
@@ -24,14 +24,9 @@ We will acknowledge receipt within 48 hours and aim to provide a fix timeline. W
 
 ## Scope
 
-This policy covers the code in this repository, particularly:
-- On-chain devnet USDC burn logic
-- Wallet signature verification for progress sync
-- Client-side persistence and state handling
-- API routes (including /api/arena-progress)
-- Authentication and authorization flows
+This policy covers the code in this repository, particularly client-side persistence, API routes, and general application logic.
 
-Out of scope: Third-party services (Helius, Solana devnet, Vercel, faucets, etc.), social engineering, or issues in dependencies unless they directly affect this codebase in a novel way.
+Out of scope: Third-party services (Vercel, external APIs, etc.), social engineering, or issues in dependencies unless they directly affect this codebase in a novel way.
 
 ## Thank You
 

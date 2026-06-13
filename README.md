@@ -38,19 +38,6 @@ Static export is possible later if you drop client-side search (currently uses R
 
 Site name, domain, and donation addresses are configured in `site.json`.
 
-## Arena (on-chain devnet play)
-The arena uses real devnet transactions for token consumption during play.
-
-Environment variables (NEXT_PUBLIC_* so they are bundled to client):
-
-- `NEXT_PUBLIC_HELIUS_API_KEY` — Preferred. If set, arena + wallet uses `https://devnet.helius-rpc.com/?api-key=...` for better reliability during `sendTransaction` + `confirmTransaction`.
-- `NEXT_PUBLIC_SOLANA_RPC_URL` — Full override (takes precedence).
-- (Legacy placeholder) `NEXT_PUBLIC_TREASURY_FUSE` — Not actively used in current devnet burn flow (burns are direct; transfer-to-treasury is easy future swap in `burnDevnetUsdc`).
-
-To use Helius: sign up at helius.dev (free tier sufficient for devnet testing), create key with devnet access, set the env var, `npm run dev`.
-
-Without it the app falls back to `clusterApiUrl('devnet')` (public, works but less consistent for rapid successive burns).
-
 ## Pages
 
 - `/` — Homepage with featured resources
@@ -59,9 +46,6 @@ Without it the app falls back to `clusterApiUrl('devnet')` (public, works but le
 - `/resource/[id]` — Resource detail pages
 - `/about` — About + donation info
 - `/roadmap` — Project roadmap
-- `/arena` — Cipher Arena: connect Phantom (Solana devnet), play the poker hand. COMMIT/ESCALATE actions perform real devnet USDC burns (tx + sig). Hand resolution and settlement are local simulation of Race Protocol. Get test USDC: https://faucet.circle.com/
-
-  Recommended for reliable txs while playing: set `NEXT_PUBLIC_HELIUS_API_KEY` (or full `NEXT_PUBLIC_SOLANA_RPC_URL`) in `.env.local` / Vercel env. Public cluster RPC works but can be slow/rate-limited for interactive burns.
 
 ## Adding resources
 
@@ -75,7 +59,7 @@ See the [LICENSE](LICENSE) file for details.
 
 This means:
 - You are free to use, modify, and distribute the code.
-- If you run a modified version as a network service (e.g. a hosted version of the site or Arena), you must make the corresponding source available to users.
+- If you run a modified version as a network service (e.g. a hosted version of the site), you must make the corresponding source available to users.
 - The license ensures the project remains open and aligned with cypherpunk principles of transparency and sovereignty.
 
 ## Security
