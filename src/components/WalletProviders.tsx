@@ -8,7 +8,7 @@ import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
 import { clusterApiUrl } from '@solana/web3.js';
 
 // Default styles that can be overridden by your app
-require('@solana/wallet-adapter-react-ui/styles.css');
+import '@solana/wallet-adapter-react-ui/styles.css';
 
 export function WalletProviders({ children }: { children: React.ReactNode }) {
   const network = WalletAdapterNetwork.Devnet;
