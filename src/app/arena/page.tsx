@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
@@ -73,9 +73,9 @@ const NODES: ArenaNode[] = [
 // Replace with real devnet pubkeys you control for production use.
 // The first contribution to a node will auto-create its USDC ATA.
 const NODE_TREASURIES: Record<string, string> = {
-  'node-042': '11111111111111111111111111111111', // TODO: replace with real devnet treasury pubkey
-  'node-117': '11111111111111111111111111111112', // TODO: replace
-  'node-003': '11111111111111111111111111111113', // TODO: replace
+  'node-042': '11111111111111111111111111111111111111111112', // Demo treasury - replace with real devnet pubkey you control for prod
+  'node-117': '11111111111111111111111111111111111111111113', // Demo treasury
+  'node-003': '11111111111111111111111111111111111111111114', // Demo treasury
 };
 
 const DEVNET_USDC_MINT = '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU'; // Solana devnet USDC (Circle faucet)
@@ -149,6 +149,11 @@ export default function CipherArenaPage() {
 
   // Global shared on-chain pools (source of truth for multi-player real-time)
   const [sharedNodePools, setSharedNodePools] = useState<Record<string, number>>({});
+  const sharedNodePoolsRef = useRef<Record<string, number>>({});
+
+  useEffect(() => {
+    sharedNodePoolsRef.current = sharedNodePools;
+  }, [sharedNodePools]);
 
   const [showEdu, setShowEdu] = useState(false);
   const [showRecord, setShowRecord] = useState(false);
@@ -247,7 +252,8 @@ export default function CipherArenaPage() {
     setCompletedNodes(prev => prev.includes(node.id) ? prev : [...prev, node.id]);
 
     // Starting pot based on the real on-chain shared pool (multi-player global)
-    const onChainPool = sharedNodePools[node.id] || 0;
+    // Use ref to get the most up-to-date value after any recent refresh in the click handler
+    const onChainPool = sharedNodePoolsRef.current[node.id] || 0;
     const currentPool = Math.max(0.5, onChainPool * 0.15 + 1.5); // fun tie-in: bigger real pool = bigger starting pot
     // Reset table state for fresh simulation instance
     setYourPackets(createMockPackets(true));
@@ -318,12 +324,7 @@ export default function CipherArenaPage() {
     setYourStack(newYourStack);
     setPot(newPot);
 
-    setTotalBurned(b => b + amount); // persistent training record
-
-    // Accumulate to the node's real-time pool (so lobby shows actual growth)
-    if (currentNode) {
-      addToNodePool(currentNode.id, amount);
-    }
+    setTotalBurned(b => b + amount); // persistent training record (personal stats)
 
     const actionLabel = action === 'escalate' ? 'ESCALATE' : 'COMMIT';
     const logMsg = `${actionLabel} — burned ${amount} USDC (tx: ${signature}). Pool now ${newPot.toFixed(2)}`;
@@ -389,13 +390,6 @@ export default function CipherArenaPage() {
     appendLog(message, 'sys');
 
     setTotalHands(h => h + 1);
-
-    // Simulate other agents / new players contributing USDC to the node pool
-    // (makes the displayed pools grow over time as "real" activity, not frozen)
-    if (currentNode) {
-      const otherPlayersContribution = 0.08 + Math.random() * 0.22;
-      addToNodePool(currentNode.id, otherPlayersContribution);
-    }
 
     const gainedXp = youWon ? 42 : 28;
     const newXp = xp + gainedXp;
@@ -492,10 +486,15 @@ export default function CipherArenaPage() {
       updates[node.id] = await fetchNodePoolBalance(node.id);
     }
     setSharedNodePools(updates);
+    sharedNodePoolsRef.current = updates; // immediate for event handlers
   }
 
   async function contributeToPool(nodeId: string, amount: number) {
     if (!connected || !publicKey || !wallet || amount <= 0) return;
+    if (realUsdcBalance < amount) {
+      alert(`Need at least ${amount} more devnet USDC to fund the pool. Get from faucet.circle.com`);
+      return;
+    }
     const treasuryStr = NODE_TREASURIES[nodeId];
     if (!treasuryStr) {
       alert('Treasury not configured for this node yet.');
@@ -719,6 +718,11 @@ export default function CipherArenaPage() {
     }
   }, [connected]);
 
+  // Initial load of shared on-chain pools (for immediate lobby view)
+  useEffect(() => {
+    refreshSharedPools();
+  }, []);
+
   // Burns real devnet USDC from connected wallet. Returns tx signature.
   // Called on COMMIT/ESCALATE (and extra allocation). Skin-in-game via permanent burn.
   async function burnDevnetUsdc(amount: number): Promise<string> {
@@ -771,12 +775,7 @@ export default function CipherArenaPage() {
       const signature = await burnDevnetUsdc(amount);
       setYourStack(s => s + amount);
 
-      setTotalBurned(b => b + amount); // persistent training record
-
-      // Accumulate to the node's real-time pool
-      if (currentNode) {
-        addToNodePool(currentNode.id, amount);
-      }
+      setTotalBurned(b => b + amount); // persistent training record (personal stats)
 
       // Refetch real balance (it should now be lower)
       await fetchRealUsdcBalance(publicKey);
@@ -880,7 +879,7 @@ export default function CipherArenaPage() {
                 {NODES.map(node => (
                   <button
                     key={node.id}
-                    onClick={() => {
+                    onClick={async () => {
                       if (!connected) {
                         alert('Connect your Phantom wallet on Devnet first to enter the simulation.');
                         return;
@@ -888,6 +887,10 @@ export default function CipherArenaPage() {
                       if (realUsdcBalance < 0.3) {
                         alert('Need devnet USDC in Phantom (and SOL for fees). Get from faucet.circle.com (Solana Devnet). Actions burn on COMMIT/ESCALATE.');
                         return;
+                      }
+                      // Ensure fresh on-chain pool data before starting session (for accurate starting pot)
+                      if (Object.keys(sharedNodePools).length === 0) {
+                        await refreshSharedPools();
                       }
                       bootIntoNode(node);
                     }}
@@ -908,7 +911,7 @@ export default function CipherArenaPage() {
                         {[0.25, 0.5, 1.0].map((amt) => (
                           <button
                             key={amt}
-                            onClick={() => contributeToPool(node.id, amt)}
+                            onClick={(e) => { e.stopPropagation(); contributeToPool(node.id, amt); }}
                             disabled={isTxPending || !connected}
                             className="text-[9px] px-2 py-0.5 rounded border border-[#00ff9f33] hover:border-[#00ff9f] hover:bg-[#00ff9f] hover:text-[#070b0f] disabled:opacity-40"
                           >
