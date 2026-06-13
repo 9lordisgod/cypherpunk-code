@@ -5,7 +5,12 @@ import Link from 'next/link';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { PublicKey, Transaction } from '@solana/web3.js';
-import { createBurnCheckedInstruction, getAssociatedTokenAddress } from '@solana/spl-token';
+import {
+  createBurnCheckedInstruction,
+  getAssociatedTokenAddress,
+  createTransferCheckedInstruction,
+  createAssociatedTokenAccountInstruction,
+} from '@solana/spl-token';
 import bs58 from 'bs58';
 
 interface ArenaProgress {
@@ -61,6 +66,17 @@ const NODES: ArenaNode[] = [
   { id: 'node-117', label: 'NODE-117 • ADVERSARIAL FORGE', agents: 5, pool: 4.21, status: 'ACTIVE', clearance: 'FIELD' },
   { id: 'node-003', label: 'NODE-003 • SOVEREIGNTY PROVING GROUND', agents: 2, pool: 0.67, status: 'STABLE', clearance: 'VETERAN' },
 ];
+
+// On-chain treasuries for global shared pools (devnet).
+// Contributions are REAL transfers of devnet USDC to these treasuries.
+// The displayed POOL for each node = actual on-chain balance of its treasury.
+// Replace with real devnet pubkeys you control for production use.
+// The first contribution to a node will auto-create its USDC ATA.
+const NODE_TREASURIES: Record<string, string> = {
+  'node-042': '11111111111111111111111111111111', // TODO: replace with real devnet treasury pubkey
+  'node-117': '11111111111111111111111111111112', // TODO: replace
+  'node-003': '11111111111111111111111111111113', // TODO: replace
+};
 
 const DEVNET_USDC_MINT = '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU'; // Solana devnet USDC (Circle faucet)
 
@@ -130,6 +146,9 @@ export default function CipherArenaPage() {
     });
     return init;
   });
+
+  // Global shared on-chain pools (source of truth for multi-player real-time)
+  const [sharedNodePools, setSharedNodePools] = useState<Record<string, number>>({});
 
   const [showEdu, setShowEdu] = useState(false);
   const [showRecord, setShowRecord] = useState(false);
@@ -227,12 +246,13 @@ export default function CipherArenaPage() {
     // Record completion for persistent training record
     setCompletedNodes(prev => prev.includes(node.id) ? prev : [...prev, node.id]);
 
-    // Use dynamic pool (accumulated from real burns + sim contributions)
-    const currentPool = getNodePool(node.id);
+    // Starting pot based on the real on-chain shared pool (multi-player global)
+    const onChainPool = sharedNodePools[node.id] || 0;
+    const currentPool = Math.max(0.5, onChainPool * 0.15 + 1.5); // fun tie-in: bigger real pool = bigger starting pot
     // Reset table state for fresh simulation instance
     setYourPackets(createMockPackets(true));
     setCommunity(COMMUNITY_TEMPLATE.map(p => ({...p})));
-    setPot(currentPool * 0.18);
+    setPot(currentPool);
     setYourStack(2.1); // demo starting stack (was randomized; fixed to satisfy render purity)
     setOppStack(2.4);
     setLog([]);
@@ -448,6 +468,99 @@ export default function CipherArenaPage() {
     }));
   };
 
+  // === ON-CHAIN SHARED POOLS FOR TRUE MULTI-PLAYER ===
+  // Pool value = real devnet USDC balance of the node's treasury ATA (queried live via RPC)
+  // Contributions = real SPL transfer tx (not burn, real send to treasury)
+  // Global across all wallets — anyone funding grows the pool for everyone.
+
+  async function fetchNodePoolBalance(nodeId: string): Promise<number> {
+    const treasuryStr = NODE_TREASURIES[nodeId];
+    if (!treasuryStr) return 0;
+    try {
+      const treasury = new PublicKey(treasuryStr);
+      const ata = await getAssociatedTokenAddress(new PublicKey(DEVNET_USDC_MINT), treasury);
+      const bal = await connection.getTokenAccountBalance(ata);
+      return bal.value.uiAmount || 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  async function refreshSharedPools() {
+    const updates: Record<string, number> = {};
+    for (const node of NODES) {
+      updates[node.id] = await fetchNodePoolBalance(node.id);
+    }
+    setSharedNodePools(updates);
+  }
+
+  async function contributeToPool(nodeId: string, amount: number) {
+    if (!connected || !publicKey || !wallet || amount <= 0) return;
+    const treasuryStr = NODE_TREASURIES[nodeId];
+    if (!treasuryStr) {
+      alert('Treasury not configured for this node yet.');
+      return;
+    }
+    const treasury = new PublicKey(treasuryStr);
+    const mint = new PublicKey(DEVNET_USDC_MINT);
+    const userAta = await getAssociatedTokenAddress(mint, publicKey);
+    const treasuryAta = await getAssociatedTokenAddress(mint, treasury);
+
+    setIsTxPending(true);
+    try {
+      const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash();
+      const tx = new Transaction();
+
+      // Create treasury ATA if it doesn't exist (payer = you, one-time)
+      const treasuryAtaInfo = await connection.getAccountInfo(treasuryAta);
+      if (!treasuryAtaInfo) {
+        tx.add(
+          createAssociatedTokenAccountInstruction(
+            publicKey,
+            treasuryAta,
+            treasury,
+            mint
+          )
+        );
+      }
+
+      // Real transfer of devnet USDC to the treasury (this is the "provide to pool")
+      tx.add(
+        createTransferCheckedInstruction(
+          userAta,
+          mint,
+          treasuryAta,
+          publicKey,
+          Math.floor(amount * 1_000_000),
+          6
+        )
+      );
+
+      tx.recentBlockhash = blockhash;
+      tx.feePayer = publicKey;
+
+      const signature = await wallet.adapter.sendTransaction(tx, connection);
+      await connection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, 'confirmed');
+
+      appendLog(`FUNDED +${amount} USDC to ${nodeId} SHARED POOL (real on-chain tx: ${signature})`, 'you');
+
+      // Immediate refresh for the funder
+      const newBal = await fetchNodePoolBalance(nodeId);
+      setSharedNodePools((prev) => ({ ...prev, [nodeId]: newBal }));
+
+      // Fun sponsor bonus — extra starting power for contributing to the arena
+      setYourStack((s) => s + amount * 0.75);
+
+      alert(`Pool funded! Real tx on devnet. +${(amount * 0.75).toFixed(2)} sponsor stack bonus. The shared pool just grew for everyone.`);
+
+    } catch (err: any) {
+      console.error(err);
+      alert('Pool contribution failed: ' + (err.message || 'Check balance and try again.'));
+    } finally {
+      setIsTxPending(false);
+    }
+  }
+
   const saveLocal = (addr: string, p: ArenaProgress) => {
     try {
       localStorage.setItem(getProgressKey(addr), JSON.stringify(p));
@@ -584,6 +697,27 @@ export default function CipherArenaPage() {
       }
     })();
   }, [connected, publicKey]);
+
+  // Real-time polling for shared on-chain pools (when in lobby)
+  // This is what makes the POOL numbers update for everyone when any player funds.
+  useEffect(() => {
+    if (phase !== 'lobby') return;
+
+    refreshSharedPools(); // initial
+
+    const interval = setInterval(() => {
+      refreshSharedPools();
+    }, 7000); // poll every 7s for "live" feel without hammering RPC
+
+    return () => clearInterval(interval);
+  }, [phase]);
+
+  // Refresh shared pools when wallet connects (so new players see current global state)
+  useEffect(() => {
+    if (connected) {
+      refreshSharedPools();
+    }
+  }, [connected]);
 
   // Burns real devnet USDC from connected wallet. Returns tx signature.
   // Called on COMMIT/ESCALATE (and extra allocation). Skin-in-game via permanent burn.
@@ -764,7 +898,24 @@ export default function CipherArenaPage() {
                     
                     <div className="mt-4 flex items-baseline justify-between text-sm">
                       <div>AGENTS: <span className="text-white">{node.agents}</span></div>
-                      <div>POOL: <span className="text-white tabular-nums">{getNodePool(node.id).toFixed(2)}</span> USDC</div>
+                      <div>POOL: <span className="text-white tabular-nums">{(sharedNodePools[node.id] || 0).toFixed(2)}</span> USDC (ON-CHAIN)</div>
+                    </div>
+
+                    {/* Real multi-player funding: anyone can contribute real devnet USDC to the shared on-chain treasury */}
+                    <div className="mt-2">
+                      <div className="text-[9px] tracking-widest text-[#8b9cb0]">FUND SHARED POOL (real tx)</div>
+                      <div className="flex gap-1 mt-1">
+                        {[0.25, 0.5, 1.0].map((amt) => (
+                          <button
+                            key={amt}
+                            onClick={() => contributeToPool(node.id, amt)}
+                            disabled={isTxPending || !connected}
+                            className="text-[9px] px-2 py-0.5 rounded border border-[#00ff9f33] hover:border-[#00ff9f] hover:bg-[#00ff9f] hover:text-[#070b0f] disabled:opacity-40"
+                          >
+                            +{amt}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                     <div className="mt-1 text-xs text-[#8b9cb0]">STATUS: {node.status} • MIN CLEARANCE: {node.clearance}</div>
 
