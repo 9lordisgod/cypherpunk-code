@@ -898,28 +898,7 @@ export default function CipherArenaPage() {
                   >
                     <div className="font-mono text-xs text-[#00cc7a] tracking-widest">{node.id.toUpperCase()}</div>
                     <div className="mt-1 text-lg font-semibold leading-tight text-white group-hover:text-[#00ff9f]">{node.label}</div>
-                    
-                    <div className="mt-4 flex items-baseline justify-between text-sm">
-                      <div>AGENTS: <span className="text-white">{node.agents}</span></div>
-                      <div>POOL: <span className="text-white tabular-nums">{(sharedNodePools[node.id] || 0).toFixed(2)}</span> USDC (ON-CHAIN)</div>
-                    </div>
-
-                    {/* Real multi-player funding: anyone can contribute real devnet USDC to the shared on-chain treasury */}
-                    <div className="mt-2">
-                      <div className="flex gap-1 mt-1">
-                        {[0.25, 0.5, 1.0].map((amt) => (
-                          <button
-                            key={amt}
-                            onClick={(e) => { e.stopPropagation(); contributeToPool(node.id, amt); }}
-                            disabled={isTxPending || !connected}
-                            className="text-[9px] px-2 py-0.5 rounded border border-[#00ff9f33] hover:border-[#00ff9f] hover:bg-[#00ff9f] hover:text-[#070b0f] disabled:opacity-40"
-                          >
-                            +{amt}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-1 text-xs text-[#8b9cb0]">STATUS: {node.status}</div>
+                    <div className="mt-4 text-xs text-[#8b9cb0]">STATUS: {node.status}</div>
 
                     <div className="mt-4 inline-block rounded border border-[#00ff9f] px-3 py-1 text-[10px] tracking-widest group-hover:bg-[#00ff9f] group-hover:text-[#0a100f]">
                       {connected ? 'BOOT INSTANCE →' : 'CONNECT PHANTOM FIRST'}
