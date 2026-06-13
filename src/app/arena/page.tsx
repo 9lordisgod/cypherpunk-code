@@ -906,7 +906,6 @@ export default function CipherArenaPage() {
 
                     {/* Real multi-player funding: anyone can contribute real devnet USDC to the shared on-chain treasury */}
                     <div className="mt-2">
-                      <div className="text-[9px] tracking-widest text-[#8b9cb0]">FUND SHARED POOL (real tx)</div>
                       <div className="flex gap-1 mt-1">
                         {[0.25, 0.5, 1.0].map((amt) => (
                           <button
@@ -920,7 +919,7 @@ export default function CipherArenaPage() {
                         ))}
                       </div>
                     </div>
-                    <div className="mt-1 text-xs text-[#8b9cb0]">STATUS: {node.status} • MIN CLEARANCE: {node.clearance}</div>
+                    <div className="mt-1 text-xs text-[#8b9cb0]">STATUS: {node.status}</div>
 
                     <div className="mt-4 inline-block rounded border border-[#00ff9f] px-3 py-1 text-[10px] tracking-widest group-hover:bg-[#00ff9f] group-hover:text-[#0a100f]">
                       {connected ? 'BOOT INSTANCE →' : 'CONNECT PHANTOM FIRST'}
