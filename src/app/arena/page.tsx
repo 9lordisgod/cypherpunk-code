@@ -6,6 +6,18 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { PublicKey, Transaction } from '@solana/web3.js';
 import { createBurnCheckedInstruction, getAssociatedTokenAddress } from '@solana/spl-token';
+import bs58 from 'bs58';
+
+interface ArenaProgress {
+  xp: number;
+  level: number;
+  badges: string[];
+  totalHands: number;
+  totalBurned: number;
+  completedNodes: string[];
+  lastNode?: string;
+  timestamp: number;
+}
 
 // =========================================================
 // CIPHER ARENA — v0.2
@@ -103,7 +115,12 @@ export default function CipherArenaPage() {
   const [level, setLevel] = useState(7);
   const [badges, setBadges] = useState(['MPC WITNESS', 'FIRST COMMIT']);
 
+  // Persistent training progress (localStorage + optional signed server sync)
+  const [totalHands, setTotalHands] = useState(0);
+  const [totalBurned, setTotalBurned] = useState(0);
+  const [completedNodes, setCompletedNodes] = useState<string[]>([]);
   const [showEdu, setShowEdu] = useState(false);
+  const [showRecord, setShowRecord] = useState(false);
   const [eduContent, setEduContent] = useState({ title: '', body: '' });
   const [isTxPending, setIsTxPending] = useState(false); // true while awaiting user signature + confirm for real burn tx
 
@@ -195,6 +212,9 @@ export default function CipherArenaPage() {
 
   function bootIntoNode(node: ArenaNode) {
     setCurrentNode(node);
+    // Record completion for persistent training record
+    setCompletedNodes(prev => prev.includes(node.id) ? prev : [...prev, node.id]);
+
     // Reset table state for fresh simulation instance
     setYourPackets(createMockPackets(true));
     setCommunity(COMMUNITY_TEMPLATE.map(p => ({...p})));
@@ -264,6 +284,8 @@ export default function CipherArenaPage() {
     setYourStack(newYourStack);
     setPot(newPot);
 
+    setTotalBurned(b => b + amount); // persistent training record
+
     const actionLabel = action === 'escalate' ? 'ESCALATE' : 'COMMIT';
     const logMsg = `${actionLabel} — burned ${amount} USDC (tx: ${signature}). Pool now ${newPot.toFixed(2)}`;
     appendLog(logMsg, 'you');
@@ -327,6 +349,8 @@ export default function CipherArenaPage() {
     setPhase('settled');
     appendLog(message, 'sys');
 
+    setTotalHands(h => h + 1);
+
     const gainedXp = youWon ? 42 : 28;
     const newXp = xp + gainedXp;
     setXp(newXp);
@@ -353,6 +377,9 @@ export default function CipherArenaPage() {
       });
       setShowEdu(true);
     }, 900);
+
+    // Auto sync progress (local + signed server) after a hand
+    saveProgress(true);
   }
 
   function withdrawAndReturn() {
@@ -369,6 +396,156 @@ export default function CipherArenaPage() {
     // In production this would deep-link into /catalog or /paths with filter
     window.open(`/catalog?topic=${topic.toLowerCase().includes('game') ? 'general-crypto' : 'cryptography'}`, '_blank');
   }
+
+  // === PERSISTENT PROGRESS (localStorage primary + signed Vercel backend for cross-device) ===
+
+  const getProgressKey = (addr: string) => `arena-progress-${addr}`;
+
+  const buildProgress = (): ArenaProgress => ({
+    xp,
+    level,
+    badges,
+    totalHands,
+    totalBurned,
+    completedNodes,
+    lastNode: currentNode?.id,
+    timestamp: Date.now(),
+  });
+
+  const saveLocal = (addr: string, p: ArenaProgress) => {
+    try {
+      localStorage.setItem(getProgressKey(addr), JSON.stringify(p));
+    } catch {}
+  };
+
+  async function signMessageForProgress(messageStr: string): Promise<{ message: string; signature: string; publicKey: string } | null> {
+    const adapter: any = wallet?.adapter;
+    const signMsg = adapter && typeof adapter.signMessage === 'function' ? adapter.signMessage : null;
+    if (!publicKey || !signMsg) return null;
+    try {
+      const messageBytes = new TextEncoder().encode(messageStr);
+      const sig: Uint8Array = await signMsg(messageBytes);
+      return {
+        message: messageStr,
+        signature: bs58.encode(sig),
+        publicKey: publicKey.toBase58(),
+      };
+    } catch (e) {
+      console.warn('Message signing failed or cancelled', e);
+      return null;
+    }
+  }
+
+  async function saveToServer(p: ArenaProgress) {
+    if (!publicKey) return;
+    const addr = publicKey.toBase58();
+    const ts = Date.now();
+    const msg = `save-progress-v1:${ts}:${JSON.stringify(p)}`;
+    const signed = await signMessageForProgress(msg);
+    if (!signed) return;
+    try {
+      await fetch('/api/arena-progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'save',
+          message: signed.message,
+          signature: signed.signature,
+          publicKey: addr,
+          progress: p,
+        }),
+      });
+    } catch (e) {
+      console.warn('Server progress save failed (local still saved)', e);
+    }
+  }
+
+  async function loadFromServer(addr: string): Promise<ArenaProgress | null> {
+    const ts = Date.now();
+    const msg = `load-progress-v1:${ts}`;
+    const signed = await signMessageForProgress(msg);
+    if (!signed) return null;
+    try {
+      const res = await fetch('/api/arena-progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'load',
+          message: signed.message,
+          signature: signed.signature,
+          publicKey: addr,
+        }),
+      });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return data.progress || null;
+    } catch (e) {
+      console.warn('Server progress load failed', e);
+      return null;
+    }
+  }
+
+  const saveProgress = async (forceServerSync = false) => {
+    if (!publicKey || !connected) return;
+    const addr = publicKey.toBase58();
+    const p = buildProgress();
+    saveLocal(addr, p);
+    if (forceServerSync) {
+      await saveToServer(p);
+    }
+  };
+
+  // Auto-save to localStorage on any progress change
+  useEffect(() => {
+    if (connected && publicKey) {
+      // debounce-ish via effect
+      const addr = publicKey.toBase58();
+      const p = buildProgress();
+      saveLocal(addr, p);
+    }
+  }, [xp, level, badges, totalHands, totalBurned, completedNodes, connected, publicKey, currentNode]);
+
+  // Load progress (local + optional signed server fetch) when wallet connects
+  useEffect(() => {
+    if (!connected || !publicKey) return;
+
+    const addr = publicKey.toBase58();
+    let didRestore = false;
+
+    // 1. LocalStorage (fast, offline)
+    try {
+      const raw = localStorage.getItem(getProgressKey(addr));
+      if (raw) {
+        const p: ArenaProgress = JSON.parse(raw);
+        if (p.xp != null) setXp(p.xp);
+        if (p.level != null) setLevel(p.level);
+        if (p.badges?.length) setBadges(p.badges);
+        if (p.totalHands != null) setTotalHands(p.totalHands);
+        if (p.totalBurned != null) setTotalBurned(p.totalBurned);
+        if (p.completedNodes) setCompletedNodes(p.completedNodes);
+        didRestore = true;
+        appendLog(`Welcome back. Local training record loaded for ${addr.slice(0, 4)}...${addr.slice(-4)}.`, 'sys');
+      }
+    } catch {}
+
+    // 2. Server (signed fetch for cross-device "proper" persistence)
+    (async () => {
+      const serverP = await loadFromServer(addr);
+      if (serverP && serverP.timestamp) {
+        // Cloud record takes precedence for cross-device sync (localStorage is fast offline fallback)
+        setXp(serverP.xp || 0);
+        setLevel(serverP.level || 1);
+        if (serverP.badges?.length) setBadges(serverP.badges);
+        setTotalHands(serverP.totalHands || 0);
+        setTotalBurned(serverP.totalBurned || 0);
+        if (serverP.completedNodes) setCompletedNodes(serverP.completedNodes);
+        didRestore = true;
+        appendLog(`Cloud training record synced (signed by wallet).`, 'sys');
+        // push back to local + server (in case local was ahead)
+        saveProgress(true);
+      }
+    })();
+  }, [connected, publicKey]);
 
   // Burns real devnet USDC from connected wallet. Returns tx signature.
   // Called on COMMIT/ESCALATE (and extra allocation). Skin-in-game via permanent burn.
@@ -421,6 +598,8 @@ export default function CipherArenaPage() {
     try {
       const signature = await burnDevnetUsdc(amount);
       setYourStack(s => s + amount);
+
+      setTotalBurned(b => b + amount); // persistent training record
 
       // Refetch real balance (it should now be lower)
       await fetchRealUsdcBalance(publicKey);
@@ -486,6 +665,12 @@ export default function CipherArenaPage() {
                 className="arena-button secondary text-xs px-4 py-1 self-start sm:self-auto"
               >
                 DISCONNECT
+              </button>
+              <button 
+                onClick={() => setShowRecord(true)} 
+                className="arena-button text-xs px-4 py-1 self-start sm:self-auto"
+              >
+                MY RECORD
               </button>
             </div>
           )}
@@ -555,6 +740,15 @@ export default function CipherArenaPage() {
                 <Link href="/catalog?topic=cryptography" className="underline hover:text-white">Study the primitives →</Link> • 
                 <span className="ml-2">Devnet USDC. Set HELIUS key for reliable txs. (Mainnet confidential.)</span>
               </div>
+
+              {/* Subtle persistent training record greeting (local + signed server) */}
+              {connected && publicKey && (totalHands > 0 || xp > 100) && (
+                <div className="mt-4 text-[10px] text-[#8b9cb0] border border-[#00ff9f22] px-3 py-2 rounded">
+                  Training record for <span className="font-mono text-[#00ff9f]">{publicKey.toBase58().slice(0,4)}…{publicKey.toBase58().slice(-4)}</span>: 
+                  L{level} • {xp} XP • {badges.length} badges • {totalHands} hands • {totalBurned.toFixed(2)} USDC burned. 
+                  <button onClick={() => setShowRecord(true)} className="ml-2 underline hover:text-white">VIEW FULL RECORD</button>
+                </div>
+              )}
             </div>
           )}
 
@@ -742,6 +936,58 @@ export default function CipherArenaPage() {
             </div>
 
             <div className="mt-4 text-center text-[10px] text-[#8b9cb0]">This debrief is the entire point. The USDC is just skin in the game for the lesson to feel real.</div>
+          </div>
+        </div>
+      )}
+
+      {/* My Training Record modal — persistent per-wallet (localStorage + signed server) */}
+      {showRecord && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4" onClick={() => setShowRecord(false)}>
+          <div className="crt max-w-lg w-full p-6" onClick={e => e.stopPropagation()}>
+            <div className="font-mono text-[#ffb347] text-sm tracking-widest mb-1">TRAINING RECORD</div>
+            <div className="text-2xl text-white mb-3">Agent Profile • {publicKey ? publicKey.toBase58().slice(0,4)+'…'+publicKey.toBase58().slice(-4) : 'DISCONNECTED'}</div>
+
+            <div className="space-y-3 text-sm text-[#d4dce6]">
+              <div className="flex justify-between border-b border-[#00ff9f22] pb-1">
+                <div>LEVEL / MASTERY</div>
+                <div className="font-mono text-[#00ff9f]">{level} • {xp} XP</div>
+              </div>
+
+              <div>
+                <div className="text-xs text-[#8b9cb0] mb-1">BADGES EARNED ({badges.length})</div>
+                <div className="flex flex-wrap gap-1">
+                  {badges.length ? badges.map(b => <span key={b} className="sovereignty-badge">{b}</span>) : <span className="text-[#8b9cb0]">None yet — complete hands to earn.</span>}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div>
+                  <div className="text-xs text-[#8b9cb0]">HANDS PLAYED</div>
+                  <div className="font-mono text-xl text-white">{totalHands}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-[#8b9cb0]">TOTAL USDC BURNED (ON-CHAIN)</div>
+                  <div className="font-mono text-xl text-[#ffb347]">{totalBurned.toFixed(2)}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-[#8b9cb0]">NODES COMPLETED</div>
+                  <div className="font-mono text-xl text-white">{completedNodes.length}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-[#8b9cb0]">LAST NODE</div>
+                  <div className="font-mono text-sm text-white">{currentNode?.id || completedNodes[completedNodes.length-1] || '—'}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 flex gap-3">
+              <button onClick={() => { setShowRecord(false); saveProgress(true); }} className="arena-button flex-1">SYNC TO SERVER (SIGN)</button>
+              <button onClick={() => setShowRecord(false)} className="arena-button secondary flex-1">CLOSE</button>
+            </div>
+
+            <div className="mt-4 text-center text-[10px] text-[#8b9cb0]">
+              Stored locally (instant) + signed &amp; synced to server for cross-device access. Wallet signature proves ownership.
+            </div>
           </div>
         </div>
       )}
