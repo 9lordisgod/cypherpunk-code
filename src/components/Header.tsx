@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { site } from "@/lib/data";
 
-const nav = [
+const nav: Array<{ href: string; label: string; badge?: string }> = [
   { href: "/catalog", label: "Catalog" },
   { href: "/paths", label: "Learning Paths" },
   { href: "/arena", label: "CIPHER ARENA", badge: "v0.1" },
@@ -27,9 +27,9 @@ export function Header() {
               className="group flex items-center gap-1 rounded px-2 py-1 text-xs text-muted transition-colors hover:text-foreground sm:px-3 sm:text-sm"
             >
               {item.label}
-              {(item as any).badge && (
+              {item.badge && (
                 <span className="rounded bg-accent/20 px-1 font-mono text-[9px] text-accent group-hover:bg-accent/30">
-                  {(item as any).badge}
+                  {item.badge}
                 </span>
               )}
             </Link>

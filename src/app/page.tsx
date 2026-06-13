@@ -139,7 +139,7 @@ export default function HomePage() {
               <div>
                 <div className="font-mono text-xs tracking-[3px] text-[#ffb347]">BETA TEST • SOLANA DEVNET USDC (FREE TEST TOKENS)</div>
                 <div className="mt-1 text-3xl font-bold tracking-tight text-[#00ff9f]">CIPHER ARENA</div>
-                <div className="max-w-md text-sm text-[#d4dce6] mt-1">Retro computer game. Cryptographic adversarial training on Solana Devnet. Use free test USDC from faucet.circle.com. Deposit/play/withdraw Devnet USDC. Powered by Race Protocol. Skin-in-the-game lessons in game theory + verifiable randomness. Test / simulation only for now.</div>
+                <div className="max-w-md text-sm text-[#d4dce6] mt-1">Retro computer game. Cryptographic adversarial training on Solana Devnet. Use free test USDC from faucet.circle.com. Burn devnet USDC on-chain as irreversible skin-in-the-game commitment (v0.1 demo). Local simulation of hands + verifiable concepts. Full on-chain Race Protocol integration next. Educational only.</div>
               </div>
               <Link
                 href="/arena"

@@ -1,16 +1,80 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { difficultyLabels, pricingLabels, topicLabels, typeLabels } from "@/lib/labels";
 import { defaultFilters, filterResources, type FilterState } from "@/lib/filters";
-import type { Resource } from "@/lib/types";
+import type { Resource, Topic, ResourceType, Difficulty, Pricing } from "@/lib/types";
 import { ResourceCard } from "./ResourceCard";
 
 const allTopics = Object.keys(topicLabels) as (keyof typeof topicLabels)[];
 const allTypes = Object.keys(typeLabels) as (keyof typeof typeLabels)[];
 
+function computeFiltersFromSearchParams(searchParams: ReturnType<typeof useSearchParams>): FilterState {
+  if (!searchParams) return defaultFilters;
+
+  const initial: FilterState = { ...defaultFilters };
+
+  // query / q
+  const q = searchParams.get("q") || searchParams.get("query") || "";
+  if (q) initial.query = q;
+
+  // topics (support repeated ?topic=foo&topic=bar or comma separated ?topics=foo,bar)
+  const topicParams = [
+    ...searchParams.getAll("topic"),
+    ...searchParams.getAll("topics"),
+  ];
+  const topicsFromParam = topicParams
+    .flatMap((t) => t.split(","))
+    .map((t) => t.trim() as Topic)
+    .filter((t) => (allTopics as readonly string[]).includes(t));
+  if (topicsFromParam.length) initial.topics = topicsFromParam;
+
+  // types
+  const typeParams = [
+    ...searchParams.getAll("type"),
+    ...searchParams.getAll("types"),
+  ];
+  const typesFromParam = typeParams
+    .flatMap((t) => t.split(","))
+    .map((t) => t.trim() as ResourceType)
+    .filter((t) => (allTypes as readonly string[]).includes(t));
+  if (typesFromParam.length) initial.types = typesFromParam;
+
+  // difficulty
+  const diff = searchParams.get("difficulty") as Difficulty | null;
+  if (diff && ["beginner", "intermediate", "advanced"].includes(diff)) {
+    initial.difficulty = diff;
+  }
+
+  // pricing
+  const price = searchParams.get("pricing") as Pricing | null;
+  if (price && ["free", "paid", "freemium"].includes(price)) {
+    initial.pricing = price;
+  }
+
+  // min CP score
+  const minS = searchParams.get("minScore") || searchParams.get("minCypherpunkScore");
+  if (minS) {
+    const n = parseInt(minS, 10);
+    if (!isNaN(n) && n >= 0 && n <= 10) initial.minCypherpunkScore = n;
+  }
+
+  // sort
+  const s = searchParams.get("sort") as FilterState["sort"] | null;
+  if (s && ["relevance", "score", "title"].includes(s)) {
+    initial.sort = s;
+  }
+
+  const hasAny = q || topicsFromParam.length || typesFromParam.length || diff || price || minS || s;
+  return hasAny ? initial : defaultFilters;
+}
+
 export function CatalogClient({ resources }: { resources: Resource[] }) {
-  const [filters, setFilters] = useState<FilterState>(defaultFilters);
+  const searchParams = useSearchParams();
+  const [filters, setFilters] = useState<FilterState>(() =>
+    computeFiltersFromSearchParams(searchParams)
+  );
 
   const filtered = useMemo(
     () => filterResources(resources, filters),
