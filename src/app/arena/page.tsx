@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import { useWallet, useConnection } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { PublicKey, Transaction } from '@solana/web3.js';
+import { createBurnCheckedInstruction, getAssociatedTokenAddress } from '@solana/spl-token';
 
 // =========================================================
 // CIPHER ARENA — v0.1  (BETA TEST / SIMULATION ONLY)
@@ -82,9 +86,14 @@ const COMMUNITY_TEMPLATE: Packet[] = [
 ];
 
 export default function CipherArenaPage() {
+  const { publicKey, connected, connect, disconnect, wallet } = useWallet();
+  const { connection } = useConnection();
+
   const [phase, setPhase] = useState<Phase>('boot');
   const [bootLog, setBootLog] = useState<string[]>([]);
   const [currentNode, setCurrentNode] = useState<ArenaNode | null>(null);
+  const [realUsdcBalance, setRealUsdcBalance] = useState<number>(0); // Real devnet USDC balance from Phantom
+  const [isLoadingBalance, setIsLoadingBalance] = useState(false);
 
   // Simulated table state (local computer-game simulation for v0.1)
   const [yourPackets, setYourPackets] = useState<Packet[]>(createMockPackets(true));
@@ -101,6 +110,46 @@ export default function CipherArenaPage() {
 
   const [showEdu, setShowEdu] = useState(false);
   const [eduContent, setEduContent] = useState({ title: '', body: '' });
+
+  // Fetch real devnet USDC balance from connected Phantom wallet
+  const fetchRealUsdcBalance = useCallback(async (walletPublicKey: PublicKey) => {
+    if (!connection || !walletPublicKey) {
+      setRealUsdcBalance(0);
+      return;
+    }
+
+    setIsLoadingBalance(true);
+    try {
+      // Find the associated token account for USDC
+      const tokenAccounts = await connection.getParsedTokenAccountsByOwner(
+        walletPublicKey,
+        {
+          mint: new PublicKey(DEVNET_USDC_MINT),
+        }
+      );
+
+      if (tokenAccounts.value.length > 0) {
+        const balance = tokenAccounts.value[0].account.data.parsed.info.tokenAmount.uiAmount || 0;
+        setRealUsdcBalance(balance);
+      } else {
+        setRealUsdcBalance(0);
+      }
+    } catch (error) {
+      console.error('Failed to fetch devnet USDC balance:', error);
+      setRealUsdcBalance(0);
+    } finally {
+      setIsLoadingBalance(false);
+    }
+  }, [connection]);
+
+  // Auto-fetch balance when wallet connects/changes
+  useEffect(() => {
+    if (publicKey && connected) {
+      fetchRealUsdcBalance(publicKey);
+    } else {
+      setRealUsdcBalance(0);
+    }
+  }, [publicKey, connected, fetchRealUsdcBalance]);
 
   // Boot sequence — pure computer game feel
   useEffect(() => {
@@ -168,7 +217,10 @@ export default function CipherArenaPage() {
 
   // Core "game" actions — heavily gamified / rethemed
   function performAction(action: 'commit' | 'escalate' | 'abort') {
-    if (toAct !== 'you' || phase !== 'table') return;
+    if (toAct !== 'you' || phase !== 'table' || !connected) {
+      if (!connected) alert('Connect Phantom to make moves in the simulation.');
+      return;
+    }
 
     const amount = action === 'escalate' ? 0.18 : action === 'commit' ? 0.09 : 0;
 
@@ -279,13 +331,12 @@ export default function CipherArenaPage() {
   }
 
   function withdrawAndReturn() {
-    // In real version (devnet): this would call Race SDK withdraw + close token accounts → Devnet USDC back to tester wallet.
-    appendLog('WITHDRAW INITIATED — CLOSING TOKEN ACCOUNTS • RETURNING DEVNET USDC TO YOUR TEST WALLET', 'sys');
+    // v1.0: Simulation only. In real future version this will trigger actual Race on-chain withdraw of your devnet USDC.
+    appendLog('EXITING SIMULATION — Your real devnet USDC remains in Phantom (no actual transfer occurred in v1.0).', 'sys');
     setTimeout(() => {
       setPhase('lobby');
       setCurrentNode(null);
       setShowEdu(false);
-      // In real life the stack would be adjusted by on-chain settlement on devnet
     }, 620);
   }
 
@@ -295,11 +346,51 @@ export default function CipherArenaPage() {
   }
 
   // Simple mock "deposit" for demo (in real: wallet sign + Race join + deposit to GameAccount)
-  function mockDepositUSDC() {
-    if (!currentNode) return;
-    const deposit = 0.5;
-    setYourStack(s => s + deposit);
-    appendLog(`DEPOSITED ${deposit} USDC (SOLANA DEVNET). GET REAL TEST TOKENS AT https://faucet.circle.com/`, 'sys');
+  async function spendRealDevnetUsdcForAllocation() {
+    if (!currentNode || !connected || !publicKey || !wallet) return;
+
+    const amount = 0.5;
+    if (realUsdcBalance < amount) {
+      alert('You do not have enough real devnet USDC in your Phantom.');
+      return;
+    }
+
+    try {
+      const mint = new PublicKey(DEVNET_USDC_MINT);
+      const sourceAta = await getAssociatedTokenAddress(mint, publicKey);
+
+      const burnInstruction = createBurnCheckedInstruction(
+        sourceAta,
+        mint,
+        publicKey,
+        amount * 1_000_000, // USDC has 6 decimals
+        6
+      );
+
+      const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash();
+
+      const transaction = new Transaction().add(burnInstruction);
+      transaction.recentBlockhash = blockhash;
+      transaction.feePayer = publicKey;
+
+      // This will prompt Phantom to approve the real burn
+      const signature = await wallet.adapter.sendTransaction(transaction, connection);
+
+      // Confirm
+      await connection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, 'confirmed');
+
+      // Now update simulation
+      setYourStack(s => s + amount);
+
+      // Refetch real balance (it should now be lower)
+      await fetchRealUsdcBalance(publicKey);
+
+      appendLog(`BURNED ${amount} real devnet USDC on-chain from your Phantom (tx: ${signature}). Allocated to simulation.`, 'sys');
+
+    } catch (err: any) {
+      console.error(err);
+      alert('Failed to burn devnet USDC. Please check you have enough balance and approve the transaction in Phantom.\n\n' + (err.message || ''));
+    }
   }
 
   const isYouActing = toAct === 'you' && phase === 'table';
@@ -326,11 +417,53 @@ export default function CipherArenaPage() {
 
         {/* PERMANENT FRAMING — ZERO GAMBLING LANGUAGE + DEVNET USDC FOR TESTERS */}
         <div className="mb-6 rounded border border-[#00ff9f22] bg-[#0a100f] p-4 text-[12px] leading-tight">
-          <strong className="text-[#ffb347]">THIS IS A COMPUTER GAME.</strong> A live cryptographic simulation and protocol exercise. <span className="text-[#ffb347] font-semibold">BETA TEST / SIMULATION ONLY — TEST ONLY FOR NOW. NO REAL MAINNET FUNDS. USE DEVNET.</span>
-          You deposit <strong>Test USDC on Solana Devnet</strong>, it participates in on-chain game accounts (official Devnet SPL USDC mint), randomness is generated by multi-party cryptographic protocol (Race P2P), settlements are transparent on Solana Devnet.
-          <span className="block mt-1 text-[#8b9cb0]">No house. No casino. No "winning money". This is skin-in-the-game training for sovereignty, game theory, and verifiable commitment schemes. All actions are auditable.</span>
-          <span className="mt-1 block text-[#ffb347]">CONNECT DEVNET WALLET → GET FREE TEST USDC FROM https://faucet.circle.com/ (choose Solana Devnet) → TRAIN → WITHDRAW DEVNET USDC. ZERO FRICTION FOR TESTERS.</span>
-          <span className="mt-1 block text-xs text-[#8b9cb0]">Devnet USDC Mint: <span className="font-mono text-[#00ff9f]">{DEVNET_USDC_MINT}</span> (mainnet treasury is kept confidential)</span>
+          <strong className="text-[#ffb347]">THIS IS A COMPUTER GAME.</strong> A live cryptographic simulation and protocol exercise. <span className="text-[#ffb347] font-semibold">v1.0 BETA — TEST ONLY. You will burn real devnet USDC on-chain when allocating.</span>
+          The poker hand logic, betting rounds, and "settlements" run locally in your browser for testing and learning. When you burn USDC it is a real on-chain transaction that deducts from your Phantom balance.
+          <span className="block mt-1 text-[#8b9cb0]">No house edge in the simulation. This is skin-in-the-game training for sovereignty, game theory, and verifiable commitment schemes (Race P2P randomization).</span>
+          <span className="mt-1 block text-[#ffb347]">CONNECT PHANTOM (DEVNET) → HAVE REAL DEVNET USDC → BURN TO ALLOCATE INTO SIMULATION. Full on-chain Race tables with proper deposits next.</span>
+          <span className="mt-1 block text-xs text-[#8b9cb0]">Devnet USDC Mint: <span className="font-mono text-[#00ff9f]">{DEVNET_USDC_MINT}</span></span>
+        </div>
+
+        {/* REAL WALLET CONNECT - REQUIRED FOR v1.0 TO AVOID ILLUSION */}
+        <div className="mb-6 rounded border-2 border-[#ffb347] bg-[#0a100f] p-4">
+          <div className="font-mono text-[#ffb347] text-xs tracking-[2px] mb-2">PHANTOM WALLET REQUIRED • DEVNET USDC ONLY • NO FREE MONEY</div>
+          
+          {!connected ? (
+            <div>
+              <p className="text-sm mb-3">
+                Connect your <strong>Phantom wallet</strong> on Solana Devnet. To allocate into the simulation you will burn real devnet USDC from your wallet (on-chain deduction).
+              </p>
+              <WalletMultiButton className="arena-button !px-6 !py-2" />
+              <p className="mt-2 text-xs text-[#8b9cb0]">
+                v1.0: When you allocate you burn real devnet USDC on-chain from your Phantom (actual deduction). The poker hand logic runs locally in the browser for testing.
+              </p>
+            </div>
+          ) : (
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <div>
+                <div className="text-xs text-[#8b9cb0]">CONNECTED PHANTOM</div>
+                <div className="font-mono text-sm text-[#00ff9f]">{publicKey?.toBase58().slice(0, 4)}...{publicKey?.toBase58().slice(-4)}</div>
+              </div>
+              <div className="flex-1">
+                <div className="text-xs text-[#8b9cb0]">YOUR REAL DEVNET USDC BALANCE</div>
+                <div className="font-mono text-xl font-bold text-[#ffb347]">
+                  {isLoadingBalance ? '...' : realUsdcBalance.toFixed(2)} USDC
+                </div>
+              </div>
+              <button 
+                onClick={() => disconnect()} 
+                className="arena-button secondary text-xs px-4 py-1 self-start sm:self-auto"
+              >
+                DISCONNECT
+              </button>
+            </div>
+          )}
+
+          {connected && realUsdcBalance < 0.5 && (
+            <div className="mt-3 text-xs text-[#ffb347] border border-[#ffb347] p-2">
+              You need real devnet USDC in your Phantom. Clicking allocate will burn it on-chain (real balance deduction). Get free test tokens: https://faucet.circle.com/
+            </div>
+          )}
         </div>
 
         {/* CRT SHELL */}
@@ -354,7 +487,17 @@ export default function CipherArenaPage() {
                 {NODES.map(node => (
                   <button
                     key={node.id}
-                    onClick={() => bootIntoNode(node)}
+                    onClick={() => {
+                      if (!connected) {
+                        alert('Connect your Phantom wallet on Devnet first to enter the simulation.');
+                        return;
+                      }
+                      if (realUsdcBalance < 0.1) {
+                        alert('You need real devnet USDC in Phantom. Allocating burns it on-chain from your wallet (real deduction). Get test USDC from faucet.circle.com');
+                        return;
+                      }
+                      bootIntoNode(node);
+                    }}
                     className="group rounded border border-[#00ff9f33] bg-[#0c1513] p-5 text-left transition hover:border-[#00ff9f] hover:bg-[#111a18] active:translate-y-[1px]"
                   >
                     <div className="font-mono text-xs text-[#00cc7a] tracking-widest">{node.id.toUpperCase()}</div>
@@ -366,7 +509,9 @@ export default function CipherArenaPage() {
                     </div>
                     <div className="mt-1 text-xs text-[#8b9cb0]">STATUS: {node.status} • MIN CLEARANCE: {node.clearance}</div>
 
-                    <div className="mt-4 inline-block rounded border border-[#00ff9f] px-3 py-1 text-[10px] tracking-widest group-hover:bg-[#00ff9f] group-hover:text-[#0a100f]">BOOT INSTANCE →</div>
+                    <div className="mt-4 inline-block rounded border border-[#00ff9f] px-3 py-1 text-[10px] tracking-widest group-hover:bg-[#00ff9f] group-hover:text-[#0a100f]">
+                      {connected ? 'BOOT INSTANCE →' : 'CONNECT PHANTOM FIRST'}
+                    </div>
                   </button>
                 ))}
               </div>
@@ -490,13 +635,21 @@ export default function CipherArenaPage() {
                     </div>
 
                     <div className="mt-3 flex gap-2">
-                      <button onClick={mockDepositUSDC} className="arena-button secondary text-xs py-1 px-3">+0.50 DEVNET USDC DEPOSIT (MOCK)</button>
+                      <button 
+                        onClick={spendRealDevnetUsdcForAllocation} 
+                        disabled={!connected || realUsdcBalance < 0.5}
+                        className="arena-button secondary text-xs py-1 px-3 disabled:opacity-40"
+                      >
+                        BURN 0.50 REAL DEVNET USDC FROM PHANTOM (on-chain deduction)
+                      </button>
                       <button onClick={withdrawAndReturn} className="arena-button secondary text-xs py-1 px-3">WITHDRAW &amp; EXIT TO LOBBY</button>
+                    </div>
+                    <div className="mt-1 text-[10px] text-[#8b9cb0]">
+                      v1.0: Clicking this burns real devnet USDC from your Phantom **on-chain** (your wallet balance is actually reduced). The poker hand logic is local simulation.
                     </div>
 
                     <div className="mt-3 text-[10px] text-[#8b9cb0]">
-                      For beta testing: Use Solana Devnet cluster + Devnet USDC mint {DEVNET_USDC_MINT}. Testers fund via Circle faucet (faucet.circle.com).
-                      Future mainnet: Game token will switch to mainnet USDC; treasury configured confidentially (env var).
+                      v1.0: Real Phantom + live devnet USDC balance. The hand simulation is local for testing. Real Race Protocol on-chain deposits coming in the next version.
                     </div>
                   </div>
                 </div>
@@ -517,9 +670,9 @@ export default function CipherArenaPage() {
 
               {phase === 'settled' && (
                 <div className="mt-4 border-t border-[#00ff9f33] pt-4">
-                  <div className="text-[#ffb347] text-sm">HAND COMPLETE • SETTLEMENT RECORDED ON-CHAIN (SIM)</div>
-                  <button onClick={withdrawAndReturn} className="arena-button mt-3">WITHDRAW REMAINING DEVNET USDC (DEMO)</button>
-                  <div className="text-xs mt-2 text-[#8b9cb0]">In the real devnet version this triggers Race withdraw + settlement. Devnet USDC returns to your test wallet. (Mainnet later uses your Fuse address.)</div>
+                  <div className="text-[#ffb347] text-sm">HAND COMPLETE • LOCAL SIMULATION (v1.0)</div>
+                  <button onClick={withdrawAndReturn} className="arena-button mt-3">EXIT SIMULATION</button>
+                  <div className="text-xs mt-2 text-[#8b9cb0]">v1.0: You already burned real devnet USDC on-chain to participate. The settlement shown is local simulation only. Real on-chain Race integration next.</div>
                 </div>
               )}
             </div>
@@ -538,8 +691,7 @@ export default function CipherArenaPage() {
             <Link href="/paths" className="rounded border border-[#00ff9f22] px-3 py-1 text-xs hover:border-[#00ff9f] hover:text-white">ALL LEARNING PATHS</Link>
           </div>
           <div className="mt-3 text-[10px] text-[#8b9cb0]">
-            Real integration note (for when we add on-chain): Use Solana Devnet + Devnet USDC mint {DEVNET_USDC_MINT}. 
-            Testers get free funds at faucet.circle.com (Solana Devnet). Mainnet production treasury is configured confidentially (via env var).
+            v1.0: Real on-chain burn of devnet USDC happens when you allocate. The hand logic itself is local simulation. Real Race on-chain tables (deposits into GameAccounts + proper settlements) next.
           </div>
         </div>
       </div>
