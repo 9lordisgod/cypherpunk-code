@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DiscordCommunity } from "@/components/DiscordCommunity";
 import { site } from "@/lib/data";
 
 export function Footer() {
@@ -42,6 +43,26 @@ export function Footer() {
                   <Link href="/about" className="text-muted hover:text-foreground">
                     About
                   </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 font-mono text-xs uppercase tracking-wider text-muted">
+                Community
+              </p>
+              <ul className="space-y-1">
+                <li>
+                  <DiscordCommunity variant="compact" />
+                </li>
+                <li>
+                  <a
+                    href={site.creator.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted hover:text-foreground"
+                  >
+                    @{site.creator.handle}
+                  </a>
                 </li>
               </ul>
             </div>

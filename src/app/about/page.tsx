@@ -1,4 +1,5 @@
 import { ArchiveNotice } from "@/components/ArchiveNotice";
+import { DiscordIcon } from "@/components/DiscordCommunity";
 import { resources, site } from "@/lib/data";
 
 export const metadata = {
@@ -120,6 +121,25 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+        </section>
+
+        <section id="community">
+          <h2 className="text-xl font-semibold">Community</h2>
+          <p className="mt-2 leading-relaxed text-muted">
+            Join the {site.discord.label} Discord to discuss resources, suggest
+            additions, and connect with other learners.
+          </p>
+          <a
+            href={site.discord.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 text-sm transition-colors hover:border-[#5865F2]/50 hover:text-[#5865F2]"
+          >
+            <DiscordIcon className="h-5 w-5 shrink-0 text-[#5865F2]" />
+            <span>
+              discord.gg/sXn6w2tETq
+            </span>
+          </a>
         </section>
 
         <section>

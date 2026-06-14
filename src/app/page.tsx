@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
+import { DiscordCommunity } from "@/components/DiscordCommunity";
 import { ResourceCard } from "@/components/ResourceCard";
 import {
   getFeaturedResources,
@@ -60,6 +61,8 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      <DiscordCommunity />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="mb-8 flex items-end justify-between">
