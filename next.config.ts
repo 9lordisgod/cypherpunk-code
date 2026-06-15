@@ -12,12 +12,20 @@ const nextConfig: NextConfig = {
     : {}),
   images: { unoptimized: true },
 
-  async redirects() {
-    return [
-      { source: "/scan", destination: "/cypherscan", permanent: true },
-      { source: "/scan/scanner", destination: "/cypherscan/scanner", permanent: true },
-    ];
-  },
+  ...(!isGitHubPages
+    ? {
+        async redirects() {
+          return [
+            { source: "/scan", destination: "/cypherscan", permanent: true },
+            {
+              source: "/scan/scanner",
+              destination: "/cypherscan/scanner",
+              permanent: true,
+            },
+          ];
+        },
+      }
+    : {}),
 };
 
 export default nextConfig;

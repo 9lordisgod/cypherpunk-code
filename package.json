@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:pages": "GITHUB_PAGES=true next build",
+    "build:pages": "node scripts/build-github-pages.mjs",
     "start": "next start",
     "lint": "eslint"
   },
