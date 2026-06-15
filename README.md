@@ -42,11 +42,13 @@ Site name, domain, and donation addresses are configured in `site.json`.
 
 | Project | Status | Description |
 |---------|--------|-------------|
-| [CypherScan](../projects/cypherscan/README.md) | **Beta** | Live OSINT intel feed — 32 RSS + 17 X sources, auto-refresh, rule-based ranking. [GitHub](https://github.com/9lordisgod/cypherscan) |
+| [CypherScan](../projects/cypherscan/README.md) | **Beta** | Live OSINT intel feed — 32 RSS + 17 X sources, auto-refresh, rule-based ranking. [Live on site](/scan) |
 
 ## Pages
 
 - `/` — Homepage with featured resources + CypherScan beta banner
+- `/scan` — **Beta** live OSINT intel feed (full product, hosted on site)
+- `/scan/scanner` — Optional BYOK SITREP scanner (xAI)
 - `/catalog` — Searchable, filterable catalog with CP Score
 - `/paths` — Curated learning paths
 - `/resource/[id]` — Resource detail pages

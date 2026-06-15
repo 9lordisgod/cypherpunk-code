@@ -26,14 +26,12 @@ export function CypherScanBeta() {
             </ul>
           </div>
           <div className="flex flex-col gap-2 sm:items-end">
-            <a
-              href="https://github.com/9lordisgod/cypherscan"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/scan"
               className="rounded bg-accent px-5 py-2.5 font-mono text-sm font-medium text-background transition-opacity hover:opacity-90"
             >
-              View on GitHub →
-            </a>
+              Open live feed →
+            </Link>
             <Link
               href="/resource/cypherscan-intel-feed"
               className="rounded border border-border px-5 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-accent/40"
