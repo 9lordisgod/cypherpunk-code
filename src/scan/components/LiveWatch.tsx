@@ -94,7 +94,7 @@ export function LiveWatch() {
                 GLOBAL INTEL INDEX
               </h1>
               <p className="tac-mono text-[11px] text-[var(--text-dim)] mt-3 tracking-wide">
-                Finnhub news · {X_SOURCES.length} X accounts · live ingest
+                Finnhub news · {X_SOURCES.length} X accounts · auto-sync every 30s
               </p>
             </div>
             <div className="text-right tac-mono">
@@ -180,8 +180,13 @@ export function LiveWatch() {
                     +{lastNewCount} NEW SIGNAL{lastNewCount === 1 ? "" : "S"}
                   </span>
                 )}
+                {refreshStatus === "synced" && (
+                  <span className="text-[var(--accent-cyan)]">
+                    INDEX SYNCED
+                  </span>
+                )}
                 {refreshStatus === "unchanged" && (
-                  <span className="text-[var(--accent-amber)]">
+                  <span className="text-[var(--text-dim)]">
                     NO NEW SIGNALS
                   </span>
                 )}

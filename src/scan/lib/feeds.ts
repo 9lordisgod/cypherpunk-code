@@ -201,8 +201,7 @@ export function isIngestInFlight(): boolean {
 }
 
 export async function getFeed(
-  sector: SectorId = "all",
-  fresh = false
+  sector: SectorId = "all"
 ): Promise<{
   articles: IntelArticle[];
   fetchedAt: string;
@@ -210,23 +209,17 @@ export async function getFeed(
   health: SourceHealthSnapshot | null;
   cached?: boolean;
 }> {
-  const cacheFresh = hasFeedCache() && cacheAgeMs() < FEED_REFRESH_MS;
-
-  if (cacheFresh) {
-    return { ...buildResponse(sector, false), cached: true };
-  }
-
   if (ingestInFlight) {
     await ingestInFlight;
     return { ...buildResponse(sector, true), cached: false };
   }
 
-  if (!fresh && hasFeedCache()) {
-    return { ...buildResponse(sector, false), cached: true };
+  if (needsFreshIngest()) {
+    await runIngest();
+    return { ...buildResponse(sector, true), cached: false };
   }
 
-  await runIngest();
-  return { ...buildResponse(sector, true), cached: false };
+  return { ...buildResponse(sector, false), cached: true };
 }
 
 export async function searchFeed(query: string): Promise<IntelArticle[]> {

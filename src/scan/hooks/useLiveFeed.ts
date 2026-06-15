@@ -10,15 +10,18 @@ import type { IntelArticle } from "@/scan/types";
 
 export const REFRESH_INTERVAL_MS = FEED_REFRESH_MS;
 
+const FETCH_TIMEOUT_MS = 45_000;
+
 export interface FeedResponse {
   articles: IntelArticle[];
   fetchedAt: string;
   count: number;
   live: boolean;
   health?: SourceHealthSnapshot | null;
+  cached?: boolean;
 }
 
-export type RefreshStatus = "idle" | "ingesting" | "updated" | "unchanged";
+export type RefreshStatus = "idle" | "ingesting" | "updated" | "synced" | "unchanged";
 
 export function useLiveFeed() {
   const [articles, setArticles] = useState<IntelArticle[]>([]);
@@ -33,48 +36,37 @@ export function useLiveFeed() {
 
   const mounted = useRef(true);
   const prevIds = useRef<Set<string>>(new Set());
+  const prevFetchedAt = useRef<string | null>(null);
   const hasLoaded = useRef(false);
-  const pollTimer = useRef<number | null>(null);
-  const loadingRef = useRef(false);
-  const scheduleRef = useRef<(delay?: number) => void>(() => {});
-  const loadRef = useRef<
-    (opts?: { isPoll?: boolean; force?: boolean; attempt?: number }) => Promise<void>
-  >(async () => {});
+  const abortRef = useRef<AbortController | null>(null);
+  const requestSeq = useRef(0);
 
-  const load = useCallback(async (opts?: { isPoll?: boolean; force?: boolean; attempt?: number }) => {
+  const load = useCallback(async (opts?: { isPoll?: boolean }) => {
     const isPoll = opts?.isPoll ?? false;
-    const force = opts?.force ?? false;
-    const attempt = opts?.attempt ?? 0;
+    const seq = ++requestSeq.current;
 
-    if (loadingRef.current && !force) return;
-    loadingRef.current = true;
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
 
-    if (isPoll || force) setRefreshing(true);
+    const timeoutId = window.setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+    if (isPoll) setRefreshing(true);
     else if (!hasLoaded.current) setLoading(true);
     setError(null);
     setRefreshStatus("ingesting");
 
     try {
-      const res = await fetch(
-        `/api/feed?sector=all&fresh=1&_=${Date.now()}`,
-        { cache: "no-store" }
-      );
-      if (res.status === 429) {
-        const body = await res.json().catch(() => ({}));
-        const retryMs =
-          typeof body.retryAfterMs === "number" ? body.retryAfterMs : 30_000;
-        if (attempt < 3 && mounted.current) {
-          window.setTimeout(() => {
-            void loadRef.current({ isPoll, force, attempt: attempt + 1 });
-          }, retryMs);
-          return;
-        }
-        throw new Error("Feed busy — try again shortly");
-      }
+      const res = await fetch(`/api/feed?sector=all&_=${Date.now()}`, {
+        cache: "no-store",
+        signal: controller.signal,
+        headers: { Accept: "application/json" },
+      });
+
       if (!res.ok) throw new Error("Feed unavailable");
 
       const data: FeedResponse = await res.json();
-      if (!mounted.current) return;
+      if (!mounted.current || seq !== requestSeq.current) return;
 
       const store = data.articles.slice(0, FEED_STORE_CAP);
       const arrived = new Set<string>();
@@ -85,14 +77,23 @@ export function useLiveFeed() {
         }
       }
 
+      const indexSynced =
+        hasLoaded.current &&
+        data.fetchedAt &&
+        data.fetchedAt !== prevFetchedAt.current;
+
       prevIds.current = new Set(store.map((a) => a.id));
+      prevFetchedAt.current = data.fetchedAt;
       hasLoaded.current = true;
 
       setArticles(store);
       setFetchedAt(data.fetchedAt);
       setIngestCount((n) => n + 1);
       setLastNewCount(arrived.size);
-      setRefreshStatus(arrived.size > 0 ? "updated" : "unchanged");
+
+      if (arrived.size > 0) setRefreshStatus("updated");
+      else if (indexSynced) setRefreshStatus("synced");
+      else setRefreshStatus("unchanged");
 
       if (arrived.size > 0) {
         setNewIds(arrived);
@@ -107,67 +108,47 @@ export function useLiveFeed() {
         if (mounted.current) setRefreshStatus("idle");
       }, 4000);
     } catch (e) {
-      if (mounted.current) {
+      if (!mounted.current || seq !== requestSeq.current) return;
+      if (e instanceof Error && e.name === "AbortError") {
+        setError("Feed request timed out — retrying on next cycle");
+      } else {
         setError(e instanceof Error ? e.message : "Failed to load");
-        setRefreshStatus("idle");
       }
+      setRefreshStatus("idle");
     } finally {
-      loadingRef.current = false;
-      if (mounted.current) {
+      window.clearTimeout(timeoutId);
+      if (mounted.current && seq === requestSeq.current) {
         setLoading(false);
         setRefreshing(false);
       }
     }
   }, []);
 
-  useEffect(() => {
-    loadRef.current = load;
-  }, [load]);
-
   const refresh = useCallback(() => {
-    if (pollTimer.current) window.clearTimeout(pollTimer.current);
-    void load({ isPoll: true, force: true }).then(() => {
-      if (mounted.current) scheduleRef.current(FEED_REFRESH_MS);
-    });
+    void load({ isPoll: true });
   }, [load]);
 
   useEffect(() => {
     mounted.current = true;
-    let cancelled = false;
 
-    const schedule = (delay = FEED_REFRESH_MS) => {
-      if (pollTimer.current) window.clearTimeout(pollTimer.current);
-      pollTimer.current = window.setTimeout(() => {
-        if (cancelled || !mounted.current) return;
-        void load({ isPoll: true }).then(() => {
-          if (!cancelled && mounted.current) schedule(FEED_REFRESH_MS);
-        });
-      }, delay);
-    };
+    void load();
 
-    scheduleRef.current = schedule;
-
-    const initial = window.setTimeout(() => {
-      void load().then(() => {
-        if (!cancelled && mounted.current) schedule(FEED_REFRESH_MS);
-      });
-    }, 0);
+    const pollId = window.setInterval(() => {
+      void load({ isPoll: true });
+    }, FEED_REFRESH_MS);
 
     const onVisible = () => {
-      if (document.visibilityState !== "visible" || !hasLoaded.current) return;
-      if (pollTimer.current) window.clearTimeout(pollTimer.current);
-      void load({ isPoll: true, force: true }).then(() => {
-        if (!cancelled && mounted.current) schedule(FEED_REFRESH_MS);
-      });
+      if (document.visibilityState === "visible" && hasLoaded.current) {
+        void load({ isPoll: true });
+      }
     };
 
     document.addEventListener("visibilitychange", onVisible);
 
     return () => {
-      cancelled = true;
       mounted.current = false;
-      window.clearTimeout(initial);
-      if (pollTimer.current) window.clearTimeout(pollTimer.current);
+      abortRef.current?.abort();
+      window.clearInterval(pollId);
       document.removeEventListener("visibilitychange", onVisible);
     };
   }, [load]);

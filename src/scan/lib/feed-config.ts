@@ -4,8 +4,8 @@ export const FEED_STORE_CAP = 200;
 /** Max items rendered per sector view */
 export const FEED_DISPLAY_CAP = 48;
 
-/** Auto-ingest interval while Intel tab is open */
-export const FEED_REFRESH_MS = 60_000;
+/** Server cache TTL + client auto-poll interval */
+export const FEED_REFRESH_MS = 30_000;
 
 /** Below this fraction of sources live → STATUS: DEGRADED */
 export const HEALTH_OPERATIONAL_RATIO = 0.9;
