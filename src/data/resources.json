@@ -940,5 +940,20 @@
     "language": "English",
     "cypherpunkScore": 3,
     "tags": ["aggregator", "discovery", "mixed-quality"]
+  },
+  {
+    "id": "cypherscan-intel-feed",
+    "title": "CypherScan — Live OSINT Intel Feed",
+    "description": "Beta live intelligence index for cypherpunks and sovereignty-minded operators. Auto-refreshes 32 RSS publishers and 17 OSINT X accounts every 60 seconds with rule-based ranking — freshness, source tier, relevance scoring, and noise filtering — across conflict, geopolitics, cyber, freedom-tech, and policy sectors. No API keys required for the feed; optional BYOK SITREP scanner. Beta testing — it might go wrong.",
+    "url": "https://github.com/9lordisgod/cypherscan",
+    "type": "tool",
+    "topics": ["cypherpunk", "privacy", "opsec", "general-crypto"],
+    "difficulty": "beginner",
+    "pricing": "free",
+    "provider": "Cypherpunk Code",
+    "language": "English",
+    "cypherpunkScore": 8,
+    "featured": true,
+    "tags": ["osint", "intel", "beta", "live-feed", "monitoring", "rss", "sovereignty"]
   }
 ]

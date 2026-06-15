@@ -8,7 +8,8 @@ export type ResourceType =
   | "documentation"
   | "manifesto"
   | "event"
-  | "podcast";
+  | "podcast"
+  | "tool";
 
 export type Topic =
   | "bitcoin"

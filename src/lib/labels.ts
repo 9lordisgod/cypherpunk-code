@@ -25,6 +25,7 @@ export const typeLabels: Record<ResourceType, string> = {
   manifesto: "Manifesto",
   event: "Event",
   podcast: "Podcast",
+  tool: "Tool",
 };
 
 export const difficultyLabels: Record<Difficulty, string> = {
