@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
-import { CypherScanBeta } from "@/components/CypherScanBeta";
 import { DiscordCommunity } from "@/components/DiscordCommunity";
 import { ResourceCard } from "@/components/ResourceCard";
 import {
@@ -62,8 +61,6 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-
-      <CypherScanBeta />
 
       <DiscordCommunity />
 

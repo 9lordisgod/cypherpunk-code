@@ -3,7 +3,7 @@
   "domain": "cypherpunk-code.ca",
   "url": "https://cypherpunk-code.ca",
   "tagline": "Open archive database for Bitcoin, Monero & cypherpunk education",
-  "description": "A curated, searchable archive of courses, papers, guides, and documentation for learning cryptocurrency, privacy technology, and cypherpunk philosophy — maintained continuously, without the trading noise. Now includes CypherScan, a beta live OSINT intel monitor with rule-based feed ranking across conflict, geopolitics, cyber, and freedom-tech sources.",
+  "description": "A curated, searchable archive of courses, papers, guides, and documentation for learning cryptocurrency, privacy technology, and cypherpunk philosophy — maintained continuously, without the trading noise.",
   "creator": {
     "handle": "CHxmrBrother",
     "url": "https://x.com/CHxmrBrother"

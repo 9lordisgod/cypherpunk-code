@@ -13,7 +13,7 @@ const phases = [
     period: "Now",
     items: [
       "67+ curated resources across Bitcoin, Monero, OpSec & cypherpunk history",
-      "CypherScan beta — live OSINT intel feed with rule-based monitoring (may break)",
+      "Cypherscan — live OSINT intel feed with rule-based monitoring at /cypherscan",
       "Searchable catalog with Cypherpunk Score filter",
       "6 structured learning paths",
       "Open archive — free to browse, no accounts required",

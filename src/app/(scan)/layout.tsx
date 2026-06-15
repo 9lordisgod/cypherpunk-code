@@ -4,9 +4,9 @@ import { ScanHeader } from "@/scan/components/ScanHeader";
 import "./scan-globals.css";
 
 export const metadata: Metadata = {
-  title: "CypherScan",
+  title: "Cypherscan",
   description:
-    "Live OSINT intel feed for conflict, geopolitics, cyber, and freedom-tech — beta on Cypherpunk Code.",
+    "Live OSINT intel feed for conflict, geopolitics, cyber, and freedom-tech on Cypherpunk Code.",
 };
 
 export default function ScanLayout({

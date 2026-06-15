@@ -8,8 +8,8 @@ import { HEALTH_OPERATIONAL_RATIO } from "@/scan/lib/feed-config";
 import { ApiKeyModal } from "./ApiKeyModal";
 
 const NAV = [
-  { href: "/scan", label: "INTEL", sub: "FEED" },
-  { href: "/scan/scanner", label: "SITREP", sub: "SCAN" },
+  { href: "/cypherscan", label: "INTEL", sub: "FEED" },
+  { href: "/cypherscan/scanner", label: "SITREP", sub: "SCAN" },
 ];
 
 export function ScanHeader() {
@@ -34,7 +34,7 @@ export function ScanHeader() {
     <>
       <header className="sticky top-0 z-50 border-b border-[var(--border-dim)] bg-[var(--bg-primary)]/95 backdrop-blur-sm">
         <div className="border-b border-[var(--border-dim)] bg-[var(--bg-inset)]">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 py-1.5 tac-mono text-[9px] tracking-wider text-[var(--text-dim)]">
+          <div className="max-w-7xl mx-auto px-4 py-1.5 tac-mono text-[9px] tracking-wider text-[var(--text-dim)]">
             <span
               className={
                 health && !isOperational ? "text-[var(--accent-amber)]" : ""
@@ -54,16 +54,13 @@ export function ScanHeader() {
                 <>SOURCE HEALTH: AWAITING INGEST</>
               )}
             </span>
-            <span className="shrink-0 text-[var(--accent-amber)]">
-              BETA · IT MIGHT GO WRONG
-            </span>
           </div>
         </div>
 
         <div className="max-w-7xl mx-auto flex h-11 items-center justify-between gap-4 px-4">
           <div className="flex items-center gap-3">
             <Link
-              href="/scan"
+              href="/cypherscan"
               className="tac-mono text-[11px] font-semibold tracking-widest text-[var(--text-bright)] transition-colors hover:text-[var(--accent-orange)]"
             >
               CYPHER SCAN
