@@ -6,7 +6,7 @@ Live OSINT intel index — embedded in [Cypherpunk Code](https://cypherpunk-code
 
 ## What it does
 
-- Ingests 32 RSS publishers + 17 OSINT X accounts every 60 seconds
+- Ingests Finnhub market news + 17 OSINT X accounts every 60 seconds
 - Rule-based ranking: freshness, source tier, relevance, noise filter
 - Sector-balanced index: conflict, geopolitics, cyber, freedom-tech, policy
 - No API keys required for the intel feed

@@ -6,8 +6,7 @@ import {
   X_MIN_ITEMS,
 } from "./feed-config";
 import { BREAKING_SLOTS, rankArticles } from "./feed-rules";
-import { RSS_SOURCES } from "./sectors";
-import { fetchAllRss } from "./rss";
+import { fetchAllFinnhub, FINNHUB_SOURCE_PRIORITIES } from "./finnhub";
 import { fetchAllXTimelines } from "./twitter";
 import { X_SOURCES } from "./x-sources";
 import {
@@ -41,7 +40,9 @@ function buildResponse(sector: SectorId, live: boolean) {
 }
 
 const SOURCE_PRIORITY = new Map([
-  ...RSS_SOURCES.map((s) => [s.source, s.priority ?? 0] as const),
+  ...Object.entries(FINNHUB_SOURCE_PRIORITIES).map(
+    ([source, priority]) => [source, priority] as const
+  ),
   ...X_SOURCES.map((s) => [s.source, s.priority ?? 0] as const),
 ]);
 
@@ -150,18 +151,18 @@ export function balanceBySector(articles: IntelArticle[]): IntelArticle[] {
   });
 }
 
-/** Parallel OSINT ingest — RSS publishers + X KOL timelines (no API keys) */
+/** Parallel ingest — Finnhub news API + X OSINT timelines */
 async function fetchAllSources(): Promise<IntelArticle[]> {
-  const [rss, xPosts] = await Promise.all([
-    fetchAllRss(),
+  const [news, xPosts] = await Promise.all([
+    fetchAllFinnhub(),
     fetchAllXTimelines(),
   ]);
 
   setSourceHealth({
-    rss: {
-      live: rss.live,
-      total: rss.total,
-      failed: rss.failed,
+    news: {
+      live: news.live,
+      total: news.total,
+      failed: news.failed,
     },
     x: {
       live: xPosts.live,
@@ -171,7 +172,7 @@ async function fetchAllSources(): Promise<IntelArticle[]> {
     checkedAt: new Date().toISOString(),
   });
 
-  return balanceBySector([...rss.articles, ...xPosts.articles]);
+  return balanceBySector([...news.articles, ...xPosts.articles]);
 }
 
 async function runIngest(): Promise<void> {
@@ -211,7 +212,6 @@ export async function getFeed(
 }> {
   const cacheFresh = hasFeedCache() && cacheAgeMs() < FEED_REFRESH_MS;
 
-  // Serve warm cache for duplicate loads (React strict mode, tab focus, etc.)
   if (cacheFresh) {
     return { ...buildResponse(sector, false), cached: true };
   }

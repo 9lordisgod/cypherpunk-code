@@ -1,5 +1,5 @@
 export interface SourceHealthSnapshot {
-  rss: { live: number; total: number; failed: string[] };
+  news: { live: number; total: number; failed: string[] };
   x: { live: number; total: number; failed: string[] };
   checkedAt: string;
 }

@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       }
     : {}),
   images: { unoptimized: true },
-  serverExternalPackages: ["rss-parser"],
+
   async redirects() {
     return [
       { source: "/scan", destination: "/cypherscan", permanent: true },

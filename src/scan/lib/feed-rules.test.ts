@@ -18,7 +18,7 @@ function article(
     url: `https://example.com/${overrides.id}`,
     source: "Test Source",
     feedUrl: "https://example.com/feed",
-    platform: "rss",
+    platform: "finnhub",
     timestamp: new Date().toISOString(),
     ...overrides,
   };

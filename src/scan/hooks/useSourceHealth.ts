@@ -14,7 +14,7 @@ export function useSourceHealth(pollMs = 60_000) {
         const res = await fetch("/api/health", { cache: "no-store" });
         if (!res.ok) return;
         const data = await res.json();
-        if (!cancelled && data.rss && data.x) {
+        if (!cancelled && data.news && data.x) {
           setHealth(data as SourceHealthSnapshot);
         }
       } catch {

@@ -10,7 +10,7 @@ function article(
     url: `https://example.com/${overrides.id}`,
     source: overrides.source ?? "Test Source",
     feedUrl: "https://example.com/feed",
-    platform: overrides.platform ?? "rss",
+    platform: overrides.platform ?? "finnhub",
     timestamp: overrides.timestamp ?? new Date().toISOString(),
     ...overrides,
   };
@@ -64,7 +64,7 @@ describe("balanceBySector", () => {
             sector,
             timestamp: new Date(Date.now() - i * 60_000).toISOString(),
             source: sector === "conflict" ? "Defense One" : "Test Source",
-            platform: i % 2 === 0 ? "x" : "rss",
+            platform: i % 2 === 0 ? "x" : "finnhub",
             authorHandle: i % 2 === 0 ? "osint" : undefined,
           })
         );

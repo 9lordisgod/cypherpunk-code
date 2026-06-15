@@ -14,8 +14,8 @@ export interface IntelArticle {
   source: string;
   /** RSS endpoint or X profile URL this item was ingested from */
   feedUrl: string;
-  /** rss = publisher feed, x = X/Twitter post */
-  platform?: "rss" | "x";
+  /** finnhub = Finnhub news API, x = X/Twitter post */
+  platform?: "finnhub" | "x";
   /** X handle when platform is x */
   authorHandle?: string;
   sector: SectorId;

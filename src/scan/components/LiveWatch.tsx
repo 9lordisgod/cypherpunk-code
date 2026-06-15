@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FEED_DISPLAY_CAP, FEED_REFRESH_MS } from "@/scan/lib/feed-config";
 import { formatTimeAgo } from "@/scan/lib/feeds";
 import { useLiveFeed } from "@/scan/hooks/useLiveFeed";
-import { RSS_SOURCES } from "@/scan/lib/sectors";
+import { FINNHUB_CATEGORIES } from "@/scan/lib/finnhub";
 import { X_SOURCES } from "@/scan/lib/x-sources";
 import { computeWatchcon } from "@/scan/lib/watchcon";
 import { StatsRow } from "./StatsRow";
@@ -72,7 +72,7 @@ export function LiveWatch() {
     () => articles.filter((a) => a.platform === "x").length,
     [articles]
   );
-  const rssCount = articles.length - xCount;
+  const newsCount = articles.length - xCount;
 
   const nextIn = useMemo(() => {
     if (!fetchedAt) return Math.floor(FEED_REFRESH_MS / 1000);
@@ -94,7 +94,7 @@ export function LiveWatch() {
                 GLOBAL INTEL INDEX
               </h1>
               <p className="tac-mono text-[11px] text-[var(--text-dim)] mt-3 tracking-wide">
-                {RSS_SOURCES.length} RSS · {X_SOURCES.length} X accounts · live ingest
+                Finnhub news · {X_SOURCES.length} X accounts · live ingest
               </p>
             </div>
             <div className="text-right tac-mono">
@@ -111,7 +111,7 @@ export function LiveWatch() {
         <StatsRow
           stats={[
             { label: "Signals", value: articles.length, accent: "var(--text-bright)" },
-            { label: "RSS", value: rssCount, accent: "var(--accent-cyan)" },
+            { label: "News", value: newsCount, accent: "var(--accent-cyan)" },
             { label: "X / KOL", value: xCount, accent: "var(--accent-orange)" },
             { label: "Alerts", value: alertCount, accent: "var(--accent-red)" },
             {
@@ -242,7 +242,7 @@ export function LiveWatch() {
 
               <SourceMatrix
                 articles={articles}
-                rssCount={RSS_SOURCES.length}
+                newsCount={FINNHUB_CATEGORIES.length}
                 xCount={X_SOURCES.length}
               />
             </div>

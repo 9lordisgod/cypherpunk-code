@@ -209,7 +209,7 @@ export function IntelBrief({
       <div className="flex flex-col gap-2 pt-2 border-t border-[var(--border-dim)]">
         <div className="flex items-center justify-between tac-mono text-[9px] text-[var(--text-dim)]">
           <span>
-            {formatTimeAgo(article.timestamp)} · {isX ? "X ingest" : "RSS ingest"}
+            {formatTimeAgo(article.timestamp)} · {isX ? "X ingest" : "Finnhub"}
           </span>
           <a
             href={article.url}

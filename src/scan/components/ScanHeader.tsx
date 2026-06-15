@@ -17,16 +17,16 @@ export function ScanHeader() {
   const [showKeyModal, setShowKeyModal] = useState(false);
   const health = useSourceHealth();
 
-  const rssLive = health?.rss.live;
-  const rssTotal = health?.rss.total;
+  const newsLive = health?.news.live;
+  const newsTotal = health?.news.total;
   const xLive = health?.x.live;
   const xTotal = health?.x.total;
-  const totalLive = (rssLive ?? 0) + (xLive ?? 0);
-  const totalSources = (rssTotal ?? 0) + (xTotal ?? 0);
+  const totalLive = (newsLive ?? 0) + (xLive ?? 0);
+  const totalSources = (newsTotal ?? 0) + (xTotal ?? 0);
   const liveRatio = totalSources > 0 ? totalLive / totalSources : 1;
   const isOperational = health && liveRatio >= HEALTH_OPERATIONAL_RATIO;
   const failedList = [
-    ...(health?.rss.failed ?? []),
+    ...(health?.news.failed ?? []),
     ...(health?.x.failed ?? []),
   ];
 
@@ -47,7 +47,7 @@ export function ScanHeader() {
             >
               {health ? (
                 <>
-                  {rssLive}/{rssTotal} RSS LIVE · {xLive}/{xTotal} X LIVE
+                  {newsLive}/{newsTotal} NEWS LIVE · {xLive}/{xTotal} X LIVE
                   {!isOperational && " · DEGRADED"}
                 </>
               ) : (

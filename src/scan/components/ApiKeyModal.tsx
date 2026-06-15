@@ -43,7 +43,7 @@ export function ApiKeyModal({ open, onClose }: Props) {
         <div className="p-5 text-[12px] text-[var(--text-dim)] space-y-2 leading-relaxed">
           <p>
             <strong className="text-[var(--accent-green)]">Intel feed needs no key.</strong>{" "}
-            RSS ingest is free.
+            News is ingested via Finnhub on the server.
           </p>
           <p>
             Add a key only for <strong>SITREP Scanner</strong>. Get one at{" "}
