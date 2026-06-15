@@ -2,17 +2,22 @@ const STORAGE_KEY = "cypherscan_xai_api_key";
 const RATE_LIMIT_KEY = "cypherscan_rate_limit";
 const MAX_REQUESTS_PER_HOUR = 20;
 
-export function getStoredApiKey(): string | null {
+/** Session-only storage — key is cleared when the browser tab closes. */
+function storage(): Storage | null {
   if (typeof window === "undefined") return null;
-  return localStorage.getItem(STORAGE_KEY);
+  return sessionStorage;
+}
+
+export function getStoredApiKey(): string | null {
+  return storage()?.getItem(STORAGE_KEY) ?? null;
 }
 
 export function setStoredApiKey(key: string): void {
-  localStorage.setItem(STORAGE_KEY, key.trim());
+  storage()?.setItem(STORAGE_KEY, key.trim());
 }
 
 export function clearStoredApiKey(): void {
-  localStorage.removeItem(STORAGE_KEY);
+  storage()?.removeItem(STORAGE_KEY);
 }
 
 export function maskApiKey(key: string): string {
@@ -30,7 +35,7 @@ export function checkRateLimit(): { allowed: boolean; remaining: number; resetIn
 
   const now = Date.now();
   const hourAgo = now - 3600000;
-  const stored = localStorage.getItem(RATE_LIMIT_KEY);
+  const stored = storage()?.getItem(RATE_LIMIT_KEY);
   const entry: RateLimitEntry = stored
     ? JSON.parse(stored)
     : { timestamps: [] };
@@ -51,12 +56,12 @@ export function recordRequest(): void {
   if (typeof window === "undefined") return;
   const now = Date.now();
   const hourAgo = now - 3600000;
-  const stored = localStorage.getItem(RATE_LIMIT_KEY);
+  const stored = storage()?.getItem(RATE_LIMIT_KEY);
   const entry: RateLimitEntry = stored
     ? JSON.parse(stored)
     : { timestamps: [] };
   entry.timestamps = entry.timestamps.filter((t) => t > hourAgo);
   entry.timestamps.push(now);
-  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(entry));
+  storage()?.setItem(RATE_LIMIT_KEY, JSON.stringify(entry));
 }
 

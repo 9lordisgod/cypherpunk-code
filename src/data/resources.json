@@ -944,7 +944,7 @@
   {
     "id": "cypherscan-intel-feed",
     "title": "CypherScan — Live OSINT Intel Feed",
-    "description": "Live intelligence index for cypherpunks and sovereignty-minded operators. Auto-refreshes Finnhub news and 17 OSINT X accounts every 60 seconds with rule-based ranking — freshness, source tier, relevance scoring, and noise filtering — across conflict, geopolitics, cyber, freedom-tech, and policy sectors. Optional BYOK SITREP scanner (xAI).",
+    "description": "SITREP Scanner for cypherpunks and sovereignty-minded operators. Grok-powered situation analysis with live search, cross-referenced against OSINT ingest. BYOK xAI key — session-only, never stored on servers.",
     "url": "https://cypherpunk-code.ca/cypherscan",
     "type": "tool",
     "topics": ["cypherpunk", "privacy", "opsec", "general-crypto"],

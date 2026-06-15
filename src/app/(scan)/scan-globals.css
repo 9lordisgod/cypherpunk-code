@@ -285,3 +285,496 @@
   background: var(--border-bright);
   border-radius: 2px;
 }
+
+/* ── SITREP SCAN · cypherpunk animations ── */
+
+.sitrep-scan {
+  --sitrep-glow: rgba(249, 115, 22, 0.45);
+  --sitrep-cyan: rgba(56, 189, 248, 0.35);
+}
+
+.sitrep-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sitrep-particle {
+  position: absolute;
+  font-size: 14px;
+  color: var(--accent-orange);
+  opacity: 0.12;
+  animation: sitrep-float 12s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -1.4s);
+  left: calc(8% + var(--i) * 11%);
+  top: calc(10% + (var(--i) * 7%) % 80%);
+}
+
+@keyframes sitrep-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.08;
+  }
+  33% {
+    transform: translateY(-24px) rotate(12deg) scale(1.15);
+    opacity: 0.22;
+    color: var(--accent-cyan);
+  }
+  66% {
+    transform: translateY(12px) rotate(-8deg) scale(0.9);
+    opacity: 0.14;
+  }
+}
+
+.sitrep-scanline {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-cyan),
+    var(--accent-orange),
+    transparent
+  );
+  opacity: 0.35;
+  z-index: 2;
+  pointer-events: none;
+  animation: sitrep-scanline 6s linear infinite;
+}
+
+@keyframes sitrep-scanline {
+  0% {
+    top: -2px;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.4;
+  }
+  92% {
+    opacity: 0.4;
+  }
+  100% {
+    top: 100vh;
+    opacity: 0;
+  }
+}
+
+.sitrep-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.08) 0%,
+    transparent 45%,
+    rgba(56, 189, 248, 0.06) 100%
+  );
+  background-color: var(--bg-panel);
+  animation: sitrep-hero-pulse 4s ease-in-out infinite;
+}
+
+@keyframes sitrep-hero-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+  50% {
+    box-shadow: 0 0 32px 2px rgba(249, 115, 22, 0.06);
+  }
+}
+
+.sitrep-tag {
+  animation: sitrep-tag-flicker 3s step-end infinite;
+}
+
+@keyframes sitrep-tag-flicker {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.6;
+  }
+  95% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.75;
+  }
+}
+
+.sitrep-glitch {
+  position: relative;
+  animation: sitrep-glitch-skew 5s infinite;
+}
+
+.sitrep-glitch::before,
+.sitrep-glitch::after {
+  content: "SITUATION ANALYSIS";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  clip-path: inset(0);
+}
+
+.sitrep-glitch::before {
+  color: var(--accent-cyan);
+  animation: sitrep-glitch-1 3s infinite linear alternate-reverse;
+  opacity: 0.7;
+}
+
+.sitrep-glitch::after {
+  color: var(--accent-orange);
+  animation: sitrep-glitch-2 2.5s infinite linear alternate-reverse;
+  opacity: 0.6;
+}
+
+@keyframes sitrep-glitch-1 {
+  0% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-2px, 0);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, 0);
+  }
+  40% {
+    clip-path: inset(40% 0 40% 0);
+    transform: translate(-1px, 0);
+  }
+  60%,
+  100% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(0);
+  }
+}
+
+@keyframes sitrep-glitch-2 {
+  0% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(2px, 0);
+  }
+  25% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(-2px, 0);
+  }
+  50%,
+  100% {
+    clip-path: inset(70% 0 15% 0);
+    transform: translate(1px, 0);
+  }
+}
+
+@keyframes sitrep-glitch-skew {
+  0%,
+  90%,
+  100% {
+    transform: skew(0deg);
+  }
+  92% {
+    transform: skew(-0.4deg);
+  }
+  94% {
+    transform: skew(0.3deg);
+  }
+}
+
+.sitrep-blink {
+  animation: sitrep-blink 1.2s step-end infinite;
+}
+
+@keyframes sitrep-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.2;
+  }
+}
+
+.sitrep-bounce {
+  display: inline-block;
+  animation: sitrep-bounce 2s ease-in-out infinite;
+}
+
+@keyframes sitrep-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.sitrep-status {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.sitrep-lock-pulse {
+  display: inline-block;
+  animation: sitrep-lock-wiggle 2.5s ease-in-out infinite;
+}
+
+@keyframes sitrep-lock-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+.sitrep-privacy {
+  animation: sitrep-privacy-glow 3s ease-in-out infinite;
+}
+
+@keyframes sitrep-privacy-glow {
+  0%,
+  100% {
+    border-color: rgba(56, 189, 248, 0.25);
+  }
+  50% {
+    border-color: rgba(56, 189, 248, 0.55);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.08);
+  }
+}
+
+.sitrep-key-glow {
+  animation: sitrep-key-glow 2s ease-in-out infinite;
+}
+
+@keyframes sitrep-key-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+  }
+}
+
+.sitrep-input:focus {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.12), 0 0 20px rgba(249, 115, 22, 0.08);
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+
+.sitrep-btn:hover:not(:disabled) {
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.15);
+  transform: translateY(-1px);
+}
+
+.sitrep-execute {
+  position: relative;
+  overflow: hidden;
+}
+
+.sitrep-execute::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(249, 115, 22, 0.15) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: none;
+}
+
+.sitrep-execute:hover:not(:disabled)::before {
+  animation: sitrep-shimmer 0.8s ease;
+}
+
+.sitrep-execute:hover:not(:disabled) {
+  background: rgba(249, 115, 22, 0.08);
+  box-shadow: 0 0 24px rgba(249, 115, 22, 0.2);
+  transform: scale(1.01);
+}
+
+@keyframes sitrep-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.sitrep-radar {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--accent-orange);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: sitrep-spin 0.7s linear infinite;
+}
+
+@keyframes sitrep-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sitrep-preset {
+  animation: sitrep-preset-in 0.5s ease-out both;
+}
+
+.sitrep-preset:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.12);
+}
+
+@keyframes sitrep-preset-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sitrep-panel {
+  animation: sitrep-panel-in 0.6s ease-out both;
+}
+
+@keyframes sitrep-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sitrep-error {
+  animation: sitrep-shake 0.45s ease;
+}
+
+@keyframes sitrep-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.sitrep-orbit {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.sitrep-orbit span {
+  position: absolute;
+  font-size: 16px;
+  color: var(--accent-orange);
+  animation: sitrep-orbit 2s ease-in-out infinite;
+}
+
+.sitrep-orbit span:nth-child(1) {
+  animation-delay: 0s;
+  color: var(--accent-cyan);
+}
+.sitrep-orbit span:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.sitrep-orbit span:nth-child(3) {
+  animation-delay: 0.7s;
+  color: var(--accent-green);
+}
+
+@keyframes sitrep-orbit {
+  0%,
+  100% {
+    transform: rotate(0deg) translateX(28px) rotate(0deg) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotate(180deg) translateX(28px) rotate(-180deg) scale(1.2);
+    opacity: 1;
+  }
+}
+
+.sitrep-loading {
+  animation: sitrep-loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes sitrep-loading-pulse {
+  0%,
+  100% {
+    border-color: var(--border-dim);
+  }
+  50% {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 28px rgba(249, 115, 22, 0.1);
+  }
+}
+
+.sitrep-result {
+  animation: sitrep-result-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sitrep-result-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.sitrep-result-body {
+  animation: sitrep-type-glow 0.5s ease 0.3s both;
+}
+
+@keyframes sitrep-type-glow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sitrep-nav-active {
+  animation: sitrep-nav-glow 3s ease-in-out infinite;
+}
+
+@keyframes sitrep-nav-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.15);
+  }
+}

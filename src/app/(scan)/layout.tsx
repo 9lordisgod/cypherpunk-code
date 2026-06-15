@@ -6,7 +6,7 @@ import "./scan-globals.css";
 export const metadata: Metadata = {
   title: "Cypherscan",
   description:
-    "Live OSINT intel feed for conflict, geopolitics, cyber, and freedom-tech on Cypherpunk Code.",
+    "SITREP Scanner — Grok-powered situation analysis with live search. BYOK, session-only API keys.",
 };
 
 export default function ScanLayout({

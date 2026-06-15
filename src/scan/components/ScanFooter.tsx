@@ -7,9 +7,9 @@ export function ScanFooter() {
         <p className="tac-divider mb-4">- - - - - - - -</p>
         <h4 className="tac-label mb-2">Operational disclaimer</h4>
         <p className="max-w-2xl text-[11px] leading-relaxed text-[var(--text-dim)]">
-          CypherScan is for informational and educational purposes only. OSINT
-          aggregation does not imply verification. Cross-check all reports against
-          primary sources before action.
+          CypherScan SITREP Scanner is for informational and educational purposes
+          only. AI-generated briefs are not verified intelligence. Cross-check all
+          reports against primary sources before action. API keys are session-only.
         </p>
         <p className="tac-mono mt-6 text-[9px] tracking-widest text-[var(--text-dim)] opacity-50">
           <Link href="/" className="hover:text-[var(--accent-orange)]">

@@ -1,5 +1,5 @@
-import { LiveWatch } from "@/scan/components/LiveWatch";
+import { SitrepScan } from "@/scan/components/SitrepScan";
 
 export default function ScanPage() {
-  return <LiveWatch />;
+  return <SitrepScan />;
 }

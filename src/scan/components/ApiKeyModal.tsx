@@ -34,19 +34,20 @@ export function ApiKeyModal({ open, onClose }: Props) {
           <button
             type="button"
             onClick={onClose}
-            className="text-[var(--text-dim)] hover:text-white tac-mono text-sm"
+            className="tac-mono text-sm text-[var(--text-dim)] hover:text-white"
           >
             ×
           </button>
         </div>
 
-        <div className="p-5 text-[12px] text-[var(--text-dim)] space-y-2 leading-relaxed">
+        <div className="space-y-2 p-5 text-[12px] leading-relaxed text-[var(--text-dim)]">
           <p>
-            <strong className="text-[var(--accent-green)]">Intel feed needs no key.</strong>{" "}
-            News is ingested via Finnhub on the server.
+            <strong className="text-[var(--accent-cyan)]">One-time temporary key.</strong>{" "}
+            Your xAI API key is stored only in this browser tab&apos;s session memory and is
+            cleared when you close the tab. Never written to our servers or databases.
           </p>
           <p>
-            Add a key only for <strong>SITREP Scanner</strong>. Get one at{" "}
+            Get a key at{" "}
             <a
               href="https://console.x.ai"
               target="_blank"
@@ -55,16 +56,16 @@ export function ApiKeyModal({ open, onClose }: Props) {
             >
               console.x.ai
             </a>
-            . Stored locally in your browser only.
+            . You pay xAI directly — not CypherScan.
           </p>
         </div>
 
         {saved ? (
-          <p className="px-5 text-[12px] mb-3 tac-mono">
+          <p className="tac-mono mb-3 px-5 text-[12px]">
             ACTIVE: <span className="text-[var(--accent-green)]">{maskApiKey(saved)}</span>
           </p>
         ) : (
-          <p className="px-5 text-[12px] text-[var(--accent-amber)] mb-3 tac-mono">
+          <p className="tac-mono mb-3 px-5 text-[12px] text-[var(--accent-amber)]">
             NO KEY — SCANNER OFFLINE
           </p>
         )}
@@ -75,7 +76,7 @@ export function ApiKeyModal({ open, onClose }: Props) {
             value={key}
             onChange={(e) => setKey(e.target.value)}
             placeholder="xai-..."
-            className="w-full px-3 py-2 text-[13px] tac-mono bg-[var(--bg-inset)] border border-[var(--border-dim)] outline-none focus:border-[var(--accent-orange)] mb-3"
+            className="tac-mono mb-3 w-full border border-[var(--border-dim)] bg-[var(--bg-inset)] px-3 py-2 text-[13px] outline-none focus:border-[var(--accent-orange)]"
           />
 
           <div className="flex gap-2">
@@ -88,9 +89,9 @@ export function ApiKeyModal({ open, onClose }: Props) {
                   setKey("");
                 }
               }}
-              className="px-3 py-1.5 tac-mono text-[10px] border border-[var(--accent-green)] text-[var(--accent-green)]"
+              className="tac-mono border border-[var(--accent-green)] px-3 py-1.5 text-[10px] text-[var(--accent-green)]"
             >
-              SAVE
+              ARM KEY
             </button>
             {saved && (
               <button
@@ -99,15 +100,15 @@ export function ApiKeyModal({ open, onClose }: Props) {
                   clearStoredApiKey();
                   setSaved(null);
                 }}
-                className="px-3 py-1.5 tac-mono text-[10px] border border-[var(--accent-red)] text-[var(--accent-red)]"
+                className="tac-mono border border-[var(--accent-red)] px-3 py-1.5 text-[10px] text-[var(--accent-red)]"
               >
-                CLEAR
+                REVOKE
               </button>
             )}
           </div>
 
-          <p className="tac-mono text-[9px] text-[var(--text-dim)] mt-3">
-            {rateInfo.remaining}/20 req/hr · local storage only
+          <p className="tac-mono mt-3 text-[9px] text-[var(--text-dim)]">
+            {rateInfo.remaining}/20 req/hr · session storage only
           </p>
         </div>
       </div>

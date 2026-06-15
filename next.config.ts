@@ -19,7 +19,12 @@ const nextConfig: NextConfig = {
             { source: "/scan", destination: "/cypherscan", permanent: true },
             {
               source: "/scan/scanner",
-              destination: "/cypherscan/scanner",
+              destination: "/cypherscan",
+              permanent: true,
+            },
+            {
+              source: "/cypherscan/scanner",
+              destination: "/cypherscan",
               permanent: true,
             },
           ];
