@@ -16,17 +16,10 @@ const nextConfig: NextConfig = {
     ? {
         async redirects() {
           return [
-            { source: "/scan", destination: "/cypherscan", permanent: true },
-            {
-              source: "/scan/scanner",
-              destination: "/cypherscan",
-              permanent: true,
-            },
-            {
-              source: "/cypherscan/scanner",
-              destination: "/cypherscan",
-              permanent: true,
-            },
+            { source: "/cypherscan", destination: "/", permanent: true },
+            { source: "/cypherscan/:path*", destination: "/", permanent: true },
+            { source: "/scan", destination: "/", permanent: true },
+            { source: "/scan/:path*", destination: "/", permanent: true },
           ];
         },
       }

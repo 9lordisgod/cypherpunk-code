@@ -940,20 +940,5 @@
     "language": "English",
     "cypherpunkScore": 3,
     "tags": ["aggregator", "discovery", "mixed-quality"]
-  },
-  {
-    "id": "cypherscan-intel-feed",
-    "title": "CypherScan — Live OSINT Intel Feed",
-    "description": "SITREP Scanner for cypherpunks and sovereignty-minded operators. Grok-powered situation analysis with live search, cross-referenced against OSINT ingest. BYOK xAI key — session-only, never stored on servers.",
-    "url": "https://cypherpunk-code.ca/cypherscan",
-    "type": "tool",
-    "topics": ["cypherpunk", "privacy", "opsec", "general-crypto"],
-    "difficulty": "beginner",
-    "pricing": "free",
-    "provider": "Cypherpunk Code",
-    "language": "English",
-    "cypherpunkScore": 8,
-    "featured": true,
-    "tags": ["osint", "intel", "live-feed", "monitoring", "rss", "sovereignty"]
   }
 ]

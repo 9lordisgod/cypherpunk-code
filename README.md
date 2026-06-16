@@ -32,23 +32,15 @@ Static export is possible later if you drop client-side search (currently uses R
 
 | File | Purpose |
 |------|---------|
-| `src/data/resources.json` | Resource database (58 entries seeded) |
+| `src/data/resources.json` | Resource database |
 | `src/data/paths.json` | Learning path sequences |
 | `src/data/site.json` | Site name, creator handle, donation addresses |
 
 Site name, domain, and donation addresses are configured in `site.json`.
 
-## Projects
-
-| Project | Status | Description |
-|---------|--------|-------------|
-| [Cypherscan](../projects/cypherscan/README.md) | Live | OSINT intel feed — 32 RSS + 17 X sources, auto-refresh, rule-based ranking. [/cypherscan](/cypherscan) |
-
 ## Pages
 
 - `/` — Homepage with featured resources
-- `/cypherscan` — Live OSINT intel feed
-- `/cypherscan/scanner` — Optional BYOK SITREP scanner (xAI)
 - `/catalog` — Searchable, filterable catalog with CP Score
 - `/paths` — Curated learning paths
 - `/resource/[id]` — Resource detail pages
