@@ -20,8 +20,6 @@ const PRESETS = [
   "Freedom tech: encryption battles, VPN bans, whistleblower news",
 ];
 
-const GLYPHS = ["◈", "◇", "▣", "⬡", "◎", "◉", "⬢", "▲"];
-
 export function SitrepScan() {
   const [apiKey, setApiKey] = useState("");
   const [keyActive, setKeyActive] = useState(false);
@@ -30,18 +28,11 @@ export function SitrepScan() {
   const [result, setResult] = useState<string | null>(null);
   const [citations, setCitations] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [scanPhase, setScanPhase] = useState(0);
 
   useEffect(() => {
     const stored = getStoredApiKey();
     if (stored) setKeyActive(true);
   }, []);
-
-  useEffect(() => {
-    if (!loading) return;
-    const id = setInterval(() => setScanPhase((p) => (p + 1) % 4), 600);
-    return () => clearInterval(id);
-  }, [loading]);
 
   const activateKey = () => {
     if (!apiKey.trim()) return;
@@ -69,7 +60,6 @@ export function SitrepScan() {
     setLoading(true);
     setError(null);
     setResult(null);
-    setScanPhase(0);
 
     try {
       let headlines = "Feeds unavailable";
@@ -108,62 +98,23 @@ export function SitrepScan() {
     }
   };
 
-  const scanLabels = ["DECRYPTING", "CROSS-REF", "LIVE SEARCH", "SYNTHESIS"];
-
   return (
-    <div className="scan-grid sitrep-scan min-h-screen overflow-hidden">
-      <div className="sitrep-particles" aria-hidden="true">
-        {GLYPHS.map((g, i) => (
-          <span key={i} className="sitrep-particle" style={{ "--i": i } as React.CSSProperties}>
-            {g}
-          </span>
-        ))}
-      </div>
+    <div className="scan-grid min-h-screen">
+      <div className="mx-auto max-w-7xl px-4 py-6">
+        <p className="tac-mono mb-6 text-[11px] font-semibold tracking-widest text-[var(--text-bright)]">
+          Cypher Scan
+        </p>
 
-      <div className="sitrep-scanline" aria-hidden="true" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-6">
-        <section className="sitrep-hero mb-6 rounded-sm border border-[var(--border-dim)] p-5 sm:p-6">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <p className="sitrep-tag tac-mono mb-2 text-[10px] tracking-[0.35em] text-[var(--accent-orange)]">
-                # SITREP SCANNER
-              </p>
-              <h1 className="sitrep-glitch text-3xl font-bold leading-none tracking-tight text-[var(--text-bright)] sm:text-4xl">
-                SITUATION ANALYSIS
-              </h1>
-              <p className="tac-mono mt-3 text-[11px] tracking-wide text-[var(--text-dim)]">
-                Grok + live search · cypherpunk intel · BYOK
-              </p>
-              <div className="sitrep-mascot tac-mono mt-4 text-[11px] text-[var(--accent-cyan)]">
-                <span className="sitrep-blink">◉</span>
-                <span className="mx-1 opacity-60">_</span>
-                <span className="sitrep-bounce">◉</span>
-                <span className="ml-2 text-[9px] text-[var(--text-dim)]">
-                  ghost in the shell, online
-                </span>
-              </div>
-            </div>
-            <div className="tac-mono text-right">
-              <p className="tac-label mb-1">EASTERN TIME</p>
-              <UtcClock />
-              <p className="sitrep-status mt-2 text-[9px] text-[var(--accent-green)]">
-                ● {keyActive ? "KEY ARMED" : "AWAITING KEY"}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div className="sitrep-panel pizz-panel glow-panel mb-4">
+        <div className="pizz-panel glow-panel mb-4">
           <div className="pizz-panel-header flex items-center justify-between">
             <h2 className="tac-mono text-[11px] font-semibold tracking-widest">
-              <span className="sitrep-lock-pulse">🔐</span> API KEY · SESSION ONLY
+              API KEY · SESSION ONLY
             </h2>
             <span className="tac-mono text-[9px] text-[var(--accent-cyan)]">PRIVACY SHIELD</span>
           </div>
 
           <div className="p-4">
-            <div className="sitrep-privacy mb-4 rounded-sm border border-[var(--accent-cyan)]/30 bg-[rgba(56,189,248,0.04)] p-3">
+            <div className="mb-4 rounded-sm border border-[var(--accent-cyan)]/30 bg-[rgba(56,189,248,0.04)] p-3">
               <p className="tac-mono text-[10px] leading-relaxed text-[var(--accent-cyan)]">
                 <strong>One-time temporary key.</strong> Your xAI API key lives only in this
                 browser tab&apos;s session memory — cleared when you close the tab. Never saved
@@ -173,13 +124,13 @@ export function SitrepScan() {
 
             {keyActive ? (
               <div className="flex flex-wrap items-center gap-3">
-                <span className="tac-mono text-[11px] text-[var(--accent-green)] sitrep-key-glow">
+                <span className="tac-mono text-[11px] text-[var(--accent-green)]">
                   ● ACTIVE: {maskApiKey(getStoredApiKey() ?? "")}
                 </span>
                 <button
                   type="button"
                   onClick={revokeKey}
-                  className="tac-mono border border-[var(--accent-red)] px-3 py-1.5 text-[9px] tracking-wider text-[var(--accent-red)] transition-all hover:bg-[rgba(239,68,68,0.08)]"
+                  className="tac-mono border border-[var(--accent-red)] px-3 py-1.5 text-[9px] tracking-wider text-[var(--accent-red)] transition-colors hover:bg-[rgba(239,68,68,0.08)]"
                 >
                   REVOKE KEY
                 </button>
@@ -198,7 +149,7 @@ export function SitrepScan() {
                   type="button"
                   onClick={activateKey}
                   disabled={!apiKey.trim()}
-                  className="sitrep-btn tac-mono border border-[var(--accent-green)] px-5 py-2.5 text-[10px] tracking-[0.2em] text-[var(--accent-green)] transition-all hover:bg-[rgba(74,222,128,0.08)] disabled:opacity-40"
+                  className="tac-mono border border-[var(--accent-green)] px-5 py-2.5 text-[10px] tracking-[0.2em] text-[var(--accent-green)] transition-colors hover:bg-[rgba(74,222,128,0.08)] disabled:opacity-40"
                 >
                   ARM KEY
                 </button>
@@ -219,7 +170,7 @@ export function SitrepScan() {
           </div>
         </div>
 
-        <div className="sitrep-panel pizz-panel glow-panel">
+        <div className="pizz-panel glow-panel">
           <div className="pizz-panel-header flex items-center justify-between">
             <h2 className="tac-mono text-[11px] font-semibold tracking-widest">
               QUERY INTERFACE
@@ -239,24 +190,17 @@ export function SitrepScan() {
               type="button"
               onClick={() => runScan()}
               disabled={loading || !query.trim()}
-              className="sitrep-execute tac-mono w-full border border-[var(--accent-orange)] py-3 text-[10px] tracking-[0.2em] text-[var(--accent-orange)] transition-all disabled:opacity-40"
+              className="tac-mono w-full border border-[var(--accent-orange)] py-3 text-[10px] tracking-[0.2em] text-[var(--accent-orange)] transition-colors hover:bg-[rgba(234,88,12,0.08)] disabled:opacity-40"
             >
-              {loading ? (
-                <span className="inline-flex items-center justify-center gap-2">
-                  <span className="sitrep-radar" />
-                  {scanLabels[scanPhase]}…
-                </span>
-              ) : (
-                "▶ EXECUTE SCAN"
-              )}
+              {loading ? "RUNNING SITREP SCAN…" : "▶ EXECUTE SCAN"}
             </button>
           </div>
         </div>
 
-        <div className="sitrep-panel mt-4 pizz-panel p-4">
+        <div className="mt-4 pizz-panel p-4">
           <h3 className="tac-label mb-3">Preset queries</h3>
           <div className="flex flex-wrap gap-2">
-            {PRESETS.map((q, i) => (
+            {PRESETS.map((q) => (
               <button
                 key={q}
                 type="button"
@@ -264,8 +208,7 @@ export function SitrepScan() {
                   setQuery(q);
                   runScan(q);
                 }}
-                className="sitrep-preset tac-mono border border-[var(--border-dim)] px-2 py-1.5 text-left text-[9px] text-[var(--text-dim)] transition-all"
-                style={{ animationDelay: `${i * 80}ms` }}
+                className="tac-mono border border-[var(--border-dim)] px-2 py-1.5 text-left text-[9px] text-[var(--text-dim)] transition-colors hover:border-[var(--accent-orange)] hover:text-[var(--accent-orange)]"
               >
                 {q.slice(0, 52)}…
               </button>
@@ -274,35 +217,19 @@ export function SitrepScan() {
         </div>
 
         {error && (
-          <div className="sitrep-error tac-mono mt-4 border border-[var(--accent-red)] p-3 text-[11px] text-[var(--accent-red)]">
+          <div className="tac-mono mt-4 border border-[var(--accent-red)] p-3 text-[11px] text-[var(--accent-red)]">
             {error}
           </div>
         )}
 
-        {loading && (
-          <div className="sitrep-loading mt-4 pizz-panel p-6 text-center">
-            <div className="sitrep-orbit mx-auto mb-4" aria-hidden="true">
-              <span>◈</span>
-              <span>◇</span>
-              <span>▣</span>
-            </div>
-            <p className="tac-mono text-[11px] tracking-widest text-[var(--accent-orange)]">
-              SCANNING THE WIRE…
-            </p>
-            <p className="tac-mono mt-2 text-[9px] text-[var(--text-dim)]">
-              live search · osint cross-ref · freedom-tech lens
-            </p>
-          </div>
-        )}
-
         {result && (
-          <div className="sitrep-result mt-4 pizz-panel glow-panel">
+          <div className="mt-4 pizz-panel glow-panel">
             <div className="pizz-panel-header">
               <h3 className="tac-mono text-[11px] tracking-widest text-[var(--accent-orange)]">
-                ◈ GLOBAL SITREP
+                GLOBAL SITREP
               </h3>
             </div>
-            <div className="sitrep-result-body whitespace-pre-wrap p-4 text-[12px] leading-relaxed">
+            <div className="whitespace-pre-wrap p-4 text-[12px] leading-relaxed">
               {result}
             </div>
             {citations.length > 0 && (

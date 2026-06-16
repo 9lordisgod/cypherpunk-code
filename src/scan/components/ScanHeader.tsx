@@ -35,7 +35,7 @@ export function ScanHeader() {
           </div>
 
           <nav className="flex items-center gap-0.5">
-            <span className="sitrep-nav-active px-3 py-1.5 tac-mono text-[10px] tracking-wider border border-[var(--accent-orange)] text-[var(--accent-orange)] bg-[rgba(234,88,12,0.06)]">
+            <span className="px-3 py-1.5 tac-mono text-[10px] tracking-wider border border-[var(--accent-orange)] text-[var(--accent-orange)] bg-[rgba(234,88,12,0.06)]">
               SITREP
               <span className="ml-1 hidden opacity-50 sm:inline">SCAN</span>
             </span>
