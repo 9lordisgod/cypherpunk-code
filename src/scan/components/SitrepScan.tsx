@@ -11,15 +11,6 @@ import {
 import { callGrok } from "@/scan/lib/grok-client";
 import { buildScannerPrompt } from "@/scan/lib/grok-prompts";
 
-const PRESETS = [
-  "What is happening in the world right now? Full SITREP.",
-  "Latest developments in digital privacy, surveillance, and censorship worldwide",
-  "Current military conflicts and geopolitical flashpoints",
-  "Cybersecurity incidents and nation-state operations this week",
-  "Semiconductor export controls, AI regulation, and critical infrastructure policy",
-  "Freedom tech: encryption battles, VPN bans, whistleblower news",
-];
-
 export function SitrepScan() {
   const [apiKey, setApiKey] = useState("");
   const [keyActive, setKeyActive] = useState(false);
@@ -48,9 +39,8 @@ export function SitrepScan() {
     setApiKey("");
   };
 
-  const runScan = async (q?: string) => {
-    const scanQuery = q ?? query;
-    if (!scanQuery.trim()) return;
+  const runScan = async () => {
+    if (!query.trim()) return;
 
     if (!getStoredApiKey()) {
       setError("Enter your xAI API key below — session-only, never stored on our servers.");
@@ -84,7 +74,7 @@ export function SitrepScan() {
             content:
               "You are CypherScan global intelligence. Cypherpunk and freedom-tech focused. Use live search.",
           },
-          { role: "user", content: buildScannerPrompt(headlines, scanQuery) },
+          { role: "user", content: buildScannerPrompt(headlines, query) },
         ],
         { searchMode: "on", maxTokens: 2500 }
       );
@@ -101,10 +91,6 @@ export function SitrepScan() {
   return (
     <div className="scan-grid min-h-screen">
       <div className="mx-auto max-w-7xl px-4 py-6">
-        <p className="tac-mono mb-6 text-[11px] font-semibold tracking-widest text-[var(--text-bright)]">
-          Cypher Scan
-        </p>
-
         <div className="pizz-panel glow-panel mb-4">
           <div className="pizz-panel-header flex items-center justify-between">
             <h2 className="tac-mono text-[11px] font-semibold tracking-widest">
@@ -194,25 +180,6 @@ export function SitrepScan() {
             >
               {loading ? "RUNNING SITREP SCAN…" : "▶ EXECUTE SCAN"}
             </button>
-          </div>
-        </div>
-
-        <div className="mt-4 pizz-panel p-4">
-          <h3 className="tac-label mb-3">Preset queries</h3>
-          <div className="flex flex-wrap gap-2">
-            {PRESETS.map((q) => (
-              <button
-                key={q}
-                type="button"
-                onClick={() => {
-                  setQuery(q);
-                  runScan(q);
-                }}
-                className="tac-mono border border-[var(--border-dim)] px-2 py-1.5 text-left text-[9px] text-[var(--text-dim)] transition-colors hover:border-[var(--accent-orange)] hover:text-[var(--accent-orange)]"
-              >
-                {q.slice(0, 52)}…
-              </button>
-            ))}
           </div>
         </div>
 
