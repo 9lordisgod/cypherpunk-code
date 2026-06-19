@@ -618,7 +618,15 @@ body.mobile-menu-open {
 .site-logo-text {
   font-family: var(--font-pixel), monospace;
   font-size: 11px;
+  line-height: 1.5;
   text-shadow: 2px 2px 0 var(--pixel-shadow);
+}
+
+@media (max-width: 767px) {
+  .site-header .site-logo-text {
+    font-size: 9px;
+    line-height: 1.6;
+  }
 }
 
 .nav-link {

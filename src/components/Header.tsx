@@ -35,10 +35,10 @@ export function Header() {
         <div className="flex items-center justify-between gap-3">
           <Link
             href="/"
-            className="group flex min-w-0 items-center gap-2 no-underline text-foreground"
+            className="group flex flex-1 items-center gap-2 no-underline text-foreground"
           >
             <SiteLogo size="md" />
-            <span className="site-logo-text truncate max-sm:max-w-[8.5rem] sm:max-w-none">
+            <span className="site-logo-text leading-snug whitespace-normal">
               {site.name}
             </span>
           </Link>
@@ -68,7 +68,7 @@ export function Header() {
             </button>
           </nav>
 
-          <div className="flex items-center gap-1 md:hidden">
+          <div className="flex shrink-0 items-center gap-1 md:hidden">
             <button
               type="button"
               onClick={openPicker}
