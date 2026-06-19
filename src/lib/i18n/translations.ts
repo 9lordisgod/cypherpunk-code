@@ -1,4 +1,10 @@
 import type { Locale } from "./types";
+import {
+  pageStringsEn,
+  pageStringsFr,
+  pageStringsJa,
+  pageStringsZhCN,
+} from "./pageStrings";
 
 const en = {
   // Language picker
@@ -104,6 +110,8 @@ const en = {
   pricingFree: "Free",
   pricingPaid: "Paid",
   pricingFreemium: "Freemium",
+
+  ...pageStringsEn,
 };
 
 type TranslationStrings = { [K in keyof typeof en]: string };
@@ -201,6 +209,8 @@ const zhCN: TranslationStrings = {
   pricingFree: "免费",
   pricingPaid: "付费",
   pricingFreemium: "免费增值",
+
+  ...pageStringsZhCN,
 };
 
 const ja: TranslationStrings = {
@@ -299,6 +309,8 @@ const ja: TranslationStrings = {
   pricingFree: "無料",
   pricingPaid: "有料",
   pricingFreemium: "フリーミアム",
+
+  ...pageStringsJa,
 };
 
 const fr: TranslationStrings = {
@@ -398,6 +410,8 @@ const fr: TranslationStrings = {
   pricingFree: "Gratuit",
   pricingPaid: "Payant",
   pricingFreemium: "Freemium",
+
+  ...pageStringsFr,
 };
 
 export const translations: Record<Locale, TranslationStrings> = {

@@ -9,7 +9,10 @@ import { ResourceCard } from "@/components/ResourceCard";
 import { HeroAnimeFigure } from "@/components/HeroAnimeFigure";
 import { SiteLogo } from "@/components/SiteLogo";
 import type { LearningPath, Resource } from "@/lib/types";
+import { usePathText } from "@/lib/i18n/usePathText";
 import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
+import { site } from "@/lib/data";
+import { useEffect } from "react";
 
 type HomeContentProps = {
   featured: Resource[];
@@ -34,6 +37,11 @@ export function HomeContent({
 }: HomeContentProps) {
   const { t } = useLanguage();
   const { topicLabels } = useTranslatedLabels();
+  const { getPathTitle, getPathDescription } = usePathText();
+
+  useEffect(() => {
+    document.title = site.name;
+  }, [t]);
 
   return (
     <div>
@@ -156,9 +164,11 @@ export function HomeContent({
               className="pixel-card block p-5 no-underline text-foreground"
             >
               <h3 className="font-semibold" style={{ fontFamily: "var(--font-pixel)", fontSize: "10px", lineHeight: 1.8 }}>
-                {path.title}
+                {getPathTitle(path.id, path.title)}
               </h3>
-              <p className="mt-2 line-clamp-2 text-sm text-muted">{path.description}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-muted">
+                {getPathDescription(path.id, path.description)}
+              </p>
               <p className="mt-3 text-xs" style={{ color: "var(--accent)" }}>
                 {t("steps", { count: path.resourceIds.length })}
               </p>

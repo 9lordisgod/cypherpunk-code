@@ -1,4 +1,10 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
+
 export function ScoreBadge({ score }: { score: number }) {
+  const { t } = useLanguage();
+
   const color =
     score >= 9
       ? "text-accent border-accent/40 bg-accent/10"
@@ -11,7 +17,7 @@ export function ScoreBadge({ score }: { score: number }) {
   return (
     <span
       className={`inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-xs ${color}`}
-      title="Cypherpunk relevance score (1-10)"
+      title={t("cpScoreTooltip")}
     >
       <span className="opacity-60">CP</span>
       {score}

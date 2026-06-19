@@ -2,24 +2,24 @@
 
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { difficultyLabels, pricingLabels, topicLabels, typeLabels } from "@/lib/labels";
+import { useLanguage } from "@/components/LanguageProvider";
 import { defaultFilters, filterResources, type FilterState } from "@/lib/filters";
+import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
 import type { Resource, Topic, ResourceType, Difficulty, Pricing } from "@/lib/types";
 import { ResourceCard } from "./ResourceCard";
 
-const allTopics = Object.keys(topicLabels) as (keyof typeof topicLabels)[];
-const allTypes = Object.keys(typeLabels) as (keyof typeof typeLabels)[];
-
-function computeFiltersFromSearchParams(searchParams: ReturnType<typeof useSearchParams>): FilterState {
+function computeFiltersFromSearchParams(
+  searchParams: ReturnType<typeof useSearchParams>,
+  allTopics: readonly string[],
+  allTypes: readonly string[]
+): FilterState {
   if (!searchParams) return defaultFilters;
 
   const initial: FilterState = { ...defaultFilters };
 
-  // query / q
   const q = searchParams.get("q") || searchParams.get("query") || "";
   if (q) initial.query = q;
 
-  // topics (support repeated ?topic=foo&topic=bar or comma separated ?topics=foo,bar)
   const topicParams = [
     ...searchParams.getAll("topic"),
     ...searchParams.getAll("topics"),
@@ -27,10 +27,9 @@ function computeFiltersFromSearchParams(searchParams: ReturnType<typeof useSearc
   const topicsFromParam = topicParams
     .flatMap((t) => t.split(","))
     .map((t) => t.trim() as Topic)
-    .filter((t) => (allTopics as readonly string[]).includes(t));
+    .filter((t) => allTopics.includes(t));
   if (topicsFromParam.length) initial.topics = topicsFromParam;
 
-  // types
   const typeParams = [
     ...searchParams.getAll("type"),
     ...searchParams.getAll("types"),
@@ -38,29 +37,25 @@ function computeFiltersFromSearchParams(searchParams: ReturnType<typeof useSearc
   const typesFromParam = typeParams
     .flatMap((t) => t.split(","))
     .map((t) => t.trim() as ResourceType)
-    .filter((t) => (allTypes as readonly string[]).includes(t));
+    .filter((t) => allTypes.includes(t));
   if (typesFromParam.length) initial.types = typesFromParam;
 
-  // difficulty
   const diff = searchParams.get("difficulty") as Difficulty | null;
   if (diff && ["beginner", "intermediate", "advanced"].includes(diff)) {
     initial.difficulty = diff;
   }
 
-  // pricing
   const price = searchParams.get("pricing") as Pricing | null;
   if (price && ["free", "paid", "freemium"].includes(price)) {
     initial.pricing = price;
   }
 
-  // min CP score
   const minS = searchParams.get("minScore") || searchParams.get("minCypherpunkScore");
   if (minS) {
     const n = parseInt(minS, 10);
     if (!isNaN(n) && n >= 0 && n <= 10) initial.minCypherpunkScore = n;
   }
 
-  // sort
   const s = searchParams.get("sort") as FilterState["sort"] | null;
   if (s && ["relevance", "score", "title"].includes(s)) {
     initial.sort = s;
@@ -71,9 +66,15 @@ function computeFiltersFromSearchParams(searchParams: ReturnType<typeof useSearc
 }
 
 export function CatalogClient({ resources }: { resources: Resource[] }) {
+  const { t } = useLanguage();
+  const { topicLabels, typeLabels, difficultyLabels, pricingLabels } =
+    useTranslatedLabels();
+  const allTopics = Object.keys(topicLabels) as (keyof typeof topicLabels)[];
+  const allTypes = Object.keys(typeLabels) as (keyof typeof typeLabels)[];
+
   const searchParams = useSearchParams();
   const [filters, setFilters] = useState<FilterState>(() =>
-    computeFiltersFromSearchParams(searchParams)
+    computeFiltersFromSearchParams(searchParams, allTopics, allTypes)
   );
 
   const filtered = useMemo(
@@ -105,11 +106,11 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
         <div className="sticky top-20 space-y-6 rounded-lg border border-border bg-card p-5">
           <div>
             <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted">
-              Search
+              {t("catalogSearch")}
             </label>
             <input
               type="search"
-              placeholder="bitcoin, tor, gpg..."
+              placeholder={t("catalogSearchPlaceholder")}
               value={filters.query}
               onChange={(e) =>
                 setFilters((f) => ({ ...f, query: e.target.value, sort: "relevance" }))
@@ -120,7 +121,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
 
           <div>
             <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted">
-              Min CP Score: {filters.minCypherpunkScore}
+              {t("catalogMinCpScore", { score: filters.minCypherpunkScore })}
             </label>
             <input
               type="range"
@@ -135,14 +136,12 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
               }
               className="w-full accent-accent"
             />
-            <p className="mt-1 text-xs text-muted">
-              Filters trading noise. 7+ = high signal.
-            </p>
+            <p className="mt-1 text-xs text-muted">{t("catalogCpScoreHint")}</p>
           </div>
 
           <div>
             <p className="mb-2 font-mono text-xs uppercase tracking-wider text-muted">
-              Topics
+              {t("catalogTopics")}
             </p>
             <div className="flex flex-wrap gap-1.5">
               {allTopics.map((topic) => (
@@ -164,7 +163,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
 
           <div>
             <p className="mb-2 font-mono text-xs uppercase tracking-wider text-muted">
-              Type
+              {t("catalogType")}
             </p>
             <div className="flex flex-wrap gap-1.5">
               {allTypes.map((type) => (
@@ -186,7 +185,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs text-muted">Difficulty</label>
+              <label className="mb-1 block text-xs text-muted">{t("catalogDifficulty")}</label>
               <select
                 value={filters.difficulty ?? ""}
                 onChange={(e) =>
@@ -199,7 +198,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
                 }
                 className="w-full rounded border border-border bg-background px-2 py-1.5 text-xs"
               >
-                <option value="">All</option>
+                <option value="">{t("filterAll")}</option>
                 {Object.entries(difficultyLabels).map(([k, v]) => (
                   <option key={k} value={k}>
                     {v}
@@ -208,7 +207,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs text-muted">Pricing</label>
+              <label className="mb-1 block text-xs text-muted">{t("catalogPricing")}</label>
               <select
                 value={filters.pricing ?? ""}
                 onChange={(e) =>
@@ -221,7 +220,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
                 }
                 className="w-full rounded border border-border bg-background px-2 py-1.5 text-xs"
               >
-                <option value="">All</option>
+                <option value="">{t("filterAll")}</option>
                 {Object.entries(pricingLabels).map(([k, v]) => (
                   <option key={k} value={k}>
                     {v}
@@ -236,7 +235,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
             onClick={() => setFilters(defaultFilters)}
             className="w-full rounded border border-border py-2 text-xs text-muted hover:text-foreground"
           >
-            Clear filters
+            {t("clearFilters")}
           </button>
         </div>
       </aside>
@@ -244,7 +243,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
       <div className="min-w-0 flex-1">
         <div className="mb-4 flex items-center justify-between">
           <p className="text-sm text-muted">
-            <span className="font-mono text-foreground">{filtered.length}</span> resources
+            {t("resourcesCount", { count: filtered.length })}
           </p>
           <select
             value={filters.sort}
@@ -256,15 +255,15 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
             }
             className="rounded border border-border bg-card px-3 py-1.5 text-xs"
           >
-            <option value="score">CP Score</option>
-            <option value="title">Title A–Z</option>
-            <option value="relevance">Relevance</option>
+            <option value="score">{t("catalogSortScore")}</option>
+            <option value="title">{t("catalogSortTitle")}</option>
+            <option value="relevance">{t("catalogSortRelevance")}</option>
           </select>
         </div>
 
         {filtered.length === 0 ? (
           <div className="rounded-lg border border-border bg-card p-12 text-center">
-            <p className="text-muted">No resources match your filters.</p>
+            <p className="text-muted">{t("catalogNoResults")}</p>
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2">
