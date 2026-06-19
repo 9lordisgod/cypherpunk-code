@@ -10,6 +10,16 @@ export interface FilterState {
   sort: "relevance" | "score" | "title";
 }
 
+export interface FilterTextHelpers {
+  getSearchText: (resource: Resource) => string;
+  getTitle: (resource: Resource) => string;
+}
+
+const defaultHelpers: FilterTextHelpers = {
+  getSearchText: (r) => `${r.title} ${r.description} ${r.provider}`.toLowerCase(),
+  getTitle: (r) => r.title,
+};
+
 export const defaultFilters: FilterState = {
   query: "",
   topics: [],
@@ -20,23 +30,27 @@ export const defaultFilters: FilterState = {
   sort: "score",
 };
 
-function matchesQuery(resource: Resource, query: string): boolean {
+function matchesQuery(
+  resource: Resource,
+  query: string,
+  getSearchText: FilterTextHelpers["getSearchText"]
+): boolean {
   if (!query.trim()) return true;
   const q = query.toLowerCase();
   return (
-    resource.title.toLowerCase().includes(q) ||
-    resource.description.toLowerCase().includes(q) ||
-    resource.provider.toLowerCase().includes(q) ||
+    getSearchText(resource).includes(q) ||
     resource.tags.some((t) => t.toLowerCase().includes(q))
   );
 }
 
 export function filterResources(
   resources: Resource[],
-  filters: FilterState
+  filters: FilterState,
+  helpers: FilterTextHelpers = defaultHelpers
 ): Resource[] {
+  const { getSearchText, getTitle } = helpers;
   let result = resources.filter((r) => {
-    if (!matchesQuery(r, filters.query)) return false;
+    if (!matchesQuery(r, filters.query, getSearchText)) return false;
     if (filters.topics.length && !filters.topics.some((t) => r.topics.includes(t)))
       return false;
     if (filters.types.length && !filters.types.includes(r.type)) return false;
@@ -49,18 +63,20 @@ export function filterResources(
   switch (filters.sort) {
     case "score":
       result = [...result].sort(
-        (a, b) => b.cypherpunkScore - a.cypherpunkScore || a.title.localeCompare(b.title)
+        (a, b) =>
+          b.cypherpunkScore - a.cypherpunkScore ||
+          getTitle(a).localeCompare(getTitle(b))
       );
       break;
     case "title":
-      result = [...result].sort((a, b) => a.title.localeCompare(b.title));
+      result = [...result].sort((a, b) => getTitle(a).localeCompare(getTitle(b)));
       break;
     case "relevance":
       if (filters.query.trim()) {
         const q = filters.query.toLowerCase();
         result = [...result].sort((a, b) => {
-          const aTitle = a.title.toLowerCase().includes(q) ? 2 : 0;
-          const bTitle = b.title.toLowerCase().includes(q) ? 2 : 0;
+          const aTitle = getSearchText(a).includes(q) ? 2 : 0;
+          const bTitle = getSearchText(b).includes(q) ? 2 : 0;
           return bTitle - aTitle || b.cypherpunkScore - a.cypherpunkScore;
         });
       }

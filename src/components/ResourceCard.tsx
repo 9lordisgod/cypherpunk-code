@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useResourceText } from "@/lib/i18n/useResourceText";
 import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
 import type { Resource } from "@/lib/types";
 import { ScoreBadge } from "./ScoreBadge";
@@ -8,6 +9,8 @@ import { TopicBadge } from "./TopicBadge";
 
 export function ResourceCard({ resource }: { resource: Resource }) {
   const { typeLabels, pricingLabels, difficultyLabels } = useTranslatedLabels();
+  const { getResourceTitle, getResourceDescription, getResourceProvider } =
+    useResourceText();
 
   return (
     <Link
@@ -37,11 +40,11 @@ export function ResourceCard({ resource }: { resource: Resource }) {
         className="mb-2 text-base font-semibold leading-snug group-hover:text-accent"
         style={{ fontFamily: "var(--font-pixel)", fontSize: "9px", lineHeight: 1.8 }}
       >
-        {resource.title}
+        {getResourceTitle(resource.id, resource.title)}
       </h3>
 
       <p className="mb-4 line-clamp-2 flex-1 text-sm text-muted">
-        {resource.description}
+        {getResourceDescription(resource.id, resource.description)}
       </p>
 
       <div className="mb-3 flex flex-wrap gap-1.5">
@@ -54,7 +57,7 @@ export function ResourceCard({ resource }: { resource: Resource }) {
       </div>
 
       <div className="flex items-center justify-between border-t-2 border-border pt-3 text-xs text-muted">
-        <span>{resource.provider}</span>
+        <span>{getResourceProvider(resource.id, resource.provider)}</span>
         <span>{difficultyLabels[resource.difficulty]}</span>
       </div>
     </Link>

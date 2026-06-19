@@ -1,0 +1,332 @@
+{
+  "cypherpunk-school-101": {
+    "title": "Cypherpunk School 101",
+    "description": "Programme pratique de 12 semaines couvrant la modélisation des menaces, GPG, systèmes de fichiers chiffrés, Tor, tunnels SSH et souveraineté numérique. Terminal d'abord, zéro superflu, entièrement gratuit.",
+    "provider": "Cypherpunk School"
+  },
+  "cypherpunk-school-privacy-101": {
+    "title": "Confidentialité 101",
+    "description": "Fondamentaux de la confidentialité pour débutants, orientés interface graphique. Les 12 semaines sont en ligne — complément de Cypherpunk 101 pour les nouveaux venus.",
+    "provider": "Cypherpunk School"
+  },
+  "cypherpunk-manifesto": {
+    "title": "Manifeste cypherpunk",
+    "description": "Texte fondateur de 1993 d'Eric Hughes définissant la philosophie cypherpunk : la confidentialité comme révélation sélective, le code plutôt que la politique, la cryptographie comme libération.",
+    "provider": "Eric Hughes / Nakamoto Institute"
+  },
+  "bitcoin-whitepaper": {
+    "title": "Bitcoin : un système de monnaie électronique pair-à-pair",
+    "description": "Livre blanc original de 2008 de Satoshi Nakamoto introduisant Bitcoin. Lecture essentielle pour comprendre la monnaie électronique pair-à-pair sans tiers de confiance.",
+    "provider": "Satoshi Nakamoto"
+  },
+  "nakamoto-institute-library": {
+    "title": "Bibliothèque du Satoshi Nakamoto Institute",
+    "description": "Archives de la littérature fondatrice cypherpunk et Bitcoin — manifestes, messages de listes de diffusion, premiers articles de cryptographie et documents historiques.",
+    "provider": "Satoshi Nakamoto Institute"
+  },
+  "princeton-bitcoin-coursera": {
+    "title": "Bitcoin et technologies des cryptomonnaies",
+    "description": "Cours complet de Princeton couvrant les fondements techniques de Bitcoin, la cryptographie, le consensus, le minage, les portefeuilles, l'anonymat, la régulation et les altcoins.",
+    "provider": "Princeton University / Coursera"
+  },
+  "mit-crypto-engineering": {
+    "title": "Ingénierie et conception des cryptomonnaies",
+    "description": "Cours du MIT sur la conception de Bitcoin et des cryptomonnaies — cryptographie, théorie des jeux, architecture réseau, Lightning Network et ingénierie pratique.",
+    "provider": "MIT OpenCourseWare"
+  },
+  "bitcoin-developer-docs": {
+    "title": "Documentation développeur Bitcoin",
+    "description": "Guides officiels pour développeurs couvrant la blockchain, les transactions, les portefeuilles, le réseau P2P, le minage, le traitement des paiements et la référence complète de l'API RPC.",
+    "provider": "Bitcoin.org"
+  },
+  "bitcoin-org-getting-started": {
+    "title": "Premiers pas avec Bitcoin",
+    "description": "Introduction pratique à Bitcoin pour les particuliers — portefeuilles, sécurité, transactions et exploitation de son propre nœud.",
+    "provider": "Bitcoin.org"
+  },
+  "bitcoin-full-node": {
+    "title": "Exécuter un nœud complet",
+    "description": "Guide pour exécuter son propre nœud complet Bitcoin afin d'assurer souveraineté, validation et participation au réseau sans faire confiance à des tiers.",
+    "provider": "Bitcoin.org"
+  },
+  "moneropedia": {
+    "title": "Moneropedia",
+    "description": "Encyclopédie communautaire de la terminologie Monero — signatures en anneau, adresses furtives, RingCT, RandomX, fongibilité, et plus.",
+    "provider": "Monero Project"
+  },
+  "monero-user-guides": {
+    "title": "Guides utilisateur Monero",
+    "description": "Guides officiels pour les portefeuilles, le minage, les nœuds, l'intégration Tor, les portefeuilles en lecture seule, le multisig et l'import de blockchain.",
+    "provider": "Monero Project"
+  },
+  "monero-developer-guides": {
+    "title": "Guides développeur Monero",
+    "description": "Documentation technique pour les développeurs Monero — démon, RPC portefeuille, primitives cryptographiques et modèles d'intégration.",
+    "provider": "Monero Project"
+  },
+  "monero-research-lab": {
+    "title": "Monero Research Lab",
+    "description": "Recherche académique sur les protocoles de confidentialité de Monero — bulletproofs, CLSAG, Seraphis, Triptych et améliorations cryptographiques en cours.",
+    "provider": "Monero Research Lab"
+  },
+  "monero-docs": {
+    "title": "Documentation Monero",
+    "description": "Documentation technique complète — exécution de nœuds avec systemd, intégration Tor/I2P, opérations de portefeuille et configuration réseau.",
+    "provider": "Monero Project"
+  },
+  "monero-how": {
+    "title": "Monero.how",
+    "description": "Ressource communautaire expliquant les concepts Monero, guides de configuration et tutoriels axés sur la confidentialité pour les utilisateurs quotidiens.",
+    "provider": "Monero.how"
+  },
+  "sethforprivacy-monero-node": {
+    "title": "Exécuter un nœud Monero",
+    "description": "Guide pas à pas pour exécuter son propre nœud Monero afin d'obtenir une confidentialité maximale et une santé du réseau, par l'activiste Seth For Privacy.",
+    "provider": "Seth For Privacy"
+  },
+  "monero-tor-wallet": {
+    "title": "Connecter un portefeuille Monero via Tor",
+    "description": "Guide officiel pour acheminer votre portefeuille Monero via Tor afin de protéger les métadonnées IP et renforcer la confidentialité des transactions.",
+    "provider": "Monero Project"
+  },
+  "monero-whonix-qubes": {
+    "title": "Monero sur Qubes + Whonix",
+    "description": "Guide avancé pour l'isolation portefeuille-démon avec Qubes OS et Whonix — utilisation compartimentée de Monero pour les modèles de menace élevés.",
+    "provider": "Monero Project"
+  },
+  "crypto-anarchist-manifesto": {
+    "title": "Le manifeste crypto-anarchiste",
+    "description": "Manifeste de 1988 de Timothy C. May envisageant des communautés anarchiques activées par la cryptographie au-delà du contrôle gouvernemental — texte fondateur cypherpunk.",
+    "provider": "Timothy C. May / Nakamoto Institute"
+  },
+  "why-wont-jim-encrypt": {
+    "title": "Pourquoi Johnny ne peut pas chiffrer",
+    "description": "Étude phare sur l'utilisabilité expliquant pourquoi les outils de chiffrement échouent en pratique — contexte essentiel pour construire et utiliser des technologies de confidentialité.",
+    "provider": "Whitten & Tygar"
+  },
+  "applied-cryptography-schneier": {
+    "title": "Applied Cryptography (Schneier)",
+    "description": "Référence classique sur la cryptographie pratique — protocoles, algorithmes et sécurité réelle. Citée dans toute la littérature cypherpunk.",
+    "provider": "Bruce Schneier"
+  },
+  "mastering-bitcoin": {
+    "title": "Mastering Bitcoin (3e édition)",
+    "description": "Guide technique de référence d'Andreas Antonopoulos sur Bitcoin — clés, adresses, portefeuilles, transactions, scripts et architecture réseau.",
+    "provider": "Andreas Antonopoulos"
+  },
+  "mastering-lightning": {
+    "title": "Mastering the Lightning Network",
+    "description": "Livre open source couvrant l'architecture du Lightning Network, le routage, la gestion des canaux et le développement sur la couche 2 de Bitcoin.",
+    "provider": "Antonopoulos, Osuntokun, Pickhardt"
+  },
+  "learn-me-a-bitcoin": {
+    "title": "Learn Me A Bitcoin",
+    "description": "Explications visuelles et accessibles des mécanismes internes de Bitcoin — blocs, transactions, clés et scripts rendus compréhensibles.",
+    "provider": "Greg Walker"
+  },
+  "bitcoin-core-docs": {
+    "title": "Documentation Bitcoin Core",
+    "description": "Documentation officielle de Bitcoin Core — installation, configuration, RPC et contribution à l'implémentation de référence.",
+    "provider": "Bitcoin Core"
+  },
+  "umbrel-bitcoin-node": {
+    "title": "Umbrel — Serveur personnel",
+    "description": "Plateforme facile d'auto-hébergement pour nœud Bitcoin et applications. Réduit la barrière à l'exploitation de sa propre infrastructure pour la souveraineté.",
+    "provider": "Umbrel"
+  },
+  "mempool-space": {
+    "title": "Mempool.space",
+    "description": "Explorateur de blocs Bitcoin open source et visualiseur du mempool. Outil pédagogique pour comprendre les frais, les blocs et l'activité du réseau.",
+    "provider": "Mempool"
+  },
+  "tor-project-docs": {
+    "title": "Documentation du Tor Project",
+    "description": "Documentation officielle de Tor — services onion, ponts, transports enfichables et sécurité opérationnelle pour le réseau anonyme.",
+    "provider": "Tor Project"
+  },
+  "eff-surveillance-self-defense": {
+    "title": "Défense contre la surveillance",
+    "description": "Guide de l'EFF pour se protéger de la surveillance électronique — modélisation des menaces, outils et tactiques pour activistes et utilisateurs quotidiens.",
+    "provider": "Electronic Frontier Foundation"
+  },
+  "privacy-guides": {
+    "title": "Privacy Guides",
+    "description": "Recommandations communautaires d'outils respectueux de la confidentialité — systèmes d'exploitation, navigateurs et applications de communication.",
+    "provider": "Privacy Guides"
+  },
+  "gnu-privacy-handbook": {
+    "title": "Le manuel GNU de la confidentialité",
+    "description": "Introduction pratique à GnuPG — génération de clés, chiffrement, signature et gestion des clés pour des communications sécurisées.",
+    "provider": "GnuPG Project"
+  },
+  "signal-protocol": {
+    "title": "Spécifications du protocole Signal",
+    "description": "Spécifications techniques du protocole Signal — Double Ratchet, accord de clés X3DH et secret persistant dans la messagerie.",
+    "provider": "Signal Foundation"
+  },
+  "harvard-crypto-blockchain": {
+    "title": "Crypto et blockchain : technologies et défis",
+    "description": "Cours Harvard Extension examinant la technologie des cryptomonnaies, les défis réglementaires et les implications sociétales.",
+    "provider": "Harvard Extension"
+  },
+  "stanford-cs251": {
+    "title": "Cryptomonnaies et technologies blockchain",
+    "description": "Cours de Stanford sur les fondements des cryptomonnaies, les mécanismes de consensus, les contrats intelligents et la scalabilité blockchain.",
+    "provider": "Stanford University"
+  },
+  "cryptocurrency-security-coursera": {
+    "title": "Sécurité des cryptomonnaies : stockage à froid et portefeuilles papier",
+    "description": "Cours pratique sur la sécurisation des cryptomonnaies via le stockage à froid, les portefeuilles matériels et l'évitement des pièges de sécurité courants.",
+    "provider": "Coursera"
+  },
+  "binance-academy": {
+    "title": "Binance Academy",
+    "description": "Articles éducatifs gratuits sur les bases de la blockchain, la cryptographie, le consensus et la sécurité des portefeuilles. Privilégier le contenu technique au trading.",
+    "provider": "Binance Academy"
+  },
+  "ethereum-classic-cypherpunks": {
+    "title": "Cours Ethereum Classic : les cypherpunks",
+    "description": "Cours historique sur le mouvement cypherpunk — listes de diffusion, figures clés, manifestes et philosophie derrière les systèmes décentralisés.",
+    "provider": "Ethereum Classic"
+  },
+  "fungibility-monero": {
+    "title": "Comprendre la fongibilité (Moneropedia)",
+    "description": "Plongée approfondie sur l'importance de la fongibilité pour une monnaie saine et comment Monero l'atteint grâce à la confidentialité par défaut.",
+    "provider": "Monero Project"
+  },
+  "ring-signatures-monero": {
+    "title": "Signatures en anneau (Moneropedia)",
+    "description": "Explication de la cryptographie des signatures en anneau — comment Monero dissimule le vrai signataire parmi un groupe de signataires possibles.",
+    "provider": "Monero Project"
+  },
+  "randomx-monero": {
+    "title": "Preuve de travail RandomX (Moneropedia)",
+    "description": "Algorithme de preuve de travail optimisé pour CPU et résistant aux ASIC, conçu pour un minage équitable et la décentralisation du réseau.",
+    "provider": "Monero Project"
+  },
+  "tail-emission-monero": {
+    "title": "Émission résiduelle (Moneropedia)",
+    "description": "Pourquoi Monero maintient une subvention de bloc perpétuelle pour la sécurité à long terme du réseau plutôt que de dépendre uniquement des frais de transaction.",
+    "provider": "Monero Project"
+  },
+  "coinjoin-bitcoin": {
+    "title": "CoinJoin (guide développeur Bitcoin)",
+    "description": "Aperçu technique des modèles de transactions CoinJoin pour améliorer la confidentialité des transactions Bitcoin via des transactions collaboratives.",
+    "provider": "Bitcoin.org"
+  },
+  "joinmarket": {
+    "title": "JoinMarket",
+    "description": "Implémentation open source de CoinJoin pour Bitcoin — gagner des frais en tant que market maker ou payer pour la confidentialité en tant que taker.",
+    "provider": "JoinMarket"
+  },
+  "wasabi-wallet-docs": {
+    "title": "Documentation Wasabi Wallet",
+    "description": "Portefeuille Bitcoin axé sur la confidentialité avec CoinJoin intégré (WabiSabi), intégration Tor et support des portefeuilles matériels.",
+    "provider": "zkSNACKs"
+  },
+  "samourai-wallet": {
+    "title": "Samourai Wallet & Whirlpool",
+    "description": "Portefeuille Bitcoin mobile axé sur la confidentialité des transactions via Stonewall, Ricochet et les pools CoinJoin Whirlpool.",
+    "provider": "Samourai Wallet"
+  },
+  "nostr-protocol": {
+    "title": "Protocole Nostr (NIPs)",
+    "description": "Protocole social décentralisé utilisant des clés cryptographiques — communication résistante à la censure sans serveurs centraux.",
+    "provider": "Nostr Protocol"
+  },
+  "freenode-cypherpunk-archive": {
+    "title": "Archives de la liste de diffusion cypherpunk",
+    "description": "Archives historiques de la liste de diffusion cypherpunk (1992–présent) — débats qui ont façonné la cryptographie moderne et les droits numériques.",
+    "provider": "Cryptoanarchy.wiki"
+  },
+  "neo-cypherpunk-summit-2026": {
+    "title": "Neo-Cypherpunk Summit 2026",
+    "description": "Conférence réunissant défenseurs de la confidentialité, développeurs et chercheurs pour faire avancer les idéaux cypherpunk à l'ère moderne.",
+    "provider": "Neo-Cypherpunk Summit"
+  },
+  "stephan-livera-podcast": {
+    "title": "Stephan Livera Podcast",
+    "description": "Podcast Bitcoin de longue date proposant des entretiens techniques et philosophiques approfondis avec développeurs, économistes et cypherpunks.",
+    "provider": "Stephan Livera"
+  },
+  "tales-from-the-crypt": {
+    "title": "Tales from the Crypt",
+    "description": "Podcast explorant la confidentialité Bitcoin, le développement open source et la culture cypherpunk avec les bâtisseurs de l'écosystème.",
+    "provider": "Marty Bent / TFTC"
+  },
+  "monero-talk": {
+    "title": "Monero Talk",
+    "description": "Podcast communautaire couvrant le développement Monero, la recherche en confidentialité et le mouvement plus large de la fongibilité.",
+    "provider": "Monero Talk"
+  },
+  "what-bitcoin-did": {
+    "title": "What Bitcoin Did",
+    "description": "Podcast d'entretiens avec développeurs Bitcoin, économistes et penseurs — couverture large avec des épisodes techniques marquants.",
+    "provider": "Peter McCormack"
+  },
+  "btc-session-tutorials": {
+    "title": "BTC Sessions (YouTube)",
+    "description": "Tutoriels Bitcoin pratiques — portefeuilles matériels, nœuds, Lightning, multisig et auto-garde pour les non-techniciens.",
+    "provider": "BTC Sessions"
+  },
+  "andreas-antonopoulos-talks": {
+    "title": "aantonop (YouTube)",
+    "description": "Des centaines de conférences et Q&R gratuites sur Bitcoin, les blockchains ouvertes, la confidentialité et la philosophie de la monnaie décentralisée.",
+    "provider": "Andreas Antonopoulos"
+  },
+  "jameson-lopp-knowledge": {
+    "title": "Ressources Bitcoin de Jameson Lopp",
+    "description": "Méga-liste organisée de ressources Bitcoin — livres, articles, podcasts, outils et matériel éducatif maintenu par le cofondateur de Casa.",
+    "provider": "Jameson Lopp"
+  },
+  "bitcoin-fungibility-wiki": {
+    "title": "Bitcoin Wiki — Confidentialité et fongibilité",
+    "description": "Articles wiki communautaires sur les techniques de confidentialité Bitcoin, les défis de fongibilité et les améliorations en cours.",
+    "provider": "Bitcoin Wiki"
+  },
+  "ccs-monero": {
+    "title": "Système de financement participatif communautaire Monero",
+    "description": "Financement participatif transparent pour les propositions de développement Monero — découvrez comment les projets open source de confidentialité se financent.",
+    "provider": "Monero Project"
+  },
+  "bitcoin-foundation-education": {
+    "title": "Pourquoi l'éducation Bitcoin compte (2026)",
+    "description": "Perspective de la Bitcoin Foundation sur l'importance croissante de la littératie Bitcoin face aux évolutions réglementaires et institutionnelles.",
+    "provider": "Bitcoin Foundation"
+  },
+  "pgp-best-practices": {
+    "title": "Bonnes pratiques OpenPGP",
+    "description": "Guide communautaire pour utiliser OpenPGP en sécurité — longueurs de clés, sous-clés, expiration et erreurs courantes à éviter.",
+    "provider": "Riseup.net"
+  },
+  "qubes-os-intro": {
+    "title": "Qubes OS — Sécurité par compartimentation",
+    "description": "Système d'exploitation utilisant la virtualisation Xen pour isoler les activités en compartiments sécurisés — fondation de l'opsec avancé.",
+    "provider": "Qubes OS Project"
+  },
+  "tails-os": {
+    "title": "Tails — Le système live amnésique et incognito",
+    "description": "OS live démarré depuis USB qui achemine tout le trafic via Tor et ne laisse aucune trace. Outil standard pour les scénarios de confidentialité à haut risque.",
+    "provider": "Tails Project"
+  },
+  "crypto-and-cypherpunk-ethics": {
+    "title": "Éthique crypto et cypherpunk (module pédagogique)",
+    "description": "Module universitaire explorant les dimensions éthiques de la cryptographie, de la surveillance et du mouvement cypherpunk.",
+    "provider": "Bemidji State University"
+  },
+  "mit-ocw-cryptography": {
+    "title": "MIT 6.875 — Fondements de la cryptographie",
+    "description": "Cours rigoureux de niveau graduate couvrant la sécurité prouvable, les preuves à divulgation nulle de connaissance et les primitives cryptographiques modernes.",
+    "provider": "MIT OpenCourseWare"
+  },
+  "danboneh-cryptography-coursera": {
+    "title": "Cryptographie I (Coursera)",
+    "description": "Dan Boneh de Stanford enseigne la cryptographie fondamentale — chiffrements par blocs, MAC, chiffrement à clé publique et TLS. Fondation théorique essentielle.",
+    "provider": "Stanford / Coursera"
+  },
+  "class-central-crypto": {
+    "title": "Class Central — Cours sur les cryptomonnaies",
+    "description": "Agrégateur de plus de 150 cours sur les cryptomonnaies. Utilisez le filtre de score cypherpunk de Cypherpunk Code pour trouver le signal au milieu du bruit du trading.",
+    "provider": "Class Central"
+  }
+}

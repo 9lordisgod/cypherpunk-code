@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 import { defaultFilters, filterResources, type FilterState } from "@/lib/filters";
+import { useResourceText } from "@/lib/i18n/useResourceText";
 import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
 import type { Resource, Topic, ResourceType, Difficulty, Pricing } from "@/lib/types";
 import { ResourceCard } from "./ResourceCard";
@@ -69,6 +70,15 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   const { t } = useLanguage();
   const { topicLabels, typeLabels, difficultyLabels, pricingLabels } =
     useTranslatedLabels();
+  const { getSearchableText, getResourceTitle } = useResourceText();
+
+  const filterHelpers = useMemo(
+    () => ({
+      getSearchText: (r: Resource) => getSearchableText(r.id, r),
+      getTitle: (r: Resource) => getResourceTitle(r.id, r.title),
+    }),
+    [getSearchableText, getResourceTitle]
+  );
   const allTopics = Object.keys(topicLabels) as (keyof typeof topicLabels)[];
   const allTypes = Object.keys(typeLabels) as (keyof typeof typeLabels)[];
 
@@ -78,8 +88,8 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   );
 
   const filtered = useMemo(
-    () => filterResources(resources, filters),
-    [resources, filters]
+    () => filterResources(resources, filters, filterHelpers),
+    [resources, filters, filterHelpers]
   );
 
   function toggleTopic(topic: (typeof allTopics)[number]) {

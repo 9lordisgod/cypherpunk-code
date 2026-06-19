@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { ScoreBadge } from "@/components/ScoreBadge";
 import { TopicBadge } from "@/components/TopicBadge";
+import { useResourceText } from "@/lib/i18n/useResourceText";
 import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
 import type { Resource } from "@/lib/types";
 import { site } from "@/lib/data";
@@ -12,10 +13,21 @@ import { site } from "@/lib/data";
 export function ResourceDetail({ resource }: { resource: Resource }) {
   const { t } = useLanguage();
   const { typeLabels, pricingLabels, difficultyLabels } = useTranslatedLabels();
+  const {
+    getResourceTitle,
+    getResourceDescription,
+    getResourceProvider,
+    getResourceDuration,
+    getResourceLanguage,
+  } = useResourceText();
+
+  const title = getResourceTitle(resource.id, resource.title);
+  const description = getResourceDescription(resource.id, resource.description);
+  const provider = getResourceProvider(resource.id, resource.provider);
 
   useEffect(() => {
-    document.title = `${resource.title} · ${site.name}`;
-  }, [resource.title, t]);
+    document.title = `${title} · ${site.name}`;
+  }, [title, t]);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
@@ -39,10 +51,10 @@ export function ResourceDetail({ resource }: { resource: Resource }) {
         <ScoreBadge score={resource.cypherpunkScore} />
       </div>
 
-      <h1 className="text-3xl font-bold leading-tight">{resource.title}</h1>
-      <p className="mt-2 text-muted">{resource.provider}</p>
+      <h1 className="text-3xl font-bold leading-tight">{title}</h1>
+      <p className="mt-2 text-muted">{provider}</p>
 
-      <p className="mt-6 text-lg leading-relaxed">{resource.description}</p>
+      <p className="mt-6 text-lg leading-relaxed">{description}</p>
 
       <div className="mt-6 flex flex-wrap gap-2">
         {resource.topics.map((topic) => (
@@ -72,12 +84,16 @@ export function ResourceDetail({ resource }: { resource: Resource }) {
         {resource.duration && (
           <div>
             <dt className="text-xs text-muted">{t("durationLabel")}</dt>
-            <dd className="mt-1 text-sm">{resource.duration}</dd>
+            <dd className="mt-1 text-sm">
+              {getResourceDuration(resource.duration)}
+            </dd>
           </div>
         )}
         <div>
           <dt className="text-xs text-muted">{t("languageLabel")}</dt>
-          <dd className="mt-1 text-sm">{resource.language}</dd>
+          <dd className="mt-1 text-sm">
+            {getResourceLanguage(resource.language)}
+          </dd>
         </div>
         <div>
           <dt className="text-xs text-muted">{t("cpScoreLabel")}</dt>

@@ -7,10 +7,12 @@ import { ScoreBadge } from "@/components/ScoreBadge";
 import { TopicBadge } from "@/components/TopicBadge";
 import { getResourcesByIds, learningPaths, site } from "@/lib/data";
 import { usePathText } from "@/lib/i18n/usePathText";
+import { useResourceText } from "@/lib/i18n/useResourceText";
 
 export function PathsContent() {
   const { t } = useLanguage();
   const { getPathTitle, getPathDescription } = usePathText();
+  const { getResourceTitle, getResourceDescription } = useResourceText();
 
   useEffect(() => {
     document.title = `${t("pathsPageTitle")} · ${site.name}`;
@@ -57,12 +59,12 @@ export function PathsContent() {
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
                           <h3 className="font-medium group-hover:text-accent">
-                            {resource.title}
+                            {getResourceTitle(resource.id, resource.title)}
                           </h3>
                           <ScoreBadge score={resource.cypherpunkScore} />
                         </div>
                         <p className="mt-1 line-clamp-1 text-sm text-muted">
-                          {resource.description}
+                          {getResourceDescription(resource.id, resource.description)}
                         </p>
                       </div>
                     </Link>

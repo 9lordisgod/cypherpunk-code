@@ -1,0 +1,332 @@
+{
+  "cypherpunk-school-101": {
+    "title": "Cypherpunk School 101",
+    "description": "12週間の実践カリキュラム。脅威モデリング、GPG、暗号化ファイルシステム、Tor、SSHトンネル、デジタル主権をカバー。ターミナルファースト、無駄なし、完全無料。",
+    "provider": "Cypherpunk School"
+  },
+  "cypherpunk-school-privacy-101": {
+    "title": "プライバシー 101",
+    "description": "初心者向けのGUIファーストのプライバシー基礎。全12週間が公開中——デジタルプライバシー初心者向けのCypherpunk 101コンパニオン。",
+    "provider": "Cypherpunk School"
+  },
+  "cypherpunk-manifesto": {
+    "title": "サイファーパンク宣言",
+    "description": "Eric Hughesによる1993年の基礎文献。サイファーパンク哲学を定義——プライバシーは選択的開示、政策よりコード、暗号は解放。",
+    "provider": "Eric Hughes / Nakamoto Institute"
+  },
+  "bitcoin-whitepaper": {
+    "title": "ビットコイン：ピア・ツー・ピア電子キャッシュシステム",
+    "description": "サトシ・ナカモトによる2008年のオリジナルホワイトペーパー。信頼できる第三者なしのP2P電子キャッシュを理解する必読文献。",
+    "provider": "Satoshi Nakamoto"
+  },
+  "nakamoto-institute-library": {
+    "title": "サトシ・ナカモト研究所ライブラリ",
+    "description": "サイファーパンクとビットコインの基礎文献アーカイブ——宣言、メーリングリスト投稿、初期暗号論文、歴史的文書。",
+    "provider": "Satoshi Nakamoto Institute"
+  },
+  "princeton-bitcoin-coursera": {
+    "title": "ビットコインと暗号通貨技術",
+    "description": "プリンストン大学の包括的コース。ビットコインの技術基盤、暗号、コンセンサス、マイニング、ウォレット、匿名性、規制、アルトコインをカバー。",
+    "provider": "Princeton University / Coursera"
+  },
+  "mit-crypto-engineering": {
+    "title": "暗号通貨エンジニアリングと設計",
+    "description": "MITのビットコイン・暗号通貨設計コース——暗号、ゲーム理論、ネットワークアーキテクチャ、ライトニングネットワーク、実践的エンジニアリング。",
+    "provider": "MIT OpenCourseWare"
+  },
+  "bitcoin-developer-docs": {
+    "title": "ビットコイン開発者ドキュメント",
+    "description": "公式開発者ガイド。ブロックチェーン、トランザクション、ウォレット、P2Pネットワーク、マイニング、決済処理、完全なRPC APIリファレンス。",
+    "provider": "Bitcoin.org"
+  },
+  "bitcoin-org-getting-started": {
+    "title": "ビットコイン入門",
+    "description": "個人向けの実践的ビットコイン入門——ウォレット、セキュリティ、トランザクション、独自ノードの運用。",
+    "provider": "Bitcoin.org"
+  },
+  "bitcoin-full-node": {
+    "title": "フルノードの運用",
+    "description": "主権、検証、ネットワーク参加のためのビットコインフルノード運用ガイド。第三者を信頼する必要なし。",
+    "provider": "Bitcoin.org"
+  },
+  "moneropedia": {
+    "title": "Moneropedia",
+    "description": "コミュニティ維持のモネロ用語百科——リング署名、ステルスアドレス、RingCT、RandomX、代替可能性など。",
+    "provider": "Monero Project"
+  },
+  "monero-user-guides": {
+    "title": "モネロユーザーガイド",
+    "description": "公式ガイド：ウォレット、マイニング、ノード、Tor統合、閲覧専用ウォレット、マルチシグ、ブロックチェーンインポート。",
+    "provider": "Monero Project"
+  },
+  "monero-developer-guides": {
+    "title": "モネロ開発者ガイド",
+    "description": "モネロ開発者向け技術ドキュメント——デーモン、ウォレットRPC、暗号プリミティブ、統合パターン。",
+    "provider": "Monero Project"
+  },
+  "monero-research-lab": {
+    "title": "モネロ研究ラボ",
+    "description": "モネロのプライバシープロトコルに関する学術研究——Bulletproofs、CLSAG、Seraphis、Triptych、継続的な暗号改善。",
+    "provider": "Monero Research Lab"
+  },
+  "monero-docs": {
+    "title": "モネロ Docs",
+    "description": "包括的技術ドキュメント——systemdでのノード運用、Tor/I2P統合、ウォレット操作、ネットワーク設定。",
+    "provider": "Monero Project"
+  },
+  "monero-how": {
+    "title": "Monero.how",
+    "description": "モネロの概念、セットアップガイド、日常ユーザー向けプライバシーチュートリアルを解説するコミュニティリソース。",
+    "provider": "Monero.how"
+  },
+  "sethforprivacy-monero-node": {
+    "title": "モネロノードの運用",
+    "description": "プライバシー擁護者Seth For Privacyによるステップバイステップガイド。最大のプライバシーとネットワーク健全性のための独自ノード運用。",
+    "provider": "Seth For Privacy"
+  },
+  "monero-tor-wallet": {
+    "title": "Tor経由でモネロウォレットを接続",
+    "description": "公式ガイド：モネロウォレットをTor経由でルーティングし、IPメタデータを保護し、トランザクションのプライバシーを強化。",
+    "provider": "Monero Project"
+  },
+  "monero-whonix-qubes": {
+    "title": "Qubes + Whonix上のモネロ",
+    "description": "高度なガイド：Qubes OSとWhonixによるウォレット・デーモン分離——高脅威モデル向けの区画化されたモネロ利用。",
+    "provider": "Monero Project"
+  },
+  "crypto-anarchist-manifesto": {
+    "title": "暗号アナーキスト宣言",
+    "description": "Timothy C. Mayによる1988年の宣言。政府管理を超えた暗号によるアナーキー共同体を展望——サイファーパンク起源の文献。",
+    "provider": "Timothy C. May / Nakamoto Institute"
+  },
+  "why-wont-jim-encrypt": {
+    "title": "なぜジョニーは暗号化できないのか",
+    "description": "暗号化ツールが実践で失敗する理由に関する画期的なユーザビリティ研究——プライバシー技術の構築と利用に不可欠な文脈。",
+    "provider": "Whitten & Tygar"
+  },
+  "applied-cryptography-schneier": {
+    "title": "応用暗号（Schneier）",
+    "description": "実践的暗号の古典的リファレンス——プロトコル、アルゴリズム、実世界のセキュリティ。サイファーパンク文献で広く参照される。",
+    "provider": "Bruce Schneier"
+  },
+  "mastering-bitcoin": {
+    "title": "Mastering Bitcoin（第3版）",
+    "description": "Andreas Antonopoulosによる決定的なビットコイン技術ガイド——鍵、アドレス、ウォレット、トランザクション、スクリプト、ネットワークアーキテクチャ。",
+    "provider": "Andreas Antonopoulos"
+  },
+  "mastering-lightning": {
+    "title": "Mastering the Lightning Network",
+    "description": "オープンソース書籍。ライトニングネットワークのアーキテクチャ、ルーティング、チャネル管理、ビットコインのレイヤー2上での構築。",
+    "provider": "Antonopoulos, Osuntokun, Pickhardt"
+  },
+  "learn-me-a-bitcoin": {
+    "title": "Learn Me A Bitcoin",
+    "description": "視覚的で初心者向けのビットコイン内部解説——ブロック、トランザクション、鍵、スクリプトをわかりやすく。",
+    "provider": "Greg Walker"
+  },
+  "bitcoin-core-docs": {
+    "title": "Bitcoin Core ドキュメント",
+    "description": "Bitcoin Core公式ドキュメント——インストール、設定、RPC、リファレンス実装への貢献。",
+    "provider": "Bitcoin Core"
+  },
+  "umbrel-bitcoin-node": {
+    "title": "Umbrel — パーソナルサーバー",
+    "description": "簡単なセルフホスト型ビットコインノードとアプリプラットフォーム。主権のための独自インフラ運用のハードルを下げる。",
+    "provider": "Umbrel"
+  },
+  "mempool-space": {
+    "title": "Mempool.space",
+    "description": "オープンソースのビットコインブロックエクスプローラーとメモリプール可視化ツール。手数料、ブロック、ネットワーク活動を理解する教育ツール。",
+    "provider": "Mempool"
+  },
+  "tor-project-docs": {
+    "title": "Tor Project ドキュメント",
+    "description": "Tor公式ドキュメント——オニオンサービス、ブリッジ、プラガブルトランスポート、匿名ネットワークの運用セキュリティ。",
+    "provider": "Tor Project"
+  },
+  "eff-surveillance-self-defense": {
+    "title": "監視から身を守る",
+    "description": "EFFの電子監視から身を守るガイド——脅威モデリング、ツール、戦術。活動家と日常ユーザーの両方に。",
+    "provider": "Electronic Frontier Foundation"
+  },
+  "privacy-guides": {
+    "title": "Privacy Guides",
+    "description": "コミュニティ主導のプライバシー重視ツール推奨——OS、ブラウザ、コミュニケーションアプリ。",
+    "provider": "Privacy Guides"
+  },
+  "gnu-privacy-handbook": {
+    "title": "GNUプライバシーハンドブック",
+    "description": "GnuPGの実践入門——鍵生成、暗号化、署名、安全な通信のための鍵管理。",
+    "provider": "GnuPG Project"
+  },
+  "signal-protocol": {
+    "title": "Signalプロトコル仕様",
+    "description": "Signalプロトコルの技術仕様——ダブルラチェット、X3DH鍵合意、メッセージングにおける前方秘匿性。",
+    "provider": "Signal Foundation"
+  },
+  "harvard-crypto-blockchain": {
+    "title": "暗号とブロックチェーン：技術と課題",
+    "description": "ハーバード・エクステンションのコース。暗号通貨技術、規制上の課題、社会的影響を検討。",
+    "provider": "Harvard Extension"
+  },
+  "stanford-cs251": {
+    "title": "暗号通貨とブロックチェーン技術",
+    "description": "スタンフォードのコース。暗号通貨の基礎、コンセンサスメカニズム、スマートコントラクト、ブロックチェーンのスケーラビリティ。",
+    "provider": "Stanford University"
+  },
+  "cryptocurrency-security-coursera": {
+    "title": "暗号通貨セキュリティ：コールドストレージとペーパーウォレット",
+    "description": "実践コース。コールドストレージ、ハードウェアウォレットによる暗号通貨の保護と、よくあるセキュリティの落とし穴の回避。",
+    "provider": "Coursera"
+  },
+  "binance-academy": {
+    "title": "Binance Academy",
+    "description": "ブロックチェーン基礎、暗号、コンセンサス、ウォレットセキュリティに関する無料教育記事。取引より技術コンテンツを選ぶこと。",
+    "provider": "Binance Academy"
+  },
+  "ethereum-classic-cypherpunks": {
+    "title": "イーサリアムクラシックコース：サイファーパンク",
+    "description": "サイファーパンク運動の歴史コース——メーリングリスト、主要人物、宣言、分散型システムの背後にある哲学。",
+    "provider": "Ethereum Classic"
+  },
+  "fungibility-monero": {
+    "title": "代替可能性を理解する（Moneropedia）",
+    "description": "健全な通貨にとって代替可能性が重要な理由と、モネロがデフォルトのプライバシーでそれをどう実現するかの深掘り。",
+    "provider": "Monero Project"
+  },
+  "ring-signatures-monero": {
+    "title": "リング署名（Moneropedia）",
+    "description": "リング署名暗号の解説——モネロが可能な署名者のグループの中で真の署名者を隠す方法。",
+    "provider": "Monero Project"
+  },
+  "randomx-monero": {
+    "title": "RandomX Proof-of-Work（Moneropedia）",
+    "description": "CPU最適化、ASIC耐性のプルーフ・オブ・ワークアルゴリズム。公平なマイニングとネットワークの分散化を目指す。",
+    "provider": "Monero Project"
+  },
+  "tail-emission-monero": {
+    "title": "テールエミッション（Moneropedia）",
+    "description": "モネロが取引手数料のみに頼らず、長期的なネットワークセキュリティのため永続的なブロック補助金を維持する理由。",
+    "provider": "Monero Project"
+  },
+  "coinjoin-bitcoin": {
+    "title": "CoinJoin（ビットコイン開発者ガイド）",
+    "description": "CoinJoinトランザクションパターンの技術概要。協調トランザクションによるビットコイントランザクションのプライバシー向上。",
+    "provider": "Bitcoin.org"
+  },
+  "joinmarket": {
+    "title": "JoinMarket",
+    "description": "ビットコイン向けオープンソースCoinJoin実装——マーケットメーカーとして手数料を得るか、テイカーとしてプライバシーに支払う。",
+    "provider": "JoinMarket"
+  },
+  "wasabi-wallet-docs": {
+    "title": "Wasabi Wallet ドキュメント",
+    "description": "プライバシー重視のビットコインウォレット。組み込みCoinJoin（WabiSabi）、Tor統合、ハードウェアウォレット対応。",
+    "provider": "zkSNACKs"
+  },
+  "samourai-wallet": {
+    "title": "Samourai Wallet & Whirlpool",
+    "description": "トランザクションのプライバシーに特化したモバイルビットコインウォレット。Stonewall、Ricochet、Whirlpool CoinJoinプール。",
+    "provider": "Samourai Wallet"
+  },
+  "nostr-protocol": {
+    "title": "Nostrプロトコル（NIPs）",
+    "description": "暗号鍵を使う分散型ソーシャルプロトコル——中央サーバーなしの検閲耐性コミュニケーション。",
+    "provider": "Nostr Protocol"
+  },
+  "freenode-cypherpunk-archive": {
+    "title": "サイファーパンクメーリングリストアーカイブ",
+    "description": "サイファーパンクメーリングリスト（1992年〜現在）の歴史アーカイブ——現代の暗号とデジタル権利を形作った議論。",
+    "provider": "Cryptoanarchy.wiki"
+  },
+  "neo-cypherpunk-summit-2026": {
+    "title": "Neo-Cypherpunk Summit 2026",
+    "description": "プライバシー擁護者、開発者、研究者が集い、現代におけるサイファーパンク理念を推進するカンファレンス。",
+    "provider": "Neo-Cypherpunk Summit"
+  },
+  "stephan-livera-podcast": {
+    "title": "Stephan Livera Podcast",
+    "description": "長年続くビットコインポッドキャスト。開発者、経済学者、サイファーパンクとの深い技術・哲学的インタビュー。",
+    "provider": "Stephan Livera"
+  },
+  "tales-from-the-crypt": {
+    "title": "Tales from the Crypt",
+    "description": "ビットコインのプライバシー、オープンソース開発、サイファーパンク文化を探求するポッドキャスト。エコシステムのビルダーと対談。",
+    "provider": "Marty Bent / TFTC"
+  },
+  "monero-talk": {
+    "title": "Monero Talk",
+    "description": "モネロ開発、プライバシー研究、より広い代替可能性運動をカバーするコミュニティポッドキャスト。",
+    "provider": "Monero Talk"
+  },
+  "what-bitcoin-did": {
+    "title": "What Bitcoin Did",
+    "description": "ビットコイン開発者、経済学者、思想家へのインタビューポッドキャスト——幅広いカバレッジ、技術的なエピソードが充実。",
+    "provider": "Peter McCormack"
+  },
+  "btc-session-tutorials": {
+    "title": "BTC Sessions（YouTube）",
+    "description": "実践的ビットコインチュートリアル——ハードウェアウォレット、ノード、ライトニング、マルチシグ、非技術者向けセルフカストディ。",
+    "provider": "BTC Sessions"
+  },
+  "andreas-antonopoulos-talks": {
+    "title": "aantonop（YouTube）",
+    "description": "ビットコイン、オープンブロックチェーン、プライバシー、分散型通貨の哲学に関する数百の無料講演とQ&A。",
+    "provider": "Andreas Antonopoulos"
+  },
+  "jameson-lopp-knowledge": {
+    "title": "Jameson Loppのビットコインリソース",
+    "description": "厳選されたビットコインリソースのメガリスト——書籍、記事、ポッドキャスト、ツール、教育資料。Casa共同創業者が維持。",
+    "provider": "Jameson Lopp"
+  },
+  "bitcoin-fungibility-wiki": {
+    "title": "Bitcoin Wiki — プライバシーと代替可能性",
+    "description": "ビットコインのプライバシー技術、代替可能性の課題、継続的な改善に関するコミュニティWiki記事。",
+    "provider": "Bitcoin Wiki"
+  },
+  "ccs-monero": {
+    "title": "モネロコミュニティクラウドファンディングシステム",
+    "description": "モネロ開発提案の透明なクラウドファンディング——オープンソースのプライバシープロジェクトがどう資金調達するかを学ぶ。",
+    "provider": "Monero Project"
+  },
+  "bitcoin-foundation-education": {
+    "title": "なぜビットコイン教育が重要か（2026）",
+    "description": "ビットコイン財団の視点。規制と機関の変化の中で、ビットコインリテラシーの重要性が高まっている。",
+    "provider": "Bitcoin Foundation"
+  },
+  "pgp-best-practices": {
+    "title": "OpenPGPベストプラクティス",
+    "description": "OpenPGPを安全に使うためのコミュニティガイド——鍵長、サブキー、有効期限、よくある間違いの回避。",
+    "provider": "Riseup.net"
+  },
+  "qubes-os-intro": {
+    "title": "Qubes OS — 区画化によるセキュリティ",
+    "description": "Xenベースの仮想化で活動を安全な区画に隔離するOS——高度なオペセックの基盤。",
+    "provider": "Qubes OS Project"
+  },
+  "tails-os": {
+    "title": "Tails — 記憶喪失型インコグニート Live システム",
+    "description": "USBから起動するLive OS。全トラフィックをTor経由にし、痕跡を残さない。高リスクのプライバシーシナリオの標準ツール。",
+    "provider": "Tails Project"
+  },
+  "crypto-and-cypherpunk-ethics": {
+    "title": "暗号とサイファーパンク倫理（教育モジュール）",
+    "description": "大学教育モジュール。暗号、監視、サイファーパンク運動の倫理的側面を探求。",
+    "provider": "Bemidji State University"
+  },
+  "mit-ocw-cryptography": {
+    "title": "MIT 6.875 — 暗号の基礎",
+    "description": "厳密な大学院レベルの暗号コース。証明可能セキュリティ、ゼロ知識証明、現代の暗号プリミティブ。",
+    "provider": "MIT OpenCourseWare"
+  },
+  "danboneh-cryptography-coursera": {
+    "title": "暗号学 I（Coursera）",
+    "description": "スタンフォードのDan Bonehが教えるコア暗号——ブロック暗号、MAC、公開鍵暗号、TLS。不可欠な理論的基盤。",
+    "provider": "Stanford / Coursera"
+  },
+  "class-central-crypto": {
+    "title": "Class Central — 暗号通貨コース",
+    "description": "150以上の暗号通貨コースの集約サイト。Cypherpunk Codeのサイファーパンクスコアフィルターで、取引のノイズの中からシグナルを見つける。",
+    "provider": "Class Central"
+  }
+}
