@@ -19,6 +19,8 @@ const en = {
   navAbout: "About",
   navRoadmap: "Roadmap",
   navLanguage: "Language",
+  navMenuOpen: "Open menu",
+  navMenuClose: "Close menu",
 
   // Hero
   heroBadge: "Cypherpunk Archive Database",
@@ -127,6 +129,8 @@ const zhCN: TranslationStrings = {
   navAbout: "关于",
   navRoadmap: "路线图",
   navLanguage: "语言",
+  navMenuOpen: "打开菜单",
+  navMenuClose: "关闭菜单",
 
   heroBadge: "密码朋克档案数据库",
   heroTitle1: "学习主权。",
@@ -224,6 +228,8 @@ const ja: TranslationStrings = {
   navAbout: "概要",
   navRoadmap: "ロードマップ",
   navLanguage: "言語",
+  navMenuOpen: "メニューを開く",
+  navMenuClose: "メニューを閉じる",
 
   heroBadge: "サイファーパンク アーカイブ データベース",
   heroTitle1: "主権を学ぼう。",
@@ -325,6 +331,8 @@ const fr: TranslationStrings = {
   navAbout: "À propos",
   navRoadmap: "Feuille de route",
   navLanguage: "Langue",
+  navMenuOpen: "Ouvrir le menu",
+  navMenuClose: "Fermer le menu",
 
   heroBadge: "Base de données d'archives cypherpunk",
   heroTitle1: "Apprenez la souveraineté.",

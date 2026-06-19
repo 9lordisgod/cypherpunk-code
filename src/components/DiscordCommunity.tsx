@@ -64,7 +64,7 @@ export function DiscordCommunity({ variant = "section" }: DiscordCommunityProps)
             </p>
           </div>
           <span
-            className="pixel-btn shrink-0 text-[#5865F2] no-underline"
+            className="discord-join-btn pixel-btn shrink-0 text-[#5865F2] no-underline"
             style={{ borderColor: "#5865F2", background: "rgba(88, 101, 242, 0.15)" }}
           >
             {t("discordJoin")} →

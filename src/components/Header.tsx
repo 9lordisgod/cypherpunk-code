@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { SiteLogo } from "@/components/SiteLogo";
 import { site } from "@/lib/data";
@@ -15,35 +17,103 @@ const navHrefs = [
 
 export function Header() {
   const { t, openPicker, locale } = useLanguage();
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.classList.toggle("mobile-menu-open", menuOpen);
+    return () => document.body.classList.remove("mobile-menu-open");
+  }, [menuOpen]);
 
   return (
     <header className="site-header sticky top-0 z-50 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link href="/" className="group flex items-center gap-2 no-underline text-foreground">
-          <SiteLogo size="md" />
-          <span className="site-logo-text">{site.name}</span>
-        </Link>
-        <nav className="flex items-center gap-1 sm:gap-2">
-          {navHrefs.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="nav-link no-underline text-muted hover:text-foreground"
-            >
-              {t(item.key)}
-            </Link>
-          ))}
-          <button
-            type="button"
-            onClick={openPicker}
-            className="lang-toggle"
-            aria-label={t("navLanguage")}
-            title={t("navLanguage")}
+      <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+        <div className="flex items-center justify-between gap-3">
+          <Link
+            href="/"
+            className="group flex min-w-0 items-center gap-2 no-underline text-foreground"
           >
-            <span aria-hidden="true">{LOCALE_LABELS[locale].flag}</span>
-            <span className="hidden sm:inline">{LOCALE_LABELS[locale].native}</span>
-          </button>
-        </nav>
+            <SiteLogo size="md" />
+            <span className="site-logo-text truncate max-sm:max-w-[8.5rem] sm:max-w-none">
+              {site.name}
+            </span>
+          </Link>
+
+          <nav
+            className="hidden items-center gap-1 md:flex md:gap-2"
+            aria-label="Main"
+          >
+            {navHrefs.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="nav-link no-underline text-muted hover:text-foreground"
+              >
+                {t(item.key)}
+              </Link>
+            ))}
+            <button
+              type="button"
+              onClick={openPicker}
+              className="lang-toggle"
+              aria-label={t("navLanguage")}
+              title={t("navLanguage")}
+            >
+              <span aria-hidden="true">{LOCALE_LABELS[locale].flag}</span>
+              <span>{LOCALE_LABELS[locale].native}</span>
+            </button>
+          </nav>
+
+          <div className="flex items-center gap-1 md:hidden">
+            <button
+              type="button"
+              onClick={openPicker}
+              className="lang-toggle"
+              aria-label={t("navLanguage")}
+              title={t("navLanguage")}
+            >
+              <span aria-hidden="true">{LOCALE_LABELS[locale].flag}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              className="mobile-menu-btn"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              aria-label={menuOpen ? t("navMenuClose") : t("navMenuOpen")}
+            >
+              <span className="mobile-menu-btn__bar" />
+              <span className="mobile-menu-btn__bar" />
+              <span className="mobile-menu-btn__bar" />
+            </button>
+          </div>
+        </div>
+
+        {menuOpen && (
+          <nav
+            id="mobile-nav"
+            className="mobile-nav"
+            aria-label="Main"
+          >
+            {navHrefs.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`mobile-nav-link no-underline ${isActive ? "mobile-nav-link--active" : ""}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {t(item.key)}
+                </Link>
+              );
+            })}
+          </nav>
+        )}
       </div>
     </header>
   );

@@ -51,7 +51,7 @@ export function ResourceDetail({ resource }: { resource: Resource }) {
         <ScoreBadge score={resource.cypherpunkScore} />
       </div>
 
-      <h1 className="text-3xl font-bold leading-tight">{title}</h1>
+      <h1 className="text-2xl font-bold leading-tight sm:text-3xl">{title}</h1>
       <p className="mt-2 text-muted">{provider}</p>
 
       <p className="mt-6 text-lg leading-relaxed">{description}</p>

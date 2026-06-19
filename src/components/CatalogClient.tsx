@@ -113,7 +113,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   return (
     <div className="flex flex-col gap-8 lg:flex-row">
       <aside className="w-full shrink-0 lg:w-64">
-        <div className="sticky top-20 space-y-6 rounded-lg border border-border bg-card p-5">
+        <div className="space-y-6 rounded-lg border border-border bg-card p-5 lg:sticky lg:top-20">
           <div>
             <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted">
               {t("catalogSearch")}
@@ -251,7 +251,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
       </aside>
 
       <div className="min-w-0 flex-1">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted">
             {t("resourcesCount", { count: filtered.length })}
           </p>

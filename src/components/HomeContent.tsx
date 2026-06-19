@@ -47,7 +47,7 @@ export function HomeContent({
     <div>
       <section className="hero-section scanline-overlay relative">
         <div className="grid-bg absolute inset-0 opacity-50" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+        <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:py-24">
           <div className="hero-inner">
             <div className="hero-content">
               <p className="hero-badge">
@@ -62,7 +62,7 @@ export function HomeContent({
               <p className="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
                 {t("heroDescription")}
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="hero-actions mt-8">
                 <Link
                   href="/catalog"
                   className="pixel-btn pixel-btn--accent no-underline"
@@ -101,14 +101,14 @@ export function HomeContent({
       <DiscordCommunity />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="mb-8 flex items-end justify-between">
+        <div className="section-header mb-8">
           <div>
             <h2 className="section-title">{t("featuredTitle")}</h2>
             <p className="mt-2 text-sm text-muted">{t("featuredSubtitle")}</p>
           </div>
           <Link
             href="/catalog"
-            className="text-sm hover:underline"
+            className="section-header-link text-sm hover:underline"
             style={{ color: "var(--accent-orange)" }}
           >
             {t("viewAll")}
@@ -143,14 +143,14 @@ export function HomeContent({
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="mb-8 flex items-end justify-between">
+        <div className="section-header mb-8">
           <div>
             <h2 className="section-title">{t("learningPathsTitle")}</h2>
             <p className="mt-2 text-sm text-muted">{t("learningPathsSubtitle")}</p>
           </div>
           <Link
             href="/paths"
-            className="text-sm hover:underline"
+            className="section-header-link text-sm hover:underline"
             style={{ color: "var(--accent-orange)" }}
           >
             {t("allPaths")}
@@ -179,7 +179,7 @@ export function HomeContent({
 
       <section className="border-t-4 border-border bg-card">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <div className="flex flex-wrap items-center justify-center gap-6 text-center">
+          <div className="stats-grid text-center">
             <div className="stat-box">
               <p className="stat-number">{resourceCount}</p>
               <p className="mt-1 text-xs text-muted">{t("statResources")}</p>
