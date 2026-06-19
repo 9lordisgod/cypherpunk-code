@@ -8,13 +8,11 @@ import { LOCALES, type Locale } from "@/lib/i18n/types";
 export function LanguagePicker() {
   const { showPicker, locale, setLocale, confirmLocale, t, localeLabels } =
     useLanguage();
-  const [selected, setSelected] = useState<Locale>(locale);
   const [bouncing, setBouncing] = useState<Locale | null>(null);
 
   if (!showPicker) return null;
 
   const handleSelect = (code: Locale) => {
-    setSelected(code);
     setLocale(code);
     setBouncing(code);
     window.setTimeout(() => setBouncing(null), 400);
@@ -35,7 +33,7 @@ export function LanguagePicker() {
         <div className="lang-picker-grid">
           {LOCALES.map((code) => {
             const { native, english, flag } = localeLabels[code];
-            const isSelected = selected === code;
+            const isSelected = locale === code;
             const isBouncing = bouncing === code;
             return (
               <button

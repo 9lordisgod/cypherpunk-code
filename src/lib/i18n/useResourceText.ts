@@ -13,7 +13,7 @@ function translateDuration(duration: string, locale: Locale): string {
     const n = weekMatch[1];
     if (locale === "zh-CN") return `${n} 周`;
     if (locale === "ja") return `${n}週間`;
-    if (locale === "fr") return `${n} semaine${n === "1" ? "" : "s"}`;
+    if (locale === "fr") return `${n} semaine${parseFloat(n) > 1 ? "s" : ""}`;
   }
 
   const hourMatch = duration.match(/^(\d+(?:\.\d+)?)\s+hours?$/i);
@@ -21,7 +21,7 @@ function translateDuration(duration: string, locale: Locale): string {
     const n = hourMatch[1];
     if (locale === "zh-CN") return `${n} 小时`;
     if (locale === "ja") return `${n}時間`;
-    if (locale === "fr") return `${n} heure${n === "1" ? "" : "s"}`;
+    if (locale === "fr") return `${n} heure${parseFloat(n) > 1 ? "s" : ""}`;
   }
 
   return duration;

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type SiteLogoProps = {
   size?: "sm" | "md" | "lg";
   className?: string;
@@ -11,10 +13,13 @@ const sizeClasses = {
 
 export function SiteLogo({ size = "md", className = "" }: SiteLogoProps) {
   return (
-    <img
+    <Image
       src="/logo.png"
       alt="Cypherpunk Code"
+      width={128}
+      height={128}
       className={`${sizeClasses[size]} ${className}`.trim()}
+      priority={size === "lg"}
     />
   );
 }

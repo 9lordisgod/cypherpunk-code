@@ -7,6 +7,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
 } from "react";
 import {
   LOCALE_LABELS,
@@ -29,6 +30,9 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
+const LOCALE_CHANGE_EVENT = "cypherpunk-locale-change";
+const PICKER_CHANGE_EVENT = "cypherpunk-picker-change";
+
 function localeToHtmlLang(locale: Locale): string {
   if (locale === "zh-CN") return "zh-Hans";
   return locale;
@@ -44,39 +48,71 @@ function readStoredLocale(): Locale | null {
   return null;
 }
 
+function migrateLegacyLocale() {
+  if (localStorage.getItem(STORAGE_KEY) === "zh-TW") {
+    localStorage.setItem(STORAGE_KEY, "zh-CN");
+  }
+}
+
+function subscribeLocale(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  migrateLegacyLocale();
+  const handler = () => onStoreChange();
+  window.addEventListener("storage", handler);
+  window.addEventListener(LOCALE_CHANGE_EVENT, handler);
+  return () => {
+    window.removeEventListener("storage", handler);
+    window.removeEventListener(LOCALE_CHANGE_EVENT, handler);
+  };
+}
+
+function getLocaleSnapshot(): Locale {
+  return readStoredLocale() ?? "en";
+}
+
+function subscribePicker(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const handler = () => onStoreChange();
+  window.addEventListener(PICKER_CHANGE_EVENT, handler);
+  return () => window.removeEventListener(PICKER_CHANGE_EVENT, handler);
+}
+
+function getPickerSeenSnapshot(): boolean {
+  return localStorage.getItem(PICKER_SEEN_KEY) === "1";
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
-  const [showPicker, setShowPicker] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
+  const locale = useSyncExternalStore(
+    subscribeLocale,
+    getLocaleSnapshot,
+    () => "en" as Locale
+  );
+
+  const pickerSeen = useSyncExternalStore(
+    subscribePicker,
+    getPickerSeenSnapshot,
+    () => true
+  );
+
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   useEffect(() => {
-    const stored = readStoredLocale();
-    const seen = localStorage.getItem(PICKER_SEEN_KEY);
-    if (stored) {
-      setLocaleState(stored);
-      document.documentElement.lang = localeToHtmlLang(stored);
-      if (localStorage.getItem(STORAGE_KEY) === "zh-TW") {
-        localStorage.setItem(STORAGE_KEY, "zh-CN");
-      }
-    }
-    if (!seen) {
-      setShowPicker(true);
-    }
-    setHydrated(true);
-  }, []);
+    document.documentElement.lang = localeToHtmlLang(locale);
+  }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
     localStorage.setItem(STORAGE_KEY, next);
     document.documentElement.lang = localeToHtmlLang(next);
+    window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
   }, []);
 
-  const openPicker = useCallback(() => setShowPicker(true), []);
-  const closePicker = useCallback(() => setShowPicker(false), []);
+  const openPicker = useCallback(() => setPickerOpen(true), []);
+  const closePicker = useCallback(() => setPickerOpen(false), []);
 
   const confirmLocale = useCallback(() => {
     localStorage.setItem(PICKER_SEEN_KEY, "1");
-    setShowPicker(false);
+    setPickerOpen(false);
+    window.dispatchEvent(new Event(PICKER_CHANGE_EVENT));
   }, []);
 
   const translate = useCallback(
@@ -90,7 +126,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       locale,
       setLocale,
       t: translate,
-      showPicker: hydrated && showPicker,
+      showPicker: pickerOpen || !pickerSeen,
       openPicker,
       closePicker,
       confirmLocale,
@@ -100,8 +136,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       locale,
       setLocale,
       translate,
-      hydrated,
-      showPicker,
+      pickerOpen,
+      pickerSeen,
       openPicker,
       closePicker,
       confirmLocale,

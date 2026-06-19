@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function HeroAnimeFigure() {
   return (
     <div className="hero-anime">
@@ -11,13 +13,13 @@ export function HeroAnimeFigure() {
         <span className="hero-anime-sparkle hero-anime-sparkle--4" />
       </div>
       <div className="hero-anime-frame" aria-hidden="true" />
-      <img
+      <Image
         src="/anime-hero.png"
         alt=""
         className="hero-anime-img"
         width={2787}
         height={1250}
-        decoding="async"
+        priority
       />
       <div className="hero-anime-tint" aria-hidden="true" />
       <div className="hero-anime-shine" aria-hidden="true" />
