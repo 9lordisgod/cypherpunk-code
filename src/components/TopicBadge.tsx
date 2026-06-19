@@ -1,4 +1,6 @@
-import { topicLabels } from "@/lib/labels";
+"use client";
+
+import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
 import type { Topic } from "@/lib/types";
 
 const topicColors: Partial<Record<Topic, string>> = {
@@ -11,6 +13,7 @@ const topicColors: Partial<Record<Topic, string>> = {
 };
 
 export function TopicBadge({ topic }: { topic: Topic }) {
+  const { topicLabels } = useTranslatedLabels();
   const color = topicColors[topic] ?? "text-muted border-border";
   return (
     <span className={`rounded border px-2 py-0.5 text-xs ${color}`}>

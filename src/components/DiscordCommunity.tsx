@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
 import { site } from "@/lib/data";
 
 export function DiscordIcon({ className }: { className?: string }) {
@@ -18,6 +21,7 @@ type DiscordCommunityProps = {
 };
 
 export function DiscordCommunity({ variant = "section" }: DiscordCommunityProps) {
+  const { t } = useLanguage();
   const { url, label } = site.discord;
 
   if (variant === "compact") {
@@ -26,41 +30,44 @@ export function DiscordCommunity({ variant = "section" }: DiscordCommunityProps)
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-muted transition-colors hover:text-[#5865F2]"
+        className="inline-flex items-center gap-2 text-muted transition-colors hover:text-[#5865F2] no-underline"
       >
         <DiscordIcon className="h-4 w-4 shrink-0" />
-        <span>Discord</span>
+        <span>{t("discordLabel")}</span>
       </a>
     );
   }
 
   return (
-    <section className="border-y border-border bg-card">
+    <section className="border-y-4 border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-col items-center gap-6 rounded-xl border border-border bg-background p-6 transition-colors hover:border-[#5865F2]/50 sm:flex-row sm:p-8"
+          className="discord-pixel-card group flex flex-col items-center gap-6 rounded-none bg-background p-6 transition-all sm:flex-row sm:p-8 no-underline"
         >
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#5865F2]/15 text-[#5865F2] transition-colors group-hover:bg-[#5865F2]/25">
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center border-3 border-[#5865F2] bg-[#5865F2]/15 text-[#5865F2] transition-colors group-hover:bg-[#5865F2]/25"
+            style={{ border: "3px solid #5865F2", boxShadow: "3px 3px 0 #3c45a5" }}
+          >
             <DiscordIcon className="h-9 w-9" />
           </div>
           <div className="min-w-0 flex-1 text-center sm:text-left">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#5865F2]">
-              Community
+            <p className="footer-heading text-[#5865F2]">
+              {t("discordCommunity")}
             </p>
-            <h2 className="mt-1 text-xl font-bold sm:text-2xl">
-              Join {label} on Discord
+            <h2 className="section-title mt-2 text-base sm:text-lg">
+              {t("discordTitle", { label })}
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
-              Connect with learners, share resources, ask questions, and help
-              shape the archive — no accounts required to browse the site, but
-              the server is where the conversation happens.
+              {t("discordDescription")}
             </p>
           </div>
-          <span className="shrink-0 rounded border border-[#5865F2]/40 bg-[#5865F2]/10 px-5 py-2.5 font-mono text-sm font-medium text-[#5865F2] transition-colors group-hover:border-[#5865F2]/70 group-hover:bg-[#5865F2]/20">
-            Join server →
+          <span
+            className="pixel-btn shrink-0 text-[#5865F2] no-underline"
+            style={{ borderColor: "#5865F2", background: "rgba(88, 101, 242, 0.15)" }}
+          >
+            {t("discordJoin")} →
           </span>
         </a>
       </div>

@@ -1,18 +1,29 @@
+"use client";
+
 import Link from "next/link";
-import { difficultyLabels, pricingLabels, typeLabels } from "@/lib/labels";
+import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
 import type { Resource } from "@/lib/types";
 import { ScoreBadge } from "./ScoreBadge";
 import { TopicBadge } from "./TopicBadge";
 
 export function ResourceCard({ resource }: { resource: Resource }) {
+  const { typeLabels, pricingLabels, difficultyLabels } = useTranslatedLabels();
+
   return (
     <Link
       href={`/resource/${resource.id}`}
-      className="group flex flex-col rounded-lg border border-border bg-card p-5 transition-all hover:border-accent/30 hover:bg-card-hover"
+      className="pixel-card group flex flex-col p-5 no-underline text-foreground"
     >
       <div className="mb-3 flex items-start justify-between gap-3">
         <div className="flex flex-wrap gap-2">
-          <span className="rounded bg-background px-2 py-0.5 font-mono text-xs text-muted">
+          <span
+            className="px-2 py-0.5 text-xs text-muted"
+            style={{
+              border: "2px solid var(--border)",
+              fontFamily: "var(--font-pixel)",
+              fontSize: "7px",
+            }}
+          >
             {typeLabels[resource.type]}
           </span>
           <span className="rounded bg-background px-2 py-0.5 text-xs text-muted">
@@ -22,7 +33,10 @@ export function ResourceCard({ resource }: { resource: Resource }) {
         <ScoreBadge score={resource.cypherpunkScore} />
       </div>
 
-      <h3 className="mb-2 text-base font-semibold leading-snug group-hover:text-accent">
+      <h3
+        className="mb-2 text-base font-semibold leading-snug group-hover:text-accent"
+        style={{ fontFamily: "var(--font-pixel)", fontSize: "9px", lineHeight: 1.8 }}
+      >
         {resource.title}
       </h3>
 
@@ -39,7 +53,7 @@ export function ResourceCard({ resource }: { resource: Resource }) {
         )}
       </div>
 
-      <div className="flex items-center justify-between border-t border-border pt-3 text-xs text-muted">
+      <div className="flex items-center justify-between border-t-2 border-border pt-3 text-xs text-muted">
         <span>{resource.provider}</span>
         <span>{difficultyLabels[resource.difficulty]}</span>
       </div>

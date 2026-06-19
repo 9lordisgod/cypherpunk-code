@@ -1,42 +1,48 @@
-import Link from "next/link";
-import { site } from "@/lib/data";
+"use client";
 
-const nav: Array<{ href: string; label: string; badge?: string }> = [
-  { href: "/catalog", label: "Catalog" },
-  { href: "/paths", label: "Learning Paths" },
-  { href: "/about", label: "About" },
-  { href: "/roadmap", label: "Roadmap" },
+import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
+import { SiteLogo } from "@/components/SiteLogo";
+import { site } from "@/lib/data";
+import { LOCALE_LABELS } from "@/lib/i18n/types";
+
+const navHrefs = [
+  { href: "/catalog", key: "navCatalog" as const },
+  { href: "/paths", key: "navPaths" as const },
+  { href: "/about", key: "navAbout" as const },
+  { href: "/roadmap", key: "navRoadmap" as const },
 ];
 
 export function Header() {
+  const { t, openPicker, locale } = useLanguage();
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="group flex items-center gap-2">
-          <img
-            src="/logo.png"
-            alt="Cypherpunk Code logo"
-            className="h-5 w-5"
-          />
-          <span className="font-mono text-sm font-semibold tracking-tight sm:text-base">
-            {site.name}
-          </span>
+    <header className="site-header sticky top-0 z-50 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+        <Link href="/" className="group flex items-center gap-2 no-underline text-foreground">
+          <SiteLogo size="md" />
+          <span className="site-logo-text">{site.name}</span>
         </Link>
-        <nav className="flex items-center gap-1 sm:gap-4">
-          {nav.map((item) => (
+        <nav className="flex items-center gap-1 sm:gap-2">
+          {navHrefs.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="group flex items-center gap-1 rounded px-2 py-1 text-xs text-muted transition-colors hover:text-foreground sm:px-3 sm:text-sm"
+              className="nav-link no-underline text-muted hover:text-foreground"
             >
-              {item.label}
-              {item.badge && (
-                <span className="rounded bg-accent/20 px-1 font-mono text-[9px] text-accent group-hover:bg-accent/30">
-                  {item.badge}
-                </span>
-              )}
+              {t(item.key)}
             </Link>
           ))}
+          <button
+            type="button"
+            onClick={openPicker}
+            className="lang-toggle"
+            aria-label={t("navLanguage")}
+            title={t("navLanguage")}
+          >
+            <span aria-hidden="true">{LOCALE_LABELS[locale].flag}</span>
+            <span className="hidden sm:inline">{LOCALE_LABELS[locale].native}</span>
+          </button>
         </nav>
       </div>
     </header>
