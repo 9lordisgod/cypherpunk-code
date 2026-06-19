@@ -40,7 +40,7 @@ export function Footer() {
               </a>
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-6 text-sm sm:grid-cols-3 sm:gap-8">
+          <div className="grid grid-cols-1 gap-6 text-sm min-[400px]:grid-cols-2 sm:grid-cols-3 sm:gap-8">
             <div>
               <p className="footer-heading mb-2">{t("footerExplore")}</p>
               <ul className="space-y-1">

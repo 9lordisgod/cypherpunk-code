@@ -30,6 +30,95 @@ export const defaultFilters: FilterState = {
   sort: "score",
 };
 
+type SearchParamsLike = {
+  get: (key: string) => string | null;
+  getAll: (key: string) => string[];
+};
+
+export function parseFiltersFromSearchParams(
+  searchParams: SearchParamsLike | null,
+  allTopics: readonly string[],
+  allTypes: readonly string[]
+): FilterState {
+  if (!searchParams) return defaultFilters;
+
+  const initial: FilterState = { ...defaultFilters };
+
+  const q = searchParams.get("q") || searchParams.get("query") || "";
+  if (q) initial.query = q;
+
+  const topicParams = [
+    ...searchParams.getAll("topic"),
+    ...searchParams.getAll("topics"),
+  ];
+  const topicsFromParam = topicParams
+    .flatMap((t) => t.split(","))
+    .map((t) => t.trim() as Topic)
+    .filter((t) => allTopics.includes(t));
+  if (topicsFromParam.length) initial.topics = topicsFromParam;
+
+  const typeParams = [
+    ...searchParams.getAll("type"),
+    ...searchParams.getAll("types"),
+  ];
+  const typesFromParam = typeParams
+    .flatMap((t) => t.split(","))
+    .map((t) => t.trim() as ResourceType)
+    .filter((t) => allTypes.includes(t));
+  if (typesFromParam.length) initial.types = typesFromParam;
+
+  const diff = searchParams.get("difficulty") as Difficulty | null;
+  if (diff && ["beginner", "intermediate", "advanced"].includes(diff)) {
+    initial.difficulty = diff;
+  }
+
+  const price = searchParams.get("pricing") as Pricing | null;
+  if (price && ["free", "paid", "freemium"].includes(price)) {
+    initial.pricing = price;
+  }
+
+  const minS =
+    searchParams.get("minScore") || searchParams.get("minCypherpunkScore");
+  if (minS) {
+    const n = parseInt(minS, 10);
+    if (!isNaN(n) && n >= 0 && n <= 10) initial.minCypherpunkScore = n;
+  }
+
+  const s = searchParams.get("sort") as FilterState["sort"] | null;
+  if (s && ["relevance", "score", "title"].includes(s)) {
+    initial.sort = s;
+  }
+
+  const hasAny =
+    q ||
+    topicsFromParam.length ||
+    typesFromParam.length ||
+    diff ||
+    price ||
+    minS ||
+    s;
+  return hasAny ? initial : defaultFilters;
+}
+
+export function filtersToQueryString(filters: FilterState): string {
+  const params = new URLSearchParams();
+  const q = filters.query.trim();
+
+  if (q) params.set("q", q);
+  filters.topics.forEach((topic) => params.append("topic", topic));
+  filters.types.forEach((type) => params.append("type", type));
+  if (filters.difficulty) params.set("difficulty", filters.difficulty);
+  if (filters.pricing) params.set("pricing", filters.pricing);
+  if (filters.minCypherpunkScore > 0) {
+    params.set("minScore", String(filters.minCypherpunkScore));
+  }
+  if (filters.sort !== defaultFilters.sort) {
+    params.set("sort", filters.sort);
+  }
+
+  return params.toString();
+}
+
 function matchesQuery(
   resource: Resource,
   query: string,

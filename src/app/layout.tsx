@@ -56,6 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${pixelFont.variable} ${pixelBody.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">

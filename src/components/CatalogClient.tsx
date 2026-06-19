@@ -1,76 +1,27 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useCallback, useMemo } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
-import { defaultFilters, filterResources, type FilterState } from "@/lib/filters";
+import {
+  filterResources,
+  filtersToQueryString,
+  parseFiltersFromSearchParams,
+  type FilterState,
+} from "@/lib/filters";
 import { useResourceText } from "@/lib/i18n/useResourceText";
 import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
-import type { Resource, Topic, ResourceType, Difficulty, Pricing } from "@/lib/types";
+import type { Resource } from "@/lib/types";
 import { ResourceCard } from "./ResourceCard";
-
-function computeFiltersFromSearchParams(
-  searchParams: ReturnType<typeof useSearchParams>,
-  allTopics: readonly string[],
-  allTypes: readonly string[]
-): FilterState {
-  if (!searchParams) return defaultFilters;
-
-  const initial: FilterState = { ...defaultFilters };
-
-  const q = searchParams.get("q") || searchParams.get("query") || "";
-  if (q) initial.query = q;
-
-  const topicParams = [
-    ...searchParams.getAll("topic"),
-    ...searchParams.getAll("topics"),
-  ];
-  const topicsFromParam = topicParams
-    .flatMap((t) => t.split(","))
-    .map((t) => t.trim() as Topic)
-    .filter((t) => allTopics.includes(t));
-  if (topicsFromParam.length) initial.topics = topicsFromParam;
-
-  const typeParams = [
-    ...searchParams.getAll("type"),
-    ...searchParams.getAll("types"),
-  ];
-  const typesFromParam = typeParams
-    .flatMap((t) => t.split(","))
-    .map((t) => t.trim() as ResourceType)
-    .filter((t) => allTypes.includes(t));
-  if (typesFromParam.length) initial.types = typesFromParam;
-
-  const diff = searchParams.get("difficulty") as Difficulty | null;
-  if (diff && ["beginner", "intermediate", "advanced"].includes(diff)) {
-    initial.difficulty = diff;
-  }
-
-  const price = searchParams.get("pricing") as Pricing | null;
-  if (price && ["free", "paid", "freemium"].includes(price)) {
-    initial.pricing = price;
-  }
-
-  const minS = searchParams.get("minScore") || searchParams.get("minCypherpunkScore");
-  if (minS) {
-    const n = parseInt(minS, 10);
-    if (!isNaN(n) && n >= 0 && n <= 10) initial.minCypherpunkScore = n;
-  }
-
-  const s = searchParams.get("sort") as FilterState["sort"] | null;
-  if (s && ["relevance", "score", "title"].includes(s)) {
-    initial.sort = s;
-  }
-
-  const hasAny = q || topicsFromParam.length || typesFromParam.length || diff || price || minS || s;
-  return hasAny ? initial : defaultFilters;
-}
 
 export function CatalogClient({ resources }: { resources: Resource[] }) {
   const { t } = useLanguage();
   const { topicLabels, typeLabels, difficultyLabels, pricingLabels } =
     useTranslatedLabels();
   const { getSearchableText, getResourceTitle } = useResourceText();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const filterHelpers = useMemo(
     () => ({
@@ -82,9 +33,18 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   const allTopics = Object.keys(topicLabels) as (keyof typeof topicLabels)[];
   const allTypes = Object.keys(typeLabels) as (keyof typeof typeLabels)[];
 
-  const searchParams = useSearchParams();
-  const [filters, setFilters] = useState<FilterState>(() =>
-    computeFiltersFromSearchParams(searchParams, allTopics, allTypes)
+  const filters = useMemo(
+    () => parseFiltersFromSearchParams(searchParams, allTopics, allTypes),
+    [searchParams, allTopics, allTypes]
+  );
+
+  const updateFilters = useCallback(
+    (updater: (prev: FilterState) => FilterState) => {
+      const next = updater(filters);
+      const qs = filtersToQueryString(next);
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+    },
+    [filters, pathname, router]
   );
 
   const filtered = useMemo(
@@ -93,7 +53,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   );
 
   function toggleTopic(topic: (typeof allTopics)[number]) {
-    setFilters((f) => ({
+    updateFilters((f) => ({
       ...f,
       topics: f.topics.includes(topic)
         ? f.topics.filter((t) => t !== topic)
@@ -102,7 +62,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   }
 
   function toggleType(type: (typeof allTypes)[number]) {
-    setFilters((f) => ({
+    updateFilters((f) => ({
       ...f,
       types: f.types.includes(type)
         ? f.types.filter((t) => t !== type)
@@ -115,31 +75,47 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
       <aside className="w-full shrink-0 lg:w-64">
         <div className="space-y-6 rounded-lg border border-border bg-card p-5 lg:sticky lg:top-20">
           <div>
-            <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted">
+            <label
+              htmlFor="catalog-search"
+              className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted"
+            >
               {t("catalogSearch")}
             </label>
             <input
+              id="catalog-search"
               type="search"
               placeholder={t("catalogSearchPlaceholder")}
               value={filters.query}
               onChange={(e) =>
-                setFilters((f) => ({ ...f, query: e.target.value, sort: "relevance" }))
+                updateFilters((f) => ({
+                  ...f,
+                  query: e.target.value,
+                  sort: "relevance",
+                }))
               }
-              className="w-full rounded border border-border bg-background px-3 py-2 text-sm outline-none focus:border-accent/50"
+              className="w-full rounded border border-border bg-background px-3 py-2 text-sm focus:border-accent/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
             />
           </div>
 
           <div>
-            <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted">
+            <label
+              htmlFor="catalog-min-score"
+              className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted"
+            >
               {t("catalogMinCpScore", { score: filters.minCypherpunkScore })}
             </label>
             <input
+              id="catalog-min-score"
               type="range"
               min={0}
               max={10}
               value={filters.minCypherpunkScore}
+              aria-valuemin={0}
+              aria-valuemax={10}
+              aria-valuenow={filters.minCypherpunkScore}
+              aria-valuetext={String(filters.minCypherpunkScore)}
               onChange={(e) =>
-                setFilters((f) => ({
+                updateFilters((f) => ({
                   ...f,
                   minCypherpunkScore: Number(e.target.value),
                 }))
@@ -150,15 +126,23 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
           </div>
 
           <div>
-            <p className="mb-2 font-mono text-xs uppercase tracking-wider text-muted">
+            <p
+              id="catalog-topics-label"
+              className="mb-2 font-mono text-xs uppercase tracking-wider text-muted"
+            >
               {t("catalogTopics")}
             </p>
-            <div className="flex flex-wrap gap-1.5">
+            <div
+              className="flex flex-wrap gap-1.5"
+              role="group"
+              aria-labelledby="catalog-topics-label"
+            >
               {allTopics.map((topic) => (
                 <button
                   key={topic}
                   type="button"
                   onClick={() => toggleTopic(topic)}
+                  aria-pressed={filters.topics.includes(topic)}
                   className={`rounded border px-2 py-1 text-xs transition-colors ${
                     filters.topics.includes(topic)
                       ? "border-accent/50 bg-accent/10 text-accent"
@@ -172,15 +156,23 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
           </div>
 
           <div>
-            <p className="mb-2 font-mono text-xs uppercase tracking-wider text-muted">
+            <p
+              id="catalog-types-label"
+              className="mb-2 font-mono text-xs uppercase tracking-wider text-muted"
+            >
               {t("catalogType")}
             </p>
-            <div className="flex flex-wrap gap-1.5">
+            <div
+              className="flex flex-wrap gap-1.5"
+              role="group"
+              aria-labelledby="catalog-types-label"
+            >
               {allTypes.map((type) => (
                 <button
                   key={type}
                   type="button"
                   onClick={() => toggleType(type)}
+                  aria-pressed={filters.types.includes(type)}
                   className={`rounded border px-2 py-1 text-xs transition-colors ${
                     filters.types.includes(type)
                       ? "border-accent/50 bg-accent/10 text-accent"
@@ -195,18 +187,24 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs text-muted">{t("catalogDifficulty")}</label>
+              <label
+                htmlFor="catalog-difficulty"
+                className="mb-1 block text-xs text-muted"
+              >
+                {t("catalogDifficulty")}
+              </label>
               <select
+                id="catalog-difficulty"
                 value={filters.difficulty ?? ""}
                 onChange={(e) =>
-                  setFilters((f) => ({
+                  updateFilters((f) => ({
                     ...f,
                     difficulty: e.target.value
                       ? (e.target.value as FilterState["difficulty"])
                       : null,
                   }))
                 }
-                className="w-full rounded border border-border bg-background px-2 py-1.5 text-xs"
+                className="w-full rounded border border-border bg-background px-2 py-1.5 text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
               >
                 <option value="">{t("filterAll")}</option>
                 {Object.entries(difficultyLabels).map(([k, v]) => (
@@ -217,18 +215,24 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs text-muted">{t("catalogPricing")}</label>
+              <label
+                htmlFor="catalog-pricing"
+                className="mb-1 block text-xs text-muted"
+              >
+                {t("catalogPricing")}
+              </label>
               <select
+                id="catalog-pricing"
                 value={filters.pricing ?? ""}
                 onChange={(e) =>
-                  setFilters((f) => ({
+                  updateFilters((f) => ({
                     ...f,
                     pricing: e.target.value
                       ? (e.target.value as FilterState["pricing"])
                       : null,
                   }))
                 }
-                className="w-full rounded border border-border bg-background px-2 py-1.5 text-xs"
+                className="w-full rounded border border-border bg-background px-2 py-1.5 text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
               >
                 <option value="">{t("filterAll")}</option>
                 {Object.entries(pricingLabels).map(([k, v]) => (
@@ -242,8 +246,8 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
 
           <button
             type="button"
-            onClick={() => setFilters(defaultFilters)}
-            className="w-full rounded border border-border py-2 text-xs text-muted hover:text-foreground"
+            onClick={() => router.replace(pathname, { scroll: false })}
+            className="w-full rounded border border-border py-2 text-xs text-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
           >
             {t("clearFilters")}
           </button>
@@ -256,14 +260,16 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
             {t("resourcesCount", { count: filtered.length })}
           </p>
           <select
+            id="catalog-sort"
+            aria-label={t("catalogSortScore")}
             value={filters.sort}
             onChange={(e) =>
-              setFilters((f) => ({
+              updateFilters((f) => ({
                 ...f,
                 sort: e.target.value as FilterState["sort"],
               }))
             }
-            className="rounded border border-border bg-card px-3 py-1.5 text-xs"
+            className="rounded border border-border bg-card px-3 py-1.5 text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
           >
             <option value="score">{t("catalogSortScore")}</option>
             <option value="title">{t("catalogSortTitle")}</option>

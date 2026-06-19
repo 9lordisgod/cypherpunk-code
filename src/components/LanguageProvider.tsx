@@ -25,6 +25,7 @@ type LanguageContextValue = {
   openPicker: () => void;
   closePicker: () => void;
   confirmLocale: () => void;
+  pickerDismissible: boolean;
   localeLabels: typeof LOCALE_LABELS;
 };
 
@@ -130,6 +131,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       openPicker,
       closePicker,
       confirmLocale,
+      pickerDismissible: pickerSeen,
       localeLabels: LOCALE_LABELS,
     }),
     [

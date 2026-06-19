@@ -14,10 +14,13 @@ export function ScoreBadge({ score }: { score: number }) {
           ? "text-accent-orange border-accent-orange/40 bg-accent-orange/10"
           : "text-muted border-border bg-card";
 
+  const label = t("cpScoreTooltip");
+
   return (
     <span
       className={`inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-xs ${color}`}
-      title={t("cpScoreTooltip")}
+      title={label}
+      aria-label={`${label}: ${score}`}
     >
       <span className="opacity-60">CP</span>
       {score}

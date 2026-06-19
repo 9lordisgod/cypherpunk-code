@@ -105,7 +105,7 @@ export function AboutContent() {
             className="mt-4 inline-flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 text-sm transition-colors hover:border-[#5865F2]/50 hover:text-[#5865F2]"
           >
             <DiscordIcon className="h-5 w-5 shrink-0 text-[#5865F2]" />
-            <span>discord.gg/sXn6w2tETq</span>
+            <span>{site.discord.url.replace("https://", "")}</span>
           </a>
         </section>
 

@@ -1,14 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { SiteLogo } from "@/components/SiteLogo";
 import { LOCALES, type Locale } from "@/lib/i18n/types";
 
 export function LanguagePicker() {
-  const { showPicker, locale, setLocale, confirmLocale, t, localeLabels } =
-    useLanguage();
+  const {
+    showPicker,
+    locale,
+    setLocale,
+    confirmLocale,
+    closePicker,
+    pickerDismissible,
+    t,
+    localeLabels,
+  } = useLanguage();
   const [bouncing, setBouncing] = useState<Locale | null>(null);
+
+  useEffect(() => {
+    if (!showPicker || !pickerDismissible) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closePicker();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [showPicker, pickerDismissible, closePicker]);
 
   if (!showPicker) return null;
 
@@ -18,10 +37,23 @@ export function LanguagePicker() {
     window.setTimeout(() => setBouncing(null), 400);
   };
 
+  const handleOverlayClick = () => {
+    if (pickerDismissible) closePicker();
+  };
+
   return (
-    <div className="lang-picker-overlay" role="dialog" aria-modal="true" aria-label={t("langPickerTitle")}>
+    <div
+      className="lang-picker-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t("langPickerTitle")}
+      onClick={handleOverlayClick}
+    >
       <div className="lang-picker-stars" aria-hidden="true" />
-      <div className="lang-picker-card pixel-panel">
+      <div
+        className="lang-picker-card pixel-panel"
+        onClick={(event) => event.stopPropagation()}
+      >
         <div className="lang-picker-header">
           <SiteLogo size="lg" className="lang-picker-logo" />
           <div>

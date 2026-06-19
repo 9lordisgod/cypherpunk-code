@@ -18,11 +18,19 @@ const navHrefs = [
 export function Header() {
   const { t, openPicker, locale } = useLanguage();
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuState, setMenuState] = useState({ path: pathname, open: false });
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  const menuOpen = menuState.open && menuState.path === pathname;
+
+  const toggleMenu = () => {
+    setMenuState((current) =>
+      current.open && current.path === pathname
+        ? { path: pathname, open: false }
+        : { path: pathname, open: true }
+    );
+  };
+
+  const closeMenu = () => setMenuState({ path: pathname, open: false });
 
   useEffect(() => {
     document.body.classList.toggle("mobile-menu-open", menuOpen);
@@ -80,7 +88,7 @@ export function Header() {
             </button>
             <button
               type="button"
-              onClick={() => setMenuOpen((open) => !open)}
+              onClick={toggleMenu}
               className="mobile-menu-btn"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
@@ -106,7 +114,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={`mobile-nav-link no-underline ${isActive ? "mobile-nav-link--active" : ""}`}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={closeMenu}
                 >
                   {t(item.key)}
                 </Link>
