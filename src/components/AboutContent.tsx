@@ -17,112 +17,116 @@ export function AboutContent() {
   }, [t]);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-      <h1 className="section-title text-2xl sm:text-3xl">
-        {t("aboutPageTitle", { name: site.name })}
-      </h1>
-      <p className="mt-4 text-lg text-muted">{t("footerTagline")}</p>
+    <div className="about-page">
+      <div className="about-page-bg" aria-hidden="true" />
+      <div className="about-page-scrim" aria-hidden="true" />
+      <div className="about-page-content mx-auto max-w-3xl px-4 py-10 sm:px-6">
+        <h1 className="section-title text-2xl sm:text-3xl">
+          {t("aboutPageTitle", { name: site.name })}
+        </h1>
+        <p className="mt-4 text-lg text-muted">{t("footerTagline")}</p>
 
-      <div className="mt-8">
-        <ArchiveNotice variant="full" />
-      </div>
+        <div className="mt-8">
+          <ArchiveNotice variant="full" />
+        </div>
 
-      <div className="prose-cypher mt-10 space-y-6 text-foreground">
-        <section id="policy">
-          <h2 className="text-xl font-semibold">{t("aboutArchiveMission")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">
-            {t("aboutArchiveMission1", { name: site.name })}
-          </p>
-          <p className="mt-3 leading-relaxed text-muted">
-            {t("aboutArchiveMission2", { handle })}
-          </p>
-        </section>
+        <div className="prose-cypher mt-10 space-y-6 text-foreground">
+          <section id="policy">
+            <h2 className="text-xl font-semibold">{t("aboutArchiveMission")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">
+              {t("aboutArchiveMission1", { name: site.name })}
+            </p>
+            <p className="mt-3 leading-relaxed text-muted">
+              {t("aboutArchiveMission2", { handle })}
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-xl font-semibold">{t("aboutWhatIsThis")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">{t("aboutWhatIsThisText")}</p>
-        </section>
+          <section>
+            <h2 className="text-xl font-semibold">{t("aboutWhatIsThis")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">{t("aboutWhatIsThisText")}</p>
+          </section>
 
-        <section>
-          <h2 className="text-xl font-semibold">{t("aboutWhoBuilt")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">
-            {t("aboutWhoBuiltText", { handle })}
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-semibold">{t("aboutWhoBuilt")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">
+              {t("aboutWhoBuiltText", { handle })}
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-xl font-semibold">{t("aboutCpScore")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">{t("aboutCpScoreText")}</p>
-        </section>
+          <section>
+            <h2 className="text-xl font-semibold">{t("aboutCpScore")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">{t("aboutCpScoreText")}</p>
+          </section>
 
-        <section>
-          <h2 className="text-xl font-semibold">{t("aboutStats")}</h2>
-          <ul className="mt-2 space-y-1 text-muted">
-            <li>{t("aboutStatsResources", { count: resources.length })}</li>
-            <li>{t("aboutStatsFree", { free: freeCount })}</li>
-            <li>{t("aboutStatsCoverage")}</li>
-            <li>{t("aboutStatsNoTracking")}</li>
-          </ul>
-        </section>
+          <section>
+            <h2 className="text-xl font-semibold">{t("aboutStats")}</h2>
+            <ul className="mt-2 space-y-1 text-muted">
+              <li>{t("aboutStatsResources", { count: resources.length })}</li>
+              <li>{t("aboutStatsFree", { free: freeCount })}</li>
+              <li>{t("aboutStatsCoverage")}</li>
+              <li>{t("aboutStatsNoTracking")}</li>
+            </ul>
+          </section>
 
-        <section id="donate">
-          <h2 className="text-xl font-semibold">{t("aboutSupport")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">
-            {t("aboutSupportText", { name: site.name })}
-          </p>
-          <div className="mt-4 space-y-4 rounded-lg border border-border bg-card p-6">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
-                {t("aboutBitcoin")}
-              </p>
-              <p className="mt-1 break-all font-mono text-sm">
-                <a
-                  href={`bitcoin:${site.donations.bitcoin}`}
-                  className="text-accent hover:underline"
-                >
-                  {site.donations.bitcoin}
-                </a>
-              </p>
+          <section id="donate">
+            <h2 className="text-xl font-semibold">{t("aboutSupport")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">
+              {t("aboutSupportText", { name: site.name })}
+            </p>
+            <div className="mt-4 space-y-4 rounded-lg border border-border bg-card/90 p-6 backdrop-blur-sm">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
+                  {t("aboutBitcoin")}
+                </p>
+                <p className="mt-1 break-all font-mono text-sm">
+                  <a
+                    href={`bitcoin:${site.donations.bitcoin}`}
+                    className="text-accent hover:underline"
+                  >
+                    {site.donations.bitcoin}
+                  </a>
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
+                  {t("aboutMonero")}
+                </p>
+                <p className="mt-1 break-all font-mono text-sm">{site.donations.monero}</p>
+              </div>
             </div>
-            <div>
-              <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
-                {t("aboutMonero")}
-              </p>
-              <p className="mt-1 break-all font-mono text-sm">{site.donations.monero}</p>
+          </section>
+
+          <section id="bitcoin-course">
+            <h2 className="text-xl font-semibold">{t("aboutPlanBSection")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">{t("aboutPlanBText")}</p>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              <Link href="/courses" className="pixel-btn pixel-btn--planb no-underline text-sm">
+                {t("coursesPageTitle")} →
+              </Link>
+              <PoweredByPlanB />
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="bitcoin-course">
-          <h2 className="text-xl font-semibold">{t("aboutPlanBSection")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">{t("aboutPlanBText")}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-4">
-            <Link href="/courses" className="pixel-btn pixel-btn--planb no-underline text-sm">
-              {t("coursesPageTitle")} →
-            </Link>
-            <PoweredByPlanB />
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">{t("aboutContribute")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">
-            {t("aboutContributeIntro")}{" "}
-            <a
-              href={site.creator.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              {handle}
-            </a>
-            . {t("aboutContributeOutro")}{" "}
-            <Link href="/roadmap" className="text-accent hover:underline">
-              {t("aboutRoadmapLink")}
-            </Link>{" "}
-            {t("aboutContributeEnd")}
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-semibold">{t("aboutContribute")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">
+              {t("aboutContributeIntro")}{" "}
+              <a
+                href={site.creator.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                {handle}
+              </a>
+              . {t("aboutContributeOutro")}{" "}
+              <Link href="/roadmap" className="text-accent hover:underline">
+                {t("aboutRoadmapLink")}
+              </Link>{" "}
+              {t("aboutContributeEnd")}
+            </p>
+          </section>
+        </div>
       </div>
     </div>
   );

@@ -570,6 +570,40 @@ body.mobile-menu-open {
   opacity: 0.55;
 }
 
+/* About page — cypherpunk background (this page only) */
+.about-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.about-page-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/about-bg.jpg");
+  background-size: cover;
+  background-position: center 18%;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.about-page-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 90% 65% at 50% 32%, rgba(12, 20, 8, 0.25), rgba(12, 20, 8, 0.9)),
+    linear-gradient(180deg, rgba(12, 20, 8, 0.7) 0%, rgba(12, 20, 8, 0.94) 100%);
+  pointer-events: none;
+}
+
+.about-page-content {
+  position: relative;
+  z-index: 2;
+}
+
 @keyframes anime-float {
   0%, 100% { transform: translateY(0) translateX(0); }
   25% { transform: translateY(-7px) translateX(3px); }
