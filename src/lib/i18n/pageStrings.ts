@@ -117,6 +117,7 @@ export const pageStringsEn = {
   roadmapPhase2Item3: "More Monero & Bitcoin privacy resources",
   roadmapPhase2Item4: "Periodic automated checks for broken links",
   roadmapPhase2Item5: "Changelog page for database updates",
+  roadmapPhase2Item6: "Launch a community-based NFT PFP collection",
   roadmapPhase3Label: "Phase 3 — Better discovery",
   roadmapPhase3Item1: "Multilingual resource tags",
   roadmapPhase3Item2: "RSS / feed for new catalog entries",
@@ -128,6 +129,8 @@ export const pageStringsEn = {
   roadmapPhase4Item2: "Nostr-based update notifications",
   roadmapPhase4Item3: "Community curation workflow",
   roadmapPhase4Item4: "Mirror-friendly static archive dumps",
+  roadmapPhase4Item5:
+    "Launch utility coin for our project with tokenomics release soon",
   roadmapSuggestTitle: "Suggest a milestone",
   roadmapSuggestText:
     "Have an idea for the roadmap or a resource to add? Reach out to {handle}.",
@@ -249,6 +252,7 @@ export const pageStringsZhCN = {
   roadmapPhase2Item3: "更多门罗币和比特币隐私资源",
   roadmapPhase2Item4: "定期检查失效链接",
   roadmapPhase2Item5: "数据库更新changelog页面",
+  roadmapPhase2Item6: "推出社区驱动的 NFT 头像收藏",
   roadmapPhase3Label: "第三阶段 — 更好的发现",
   roadmapPhase3Item1: "多语言资源标签",
   roadmapPhase3Item2: "新目录条目的 RSS/订阅",
@@ -260,6 +264,7 @@ export const pageStringsZhCN = {
   roadmapPhase4Item2: "基于 Nostr 的更新通知",
   roadmapPhase4Item3: "社区策展工作流",
   roadmapPhase4Item4: "便于镜像的静态档案导出",
+  roadmapPhase4Item5: "推出项目实用代币，代币经济学即将发布",
   roadmapSuggestTitle: "建议里程碑",
   roadmapSuggestText: "对路线图有想法或想添加资源？联系 {handle}。",
 } as const;
@@ -382,6 +387,7 @@ export const pageStringsJa = {
   roadmapPhase2Item3: "より多くのモネロ・ビットコインプライバシーリソース",
   roadmapPhase2Item4: "リンク切れの定期自動チェック",
   roadmapPhase2Item5: "データベース更新の変更履歴ページ",
+  roadmapPhase2Item6: "コミュニティベースの NFT PFP コレクションをローンチ",
   roadmapPhase3Label: "フェーズ 3 — より良い発見",
   roadmapPhase3Item1: "多言語リソースタグ",
   roadmapPhase3Item2: "新カタログエントリの RSS/フィード",
@@ -393,6 +399,8 @@ export const pageStringsJa = {
   roadmapPhase4Item2: "Nostr ベースの更新通知",
   roadmapPhase4Item3: "コミュニティキュレーションワークフロー",
   roadmapPhase4Item4: "ミラー向け静的アーカイブダンプ",
+  roadmapPhase4Item5:
+    "プロジェクトのユーティリティコインをローンチ — トークノミクス近日公開",
   roadmapSuggestTitle: "マイルストーンを提案",
   roadmapSuggestText:
     "ロードマップのアイデアや追加リソースは {handle} まで。",
@@ -519,6 +527,7 @@ export const pageStringsFr = {
   roadmapPhase2Item3: "Plus de ressources Monero et confidentialité Bitcoin",
   roadmapPhase2Item4: "Vérifications automatiques périodiques des liens cassés",
   roadmapPhase2Item5: "Page changelog pour les mises à jour",
+  roadmapPhase2Item6: "Lancer une collection NFT PFP communautaire",
   roadmapPhase3Label: "Phase 3 — Meilleure découverte",
   roadmapPhase3Item1: "Tags de ressources multilingues",
   roadmapPhase3Item2: "Flux RSS pour les nouvelles entrées",
@@ -530,6 +539,8 @@ export const pageStringsFr = {
   roadmapPhase4Item2: "Notifications de mise à jour via Nostr",
   roadmapPhase4Item3: "Workflow de curation communautaire",
   roadmapPhase4Item4: "Dumps d'archive statiques pour miroirs",
+  roadmapPhase4Item5:
+    "Lancer une utility coin pour le projet — tokenomics bientôt publiées",
   roadmapSuggestTitle: "Suggérer une étape",
   roadmapSuggestText:
     "Une idée pour la feuille de route ou une ressource à ajouter ? Contactez {handle}.",
