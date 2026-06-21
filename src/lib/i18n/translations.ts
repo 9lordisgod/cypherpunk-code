@@ -69,8 +69,7 @@ const en = {
   footerSupport: "Support",
   footerDonate: "Donate BTC/XMR",
   footerTagline: "Open archive database for Bitcoin, Monero & cypherpunk education",
-  footerBottom:
-    "Open archive database · Catalog maintained continuously · Content removal on request · No tracking",
+  footerNote: "Cypherpunk Code — open-source crypto education",
 
   // Labels
   topicBitcoin: "Bitcoin",
@@ -164,8 +163,7 @@ const zhCN: TranslationStrings = {
   footerSupport: "支持",
   footerDonate: "捐赠 BTC/XMR",
   footerTagline: "比特币、门罗币与密码朋克教育的开放档案数据库",
-  footerBottom:
-    "开放档案数据库 · 目录持续维护 · 应要求移除内容 · 无追踪",
+  footerNote: "Cypherpunk Code — 开源加密教育",
 
   topicBitcoin: "比特币",
   topicMonero: "门罗币",
@@ -259,8 +257,7 @@ const ja: TranslationStrings = {
   footerDonate: "BTC/XMR を寄付",
   footerTagline:
     "ビットコイン、モネロ、サイファーパンク教育のオープンアーカイブデータベース",
-  footerBottom:
-    "オープンアーカイブデータベース · カタログ継続メンテナンス · 要請に応じてコンテンツ削除 · トラッキングなし",
+  footerNote: "Cypherpunk Code — オープンソース暗号教育",
 
   topicBitcoin: "ビットコイン",
   topicMonero: "モネロ",
@@ -355,8 +352,7 @@ const fr: TranslationStrings = {
   footerDonate: "Donner BTC/XMR",
   footerTagline:
     "Base de données d'archives ouverte pour Bitcoin, Monero et l'éducation cypherpunk",
-  footerBottom:
-    "Base de données d'archives ouverte · Catalogue maintenu en continu · Retrait de contenu sur demande · Pas de suivi",
+  footerNote: "Cypherpunk Code — éducation crypto open source",
 
   topicBitcoin: "Bitcoin",
   topicMonero: "Monero",

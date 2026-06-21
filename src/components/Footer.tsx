@@ -83,14 +83,9 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-col items-center gap-4 border-t-2 border-border pt-6">
+        <div className="mt-8 flex flex-col items-center gap-3 border-t-2 border-border pt-6">
           <PoweredByPlanB />
-          <p className="text-center text-xs leading-relaxed text-muted">
-            {t("footerPlanBAttribution")}
-          </p>
-          <p className="text-center text-xs leading-relaxed text-muted">
-            {t("footerBottom")}
-          </p>
+          <p className="text-center text-xs text-muted">{t("footerNote")}</p>
         </div>
       </div>
     </footer>
