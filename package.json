@@ -11,6 +11,7 @@
     "lint": "eslint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
+    "db:sql:turso": "prisma migrate diff --from-empty --to-schema prisma/schema.prisma --script -o prisma/turso-init.sql",
     "postinstall": "prisma generate"
   },
   "dependencies": {
