@@ -131,6 +131,54 @@ export const pageStringsEn = {
   roadmapSuggestTitle: "Suggest a milestone",
   roadmapSuggestText:
     "Have an idea for the roadmap or a resource to add? Reach out to {handle}.",
+
+  coursesPageTitle: "Bitcoin Course",
+  coursesPreviewBadge: "PREVIEW",
+  coursesPreviewNotice:
+    "Local preview — Bitcoin course powered by open-source Plan ₿ Network materials. Not yet deployed to production.",
+  coursesHeroEyebrow: "Original Bitcoin education track",
+  coursesHeroDescription:
+    "A sovereign Bitcoin course curated for cypherpunk learners — from first principles to nodes, privacy, and Lightning. Course content is sourced from Plan ₿ Network's open educational repository under CC BY-SA 4.0, presented with Cypherpunk Code's independent branding.",
+  coursesStartJourney: "Start Module 1",
+  coursesViewModules: "View all modules",
+  coursesIndependenceTitle: "Independent project, open materials",
+  coursesIndependenceText:
+    "Cypherpunk Code is not Plan ₿ Academy. We present these courses under our own branding with clear attribution. Plan ₿ Network's educational content is open source — we cite every module using TASL (Title, Author, Source, License) and link back to the original materials.",
+  coursesShareAlikeNotice:
+    "Modified presentations of this content remain under Creative Commons Attribution-ShareAlike 4.0. Do not use Plan ₿ Academy logos or branding in a way that implies official certification.",
+  coursesModulesTitle: "Course modules",
+  coursesModulesSubtitle:
+    "Nine modules from beginner fundamentals to nodes, Lightning, and OpSec",
+  coursesModuleCount: "{count} modules",
+  coursesObjectives: "Learning objectives",
+  coursesStartReading: "Start reading",
+  coursesChapterList: "Chapters",
+  coursesPreviousChapter: "Previous chapter",
+  coursesNextChapter: "Next chapter",
+  coursesBackToCourse: "Back to course",
+  courseHours: "{count}h",
+  courseChapterCount: "{count} chapters",
+  courseChapterProgress: "Chapter {current} of {total}",
+  courseLevel_beginner: "Beginner",
+  courseLevel_intermediate: "Intermediate",
+  courseLevel_advanced: "Advanced",
+  courseLevel_expert: "Expert",
+  courseLevel_wizard: "Wizard",
+  courseTopic_bitcoin: "Bitcoin",
+  courseTopic_business: "Business",
+  courseTopic_mining: "Mining",
+  courseTopic_protocol: "Protocol",
+  courseTopic_security: "Security",
+  "courseTopic_social studies": "Social studies",
+  heroCourses: "Bitcoin course",
+  heroCoursesSubtitle: "Original sovereign track powered by Plan ₿ Network open materials",
+  aboutPlanBSection: "Bitcoin course & open-source attribution",
+  aboutPlanBText:
+    "The Cypherpunk Code Bitcoin Course uses educational materials from Plan ₿ Network's open-source repository (CC BY-SA 4.0). Each module includes TASL attribution. This site is independently operated and is not affiliated with or endorsed by Plan ₿ Academy.",
+  footerPlanBAttribution:
+    "Bitcoin course materials from Plan ₿ Network (CC BY-SA 4.0). Cypherpunk Code is an independent project — not Plan ₿ Academy.",
+  roadmapPhase1Item6:
+    "Bitcoin original course (preview) powered by Plan ₿ Network open-source materials",
 } as const;
 
 export const pageStringsZhCN = {
@@ -262,6 +310,51 @@ export const pageStringsZhCN = {
   roadmapPhase4Item4: "便于镜像的静态档案导出",
   roadmapSuggestTitle: "建议里程碑",
   roadmapSuggestText: "对路线图有想法或想添加资源？联系 {handle}。",
+  roadmapPhase1Item6: "基于 Plan ₿ Network 开源材料的比特币原创课程（预览版）",
+  coursesPageTitle: "比特币课程",
+  coursesPreviewBadge: "预览",
+  coursesPreviewNotice:
+    "本地预览 — 由 Plan ₿ Network 开源材料驱动的比特币课程。尚未部署到生产环境。",
+  coursesHeroEyebrow: "原创比特币教育路径",
+  coursesHeroDescription:
+    "为密码朋克学习者策划的主权比特币课程 — 从基础原理到节点、隐私和闪电网络。课程内容来自 Plan ₿ Network 开源教育仓库（CC BY-SA 4.0），以 Cypherpunk Code 独立品牌呈现。",
+  coursesStartJourney: "开始模块 1",
+  coursesViewModules: "查看所有模块",
+  coursesIndependenceTitle: "独立项目，开放材料",
+  coursesIndependenceText:
+    "Cypherpunk Code 不是 Plan ₿ Academy。我们在自有品牌下呈现这些课程并明确署名。Plan ₿ Network 的教育内容是开源的 — 我们使用 TASL（标题、作者、来源、许可）标注每个模块并链接回原始材料。",
+  coursesShareAlikeNotice:
+    "本内容的修改版本仍遵循 CC BY-SA 4.0。请勿使用 Plan ₿ Academy 标识暗示官方认证。",
+  coursesModulesTitle: "课程模块",
+  coursesModulesSubtitle: "九个模块：从入门基础到节点、闪电网络和操作安全",
+  coursesModuleCount: "{count} 个模块",
+  coursesObjectives: "学习目标",
+  coursesStartReading: "开始阅读",
+  coursesChapterList: "章节",
+  coursesPreviousChapter: "上一章",
+  coursesNextChapter: "下一章",
+  coursesBackToCourse: "返回课程",
+  courseHours: "{count} 小时",
+  courseChapterCount: "{count} 章",
+  courseChapterProgress: "第 {current} 章，共 {total} 章",
+  courseLevel_beginner: "入门",
+  courseLevel_intermediate: "中级",
+  courseLevel_advanced: "高级",
+  courseLevel_expert: "专家",
+  courseLevel_wizard: "大师",
+  courseTopic_bitcoin: "比特币",
+  courseTopic_business: "商业",
+  courseTopic_mining: "挖矿",
+  courseTopic_protocol: "协议",
+  courseTopic_security: "安全",
+  "courseTopic_social studies": "社会研究",
+  heroCourses: "比特币课程",
+  heroCoursesSubtitle: "由 Plan ₿ Network 开源材料驱动的原创主权课程",
+  aboutPlanBSection: "比特币课程与开源署名",
+  aboutPlanBText:
+    "Cypherpunk Code 比特币课程使用 Plan ₿ Network 开源仓库的教育材料（CC BY-SA 4.0）。每个模块均含 TASL 署名。本网站独立运营，与 Plan ₿ Academy 无关联或背书关系。",
+  footerPlanBAttribution:
+    "比特币课程材料来自 Plan ₿ Network（CC BY-SA 4.0）。Cypherpunk Code 是独立项目 — 非 Plan ₿ Academy。",
 } as const;
 
 export const pageStringsJa = {
@@ -396,6 +489,52 @@ export const pageStringsJa = {
   roadmapSuggestTitle: "マイルストーンを提案",
   roadmapSuggestText:
     "ロードマップのアイデアや追加リソースは {handle} まで。",
+  roadmapPhase1Item6:
+    "Plan ₿ Network オープンソース教材を使ったビットコインオリジナルコース（プレビュー）",
+  coursesPageTitle: "ビットコインコース",
+  coursesPreviewBadge: "プレビュー",
+  coursesPreviewNotice:
+    "ローカルプレビュー — Plan ₿ Network オープン教材によるビットコインコース。本番未デプロイ。",
+  coursesHeroEyebrow: "オリジナルビットコイン教育トラック",
+  coursesHeroDescription:
+    "サイファーパンク学習者向けの主権的ビットコインコース — 基礎からノード、プライバシー、ライトニングまで。コンテンツは Plan ₿ Network のオープン教育リポジトリ（CC BY-SA 4.0）由来、Cypherpunk Code の独立ブランドで提供。",
+  coursesStartJourney: "モジュール1を開始",
+  coursesViewModules: "全モジュールを見る",
+  coursesIndependenceTitle: "独立プロジェクト、オープン教材",
+  coursesIndependenceText:
+    "Cypherpunk Code は Plan ₿ Academy ではありません。独自ブランドで明確な帰属表示とともにコースを提供します。Plan ₿ Network の教育コンテンツはオープンソース — 各モジュールに TASL（Title, Author, Source, License）で帰属表示します。",
+  coursesShareAlikeNotice:
+    "改変版も CC BY-SA 4.0 の下で提供されます。Plan ₿ Academy のロゴで公式認定を示さないでください。",
+  coursesModulesTitle: "コースモジュール",
+  coursesModulesSubtitle: "入門からノード、ライトニング、OpSec まで9モジュール",
+  coursesModuleCount: "{count} モジュール",
+  coursesObjectives: "学習目標",
+  coursesStartReading: "読み始める",
+  coursesChapterList: "章一覧",
+  coursesPreviousChapter: "前の章",
+  coursesNextChapter: "次の章",
+  coursesBackToCourse: "コースに戻る",
+  courseHours: "{count}時間",
+  courseChapterCount: "{count} 章",
+  courseChapterProgress: "第{current}章 / 全{total}章",
+  courseLevel_beginner: "初級",
+  courseLevel_intermediate: "中級",
+  courseLevel_advanced: "上級",
+  courseLevel_expert: "エキスパート",
+  courseLevel_wizard: "ウィザード",
+  courseTopic_bitcoin: "ビットコイン",
+  courseTopic_business: "ビジネス",
+  courseTopic_mining: "マイニング",
+  courseTopic_protocol: "プロトコル",
+  courseTopic_security: "セキュリティ",
+  "courseTopic_social studies": "社会研究",
+  heroCourses: "ビットコインコース",
+  heroCoursesSubtitle: "Plan ₿ Network オープン教材によるオリジナル主権トラック",
+  aboutPlanBSection: "ビットコインコースとオープンソース帰属",
+  aboutPlanBText:
+    "Cypherpunk Code ビットコインコースは Plan ₿ Network のオープンソースリポジトリ（CC BY-SA 4.0）の教材を使用。各モジュールに TASL 帰属表示あり。本サイトは独立運営で Plan ₿ Academy と提携・後援関係はありません。",
+  footerPlanBAttribution:
+    "ビットコインコース教材は Plan ₿ Network（CC BY-SA 4.0）由来。Cypherpunk Code は独立プロジェクト — Plan ₿ Academy ではありません。",
 } as const;
 
 export const pageStringsFr = {
@@ -533,4 +672,52 @@ export const pageStringsFr = {
   roadmapSuggestTitle: "Suggérer une étape",
   roadmapSuggestText:
     "Une idée pour la feuille de route ou une ressource à ajouter ? Contactez {handle}.",
+  roadmapPhase1Item6:
+    "Cours Bitcoin original (aperçu) alimenté par les matériaux open source de Plan ₿ Network",
+  coursesPageTitle: "Cours Bitcoin",
+  coursesPreviewBadge: "APERÇU",
+  coursesPreviewNotice:
+    "Aperçu local — cours Bitcoin alimenté par les matériaux open source de Plan ₿ Network. Pas encore déployé en production.",
+  coursesHeroEyebrow: "Parcours éducatif Bitcoin original",
+  coursesHeroDescription:
+    "Un parcours Bitcoin souverain pour les apprenants cypherpunk — des fondamentaux aux nœuds, la confidentialité et Lightning. Le contenu provient du dépôt éducatif open source de Plan ₿ Network (CC BY-SA 4.0), présenté sous la marque indépendante de Cypherpunk Code.",
+  coursesStartJourney: "Commencer le module 1",
+  coursesViewModules: "Voir tous les modules",
+  coursesIndependenceTitle: "Projet indépendant, matériaux ouverts",
+  coursesIndependenceText:
+    "Cypherpunk Code n'est pas Plan ₿ Academy. Nous présentons ces cours sous notre propre marque avec attribution claire. Le contenu éducatif de Plan ₿ Network est open source — nous citons chaque module en TASL (Titre, Auteur, Source, Licence).",
+  coursesShareAlikeNotice:
+    "Les présentations modifiées restent sous CC BY-SA 4.0. N'utilisez pas les logos Plan ₿ Academy pour suggérer une certification officielle.",
+  coursesModulesTitle: "Modules du cours",
+  coursesModulesSubtitle:
+    "Neuf modules — des fondamentaux aux nœuds, Lightning et OpSec",
+  coursesModuleCount: "{count} modules",
+  coursesObjectives: "Objectifs d'apprentissage",
+  coursesStartReading: "Commencer la lecture",
+  coursesChapterList: "Chapitres",
+  coursesPreviousChapter: "Chapitre précédent",
+  coursesNextChapter: "Chapitre suivant",
+  coursesBackToCourse: "Retour au cours",
+  courseHours: "{count}h",
+  courseChapterCount: "{count} chapitres",
+  courseChapterProgress: "Chapitre {current} sur {total}",
+  courseLevel_beginner: "Débutant",
+  courseLevel_intermediate: "Intermédiaire",
+  courseLevel_advanced: "Avancé",
+  courseLevel_expert: "Expert",
+  courseLevel_wizard: "Wizard",
+  courseTopic_bitcoin: "Bitcoin",
+  courseTopic_business: "Business",
+  courseTopic_mining: "Mining",
+  courseTopic_protocol: "Protocole",
+  courseTopic_security: "Sécurité",
+  "courseTopic_social studies": "Études sociales",
+  heroCourses: "Cours Bitcoin",
+  heroCoursesSubtitle:
+    "Parcours souverain original alimenté par les matériaux ouverts de Plan ₿ Network",
+  aboutPlanBSection: "Cours Bitcoin et attribution open source",
+  aboutPlanBText:
+    "Le cours Bitcoin de Cypherpunk Code utilise les matériaux du dépôt open source de Plan ₿ Network (CC BY-SA 4.0). Chaque module inclut une attribution TASL. Ce site est exploité indépendamment et n'est pas affilié à Plan ₿ Academy.",
+  footerPlanBAttribution:
+    "Matériaux du cours Bitcoin de Plan ₿ Network (CC BY-SA 4.0). Cypherpunk Code est un projet indépendant — pas Plan ₿ Academy.",
 } as const;

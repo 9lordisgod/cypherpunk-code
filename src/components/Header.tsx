@@ -9,6 +9,7 @@ import { site } from "@/lib/data";
 import { LOCALE_LABELS } from "@/lib/i18n/types";
 
 const navHrefs = [
+  { href: "/courses", key: "navCourses" as const },
   { href: "/catalog", key: "navCatalog" as const },
   { href: "/paths", key: "navPaths" as const },
   { href: "/about", key: "navAbout" as const },

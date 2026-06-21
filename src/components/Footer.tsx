@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { DiscordCommunity } from "@/components/DiscordCommunity";
 import { useLanguage } from "@/components/LanguageProvider";
+import { PoweredByPlanB } from "@/components/planb/PoweredByPlanB";
 import { PixelCanadaFlag } from "@/components/pixel/PixelCanadaFlag";
 import { SiteLogo } from "@/components/SiteLogo";
 import { site } from "@/lib/data";
@@ -44,6 +45,11 @@ export function Footer() {
             <div>
               <p className="footer-heading mb-2">{t("footerExplore")}</p>
               <ul className="space-y-1">
+                <li>
+                  <Link href="/courses" className="text-muted hover:text-foreground no-underline">
+                    {t("navCourses")}
+                  </Link>
+                </li>
                 <li>
                   <Link href="/catalog" className="text-muted hover:text-foreground no-underline">
                     {t("navCatalog")}
@@ -96,9 +102,15 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <p className="mt-8 border-t-2 border-border pt-6 text-center text-xs leading-relaxed text-muted">
-          {t("footerBottom")}
-        </p>
+        <div className="mt-8 flex flex-col items-center gap-4 border-t-2 border-border pt-6">
+          <PoweredByPlanB />
+          <p className="text-center text-xs leading-relaxed text-muted">
+            {t("footerPlanBAttribution")}
+          </p>
+          <p className="text-center text-xs leading-relaxed text-muted">
+            {t("footerBottom")}
+          </p>
+        </div>
       </div>
     </footer>
   );

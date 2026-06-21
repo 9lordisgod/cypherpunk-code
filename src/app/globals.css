@@ -17,6 +17,8 @@
   --pixel-shadow: #050a04;
   --duo-green: #58cc02;
   --duo-green-dark: #46a302;
+  --planb-orange: #ff5c00;
+  --planb-orange-dim: #ff5c0022;
 }
 
 @theme inline {
@@ -904,4 +906,157 @@ body.mobile-menu-open {
     width: 100%;
     text-align: center;
   }
+}
+
+/* Plan ₿ course integration */
+.preview-banner {
+  border-bottom: 2px solid var(--planb-orange);
+  background: var(--planb-orange-dim);
+  padding: 10px 16px;
+  text-align: center;
+}
+
+.preview-banner__badge {
+  display: inline-block;
+  margin-right: 8px;
+  border: 2px solid var(--planb-orange);
+  background: var(--background);
+  padding: 2px 8px;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  color: var(--planb-orange);
+}
+
+.courses-hero {
+  border-bottom: 4px solid var(--border);
+  background: linear-gradient(180deg, var(--card) 0%, var(--background) 100%);
+}
+
+.courses-hero__eyebrow {
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  color: var(--planb-orange);
+  letter-spacing: 1px;
+}
+
+.courses-hero__title {
+  font-family: var(--font-pixel), monospace;
+  font-size: clamp(16px, 4vw, 24px);
+  line-height: 1.8;
+  text-shadow: 2px 2px 0 var(--pixel-shadow);
+}
+
+.course-card:hover {
+  border-color: var(--planb-orange);
+}
+
+.course-card__title {
+  font-family: var(--font-pixel), monospace;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.course-card__module {
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  margin-bottom: 8px;
+}
+
+.course-pill {
+  display: inline-block;
+  border: 2px solid var(--border);
+  background: var(--background);
+  padding: 4px 8px;
+  font-family: var(--font-pixel), monospace;
+  font-size: 7px;
+}
+
+.course-chapter-link {
+  border: 2px solid transparent;
+  transition: border-color 100ms, background 100ms;
+}
+
+.course-chapter-link:hover {
+  border-color: var(--planb-orange);
+  background: var(--planb-orange-dim);
+}
+
+.course-markdown {
+  line-height: 1.7;
+}
+
+.course-markdown p {
+  margin: 1rem 0;
+}
+
+.course-markdown ul,
+.course-markdown ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.course-markdown li {
+  margin: 0.4rem 0;
+}
+
+.course-markdown__h3 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.course-markdown__image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 1.25rem 0;
+  border: 2px solid var(--border);
+  image-rendering: auto;
+}
+
+.powered-by-planb__pill {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 2px solid var(--planb-orange);
+  background: var(--background);
+  padding: 10px 14px;
+  box-shadow: 3px 3px 0 var(--pixel-shadow);
+  transition: transform 100ms;
+}
+
+.powered-by-planb:hover .powered-by-planb__pill {
+  transform: translate(-1px, -1px);
+}
+
+.powered-by-planb__label {
+  font-family: var(--font-pixel), monospace;
+  font-size: 7px;
+  color: var(--muted);
+}
+
+.powered-by-planb__brand {
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  color: var(--foreground);
+}
+
+.powered-by-planb__btc {
+  color: var(--planb-orange);
+}
+
+.planb-attribution {
+  border-color: var(--planb-orange);
+}
+
+.pixel-btn--planb {
+  border-color: var(--planb-orange);
+  background: var(--planb-orange);
+  color: var(--background);
+}
+
+.pixel-btn--planb:hover {
+  background: #ff7a33;
+  border-color: #ff7a33;
 }

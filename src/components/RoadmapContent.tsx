@@ -17,6 +17,7 @@ const phases = [
       "roadmapPhase1Item3",
       "roadmapPhase1Item4",
       "roadmapPhase1Item5",
+      "roadmapPhase1Item6",
     ] as const,
   },
   {
