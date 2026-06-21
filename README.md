@@ -17,16 +17,32 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Deploy
+## Auth, progress, and admin
 
-Works on Vercel, Cloudflare Pages, or any Node host:
+Learners sign in with Solana or Bitcoin wallets. Progress and feedback are stored in the database. Admins use email/password at `/admin/login`.
+
+```bash
+cp .env.example .env.local
+# Set AUTH_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD, then:
+npm run db:push
+npm run dev
+```
+
+## Deploy (Vercel)
+
+1. Push to GitHub and import the repo in [Vercel](https://vercel.com).
+2. Set environment variables in the Vercel project:
+   - `AUTH_SECRET` — `openssl rand -base64 32`
+   - `AUTH_URL` — `https://cypherpunk-code.ca`
+   - `DATABASE_URL` + `DATABASE_AUTH_TOKEN` — [Turso](https://turso.tech) libSQL (recommended; local SQLite does not persist on serverless)
+   - `ADMIN_EMAIL`, `ADMIN_PASSWORD` (bcrypt hash recommended)
+   - `DEV_LOGIN_ENABLED` — `false`
+3. Deploy. The build runs `prisma db push` then `next build`.
 
 ```bash
 npm run build
 npm start
 ```
-
-Static export is possible later if you drop client-side search (currently uses React state).
 
 ## Customize
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
+import { ChapterProgressTracker } from "@/components/auth/ChapterProgressTracker";
 import { CourseMarkdown } from "@/components/planb/CourseMarkdown";
 import { PlanBAttribution } from "@/components/planb/PlanBAttribution";
 import { PoweredByPlanB } from "@/components/planb/PoweredByPlanB";
@@ -80,6 +81,13 @@ export function CourseChapterContent({
         <article className="mt-8">
           <CourseMarkdown content={chapter.content} />
         </article>
+
+        <ChapterProgressTracker
+          courseSlug={course.slug}
+          courseTitle={courseTitle}
+          chapterSlug={chapter.slug}
+          chapterTitle={chapter.title}
+        />
 
         <nav className="course-chapter-nav mt-10 grid gap-3 sm:grid-cols-2">
           {previous ? (

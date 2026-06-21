@@ -660,6 +660,183 @@ body.mobile-menu-open {
   color: var(--accent-orange);
 }
 
+/* Auth sign-in / sign-out chip */
+.auth-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  border: 2px solid var(--planb-orange);
+  background: rgba(255, 92, 0, 0.1);
+  box-shadow: 0 0 0 0 rgba(255, 92, 0, 0.35);
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1),
+    box-shadow 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.auth-box--signed-in {
+  gap: 0;
+  padding: 0;
+  animation: auth-box-breathe 3.2s ease-in-out infinite;
+}
+
+.auth-box--mobile {
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 4px;
+}
+
+.auth-box__glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 140, 50, 0.55) 0%,
+    rgba(255, 92, 0, 0.2) 35%,
+    transparent 70%
+  );
+  transform: scale(0.35);
+  opacity: 0;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.2, 0.64, 1),
+    opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.auth-box:hover .auth-box__glow,
+.auth-box__signin:hover .auth-box__glow {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+.auth-box:hover,
+.auth-box__signin:hover {
+  animation: none;
+  transform: scale(1.08);
+  background: linear-gradient(135deg, rgba(255, 92, 0, 0.35) 0%, rgba(255, 140, 50, 0.22) 100%);
+  border-color: #ff8c32;
+  box-shadow:
+    0 0 18px rgba(255, 92, 0, 0.45),
+    0 0 0 3px rgba(255, 92, 0, 0.18);
+  color: #fff;
+}
+
+.auth-box__signin {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6px 14px;
+  border: 2px solid var(--planb-orange);
+  background: rgba(255, 92, 0, 0.12);
+  color: var(--planb-orange);
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  line-height: 1.6;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(255, 92, 0, 0.35);
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1),
+    box-shadow 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease,
+    color 0.28s ease;
+  animation: auth-box-breathe 3.2s ease-in-out infinite;
+}
+
+.auth-box__signin--mobile {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 9px;
+  justify-content: flex-start;
+}
+
+.auth-box__label,
+.auth-box__link,
+.auth-box__signout {
+  position: relative;
+  z-index: 1;
+}
+
+.auth-box__link {
+  padding: 6px 10px;
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  line-height: 1.6;
+  color: var(--planb-orange);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.auth-box--mobile .auth-box__link {
+  padding: 12px 14px;
+  font-size: 9px;
+}
+
+.auth-box:hover .auth-box__link,
+.auth-box__signin:hover .auth-box__label {
+  color: #fff;
+}
+
+.auth-box__divider {
+  width: 2px;
+  align-self: stretch;
+  background: rgba(255, 92, 0, 0.45);
+  flex-shrink: 0;
+}
+
+.auth-box--mobile .auth-box__divider {
+  width: 100%;
+  height: 2px;
+  align-self: auto;
+}
+
+.auth-box__signout {
+  padding: 6px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.auth-box--mobile .auth-box__signout {
+  padding: 12px 14px;
+  font-size: 9px;
+  text-align: left;
+}
+
+.auth-box:hover .auth-box__signout {
+  color: #ffe8d6;
+}
+
+.auth-box--loading {
+  padding: 6px 10px;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  animation: none;
+}
+
+@keyframes auth-box-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 92, 0, 0.28);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 14px rgba(255, 92, 0, 0.32);
+  }
+}
+
 .lang-toggle {
   display: flex;
   align-items: center;
@@ -1022,4 +1199,416 @@ body.mobile-menu-open {
 .pixel-btn--planb:hover {
   background: #ff7a33;
   border-color: #ff7a33;
+}
+
+.auth-input {
+  border: 2px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  padding: 10px 12px;
+  font-family: var(--font-pixel-body), monospace;
+  font-size: 16px;
+}
+
+.auth-input:focus-visible {
+  border-color: var(--planb-orange);
+  outline: none;
+}
+
+.admin-table {
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.admin-table th {
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  color: var(--muted);
+}
+
+.wallet-connect-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(5, 10, 4, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.wallet-connect-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: min(90vh, 720px);
+  overflow-y: auto;
+  padding: 24px 20px 20px;
+  border-color: var(--planb-orange);
+}
+
+.wallet-connect-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.wallet-connect-close:hover {
+  color: var(--foreground);
+}
+
+.wallet-connect-title {
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--planb-orange);
+}
+
+.wallet-connect-subtitle {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.wallet-connect-preparing {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--planb-orange);
+}
+
+.wallet-connect-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wallet-connect-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-pixel-body), monospace;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--pixel-shadow);
+}
+
+.wallet-connect-btn:hover:not(:disabled) {
+  border-color: var(--planb-orange);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--pixel-shadow);
+}
+
+.wallet-connect-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.wallet-connect-btn__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+}
+
+.wallet-connect-btn__text {
+  text-align: left;
+}
+
+.wallet-connect-hint {
+  margin: 0 0 8px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.wallet-connect-note,
+.wallet-connect-privacy {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.wallet-connect-privacy {
+  padding: 10px 12px;
+  border: 1px dashed var(--border);
+  background: rgba(255, 122, 51, 0.06);
+}
+
+.wallet-connect-error {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #f87171;
+}
+
+.wallet-connect-section {
+  margin-top: 18px;
+}
+
+.wallet-connect-section__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: 9px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wallet-connect-section__logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.wallet-connect-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wallet-option {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--pixel-shadow);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.wallet-option:hover:not(:disabled) {
+  border-color: var(--planb-orange);
+  transform: translate(-1px, -1px);
+}
+
+.wallet-option:disabled {
+  cursor: default;
+}
+
+.wallet-option--active {
+  border-color: var(--planb-orange);
+  background: rgba(255, 122, 51, 0.08);
+}
+
+.wallet-option__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.04);
+  object-fit: cover;
+  background: #111;
+}
+
+.wallet-option__name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.wallet-option__status {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.wallet-connect-footer {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.wallet-connect-refresh {
+  border: 0;
+  background: transparent;
+  color: var(--planb-orange);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.wallet-connect-refresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Feedback floater — side chat widget */
+.feedback-floater {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 220;
+  pointer-events: none;
+}
+
+.feedback-floater__trigger,
+.feedback-floater__panel {
+  pointer-events: auto;
+}
+
+.feedback-floater__trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--planb-orange) 0%, #ff8c32 100%);
+  color: #fff;
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.55),
+    0 0 0 4px rgba(255, 92, 0, 0.35);
+  cursor: pointer;
+  font-family: var(--font-pixel-body), monospace;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+  animation: feedback-fab-bob 3s ease-in-out infinite;
+}
+
+.feedback-floater__trigger:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.6),
+    0 0 0 6px rgba(255, 92, 0, 0.45);
+}
+
+.feedback-floater__trigger-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 140, 50, 0.75);
+  animation: feedback-fab-pulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+.feedback-floater__trigger-label {
+  position: relative;
+  z-index: 1;
+}
+
+.feedback-floater__panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(56px + 18px);
+  width: min(360px, calc(100vw - 40px));
+  max-height: min(72vh, 560px);
+  overflow-y: auto;
+  padding: 22px 16px 16px;
+  border-color: var(--planb-orange);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  animation: feedback-panel-in 0.22s ease-out;
+}
+
+.feedback-floater__close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.feedback-floater__close:hover {
+  color: var(--foreground);
+}
+
+.feedback-form h2 {
+  padding-right: 24px;
+}
+
+@keyframes feedback-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes feedback-fab-pulse {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes feedback-fab-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-floater {
+    right: 12px;
+    bottom: 16px;
+  }
+
+  .feedback-floater__trigger {
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+  }
+
+  .feedback-floater__panel {
+    width: calc(100vw - 24px);
+    bottom: calc(56px + 12px);
+  }
 }

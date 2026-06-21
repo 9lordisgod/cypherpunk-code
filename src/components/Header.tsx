@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { AuthButton } from "@/components/auth/AuthButton";
 import { useLanguage } from "@/components/LanguageProvider";
 import { SiteLogo } from "@/components/SiteLogo";
 import { site } from "@/lib/data";
@@ -65,6 +66,7 @@ export function Header() {
                 {t(item.key)}
               </Link>
             ))}
+            <AuthButton />
             <button
               type="button"
               onClick={openPicker}
@@ -121,6 +123,7 @@ export function Header() {
                 </Link>
               );
             })}
+            <AuthButton mobile />
           </nav>
         )}
       </div>

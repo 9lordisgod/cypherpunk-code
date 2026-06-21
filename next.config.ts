@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       }
     : {}),
   images: { unoptimized: true },
+  env: {
+    NEXT_PUBLIC_DEV_LOGIN_ENABLED: process.env.DEV_LOGIN_ENABLED ?? "false",
+  },
 
   ...(!isGitHubPages
     ? {

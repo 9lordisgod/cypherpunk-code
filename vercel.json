@@ -1,5 +1,5 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npm run build",
+  "buildCommand": "prisma db push && npm run build",
   "installCommand": "npm install"
 }
