@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { DiscordCommunity } from "@/components/DiscordCommunity";
 import { useLanguage } from "@/components/LanguageProvider";
 import { PixelCanadaFlag } from "@/components/pixel/PixelCanadaFlag";
 import { SiteLogo } from "@/components/SiteLogo";
@@ -64,9 +63,6 @@ export function Footer() {
             <div>
               <p className="footer-heading mb-2">{t("footerCommunity")}</p>
               <ul className="space-y-1">
-                <li>
-                  <DiscordCommunity variant="compact" />
-                </li>
                 <li>
                   <a
                     href={site.creator.url}
