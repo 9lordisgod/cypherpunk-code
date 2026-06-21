@@ -6,7 +6,6 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { CourseMarkdown } from "@/components/planb/CourseMarkdown";
 import { PlanBAttribution } from "@/components/planb/PlanBAttribution";
 import { PoweredByPlanB } from "@/components/planb/PoweredByPlanB";
-import { PreviewBanner } from "@/components/planb/PreviewBanner";
 import { site } from "@/lib/data";
 import type { ParsedPlanBCourse, PlanBCourseMeta } from "@/lib/planb/types";
 
@@ -32,8 +31,6 @@ export function CourseOverviewContent({
 
   return (
     <div className="course-overview">
-      <PreviewBanner />
-
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-10">
         <nav className="mb-6 text-sm text-muted">
           <Link href="/courses" className="hover:text-foreground hover:underline">

@@ -6,7 +6,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { CourseCard } from "@/components/planb/CourseCard";
 import { PlanBAttribution } from "@/components/planb/PlanBAttribution";
 import { PoweredByPlanB } from "@/components/planb/PoweredByPlanB";
-import { PreviewBanner } from "@/components/planb/PreviewBanner";
+import { PixelCanadaFlag } from "@/components/pixel/PixelCanadaFlag";
 import { site } from "@/lib/data";
 import { bitcoinCourse } from "@/lib/planb/courses";
 import type { PlanBCourseMeta } from "@/lib/planb/types";
@@ -29,8 +29,6 @@ export function CoursesContent({ courses, featuredCourse }: CoursesContentProps)
 
   return (
     <div className="courses-page">
-      <PreviewBanner />
-
       <section className="courses-hero scanline-overlay relative">
         <div className="grid-bg absolute inset-0 opacity-40" />
         <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16">
@@ -40,6 +38,10 @@ export function CoursesContent({ courses, featuredCourse }: CoursesContentProps)
               <h1 className="courses-hero__title">{bitcoinCourse.title}</h1>
               <p className="mt-4 text-lg leading-relaxed text-muted">
                 {t("coursesHeroDescription")}
+              </p>
+              <p className="hero-canada-badge mt-4">
+                <PixelCanadaFlag className="h-4 w-8" />
+                {t("heroCanadaProud")}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link

@@ -909,24 +909,6 @@ body.mobile-menu-open {
 }
 
 /* Plan ₿ course integration */
-.preview-banner {
-  border-bottom: 2px solid var(--planb-orange);
-  background: var(--planb-orange-dim);
-  padding: 10px 16px;
-  text-align: center;
-}
-
-.preview-banner__badge {
-  display: inline-block;
-  margin-right: 8px;
-  border: 2px solid var(--planb-orange);
-  background: var(--background);
-  padding: 2px 8px;
-  font-family: var(--font-pixel), monospace;
-  font-size: 8px;
-  color: var(--planb-orange);
-}
-
 .courses-hero {
   border-bottom: 4px solid var(--border);
   background: linear-gradient(180deg, var(--card) 0%, var(--background) 100%);

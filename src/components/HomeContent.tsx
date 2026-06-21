@@ -110,9 +110,13 @@ export function HomeContent({
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
-              <p className="courses-hero__eyebrow">{t("coursesPreviewBadge")}</p>
-              <h2 className="section-title text-lg sm:text-xl">{t("heroCourses")}</h2>
-              <p className="mt-3 text-muted leading-relaxed">{t("heroCoursesSubtitle")}</p>
+              <p className="courses-hero__eyebrow">{t("homeCourseEyebrow")}</p>
+              <h2 className="section-title text-lg sm:text-xl">{t("homeCourseTitle")}</h2>
+              <p className="mt-3 text-muted leading-relaxed">{t("homeCourseSubtitle")}</p>
+              <p className="hero-canada-badge mt-4">
+                <PixelCanadaFlag className="h-4 w-8" />
+                {t("heroCanadaProud")}
+              </p>
             </div>
             <Link href="/courses" className="pixel-btn pixel-btn--planb no-underline shrink-0">
               {t("coursesStartJourney")} →

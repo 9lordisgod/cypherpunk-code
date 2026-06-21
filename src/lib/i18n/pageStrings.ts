@@ -133,12 +133,13 @@ export const pageStringsEn = {
     "Have an idea for the roadmap or a resource to add? Reach out to {handle}.",
 
   coursesPageTitle: "Bitcoin Course",
-  coursesPreviewBadge: "PREVIEW",
-  coursesPreviewNotice:
-    "Local preview — Bitcoin course powered by open-source Plan ₿ Network materials. Not yet deployed to production.",
-  coursesHeroEyebrow: "Original Bitcoin education track",
+  coursesHeroEyebrow: "Open-source crypto education",
   coursesHeroDescription:
-    "A sovereign Bitcoin course curated for cypherpunk learners — from first principles to nodes, privacy, and Lightning. Course content is sourced from Plan ₿ Network's open educational repository under CC BY-SA 4.0, presented with Cypherpunk Code's independent branding.",
+    "Cypherpunk Code is an open-source crypto education platform — proudly built in Canada. Our Bitcoin course takes you from first principles to nodes, privacy, and Lightning.",
+  homeCourseEyebrow: "Open-source crypto education",
+  homeCourseTitle: "Cypherpunk Code Bitcoin Course",
+  homeCourseSubtitle:
+    "Cypherpunk Code is an open-source crypto education platform — proudly built in Canada. Start with Module 1 and learn sovereignty on your own terms.",
   coursesStartJourney: "Start Module 1",
   coursesViewModules: "View all modules",
   coursesIndependenceTitle: "Independent project, open materials",
@@ -170,15 +171,16 @@ export const pageStringsEn = {
   courseTopic_protocol: "Protocol",
   courseTopic_security: "Security",
   "courseTopic_social studies": "Social studies",
-  heroCourses: "Bitcoin course",
-  heroCoursesSubtitle: "Original sovereign track powered by Plan ₿ Network open materials",
+  heroCourses: "Cypherpunk Code Bitcoin Course",
+  heroCoursesSubtitle:
+    "An open-source crypto education platform — proudly built in Canada",
   aboutPlanBSection: "Bitcoin course & open-source attribution",
   aboutPlanBText:
     "The Cypherpunk Code Bitcoin Course uses educational materials from Plan ₿ Network's open-source repository (CC BY-SA 4.0). Each module includes TASL attribution. This site is independently operated and is not affiliated with or endorsed by Plan ₿ Academy.",
   footerPlanBAttribution:
     "Bitcoin course materials from Plan ₿ Network (CC BY-SA 4.0). Cypherpunk Code is an independent project — not Plan ₿ Academy.",
   roadmapPhase1Item6:
-    "Bitcoin original course (preview) powered by Plan ₿ Network open-source materials",
+    "Cypherpunk Code Bitcoin Course — open-source crypto education, proudly built in Canada",
 } as const;
 
 export const pageStringsZhCN = {
@@ -310,14 +312,15 @@ export const pageStringsZhCN = {
   roadmapPhase4Item4: "便于镜像的静态档案导出",
   roadmapSuggestTitle: "建议里程碑",
   roadmapSuggestText: "对路线图有想法或想添加资源？联系 {handle}。",
-  roadmapPhase1Item6: "基于 Plan ₿ Network 开源材料的比特币原创课程（预览版）",
+  roadmapPhase1Item6: "Cypherpunk Code 比特币课程 — 开源加密教育平台，自豪地在加拿大制作",
   coursesPageTitle: "比特币课程",
-  coursesPreviewBadge: "预览",
-  coursesPreviewNotice:
-    "本地预览 — 由 Plan ₿ Network 开源材料驱动的比特币课程。尚未部署到生产环境。",
-  coursesHeroEyebrow: "原创比特币教育路径",
+  coursesHeroEyebrow: "开源加密教育",
   coursesHeroDescription:
-    "为密码朋克学习者策划的主权比特币课程 — 从基础原理到节点、隐私和闪电网络。课程内容来自 Plan ₿ Network 开源教育仓库（CC BY-SA 4.0），以 Cypherpunk Code 独立品牌呈现。",
+    "Cypherpunk Code 是一个开源加密教育平台 — 自豪地在加拿大制作。我们的比特币课程从基础原理到节点、隐私和闪电网络。",
+  homeCourseEyebrow: "开源加密教育",
+  homeCourseTitle: "Cypherpunk Code 比特币课程",
+  homeCourseSubtitle:
+    "Cypherpunk Code 是一个开源加密教育平台 — 自豪地在加拿大制作。从模块 1 开始，按自己的节奏学习主权。",
   coursesStartJourney: "开始模块 1",
   coursesViewModules: "查看所有模块",
   coursesIndependenceTitle: "独立项目，开放材料",
@@ -348,8 +351,8 @@ export const pageStringsZhCN = {
   courseTopic_protocol: "协议",
   courseTopic_security: "安全",
   "courseTopic_social studies": "社会研究",
-  heroCourses: "比特币课程",
-  heroCoursesSubtitle: "由 Plan ₿ Network 开源材料驱动的原创主权课程",
+  heroCourses: "Cypherpunk Code 比特币课程",
+  heroCoursesSubtitle: "开源加密教育平台 — 自豪地在加拿大制作",
   aboutPlanBSection: "比特币课程与开源署名",
   aboutPlanBText:
     "Cypherpunk Code 比特币课程使用 Plan ₿ Network 开源仓库的教育材料（CC BY-SA 4.0）。每个模块均含 TASL 署名。本网站独立运营，与 Plan ₿ Academy 无关联或背书关系。",
@@ -490,14 +493,15 @@ export const pageStringsJa = {
   roadmapSuggestText:
     "ロードマップのアイデアや追加リソースは {handle} まで。",
   roadmapPhase1Item6:
-    "Plan ₿ Network オープンソース教材を使ったビットコインオリジナルコース（プレビュー）",
+    "Cypherpunk Code ビットコインコース — オープンソース暗号教育、カナダで誇りを持って制作",
   coursesPageTitle: "ビットコインコース",
-  coursesPreviewBadge: "プレビュー",
-  coursesPreviewNotice:
-    "ローカルプレビュー — Plan ₿ Network オープン教材によるビットコインコース。本番未デプロイ。",
-  coursesHeroEyebrow: "オリジナルビットコイン教育トラック",
+  coursesHeroEyebrow: "オープンソース暗号教育",
   coursesHeroDescription:
-    "サイファーパンク学習者向けの主権的ビットコインコース — 基礎からノード、プライバシー、ライトニングまで。コンテンツは Plan ₿ Network のオープン教育リポジトリ（CC BY-SA 4.0）由来、Cypherpunk Code の独立ブランドで提供。",
+    "Cypherpunk Code はオープンソースの暗号教育プラットフォーム — カナダで誇りを持って制作。ビットコインコースは基礎からノード、プライバシー、ライトニングまで。",
+  homeCourseEyebrow: "オープンソース暗号教育",
+  homeCourseTitle: "Cypherpunk Code ビットコインコース",
+  homeCourseSubtitle:
+    "Cypherpunk Code はオープンソースの暗号教育プラットフォーム — カナダで誇りを持って制作。モジュール1から、自分のペースで主権を学びましょう。",
   coursesStartJourney: "モジュール1を開始",
   coursesViewModules: "全モジュールを見る",
   coursesIndependenceTitle: "独立プロジェクト、オープン教材",
@@ -528,8 +532,8 @@ export const pageStringsJa = {
   courseTopic_protocol: "プロトコル",
   courseTopic_security: "セキュリティ",
   "courseTopic_social studies": "社会研究",
-  heroCourses: "ビットコインコース",
-  heroCoursesSubtitle: "Plan ₿ Network オープン教材によるオリジナル主権トラック",
+  heroCourses: "Cypherpunk Code ビットコインコース",
+  heroCoursesSubtitle: "オープンソース暗号教育プラットフォーム — カナダで誇りを持って制作",
   aboutPlanBSection: "ビットコインコースとオープンソース帰属",
   aboutPlanBText:
     "Cypherpunk Code ビットコインコースは Plan ₿ Network のオープンソースリポジトリ（CC BY-SA 4.0）の教材を使用。各モジュールに TASL 帰属表示あり。本サイトは独立運営で Plan ₿ Academy と提携・後援関係はありません。",
@@ -673,14 +677,15 @@ export const pageStringsFr = {
   roadmapSuggestText:
     "Une idée pour la feuille de route ou une ressource à ajouter ? Contactez {handle}.",
   roadmapPhase1Item6:
-    "Cours Bitcoin original (aperçu) alimenté par les matériaux open source de Plan ₿ Network",
+    "Cours Bitcoin Cypherpunk Code — éducation crypto open source, fièrement construit au Canada",
   coursesPageTitle: "Cours Bitcoin",
-  coursesPreviewBadge: "APERÇU",
-  coursesPreviewNotice:
-    "Aperçu local — cours Bitcoin alimenté par les matériaux open source de Plan ₿ Network. Pas encore déployé en production.",
-  coursesHeroEyebrow: "Parcours éducatif Bitcoin original",
+  coursesHeroEyebrow: "Éducation crypto open source",
   coursesHeroDescription:
-    "Un parcours Bitcoin souverain pour les apprenants cypherpunk — des fondamentaux aux nœuds, la confidentialité et Lightning. Le contenu provient du dépôt éducatif open source de Plan ₿ Network (CC BY-SA 4.0), présenté sous la marque indépendante de Cypherpunk Code.",
+    "Cypherpunk Code est une plateforme d'éducation crypto open source — fièrement construite au Canada. Notre cours Bitcoin va des fondamentaux aux nœuds, la confidentialité et Lightning.",
+  homeCourseEyebrow: "Éducation crypto open source",
+  homeCourseTitle: "Cours Bitcoin Cypherpunk Code",
+  homeCourseSubtitle:
+    "Cypherpunk Code est une plateforme d'éducation crypto open source — fièrement construite au Canada. Commencez par le module 1 et apprenez la souveraineté à votre rythme.",
   coursesStartJourney: "Commencer le module 1",
   coursesViewModules: "Voir tous les modules",
   coursesIndependenceTitle: "Projet indépendant, matériaux ouverts",
@@ -712,9 +717,9 @@ export const pageStringsFr = {
   courseTopic_protocol: "Protocole",
   courseTopic_security: "Sécurité",
   "courseTopic_social studies": "Études sociales",
-  heroCourses: "Cours Bitcoin",
+  heroCourses: "Cours Bitcoin Cypherpunk Code",
   heroCoursesSubtitle:
-    "Parcours souverain original alimenté par les matériaux ouverts de Plan ₿ Network",
+    "Une plateforme d'éducation crypto open source — fièrement construite au Canada",
   aboutPlanBSection: "Cours Bitcoin et attribution open source",
   aboutPlanBText:
     "Le cours Bitcoin de Cypherpunk Code utilise les matériaux du dépôt open source de Plan ₿ Network (CC BY-SA 4.0). Chaque module inclut une attribution TASL. Ce site est exploité indépendamment et n'est pas affilié à Plan ₿ Academy.",
