@@ -47,14 +47,6 @@ const en = {
     "If you are a rights holder or contributor and are not satisfied with how your material is listed, contact {handle} — affected content will be reviewed and can be removed promptly.",
   archiveReadPolicy: "Read full policy",
 
-  // Discord
-  discordCommunity: "Community",
-  discordTitle: "Join {label} on Discord",
-  discordDescription:
-    "Connect with learners, share resources, ask questions, and help shape the archive — no accounts required to browse the site, but the server is where the conversation happens.",
-  discordJoin: "Join server",
-  discordLabel: "Discord",
-
   // Sections
   featuredTitle: "Featured",
   featuredSubtitle: "Highest-signal starting points",
@@ -74,7 +66,6 @@ const en = {
 
   // Footer
   footerExplore: "Explore",
-  footerCommunity: "Community",
   footerSupport: "Support",
   footerDonate: "Donate BTC/XMR",
   footerTagline: "Open archive database for Bitcoin, Monero & cypherpunk education",
@@ -155,13 +146,6 @@ const zhCN: TranslationStrings = {
     "如果您是权利持有人或贡献者，对您的材料列载方式不满意，请联系 {handle} — 受影响的内容将被审查并可迅速移除。",
   archiveReadPolicy: "阅读完整政策",
 
-  discordCommunity: "社区",
-  discordTitle: "加入 {label} Discord",
-  discordDescription:
-    "与学习者连接、分享资源、提问，并帮助塑造档案 — 浏览网站无需账户，但对话发生在服务器上。",
-  discordJoin: "加入服务器",
-  discordLabel: "Discord",
-
   featuredTitle: "精选",
   featuredSubtitle: "最高信号的起点",
   viewAll: "查看全部",
@@ -177,7 +161,6 @@ const zhCN: TranslationStrings = {
   statFree: "免费资源",
 
   footerExplore: "探索",
-  footerCommunity: "社区",
   footerSupport: "支持",
   footerDonate: "捐赠 BTC/XMR",
   footerTagline: "比特币、门罗币与密码朋克教育的开放档案数据库",
@@ -256,13 +239,6 @@ const ja: TranslationStrings = {
     "権利者または貢献者で、素材の掲載方法に不満がある場合は {handle} にご連絡ください — 該当コンテンツは審査され、迅速に削除できます。",
   archiveReadPolicy: "完全な方針を読む",
 
-  discordCommunity: "コミュニティ",
-  discordTitle: "{label} Discord に参加",
-  discordDescription:
-    "学習者とつながり、リソースを共有し、質問し、アーカイブの形成を手伝いましょう — サイトの閲覧にアカウントは不要ですが、会話はサーバーで行われます。",
-  discordJoin: "サーバーに参加",
-  discordLabel: "Discord",
-
   featuredTitle: "おすすめ",
   featuredSubtitle: "最高シグナルの出発点",
   viewAll: "すべて見る",
@@ -279,7 +255,6 @@ const ja: TranslationStrings = {
   statFree: "無料リソース",
 
   footerExplore: "探索",
-  footerCommunity: "コミュニティ",
   footerSupport: "サポート",
   footerDonate: "BTC/XMR を寄付",
   footerTagline:
@@ -360,13 +335,6 @@ const fr: TranslationStrings = {
     "Si vous êtes un titulaire de droits ou un contributeur et n'êtes pas satisfait de la façon dont votre matériel est répertorié, contactez {handle} — le contenu concerné sera examiné et peut être retiré rapidement.",
   archiveReadPolicy: "Lire la politique complète",
 
-  discordCommunity: "Communauté",
-  discordTitle: "Rejoignez {label} sur Discord",
-  discordDescription:
-    "Connectez-vous avec les apprenants, partagez des ressources, posez des questions et aidez à façonner l'archive — aucun compte requis pour parcourir le site, mais le serveur est l'endroit où la conversation a lieu.",
-  discordJoin: "Rejoindre le serveur",
-  discordLabel: "Discord",
-
   featuredTitle: "En vedette",
   featuredSubtitle: "Les meilleurs points de départ",
   viewAll: "Voir tout",
@@ -383,7 +351,6 @@ const fr: TranslationStrings = {
   statFree: "Ressources gratuites",
 
   footerExplore: "Explorer",
-  footerCommunity: "Communauté",
   footerSupport: "Soutien",
   footerDonate: "Donner BTC/XMR",
   footerTagline:

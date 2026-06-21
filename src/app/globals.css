@@ -837,17 +837,6 @@ body.mobile-menu-open {
   box-shadow: 3px 3px 0 var(--pixel-shadow);
 }
 
-/* Discord card */
-.discord-pixel-card {
-  border: 3px solid #5865F2;
-  box-shadow: 4px 4px 0 #3c45a5;
-}
-
-.discord-pixel-card:hover {
-  border-color: #7289da;
-  box-shadow: 6px 6px 0 #3c45a5;
-}
-
 /* Footer */
 .site-footer {
   border-top: 4px solid var(--border);
@@ -898,14 +887,6 @@ body.mobile-menu-open {
     font-size: 16px;
   }
 
-  .discord-pixel-card {
-    text-align: center;
-  }
-
-  .discord-join-btn {
-    width: 100%;
-    text-align: center;
-  }
 }
 
 /* Plan ₿ course integration */

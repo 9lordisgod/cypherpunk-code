@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
-import { DiscordIcon } from "@/components/DiscordCommunity";
 import { useLanguage } from "@/components/LanguageProvider";
 import { PoweredByPlanB } from "@/components/planb/PoweredByPlanB";
 import { resources, site } from "@/lib/data";
@@ -103,22 +102,6 @@ export function AboutContent() {
             </Link>
             <PoweredByPlanB />
           </div>
-        </section>
-
-        <section id="community">
-          <h2 className="text-xl font-semibold">{t("aboutCommunitySection")}</h2>
-          <p className="mt-2 leading-relaxed text-muted">
-            {t("aboutCommunityText", { label: site.discord.label })}
-          </p>
-          <a
-            href={site.discord.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 text-sm transition-colors hover:border-[#5865F2]/50 hover:text-[#5865F2]"
-          >
-            <DiscordIcon className="h-5 w-5 shrink-0 text-[#5865F2]" />
-            <span>{site.discord.url.replace("https://", "")}</span>
-          </a>
         </section>
 
         <section>

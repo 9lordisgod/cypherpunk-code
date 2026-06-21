@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
-import { DiscordCommunity } from "@/components/DiscordCommunity";
 import { useLanguage } from "@/components/LanguageProvider";
 import { PixelCanadaFlag } from "@/components/pixel/PixelCanadaFlag";
 import { ResourceCard } from "@/components/ResourceCard";
@@ -103,8 +102,6 @@ export function HomeContent({
           </div>
         </div>
       </section>
-
-      <DiscordCommunity />
 
       <section className="border-y-4 border-border bg-card">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">

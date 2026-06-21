@@ -67,8 +67,4 @@ export interface SiteMeta {
     bitcoin: string;
     monero: string;
   };
-  discord: {
-    url: string;
-    label: string;
-  };
 }

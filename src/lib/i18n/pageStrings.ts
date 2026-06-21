@@ -81,9 +81,6 @@ export const pageStringsEn = {
     "Donations in Bitcoin or Monero help keep {name} free and open. No payment processors, no KYC.",
   aboutBitcoin: "Bitcoin",
   aboutMonero: "Monero",
-  aboutCommunitySection: "Community",
-  aboutCommunityText:
-    "Join the {label} Discord to discuss resources, suggest additions, and connect with other learners.",
   aboutContribute: "Contribute",
   aboutContributeIntro:
     "Found a resource worth adding? Have a correction or removal request? Reach out via",
@@ -265,9 +262,6 @@ export const pageStringsZhCN = {
     "比特币或门罗币捐赠帮助保持 {name} 免费开放。无支付处理商，无 KYC。",
   aboutBitcoin: "比特币",
   aboutMonero: "门罗币",
-  aboutCommunitySection: "社区",
-  aboutCommunityText:
-    "加入 {label} Discord 讨论资源、建议添加内容，并与其他学习者连接。",
   aboutContribute: "贡献",
   aboutContributeIntro: "发现值得添加的资源？有更正或移除请求？请联系",
   aboutContributeOutro: "查看",
@@ -443,9 +437,6 @@ export const pageStringsJa = {
     "ビットコインまたはモネロの寄付で {name} を無料・オープンに保てます。決済処理業者なし、KYCなし。",
   aboutBitcoin: "ビットコイン",
   aboutMonero: "モネロ",
-  aboutCommunitySection: "コミュニティ",
-  aboutCommunityText:
-    "{label} Discord に参加してリソースを議論し、追加を提案し、他の学習者とつながりましょう。",
   aboutContribute: "貢献",
   aboutContributeIntro: "追加すべきリソースを見つけた？修正や削除の依頼は",
   aboutContributeOutro: "まで。計画機能（コミュニティ投稿含む）は",
@@ -625,9 +616,6 @@ export const pageStringsFr = {
     "Les dons en Bitcoin ou Monero aident à garder {name} gratuit et ouvert. Pas de processeurs de paiement, pas de KYC.",
   aboutBitcoin: "Bitcoin",
   aboutMonero: "Monero",
-  aboutCommunitySection: "Communauté",
-  aboutCommunityText:
-    "Rejoignez le Discord {label} pour discuter des ressources, suggérer des ajouts et vous connecter avec d'autres apprenants.",
   aboutContribute: "Contribuer",
   aboutContributeIntro:
     "Une ressource à ajouter ? Une correction ou demande de retrait ? Contactez",
