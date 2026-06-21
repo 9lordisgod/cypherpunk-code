@@ -31,6 +31,7 @@ const phases = [
       "roadmapPhase2Item3",
       "roadmapPhase2Item4",
       "roadmapPhase2Item5",
+      "roadmapPhase2Item6",
     ] as const,
   },
   {
@@ -56,6 +57,7 @@ const phases = [
       "roadmapPhase4Item2",
       "roadmapPhase4Item3",
       "roadmapPhase4Item4",
+      "roadmapPhase4Item5",
     ] as const,
   },
 ];
