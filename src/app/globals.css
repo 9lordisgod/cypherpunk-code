@@ -577,31 +577,44 @@ body.mobile-menu-open {
   overflow: hidden;
 }
 
-.about-page-bg {
+.about-page-visual {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url("/about-bg.jpg");
-  background-size: cover;
-  background-position: center 18%;
-  background-repeat: no-repeat;
-  opacity: 0.2;
+  overflow: hidden;
   pointer-events: none;
+}
+
+.about-page-img {
+  object-fit: cover;
+  object-position: center 12%;
+  opacity: 0.58;
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.about-page-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 58% 48% at 52% 36%, rgba(74, 222, 32, 0.22), transparent 68%),
+    radial-gradient(ellipse 40% 30% at 50% 42%, rgba(255, 122, 24, 0.08), transparent 70%);
+  mix-blend-mode: screen;
 }
 
 .about-page-scrim {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   background:
-    radial-gradient(ellipse 90% 65% at 50% 32%, rgba(12, 20, 8, 0.25), rgba(12, 20, 8, 0.9)),
-    linear-gradient(180deg, rgba(12, 20, 8, 0.7) 0%, rgba(12, 20, 8, 0.94) 100%);
-  pointer-events: none;
+    radial-gradient(ellipse 95% 72% at 50% 34%, rgba(12, 20, 8, 0.42), rgba(12, 20, 8, 0.78)),
+    linear-gradient(180deg, rgba(12, 20, 8, 0.45) 0%, rgba(12, 20, 8, 0.55) 45%, rgba(12, 20, 8, 0.82) 100%);
 }
 
 .about-page-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  text-shadow: 0 1px 12px rgba(5, 10, 4, 0.65);
 }
 
 @keyframes anime-float {

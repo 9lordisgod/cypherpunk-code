@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
@@ -18,8 +19,18 @@ export function AboutContent() {
 
   return (
     <div className="about-page">
-      <div className="about-page-bg" aria-hidden="true" />
-      <div className="about-page-scrim" aria-hidden="true" />
+      <div className="about-page-visual" aria-hidden="true">
+        <Image
+          src="/about-bg.jpg"
+          alt=""
+          fill
+          priority
+          className="about-page-img"
+          sizes="100vw"
+        />
+        <div className="about-page-glow" />
+        <div className="about-page-scrim" />
+      </div>
       <div className="about-page-content mx-auto max-w-3xl px-4 py-10 sm:px-6">
         <h1 className="section-title text-2xl sm:text-3xl">
           {t("aboutPageTitle", { name: site.name })}
