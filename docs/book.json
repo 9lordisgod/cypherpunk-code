@@ -12,6 +12,9 @@
     "-fontsettings",
     "-sharing",
     "-livereload",
+    "-search",
+    "-lunr",
+    "-highlight",
     "theme-default"
   ],
   "pluginsConfig": {

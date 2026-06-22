@@ -36,6 +36,7 @@
     "bitcoinjs-message": "^2.2.0",
     "bs58": "^6.0.0",
     "dotenv": "^17.4.2",
+    "is-docker": "^4.0.0",
     "next": "16.2.9",
     "next-auth": "^5.0.0-beta.31",
     "react": "19.2.4",
@@ -46,7 +47,6 @@
     "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
-    "honkit": "^6.1.4",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",
@@ -55,6 +55,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "honkit": "^6.1.4",
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
     "typescript": "^5"

@@ -32,14 +32,50 @@ function walkHtmlFiles(dir, files = []) {
   return files;
 }
 
+function stripHonkitAssets(html) {
+  html = html.replace(/<link[^>]*href="[^"]*gitbook\/style\.css"[^>]*>\s*/gi, "");
+  html = html.replace(/<link[^>]*href="[^"]*honkit-plugin[^"]*"[^>]*>\s*/gi, "");
+  html = html.replace(/<link[^>]*href="[^"]*gitbook-plugin-[^"]*"[^>]*>\s*/gi, "");
+  html = html.replace(/<meta name="generator"[^>]*>\s*/gi, "");
+  return html;
+}
+
+function stripHonkitScripts(html) {
+  return html.replace(/<script[\s\S]*?<\/script>\s*/gi, "");
+}
+
+function removeSearchUi(html) {
+  html = html.replace(/<div id="book-search-input"[\s\S]*?<\/div>\s*/gi, "");
+  html = html.replace(
+    /<div id="book-search-results">\s*<div class="search-noresults">\s*([\s\S]*?)\s*<\/div>\s*<div class="search-results">[\s\S]*?<\/div>\s*<\/div>/gi,
+    "$1"
+  );
+  return html;
+}
+
+function removeHonkitChrome(html) {
+  html = html.replace(/<div class="book-header"[\s\S]*?<\/div>\s*/gi, "");
+  html = html.replace(
+    /<a href="[^"]*" class="navigation navigation-next[^"]*"[\s\S]*?<\/a>\s*/gi,
+    ""
+  );
+  html = html.replace(
+    /<li class="divider"><\/li>\s*<li>\s*<a[^>]*class="gitbook-link"[\s\S]*?<\/li>\s*/gi,
+    ""
+  );
+  html = html.replace(/<noscript>[\s\S]*?<\/noscript>\s*/gi, "");
+  html = html.replace(
+    /<link[^>]*href="[^"]*gitbook\/images\/[^"]*"[^>]*>\s*/gi,
+    ""
+  );
+  return html;
+}
+
 function patchHtml(filePath) {
   let html = readFileSync(filePath, "utf8");
 
   if (!html.includes("<base ")) {
-    html = html.replace(
-      /<head>/i,
-      `<head>\n    <base href="${docBasePath}">`
-    );
+    html = html.replace(/<head>/i, `<head>\n    <base href="${docBasePath}">`);
   }
 
   if (!html.includes('rel="icon"')) {
@@ -51,6 +87,7 @@ function patchHtml(filePath) {
 
   const topBar = `
 <div class="cp-doc-topbar">
+  <button type="button" class="cp-doc-topbar__menu" aria-label="Toggle sidebar">☰</button>
   <a class="cp-doc-topbar__brand" href="/">
     <span class="cp-doc-topbar__mark">◆</span>
     <span>Cypherpunk Code</span>
@@ -61,14 +98,40 @@ function patchHtml(filePath) {
 
   if (!html.includes("cp-doc-topbar")) {
     html = html.replace(/<body[^>]*>/i, (match) => `${match}\n${topBar}`);
+  } else if (!html.includes("cp-doc-topbar__menu")) {
+    html = html.replace(
+      /<div class="cp-doc-topbar">\s*/,
+      `<div class="cp-doc-topbar">\n  <button type="button" class="cp-doc-topbar__menu" aria-label="Toggle sidebar">☰</button>\n  `
+    );
   }
 
-  html = html.replace(/class="book honkit-cloak"/g, 'class="book with-summary cp-doc"');
-  html = html.replace(/class="book with-summary"/g, 'class="book with-summary cp-doc"');
-  html = html.replace(/class="book"/g, 'class="book with-summary cp-doc"');
+  html = html.replace(/class="book honkit-cloak"/g, 'class="book cp-doc"');
+  html = html.replace(/class="book with-summary"/g, 'class="book cp-doc"');
+  html = html.replace(/class="book with-summary cp-doc"/g, 'class="book cp-doc"');
+  html = html.replace(/class="book"/g, 'class="book cp-doc"');
 
-  // Remove HonKit's duplicate mobile header bar (we use cp-doc-topbar)
-  html = html.replace(/<div class="book-header"[\s\S]*?<\/div>\s*/i, "");
+  html = stripHonkitAssets(html);
+  html = removeSearchUi(html);
+  html = removeHonkitChrome(html);
+  html = stripHonkitScripts(html);
+
+  const mobileNav = `<script>
+(function () {
+  var btn = document.querySelector(".cp-doc-topbar__menu");
+  var book = document.querySelector(".book.cp-doc");
+  if (!btn || !book) return;
+  btn.addEventListener("click", function () {
+    book.classList.toggle("sidebar-open");
+  });
+  book.querySelectorAll(".book-summary a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      book.classList.remove("sidebar-open");
+    });
+  });
+})();
+</script>`;
+
+  html = html.replace(/<\/body>/i, `${mobileNav}\n</body>`);
 
   writeFileSync(filePath, html);
 }
