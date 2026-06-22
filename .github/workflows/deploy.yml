@@ -24,7 +24,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run docs:build
+      - run: DOC_BASE_PATH=/cypherpunk-code/doc/ npm run docs:build
       - run: npm run build:pages
       - uses: actions/upload-pages-artifact@v3
         with:

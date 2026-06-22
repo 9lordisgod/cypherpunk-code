@@ -8,10 +8,15 @@
     "readme": "README.md",
     "summary": "SUMMARY.md"
   },
-  "plugins": ["theme-default"],
+  "plugins": [
+    "-fontsettings",
+    "-sharing",
+    "-livereload",
+    "theme-default"
+  ],
   "pluginsConfig": {
     "theme-default": {
-      "showLevel": true,
+      "showLevel": false,
       "styles": {
         "website": "styles/website.css",
         "ebook": "styles/website.css",
