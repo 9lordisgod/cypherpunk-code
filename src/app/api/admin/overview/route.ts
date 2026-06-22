@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/auth-utils";
+import { guardApiRequest } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const blocked = guardApiRequest(request, "api:admin");
+  if (blocked) return blocked;
   const admin = await requireAdmin();
   if (!admin) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });

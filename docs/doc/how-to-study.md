@@ -8,18 +8,24 @@ Think of learning like building a tower. You cannot place the roof before the fo
 
 ## The study pyramid
 
-```
-                    ┌─────────────┐
-                    │  Advanced   │  Deep cryptography, protocol dev
-                    │  Sovereignty│  Full nodes, CoinJoin, Monero
-                    └──────┬──────┘
-               ┌───────────┴───────────┐
-               │   Technical Layer   │  Bitcoin internals, wallets, nodes
-               └──────────┬──────────┘
-          ┌──────────────┴──────────────┐
-          │     Philosophy & History    │  Cypherpunk manifesto, why privacy
-          └─────────────────────────────┘
-```
+<div class="cp-pyramid">
+
+<div class="cp-pyramid__layer cp-pyramid__layer--top">
+<strong>Advanced Sovereignty</strong>
+<span>Deep cryptography · protocol dev · full nodes · CoinJoin · Monero</span>
+</div>
+
+<div class="cp-pyramid__layer">
+<strong>Technical Layer</strong>
+<span>Bitcoin internals · wallets · nodes · scripting</span>
+</div>
+
+<div class="cp-pyramid__layer cp-pyramid__layer--base">
+<strong>Philosophy & History</strong>
+<span>Cypherpunk manifesto · why privacy matters · historical context</span>
+</div>
+
+</div>
 
 **Always start at the bottom.** Each layer supports everything above it.
 

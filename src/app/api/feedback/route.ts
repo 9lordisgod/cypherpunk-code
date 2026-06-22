@@ -1,12 +1,20 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
+import { guardApiRequest, isHoneypotTriggered } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
 
 const MAX_FEEDBACK_LENGTH = 4000;
 
 export async function POST(request: Request) {
+  const blocked = guardApiRequest(request, "api:feedback");
+  if (blocked) return blocked;
+
   const session = await auth();
-  const body = await request.json().catch(() => ({}));
+  const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
+
+  if (isHoneypotTriggered(body)) {
+    return NextResponse.json({ feedback: { id: "ok" } });
+  }
 
   const name = body.name?.toString().trim().slice(0, 120);
   const email = body.email?.toString().trim().toLowerCase().slice(0, 254);

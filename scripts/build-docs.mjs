@@ -63,8 +63,12 @@ function patchHtml(filePath) {
     html = html.replace(/<body[^>]*>/i, (match) => `${match}\n${topBar}`);
   }
 
-  html = html.replace(/class="book honkit-cloak"/g, 'class="book with-summary"');
-  html = html.replace(/class="book"/g, 'class="book with-summary"');
+  html = html.replace(/class="book honkit-cloak"/g, 'class="book with-summary cp-doc"');
+  html = html.replace(/class="book with-summary"/g, 'class="book with-summary cp-doc"');
+  html = html.replace(/class="book"/g, 'class="book with-summary cp-doc"');
+
+  // Remove HonKit's duplicate mobile header bar (we use cp-doc-topbar)
+  html = html.replace(/<div class="book-header"[\s\S]*?<\/div>\s*/i, "");
 
   writeFileSync(filePath, html);
 }

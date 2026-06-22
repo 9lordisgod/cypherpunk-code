@@ -155,7 +155,15 @@ If a link is broken or a listing is inaccurate, contact the curator. Broken link
 
 ---
 
-## 8. Support the project
+## 8. Security & privacy
+
+The platform uses layered protections: HTTPS, security headers, API rate limits, wallet nonce auth, and encrypted operator configuration (never stored in the public repo).
+
+See [Platform Security](../reference/security.md) for the public overview.
+
+---
+
+## 9. Support the project
 
 Cypherpunk Code is free and will stay free. Donations in Bitcoin or Monero help keep it running:
 

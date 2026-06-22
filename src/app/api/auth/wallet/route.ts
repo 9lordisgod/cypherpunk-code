@@ -5,6 +5,7 @@
 import { randomUUID } from "node:crypto";
 import type { SolanaSignInInput, SolanaSignInOutput } from "@solana/wallet-standard-features";
 import { NextResponse } from "next/server";
+import { guardApiRequest } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
 import { learnerDisplayName, hashWalletIdentity } from "@/lib/wallet/identity";
 import { buildLegacySignMessage, consumeWalletNonce } from "@/lib/wallet/nonce";
@@ -40,6 +41,9 @@ function deserializeSignInOutput(raw: unknown): SolanaSignInOutput | null {
 }
 
 export async function POST(request: Request) {
+  const blocked = guardApiRequest(request, "api:wallet");
+  if (blocked) return blocked;
+
   const body = await request.json().catch(() => ({}));
   const mode = body.mode?.toString();
   const chain = body.chain?.toString();

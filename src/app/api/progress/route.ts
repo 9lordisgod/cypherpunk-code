@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
 import { requireUser } from "@/lib/auth-utils";
+import { guardApiRequest } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const blocked = guardApiRequest(request, "api:progress");
+  if (blocked) return blocked;
+
   const user = await requireUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -17,6 +21,9 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const blocked = guardApiRequest(request, "api:progress");
+  if (blocked) return blocked;
+
   const user = await requireUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

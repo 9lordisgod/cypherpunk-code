@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
+import { guardApiRequest } from "@/lib/security/guard";
 import { createWalletNonce } from "@/lib/wallet/nonce";
 
 export async function POST(request: Request) {
+  const blocked = guardApiRequest(request, "api:wallet-nonce");
+  if (blocked) return blocked;
+
   const body = await request.json().catch(() => ({}));
   const chain = body.chain?.toString();
 

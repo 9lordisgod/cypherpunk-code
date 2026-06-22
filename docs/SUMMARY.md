@@ -29,3 +29,4 @@
 * [Learning Paths Index](reference/learning-paths.md)
 * [FAQ](reference/faq.md)
 * [Glossary](reference/glossary.md)
+* [Platform Security](reference/security.md)
