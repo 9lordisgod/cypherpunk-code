@@ -159,7 +159,7 @@ export function AboutContent() {
                 {contactHandle}
               </a>
               . {t("aboutContributeOutro")}{" "}
-              <Link href="/roadmap" className="text-accent hover:underline">
+              <Link href="/doc/doc/roadmap.html" className="text-accent hover:underline">
                 {t("aboutRoadmapLink")}
               </Link>{" "}
               {t("aboutContributeEnd")}

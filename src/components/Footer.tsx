@@ -80,11 +80,6 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/roadmap" className="text-muted hover:text-foreground no-underline">
-                    {t("navRoadmap")}
-                  </Link>
-                </li>
-                <li>
                   <a
                     href={site.contact.x.url}
                     target="_blank"

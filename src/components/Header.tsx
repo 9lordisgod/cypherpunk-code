@@ -15,7 +15,6 @@ const navHrefs = [
   { href: "/catalog", key: "navCatalog" as const },
   { href: "/paths", key: "navPaths" as const },
   { href: "/about", key: "navAbout" as const },
-  { href: "/roadmap", key: "navRoadmap" as const },
 ];
 
 export function Header() {

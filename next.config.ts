@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
     ] as const;
 
     return [
+      { source: "/roadmap", destination: "/doc/doc/roadmap.html", permanent: true },
       { source: "/cypherscan", destination: "/", permanent: true },
       { source: "/cypherscan/:path*", destination: "/", permanent: true },
       { source: "/scan", destination: "/", permanent: true },
