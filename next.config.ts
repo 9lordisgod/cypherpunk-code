@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
     ? {
         async redirects() {
           return [
+            { source: "/doc", destination: "/doc/", permanent: false },
             { source: "/cypherscan", destination: "/", permanent: true },
             { source: "/cypherscan/:path*", destination: "/", permanent: true },
             { source: "/scan", destination: "/", permanent: true },
