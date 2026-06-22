@@ -1,8 +1,8 @@
 # Project Roadmap
 
-Where Cypherpunk Code is headed — focused on learners and the open archive.
+Where Cypherpunk Code is headed — freedom education for learners.
 
-> This roadmap is public and updated as milestones are reached. Suggest changes via [@CHxmrBrother](https://x.com/CHxmrBrother).
+> Updated as milestones are reached. Suggest changes via [@sapherpunk](https://x.com/sapherpunk).
 
 ---
 
@@ -13,7 +13,7 @@ Where Cypherpunk Code is headed — focused on learners and the open archive.
 | 67+ curated resources across Bitcoin, Monero, OpSec & cypherpunk history | ✅ Done |
 | Searchable catalog with Cypherpunk Score filter | ✅ Done |
 | 6 structured learning paths | ✅ Done |
-| Open archive — free to browse, no accounts required | ✅ Done |
+| Freedom education catalog — free to browse, no accounts required | ✅ Done |
 | Deploy at cypherpunk-code.ca | ✅ Done |
 | Multilingual UI (EN, FR, JA, ZH) | ✅ Done |
 | **DOC — GitBook documentation** | ✅ Done |
@@ -109,10 +109,9 @@ Detailed Seeker dApp strategy is maintained privately by the project operators.
 1. **Suggest a resource** — if it belongs in the archive, tell us
 2. **Report broken links** — help us maintain quality
 3. **Share feedback** — what features would help you learn?
-4. **Contribute code** — the project is open source (AGPL-3.0)
-5. **Spread the word** — share paths and resources with learners
+4. **Spread the word** — share paths and resources with learners
 
-Contact: [@CHxmrBrother](https://x.com/CHxmrBrother)
+Contact: [@sapherpunk](https://x.com/sapherpunk)
 
 ---
 

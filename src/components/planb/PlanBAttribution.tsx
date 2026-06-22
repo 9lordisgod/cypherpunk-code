@@ -43,7 +43,7 @@ export function PlanBAttribution({
   return (
     <aside className="planb-attribution pixel-panel p-4 sm:p-5" aria-label="Content attribution">
       <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-        Open-source attribution (TASL)
+        Source attribution (TASL)
       </p>
       <dl className="mt-3 space-y-2 text-sm">
         <div>

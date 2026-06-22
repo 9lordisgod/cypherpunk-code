@@ -30,9 +30,9 @@ Knowledge about freedom technology should never be behind a paywall. Every learn
 
 The crypto space is flooded with trading content, speculation, and hype. We apply editorial judgment — the Cypherpunk Score — to surface resources about privacy, cryptography, and sovereignty.
 
-### 6. Transparency and openness
+### 6. Clarity and independence
 
-This project is open source (AGPL-3.0). The catalog data is public. The roadmap is public. The documentation you are reading is public. We practice what we teach.
+We are upfront about what this project is: a curated freedom education index, not a trading platform or certification body. The catalog and documentation are free to browse. We practice what we teach.
 
 ---
 
@@ -40,7 +40,7 @@ This project is open source (AGPL-3.0). The catalog data is public. The roadmap 
 
 | We are | We are not |
 | --- | --- |
-| An open archive database | A course platform with video hosting |
+| A freedom education index | A course platform with video hosting |
 | An editorial index with CP Score | An algorithmic recommendation engine |
 | A curated learning path builder | A MOOC provider |
 | A community hub (private, in-person) | A public Discord with thousands of strangers |
@@ -114,7 +114,7 @@ See [Project Roadmap](roadmap.md) for public milestones.
 | Free for all learners | Permanent |
 | No user tracking | Permanent |
 | No accounts required | Permanent |
-| Open source (AGPL-3.0) | Permanent |
+| Freedom education focus | Permanent |
 | Editorial curation (CP Score) | Permanent |
 | Multilingual support | Expanding |
 | Community submissions | Planned |

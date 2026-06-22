@@ -1,6 +1,6 @@
 # Platform Guide — Get the Most Out of It
 
-Cypherpunk Code is not a traditional course platform with videos and quizzes. It is an **open archive database** with editorial curation — a wiki-style index where every resource is scored, categorized, and sequenced into learning paths.
+Cypherpunk Code is not a traditional course platform with videos and quizzes. It is a **freedom education index** with editorial curation — a wiki-style catalog where every resource is scored, categorized, and sequenced into learning paths.
 
 This guide shows you how to use every feature effectively.
 

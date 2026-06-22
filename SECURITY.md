@@ -8,11 +8,10 @@ We aim to support the latest main branch for security updates.
 
 If you believe you have found a security vulnerability in Cypherpunk Code, please report it responsibly.
 
-**Do not** open a public GitHub issue for security vulnerabilities.
+**Do not** disclose security vulnerabilities publicly.
 
 **Preferred reporting method:**
-- Email: (to be added by maintainers; use the contact method listed on cypherpunk-code.ca or the curator's X account in the interim)
-- Or open a private security advisory on GitHub if available for this repository.
+- Contact [@sapherpunk](https://x.com/sapherpunk) on X, or use the contact form on [cypherpunk-code.ca](https://cypherpunk-code.ca/about#contact).
 
 Please include:
 - Description of the vulnerability

@@ -8,8 +8,6 @@ Key terms used throughout Cypherpunk Code documentation and the broader cypherpu
 
 **Address** — A string derived from a public key where Bitcoin or cryptocurrency can be sent. Bitcoin addresses are pseudonymous, not anonymous.
 
-**AGPL-3.0** — GNU Affero General Public License v3. The open-source license used by Cypherpunk Code. Requires source availability for network services.
-
 ---
 
 ## B

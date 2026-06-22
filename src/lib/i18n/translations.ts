@@ -25,11 +25,11 @@ const en = {
   navMenuClose: "Close menu",
 
   // Hero
-  heroBadge: "Cypherpunk Archive Database",
-  heroTitle1: "Learn sovereignty.",
+  heroBadge: "Freedom Education",
+  heroTitle1: "Learn freedom.",
   heroTitle2: "Skip the trading noise.",
   heroDescription:
-    "A curated, searchable archive of courses, papers, guides, and documentation for learning cryptocurrency, privacy technology, and cypherpunk philosophy — maintained continuously, without the trading noise.",
+    "A curated freedom education index — courses, papers, guides, and documentation for cryptocurrency, privacy technology, and cypherpunk philosophy. No trading noise, just signal.",
   heroBrowse: "Browse {count} resources",
   heroPaths: "Learning paths",
   heroCuratedBy: "Curated by",
@@ -37,7 +37,7 @@ const en = {
 
   // Archive notice
   archiveNotice:
-    "An open archive of cypherpunk education — catalog updated continuously. Content concerns?",
+    "Freedom education for cypherpunk learners — catalog updated continuously. Content concerns?",
   archiveContact: "Contact",
   archivePolicyTitle: "Archive & maintenance policy",
   archivePolicy1:
@@ -70,8 +70,8 @@ const en = {
   footerSupport: "Support",
   footerDonate: "Donate BTC/XMR",
   footerContact: "Contact us",
-  footerTagline: "Open archive database for Bitcoin, Monero & cypherpunk education",
-  footerNote: "Cypherpunk Code — open-source crypto education",
+  footerTagline: "Freedom education for Bitcoin, Monero & cypherpunk sovereignty",
+  footerNote: "Cypherpunk Code — freedom education",
 
   // Labels
   topicBitcoin: "Bitcoin",
@@ -127,17 +127,17 @@ const zhCN: TranslationStrings = {
   navMenuOpen: "打开菜单",
   navMenuClose: "关闭菜单",
 
-  heroBadge: "密码朋克档案数据库",
-  heroTitle1: "学习主权。",
+  heroBadge: "自由教育",
+  heroTitle1: "学习自由。",
   heroTitle2: "跳过交易杂音。",
   heroDescription:
-    "精心策划、可搜索的课程、论文、指南和文档档案，用于学习加密货币、隐私技术和密码朋克哲学 — 持续维护，没有交易杂音。",
+    "精心策划的自由教育索引 — 加密货币、隐私技术与密码朋克哲学的课程、论文、指南和文档。没有交易杂音，只有信号。",
   heroBrowse: "浏览 {count} 个资源",
   heroPaths: "学习路径",
   heroCuratedBy: "策划者",
   heroCanadaProud: "自豪地在加拿大制作 🇨🇦",
 
-  archiveNotice: "开放的密码朋克教育档案 — 目录持续更新。内容疑虑？",
+  archiveNotice: "面向密码朋克学习者的自由教育 — 目录持续更新。内容疑虑？",
   archiveContact: "联系",
   archivePolicyTitle: "档案与维护政策",
   archivePolicy1:
@@ -166,8 +166,8 @@ const zhCN: TranslationStrings = {
   footerSupport: "支持",
   footerDonate: "捐赠 BTC/XMR",
   footerContact: "联系我们",
-  footerTagline: "比特币、门罗币与密码朋克教育的开放档案数据库",
-  footerNote: "Cypherpunk Code — 开源加密教育",
+  footerTagline: "比特币、门罗币与密码朋克主权的自由教育",
+  footerNote: "Cypherpunk Code — 自由教育",
 
   topicBitcoin: "比特币",
   topicMonero: "门罗币",
@@ -220,18 +220,18 @@ const ja: TranslationStrings = {
   navMenuOpen: "メニューを開く",
   navMenuClose: "メニューを閉じる",
 
-  heroBadge: "サイファーパンク アーカイブ データベース",
-  heroTitle1: "主権を学ぼう。",
+  heroBadge: "フリーダム教育",
+  heroTitle1: "自由を学ぼう。",
   heroTitle2: "トレードのノイズはスキップ。",
   heroDescription:
-    "暗号通貨、プライバシー技術、サイファーパンク哲学を学ぶための、厳選された検索可能なコース、論文、ガイド、ドキュメントのアーカイブ — 継続的にメンテナンス、トレードのノイズなし。",
+    "暗号通貨、プライバシー技術、サイファーパンク哲学のための厳選フリーダム教育インデックス。トレードのノイズなし、シグナルだけ。",
   heroBrowse: "{count} 件のリソースを見る",
   heroPaths: "学習パス",
   heroCuratedBy: "キュレーション",
   heroCanadaProud: "カナダで誇りを持って制作 🇨🇦",
 
   archiveNotice:
-    "オープンなサイファーパンク教育アーカイブ — カタログは継続的に更新。コンテンツに関する懸念？",
+    "サイファーパンク学習者のためのフリーダム教育 — カタログは継続的に更新。コンテンツに関する懸念？",
   archiveContact: "連絡",
   archivePolicyTitle: "アーカイブとメンテナンス方針",
   archivePolicy1:
@@ -262,8 +262,8 @@ const ja: TranslationStrings = {
   footerDonate: "BTC/XMR を寄付",
   footerContact: "お問い合わせ",
   footerTagline:
-    "ビットコイン、モネロ、サイファーパンク教育のオープンアーカイブデータベース",
-  footerNote: "Cypherpunk Code — オープンソース暗号教育",
+    "ビットコイン、モネロ、サイファーパンク主権のためのフリーダム教育",
+  footerNote: "Cypherpunk Code — フリーダム教育",
 
   topicBitcoin: "ビットコイン",
   topicMonero: "モネロ",
@@ -317,18 +317,18 @@ const fr: TranslationStrings = {
   navMenuOpen: "Ouvrir le menu",
   navMenuClose: "Fermer le menu",
 
-  heroBadge: "Base de données d'archives cypherpunk",
-  heroTitle1: "Apprenez la souveraineté.",
+  heroBadge: "Éducation libertaire",
+  heroTitle1: "Apprenez la liberté.",
   heroTitle2: "Ignorez le bruit du trading.",
   heroDescription:
-    "Une archive consultable de cours, articles, guides et documentation pour apprendre la cryptomonnaie, la technologie de la vie privée et la philosophie cypherpunk — maintenue en continu, sans le bruit du trading.",
+    "Un index d'éducation libertaire — cours, articles, guides et documentation sur la cryptomonnaie, la vie privée et la philosophie cypherpunk. Pas de bruit du trading, que du signal.",
   heroBrowse: "Parcourir {count} ressources",
   heroPaths: "Parcours d'apprentissage",
   heroCuratedBy: "Curaté par",
   heroCanadaProud: "Fièrement construit au Canada 🇨🇦",
 
   archiveNotice:
-    "Une archive ouverte d'éducation cypherpunk — catalogue mis à jour en continu. Des préoccupations sur le contenu ?",
+    "Éducation libertaire pour les apprenants cypherpunk — catalogue mis à jour en continu. Des préoccupations sur le contenu ?",
   archiveContact: "Contacter",
   archivePolicyTitle: "Politique d'archive et de maintenance",
   archivePolicy1:
@@ -359,8 +359,8 @@ const fr: TranslationStrings = {
   footerDonate: "Donner BTC/XMR",
   footerContact: "Nous contacter",
   footerTagline:
-    "Base de données d'archives ouverte pour Bitcoin, Monero et l'éducation cypherpunk",
-  footerNote: "Cypherpunk Code — éducation crypto open source",
+    "Éducation libertaire pour la souveraineté Bitcoin, Monero et cypherpunk",
+  footerNote: "Cypherpunk Code — éducation libertaire",
 
   topicBitcoin: "Bitcoin",
   topicMonero: "Monero",

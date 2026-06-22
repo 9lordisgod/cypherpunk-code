@@ -63,7 +63,7 @@ export const pageStringsEn = {
     "The catalog is reviewed and updated on an ongoing basis. If any rights holder, author, or project is unhappy with a listing, contact {handle} and the content will be pulled or corrected without delay.",
   aboutWhatIsThis: "What is this?",
   aboutWhatIsThisText:
-    'An open education index for the cypherpunk and cryptocurrency community. Courses, papers, guides, documentation, manifestos, podcasts, and events — with an editorial "Cypherpunk Score" that surfaces resources about privacy, sovereignty, and cryptography.',
+    'A freedom education index for the cypherpunk and cryptocurrency community. Courses, papers, guides, documentation, manifestos, podcasts, and events — with an editorial "Cypherpunk Score" that surfaces resources about privacy, sovereignty, and cryptography.',
   aboutWhoBuilt: "Who built it?",
   aboutWhoBuiltText:
     "Curated and maintained by {handle}. The initial database was seeded from public sources including Cypherpunk School, the Nakamoto Institute, Monero Project, MIT OpenCourseWare, Princeton, Class Central, and community guides.",
@@ -78,7 +78,7 @@ export const pageStringsEn = {
   aboutStatsNoTracking: "No user tracking, no accounts required to browse",
   aboutSupport: "Support the project",
   aboutSupportText:
-    "Donations in Bitcoin or Monero help keep {name} free and open. No payment processors, no KYC.",
+    "Donations in Bitcoin or Monero help keep {name} free for learners. No payment processors, no KYC.",
   aboutBitcoin: "Bitcoin",
   aboutMonero: "Monero",
   aboutContactUs: "Contact us",
@@ -93,7 +93,7 @@ export const pageStringsEn = {
 
   roadmapTitle: "Project Roadmap",
   roadmapSubtitle:
-    "Where {name} is headed — focused on learners and the open archive, not monetization.",
+    "Where {name} is headed — freedom education for learners, not monetization.",
   roadmapNoticeBefore:
     "This page replaces an internal business-model draft. Learners don't need pricing strategy — they need a reliable, growing index. See",
   roadmapNoticeAfter: "for how the archive is maintained.",
@@ -109,7 +109,7 @@ export const pageStringsEn = {
     "67+ curated resources across Bitcoin, Monero, OpSec & cypherpunk history",
   roadmapPhase1Item2: "Searchable catalog with Cypherpunk Score filter",
   roadmapPhase1Item3: "6 structured learning paths",
-  roadmapPhase1Item4: "Open archive — free to browse, no accounts required",
+  roadmapPhase1Item4: "Freedom education catalog — free to browse, no accounts required",
   roadmapPhase1Item5: "Deploy at cypherpunk-code.ca",
   roadmapPhase2Label: "Phase 2 — Grow the database",
   roadmapPhase2Item1: "Expand catalog with community submissions",
@@ -136,7 +136,7 @@ export const pageStringsEn = {
     "Have an idea for the roadmap or a resource to add? Reach out to {handle}.",
 
   coursesPageTitle: "Bitcoin Course",
-  coursesHeroEyebrow: "Open-source crypto education",
+  coursesHeroEyebrow: "Freedom education",
   coursesHeroDescription:
     "From first principles to nodes, privacy, and Lightning — sovereign Bitcoin education on your own terms.",
   docBannerTitle: "Study Guide & Documentation",
@@ -144,15 +144,15 @@ export const pageStringsEn = {
     "Learn how to study from the ground up, get the most from the platform, and follow our roadmap — including the Solana Seeker dApp.",
   docBannerCta: "Open DOC →",
 
-  homeCourseEyebrow: "Open-source crypto education",
+  homeCourseEyebrow: "Freedom education",
   homeCourseTitle: "Bitcoin Course",
   homeCourseSubtitle:
     "Start with Module 1 — learn Bitcoin fundamentals without the trading noise.",
   coursesStartJourney: "Start Module 1",
   coursesViewModules: "View all modules",
-  coursesIndependenceTitle: "Independent project, open materials",
+  coursesIndependenceTitle: "Independent project, attributed materials",
   coursesIndependenceText:
-    "Cypherpunk Code is not Plan ₿ Academy. We present these courses under our own branding with clear attribution. Plan ₿ Network's educational content is open source — we cite every module using TASL (Title, Author, Source, License) and link back to the original materials.",
+    "Cypherpunk Code is not Plan ₿ Academy. We present these courses under our own branding with clear attribution. Plan ₿ Network's educational content is published under CC BY-SA 4.0 — we cite every module using TASL (Title, Author, Source, License) and link back to the original materials.",
   coursesShareAlikeNotice:
     "Modified presentations of this content remain under Creative Commons Attribution-ShareAlike 4.0. Do not use Plan ₿ Academy logos or branding in a way that implies official certification.",
   coursesModulesTitle: "Course modules",
@@ -180,11 +180,11 @@ export const pageStringsEn = {
   courseTopic_security: "Security",
   "courseTopic_social studies": "Social studies",
   heroCourses: "Bitcoin Course",
-  heroCoursesSubtitle: "Open-source crypto education for sovereign learners",
-  aboutPlanBSection: "Bitcoin course & open-source attribution",
+  heroCoursesSubtitle: "Freedom education for sovereign learners",
+  aboutPlanBSection: "Bitcoin course & attribution",
   aboutPlanBText:
-    "The Bitcoin Course uses educational materials from Plan ₿ Network's open-source repository (CC BY-SA 4.0). Each module includes TASL attribution. This site is independently operated and is not affiliated with or endorsed by Plan ₿ Academy.",
-  roadmapPhase1Item6: "Bitcoin Course — open-source crypto education",
+    "The Bitcoin Course uses educational materials from Plan ₿ Network (CC BY-SA 4.0). Each module includes TASL attribution. This site is independently operated and is not affiliated with or endorsed by Plan ₿ Academy.",
+  roadmapPhase1Item6: "Bitcoin Course — freedom education track",
 
   navLogin: "Sign in",
   navSignOut: "Sign out",
@@ -342,7 +342,7 @@ export const pageStringsZhCN = {
     "目录持续审查和更新。如有权利持有人、作者或项目对列载不满，请联系 {handle}，内容将立即撤下或更正。",
   aboutWhatIsThis: "这是什么？",
   aboutWhatIsThisText:
-    "面向密码朋克和加密货币社区的开放教育索引。课程、论文、指南、文档、宣言、播客和活动 — 带有编辑「密码朋克评分」，突出隐私、主权和密码学相关资源。",
+    "面向密码朋克和加密货币社区的自由教育索引。课程、论文、指南、文档、宣言、播客和活动 — 带有编辑「密码朋克评分」，突出隐私、主权和密码学相关资源。",
   aboutWhoBuilt: "谁建造的？",
   aboutWhoBuiltText:
     "由 {handle} 策划和维护。初始数据库来自公开来源，包括 Cypherpunk School、Nakamoto Institute、Monero Project、MIT OpenCourseWare、Princeton、Class Central 和社区指南。",
@@ -356,7 +356,7 @@ export const pageStringsZhCN = {
   aboutStatsNoTracking: "无用户追踪，浏览无需账户",
   aboutSupport: "支持项目",
   aboutSupportText:
-    "比特币或门罗币捐赠帮助保持 {name} 免费开放。无支付处理商，无 KYC。",
+    "比特币或门罗币捐赠帮助保持 {name} 对学习者免费。无支付处理商，无 KYC。",
   aboutBitcoin: "比特币",
   aboutMonero: "门罗币",
   aboutContactUs: "联系我们",
@@ -369,7 +369,7 @@ export const pageStringsZhCN = {
 
   roadmapTitle: "项目路线图",
   roadmapSubtitle:
-    "{name} 的发展方向 — 专注于学习者和开放档案，而非商业化。",
+    "{name} 的发展方向 — 为学习者提供自由教育，而非商业化。",
   roadmapNoticeBefore:
     "本页取代内部商业模式草案。学习者不需要定价策略 — 他们需要可靠、不断增长的索引。查看",
   roadmapNoticeAfter: "了解档案维护方式。",
@@ -384,7 +384,7 @@ export const pageStringsZhCN = {
   roadmapPhase1Item1: "67+ 精选资源，涵盖比特币、门罗币、操作安全和密码朋克历史",
   roadmapPhase1Item2: "可搜索目录，带密码朋克评分筛选",
   roadmapPhase1Item3: "6 条结构化学习路径",
-  roadmapPhase1Item4: "开放档案 — 免费浏览，无需账户",
+  roadmapPhase1Item4: "自由教育目录 — 免费浏览，无需账户",
   roadmapPhase1Item5: "部署于 cypherpunk-code.ca",
   roadmapPhase2Label: "第二阶段 — 扩展数据库",
   roadmapPhase2Item1: "通过社区提交扩展目录",
@@ -407,9 +407,9 @@ export const pageStringsZhCN = {
   roadmapPhase4Item5: "推出项目实用代币，代币经济学即将发布",
   roadmapSuggestTitle: "建议里程碑",
   roadmapSuggestText: "对路线图有想法或想添加资源？联系 {handle}。",
-  roadmapPhase1Item6: "比特币课程 — 开源加密教育",
+  roadmapPhase1Item6: "比特币课程 — 自由教育路径",
   coursesPageTitle: "比特币课程",
-  coursesHeroEyebrow: "开源加密教育",
+  coursesHeroEyebrow: "自由教育",
   coursesHeroDescription:
     "从基础原理到节点、隐私和闪电网络 — 按自己的节奏学习主权比特币。",
   docBannerTitle: "学习指南与文档",
@@ -417,14 +417,14 @@ export const pageStringsZhCN = {
     "了解如何从基础开始学习、充分利用平台，并查看我们的路线图——包括 Solana Seeker dApp。",
   docBannerCta: "打开文档 →",
 
-  homeCourseEyebrow: "开源加密教育",
+  homeCourseEyebrow: "自由教育",
   homeCourseTitle: "比特币课程",
   homeCourseSubtitle: "从模块 1 开始 — 学习比特币基础，远离交易杂音。",
   coursesStartJourney: "开始模块 1",
   coursesViewModules: "查看所有模块",
-  coursesIndependenceTitle: "独立项目，开放材料",
+  coursesIndependenceTitle: "独立项目，署名材料",
   coursesIndependenceText:
-    "Cypherpunk Code 不是 Plan ₿ Academy。我们在自有品牌下呈现这些课程并明确署名。Plan ₿ Network 的教育内容是开源的 — 我们使用 TASL（标题、作者、来源、许可）标注每个模块并链接回原始材料。",
+    "Cypherpunk Code 不是 Plan ₿ Academy。我们在自有品牌下呈现这些课程并明确署名。Plan ₿ Network 的教育内容采用 CC BY-SA 4.0 许可 — 我们使用 TASL（标题、作者、来源、许可）标注每个模块并链接回原始材料。",
   coursesShareAlikeNotice:
     "本内容的修改版本仍遵循 CC BY-SA 4.0。请勿使用 Plan ₿ Academy 标识暗示官方认证。",
   coursesModulesTitle: "课程模块",
@@ -451,10 +451,10 @@ export const pageStringsZhCN = {
   courseTopic_security: "安全",
   "courseTopic_social studies": "社会研究",
   heroCourses: "比特币课程",
-  heroCoursesSubtitle: "面向主权学习者的开源加密教育",
-  aboutPlanBSection: "比特币课程与开源署名",
+  heroCoursesSubtitle: "面向主权学习者的自由教育",
+  aboutPlanBSection: "比特币课程与署名",
   aboutPlanBText:
-    "比特币课程使用 Plan ₿ Network 开源仓库的教育材料（CC BY-SA 4.0）。每个模块均含 TASL 署名。本网站独立运营，与 Plan ₿ Academy 无关联或背书关系。",
+    "比特币课程使用 Plan ₿ Network 的教育材料（CC BY-SA 4.0）。每个模块均含 TASL 署名。本网站独立运营，与 Plan ₿ Academy 无关联或背书关系。",
 
   navLogin: "登录",
   navSignOut: "退出",
@@ -608,7 +608,7 @@ export const pageStringsJa = {
     "カタログは継続的にレビュー・更新されます。権利者、著者、プロジェクトが掲載に不満がある場合は {handle} にご連絡ください。コンテンツは遅延なく削除または修正されます。",
   aboutWhatIsThis: "これは何？",
   aboutWhatIsThisText:
-    "サイファーパンクと暗号通貨コミュニティのためのオープン教育インデックス。コース、論文、ガイド、ドキュメント、マニフェスト、ポッドキャスト、イベント — プライバシー、主権、暗号学に関するリソースを浮き彫りにする編集「サイファーパンクスコア」付き。",
+    "サイファーパンクと暗号通貨コミュニティのためのフリーダム教育インデックス。コース、論文、ガイド、ドキュメント、マニフェスト、ポッドキャスト、イベント — プライバシー、主権、暗号学に関するリソースを浮き彫りにする編集「サイファーパンクスコア」付き。",
   aboutWhoBuilt: "誰が作った？",
   aboutWhoBuiltText:
     "{handle} によってキュレーション・維持。初期データベースは Cypherpunk School、Nakamoto Institute、Monero Project、MIT OpenCourseWare、Princeton、Class Central、コミュニティガイドなどの公開ソースから構築。",
@@ -623,7 +623,7 @@ export const pageStringsJa = {
   aboutStatsNoTracking: "ユーザートラッキングなし、閲覧にアカウント不要",
   aboutSupport: "プロジェクトを支援",
   aboutSupportText:
-    "ビットコインまたはモネロの寄付で {name} を無料・オープンに保てます。決済処理業者なし、KYCなし。",
+    "ビットコインまたはモネロの寄付で {name} を学習者に無料で提供し続けられます。決済処理業者なし、KYCなし。",
   aboutBitcoin: "ビットコイン",
   aboutMonero: "モネロ",
   aboutContactUs: "お問い合わせ",
@@ -637,7 +637,7 @@ export const pageStringsJa = {
 
   roadmapTitle: "プロジェクトロードマップ",
   roadmapSubtitle:
-    "{name} の方向性 — 学習者とオープンアーカイブに焦点、収益化ではなく。",
+    "{name} の方向性 — 学習者のためのフリーダム教育に焦点、収益化ではなく。",
   roadmapNoticeBefore:
     "このページは内部ビジネスモデル草案に代わります。学習者には価格戦略は不要 — 信頼できる成長するインデックスが必要です。",
   roadmapNoticeAfter: "でアーカイブの維持方法を確認。",
@@ -653,7 +653,7 @@ export const pageStringsJa = {
     "ビットコイン、モネロ、OpSec、サイファーパンク史にわたる67+厳選リソース",
   roadmapPhase1Item2: "サイファーパンクスコアフィルター付き検索可能カタログ",
   roadmapPhase1Item3: "6つの構造化学習パス",
-  roadmapPhase1Item4: "オープンアーカイブ — 無料閲覧、アカウント不要",
+  roadmapPhase1Item4: "フリーダム教育カタログ — 無料閲覧、アカウント不要",
   roadmapPhase1Item5: "cypherpunk-code.ca にデプロイ",
   roadmapPhase2Label: "フェーズ 2 — データベース拡大",
   roadmapPhase2Item1: "コミュニティ投稿でカタログ拡張",
@@ -678,9 +678,9 @@ export const pageStringsJa = {
   roadmapSuggestTitle: "マイルストーンを提案",
   roadmapSuggestText:
     "ロードマップのアイデアや追加リソースは {handle} まで。",
-  roadmapPhase1Item6: "ビットコインコース — オープンソース暗号教育",
+  roadmapPhase1Item6: "ビットコインコース — フリーダム教育トラック",
   coursesPageTitle: "ビットコインコース",
-  coursesHeroEyebrow: "オープンソース暗号教育",
+  coursesHeroEyebrow: "フリーダム教育",
   coursesHeroDescription:
     "基礎からノード、プライバシー、ライトニングまで — 自分のペースで主権的なビットコイン教育。",
   docBannerTitle: "学習ガイドとドキュメント",
@@ -688,15 +688,15 @@ export const pageStringsJa = {
     "基礎からの学習方法、プラットフォームの活用術、Solana Seeker dAppを含むロードマップをご覧ください。",
   docBannerCta: "DOCを開く →",
 
-  homeCourseEyebrow: "オープンソース暗号教育",
+  homeCourseEyebrow: "フリーダム教育",
   homeCourseTitle: "ビットコインコース",
   homeCourseSubtitle:
     "モジュール1から始めよう — 取引ノイズなしでビットコインの基礎を学ぶ。",
   coursesStartJourney: "モジュール1を開始",
   coursesViewModules: "全モジュールを見る",
-  coursesIndependenceTitle: "独立プロジェクト、オープン教材",
+  coursesIndependenceTitle: "独立プロジェクト、帰属表示付き教材",
   coursesIndependenceText:
-    "Cypherpunk Code は Plan ₿ Academy ではありません。独自ブランドで明確な帰属表示とともにコースを提供します。Plan ₿ Network の教育コンテンツはオープンソース — 各モジュールに TASL（Title, Author, Source, License）で帰属表示します。",
+    "Cypherpunk Code は Plan ₿ Academy ではありません。独自ブランドで明確な帰属表示とともにコースを提供します。Plan ₿ Network の教育コンテンツは CC BY-SA 4.0 で公開 — 各モジュールに TASL（Title, Author, Source, License）で帰属表示します。",
   coursesShareAlikeNotice:
     "改変版も CC BY-SA 4.0 の下で提供されます。Plan ₿ Academy のロゴで公式認定を示さないでください。",
   coursesModulesTitle: "コースモジュール",
@@ -723,10 +723,10 @@ export const pageStringsJa = {
   courseTopic_security: "セキュリティ",
   "courseTopic_social studies": "社会研究",
   heroCourses: "ビットコインコース",
-  heroCoursesSubtitle: "主権的学習者のためのオープンソース暗号教育",
-  aboutPlanBSection: "ビットコインコースとオープンソース帰属",
+  heroCoursesSubtitle: "主権的学習者のためのフリーダム教育",
+  aboutPlanBSection: "ビットコインコースと帰属表示",
   aboutPlanBText:
-    "ビットコインコースは Plan ₿ Network のオープンソースリポジトリ（CC BY-SA 4.0）の教材を使用。各モジュールに TASL 帰属表示あり。本サイトは独立運営で Plan ₿ Academy と提携・後援関係はありません。",
+    "ビットコインコースは Plan ₿ Network の教材（CC BY-SA 4.0）を使用。各モジュールに TASL 帰属表示あり。本サイトは独立運営で Plan ₿ Academy と提携・後援関係はありません。",
 
   navLogin: "サインイン",
   navSignOut: "サインアウト",
@@ -884,7 +884,7 @@ export const pageStringsFr = {
     "Le catalogue est révisé et mis à jour en continu. Si un titulaire de droits, auteur ou projet n'est pas satisfait d'un listing, contactez {handle} et le contenu sera retiré ou corrigé sans délai.",
   aboutWhatIsThis: "Qu'est-ce que c'est ?",
   aboutWhatIsThisText:
-    "Un index éducatif ouvert pour la communauté cypherpunk et cryptomonnaie. Cours, articles, guides, documentation, manifestes, podcasts et événements — avec un « Score Cypherpunk » éditorial qui met en avant les ressources sur la vie privée, la souveraineté et la cryptographie.",
+    "Un index d'éducation libertaire pour la communauté cypherpunk et cryptomonnaie. Cours, articles, guides, documentation, manifestes, podcasts et événements — avec un « Score Cypherpunk » éditorial qui met en avant les ressources sur la vie privée, la souveraineté et la cryptographie.",
   aboutWhoBuilt: "Qui l'a construit ?",
   aboutWhoBuiltText:
     "Curaté et maintenu par {handle}. La base de données initiale provient de sources publiques dont Cypherpunk School, le Nakamoto Institute, Monero Project, MIT OpenCourseWare, Princeton, Class Central et des guides communautaires.",
@@ -900,7 +900,7 @@ export const pageStringsFr = {
     "Pas de suivi utilisateur, aucun compte requis pour parcourir",
   aboutSupport: "Soutenir le projet",
   aboutSupportText:
-    "Les dons en Bitcoin ou Monero aident à garder {name} gratuit et ouvert. Pas de processeurs de paiement, pas de KYC.",
+    "Les dons en Bitcoin ou Monero aident à garder {name} gratuit pour les apprenants. Pas de processeurs de paiement, pas de KYC.",
   aboutBitcoin: "Bitcoin",
   aboutMonero: "Monero",
   aboutContactUs: "Nous contacter",
@@ -916,7 +916,7 @@ export const pageStringsFr = {
 
   roadmapTitle: "Feuille de route du projet",
   roadmapSubtitle:
-    "Où va {name} — axé sur les apprenants et l'archive ouverte, pas la monétisation.",
+    "Où va {name} — éducation libertaire pour les apprenants, pas la monétisation.",
   roadmapNoticeBefore:
     "Cette page remplace un brouillon de modèle commercial interne. Les apprenants n'ont pas besoin de stratégie tarifaire — ils ont besoin d'un index fiable et croissant. Voir",
   roadmapNoticeAfter: "pour la maintenance de l'archive.",
@@ -932,7 +932,7 @@ export const pageStringsFr = {
     "67+ ressources curatées sur Bitcoin, Monero, OpSec et histoire cypherpunk",
   roadmapPhase1Item2: "Catalogue consultable avec filtre Score Cypherpunk",
   roadmapPhase1Item3: "6 parcours d'apprentissage structurés",
-  roadmapPhase1Item4: "Archive ouverte — navigation gratuite, sans compte",
+  roadmapPhase1Item4: "Catalogue d'éducation libertaire — navigation gratuite, sans compte",
   roadmapPhase1Item5: "Déploiement sur cypherpunk-code.ca",
   roadmapPhase2Label: "Phase 2 — Agrandir la base",
   roadmapPhase2Item1: "Élargir le catalogue avec les soumissions communautaires",
@@ -957,9 +957,9 @@ export const pageStringsFr = {
   roadmapSuggestTitle: "Suggérer une étape",
   roadmapSuggestText:
     "Une idée pour la feuille de route ou une ressource à ajouter ? Contactez {handle}.",
-  roadmapPhase1Item6: "Cours Bitcoin — éducation crypto open source",
+  roadmapPhase1Item6: "Cours Bitcoin — parcours d'éducation libertaire",
   coursesPageTitle: "Cours Bitcoin",
-  coursesHeroEyebrow: "Éducation crypto open source",
+  coursesHeroEyebrow: "Éducation libertaire",
   coursesHeroDescription:
     "Des fondamentaux aux nœuds, la confidentialité et Lightning — une éducation Bitcoin souveraine à votre rythme.",
   docBannerTitle: "Guide d'étude et documentation",
@@ -967,15 +967,15 @@ export const pageStringsFr = {
     "Apprenez à étudier depuis les fondations, tirez le meilleur de la plateforme, et suivez notre feuille de route — y compris le dApp Solana Seeker.",
   docBannerCta: "Ouvrir le DOC →",
 
-  homeCourseEyebrow: "Éducation crypto open source",
+  homeCourseEyebrow: "Éducation libertaire",
   homeCourseTitle: "Cours Bitcoin",
   homeCourseSubtitle:
     "Commencez par le module 1 — apprenez les bases du Bitcoin sans le bruit du trading.",
   coursesStartJourney: "Commencer le module 1",
   coursesViewModules: "Voir tous les modules",
-  coursesIndependenceTitle: "Projet indépendant, matériaux ouverts",
+  coursesIndependenceTitle: "Projet indépendant, matériaux attribués",
   coursesIndependenceText:
-    "Cypherpunk Code n'est pas Plan ₿ Academy. Nous présentons ces cours sous notre propre marque avec attribution claire. Le contenu éducatif de Plan ₿ Network est open source — nous citons chaque module en TASL (Titre, Auteur, Source, Licence).",
+    "Cypherpunk Code n'est pas Plan ₿ Academy. Nous présentons ces cours sous notre propre marque avec attribution claire. Le contenu éducatif de Plan ₿ Network est publié sous CC BY-SA 4.0 — nous citons chaque module en TASL (Titre, Auteur, Source, Licence).",
   coursesShareAlikeNotice:
     "Les présentations modifiées restent sous CC BY-SA 4.0. N'utilisez pas les logos Plan ₿ Academy pour suggérer une certification officielle.",
   coursesModulesTitle: "Modules du cours",
@@ -1003,10 +1003,10 @@ export const pageStringsFr = {
   courseTopic_security: "Sécurité",
   "courseTopic_social studies": "Études sociales",
   heroCourses: "Cours Bitcoin",
-  heroCoursesSubtitle: "Éducation crypto open source pour apprenants souverains",
-  aboutPlanBSection: "Cours Bitcoin et attribution open source",
+  heroCoursesSubtitle: "Éducation libertaire pour apprenants souverains",
+  aboutPlanBSection: "Cours Bitcoin et attribution",
   aboutPlanBText:
-    "Le cours Bitcoin utilise les matériaux du dépôt open source de Plan ₿ Network (CC BY-SA 4.0). Chaque module inclut une attribution TASL. Ce site est exploité indépendamment et n'est pas affilié à Plan ₿ Academy.",
+    "Le cours Bitcoin utilise les matériaux de Plan ₿ Network (CC BY-SA 4.0). Chaque module inclut une attribution TASL. Ce site est exploité indépendamment et n'est pas affilié à Plan ₿ Academy.",
 
   navLogin: "Connexion",
   navSignOut: "Déconnexion",

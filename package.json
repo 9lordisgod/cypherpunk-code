@@ -2,7 +2,7 @@
   "name": "cypherpunk-catalog",
   "version": "0.1.0",
   "private": true,
-  "license": "AGPL-3.0",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && npm run docs:build && next build",

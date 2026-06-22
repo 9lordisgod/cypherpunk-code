@@ -8,7 +8,7 @@ Frequently asked questions about Cypherpunk Code and how to use it.
 
 ### What is Cypherpunk Code?
 
-An open archive database of curated cypherpunk and cryptocurrency education resources. We index, score, and sequence freely available material — courses, papers, guides, documentation, and manifestos — with editorial judgment to cut trading noise.
+A freedom education index of curated cypherpunk and cryptocurrency resources. We index, score, and sequence material — courses, papers, guides, documentation, and manifestos — with editorial judgment to cut trading noise.
 
 ### Is this a course platform?
 
@@ -62,11 +62,11 @@ The platform UI and resource metadata are available in English, French, Japanese
 
 ### How do I suggest a resource?
 
-Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X with the URL and why it belongs in the archive.
+Contact [@sapherpunk](https://x.com/sapherpunk) on X with the URL and why it belongs in the catalog.
 
 ### How do I report a broken link?
 
-Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X. Include the resource name and what happens when you click the link.
+Contact [@sapherpunk](https://x.com/sapherpunk) on X. Include the resource name and what happens when you click the link.
 
 ### Is my browsing tracked?
 
@@ -84,9 +84,9 @@ Not yet — JSON/CSV export is on the [roadmap](../doc/roadmap.md) for Phase 3.
 
 The community is private. Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X. Membership requires meeting in person, face to face.
 
-### Can I contribute code?
+### Can I contribute?
 
-Yes. The project is open source under AGPL-3.0. Check the GitHub repository for contribution guidelines.
+Resource suggestions and feedback are welcome. Contact [@sapherpunk](https://x.com/sapherpunk) on X.
 
 ### How do I donate?
 

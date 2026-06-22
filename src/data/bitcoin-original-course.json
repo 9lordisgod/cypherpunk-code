@@ -1,7 +1,7 @@
 {
   "id": "cypherpunk-bitcoin-original",
   "title": "Bitcoin Course",
-  "description": "A sovereign Bitcoin education track curated for cypherpunk learners — from first principles to nodes, privacy, and Lightning. Built on open-source course materials from Plan ₿ Network, presented with Cypherpunk Code's independent branding and editorial framing.",
+  "description": "A freedom education track for sovereign Bitcoin learners — from first principles to nodes, privacy, and Lightning. Built on attributed course materials from Plan ₿ Network, presented with Cypherpunk Code's independent branding and editorial framing.",
   "modules": [
     {
       "courseSlug": "btc101",
