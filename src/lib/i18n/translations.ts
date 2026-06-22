@@ -69,6 +69,7 @@ const en = {
   footerExplore: "Explore",
   footerSupport: "Support",
   footerDonate: "Donate BTC/XMR",
+  footerContact: "Contact us",
   footerTagline: "Open archive database for Bitcoin, Monero & cypherpunk education",
   footerNote: "Cypherpunk Code — open-source crypto education",
 
@@ -164,6 +165,7 @@ const zhCN: TranslationStrings = {
   footerExplore: "探索",
   footerSupport: "支持",
   footerDonate: "捐赠 BTC/XMR",
+  footerContact: "联系我们",
   footerTagline: "比特币、门罗币与密码朋克教育的开放档案数据库",
   footerNote: "Cypherpunk Code — 开源加密教育",
 
@@ -258,6 +260,7 @@ const ja: TranslationStrings = {
   footerExplore: "探索",
   footerSupport: "サポート",
   footerDonate: "BTC/XMR を寄付",
+  footerContact: "お問い合わせ",
   footerTagline:
     "ビットコイン、モネロ、サイファーパンク教育のオープンアーカイブデータベース",
   footerNote: "Cypherpunk Code — オープンソース暗号教育",
@@ -354,6 +357,7 @@ const fr: TranslationStrings = {
   footerExplore: "Explorer",
   footerSupport: "Soutien",
   footerDonate: "Donner BTC/XMR",
+  footerContact: "Nous contacter",
   footerTagline:
     "Base de données d'archives ouverte pour Bitcoin, Monero et l'éducation cypherpunk",
   footerNote: "Cypherpunk Code — éducation crypto open source",

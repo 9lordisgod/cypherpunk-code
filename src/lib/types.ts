@@ -63,6 +63,12 @@ export interface SiteMeta {
     handle: string;
     url: string;
   };
+  contact: {
+    x: {
+      handle: string;
+      url: string;
+    };
+  };
   donations: {
     bitcoin: string;
     monero: string;

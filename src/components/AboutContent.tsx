@@ -11,7 +11,8 @@ import { resources, site } from "@/lib/data";
 export function AboutContent() {
   const { t } = useLanguage();
   const freeCount = resources.filter((r) => r.pricing === "free").length;
-  const handle = `@${site.creator.handle}`;
+  const creatorHandle = `@${site.creator.handle}`;
+  const contactHandle = `@${site.contact.x.handle}`;
 
   useEffect(() => {
     document.title = `${t("navAbout")} · ${site.name}`;
@@ -48,7 +49,7 @@ export function AboutContent() {
               {t("aboutArchiveMission1", { name: site.name })}
             </p>
             <p className="mt-3 leading-relaxed text-muted">
-              {t("aboutArchiveMission2", { handle })}
+              {t("aboutArchiveMission2", { handle: contactHandle })}
             </p>
           </section>
 
@@ -60,7 +61,7 @@ export function AboutContent() {
           <section>
             <h2 className="text-xl font-semibold">{t("aboutWhoBuilt")}</h2>
             <p className="mt-2 leading-relaxed text-muted">
-              {t("aboutWhoBuiltText", { handle })}
+              {t("aboutWhoBuiltText", { handle: creatorHandle })}
             </p>
           </section>
 
@@ -118,17 +119,32 @@ export function AboutContent() {
             </div>
           </section>
 
+          <section id="contact">
+            <h2 className="text-xl font-semibold">{t("aboutContactUs")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">{t("aboutContactUsText")}</p>
+            <p className="mt-3">
+              <a
+                href={site.contact.x.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                {contactHandle}
+              </a>
+            </p>
+          </section>
+
           <section>
             <h2 className="text-xl font-semibold">{t("aboutContribute")}</h2>
             <p className="mt-2 leading-relaxed text-muted">
               {t("aboutContributeIntro")}{" "}
               <a
-                href={site.creator.url}
+                href={site.contact.x.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:underline"
               >
-                {handle}
+                {contactHandle}
               </a>
               . {t("aboutContributeOutro")}{" "}
               <Link href="/roadmap" className="text-accent hover:underline">

@@ -84,6 +84,16 @@ export function Footer() {
                     {t("navRoadmap")}
                   </Link>
                 </li>
+                <li>
+                  <a
+                    href={site.contact.x.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted hover:text-foreground no-underline"
+                  >
+                    {t("footerContact")} (@{site.contact.x.handle})
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

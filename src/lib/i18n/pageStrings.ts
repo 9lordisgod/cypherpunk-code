@@ -81,6 +81,9 @@ export const pageStringsEn = {
     "Donations in Bitcoin or Monero help keep {name} free and open. No payment processors, no KYC.",
   aboutBitcoin: "Bitcoin",
   aboutMonero: "Monero",
+  aboutContactUs: "Contact us",
+  aboutContactUsText:
+    "Questions, feedback, corrections, or partnership inquiries? Reach the project on X.",
   aboutContribute: "Contribute",
   aboutContributeIntro:
     "Found a resource worth adding? Have a correction or removal request? Reach out via",
@@ -356,6 +359,8 @@ export const pageStringsZhCN = {
     "比特币或门罗币捐赠帮助保持 {name} 免费开放。无支付处理商，无 KYC。",
   aboutBitcoin: "比特币",
   aboutMonero: "门罗币",
+  aboutContactUs: "联系我们",
+  aboutContactUsText: "有问题、反馈、更正或合作咨询？请在 X 上联系项目。",
   aboutContribute: "贡献",
   aboutContributeIntro: "发现值得添加的资源？有更正或移除请求？请联系",
   aboutContributeOutro: "查看",
@@ -621,6 +626,9 @@ export const pageStringsJa = {
     "ビットコインまたはモネロの寄付で {name} を無料・オープンに保てます。決済処理業者なし、KYCなし。",
   aboutBitcoin: "ビットコイン",
   aboutMonero: "モネロ",
+  aboutContactUs: "お問い合わせ",
+  aboutContactUsText:
+    "質問、フィードバック、修正、または提携のお問い合わせは X でプロジェクトまでご連絡ください。",
   aboutContribute: "貢献",
   aboutContributeIntro: "追加すべきリソースを見つけた？修正や削除の依頼は",
   aboutContributeOutro: "まで。計画機能（コミュニティ投稿含む）は",
@@ -895,6 +903,9 @@ export const pageStringsFr = {
     "Les dons en Bitcoin ou Monero aident à garder {name} gratuit et ouvert. Pas de processeurs de paiement, pas de KYC.",
   aboutBitcoin: "Bitcoin",
   aboutMonero: "Monero",
+  aboutContactUs: "Nous contacter",
+  aboutContactUsText:
+    "Questions, retours, corrections ou demandes de partenariat ? Contactez le projet sur X.",
   aboutContribute: "Contribuer",
   aboutContributeIntro:
     "Une ressource à ajouter ? Une correction ou demande de retrait ? Contactez",

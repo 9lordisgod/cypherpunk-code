@@ -70,7 +70,7 @@ const statusStyles = {
 
 export function RoadmapContent() {
   const { t } = useLanguage();
-  const handle = `@${site.creator.handle}`;
+  const handle = `@${site.contact.x.handle}`;
 
   useEffect(() => {
     document.title = `${t("roadmapTitle")} · ${site.name}`;
