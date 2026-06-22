@@ -210,5 +210,15 @@ for (const file of htmlFiles) {
   patchHtml(file);
 }
 
+const unusedPaths = [
+  join(publicDir, "gitbook"),
+  join(publicDir, "search_index.json"),
+];
+for (const target of unusedPaths) {
+  if (existsSync(target)) {
+    rmSync(target, { recursive: true, force: true });
+  }
+}
+
 console.log(`\nDocumentation built → public/doc/ (${htmlFiles.length} pages patched)`);
 console.log("Preview: npm run docs:dev (port 4000) or npm run dev (port 3000/doc/)");
