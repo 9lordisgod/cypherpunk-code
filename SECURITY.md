@@ -1,17 +1,21 @@
 # Security Policy
 
+Cypherpunk Code is a private, closed-source project. Security reports are handled confidentially by the maintainers.
+
 ## Supported Versions
 
-We aim to support the latest main branch for security updates.
+Security fixes are applied to the latest `main` branch and deployed through Vercel.
 
 ## Reporting a Vulnerability
 
 If you believe you have found a security vulnerability in Cypherpunk Code, please report it responsibly.
 
-**Do not** disclose security vulnerabilities publicly.
+**Do not** disclose security vulnerabilities publicly — including on X, forums, public GitHub issues, or social channels.
 
-**Preferred reporting method:**
-- Contact [@sapherpunk](https://x.com/sapherpunk) on X, or use the contact form on [cypherpunk-code.ca](https://cypherpunk-code.ca/about#contact).
+**Report privately via:**
+
+- [@sapherpunk](https://x.com/sapherpunk) on X, or
+- the contact form at [cypherpunk-code.ca/about#contact](https://cypherpunk-code.ca/about#contact)
 
 Please include:
 - Description of the vulnerability

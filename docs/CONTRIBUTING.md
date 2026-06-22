@@ -47,9 +47,13 @@ Output is copied to `public/doc/` and served at `/doc/` by Next.js.
 - All education content must remain 100% free — no paywall language
 - Credit [@CHxmrBrother](https://x.com/CHxmrBrother) as curator where appropriate
 
+## Who can edit
+
+This repository is **private and closed source**. Direct edits to code or documentation require maintainer access.
+
 ## Suggesting changes
 
-Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X with:
+Anyone can suggest improvements. Contact [@sapherpunk](https://x.com/sapherpunk) on X with:
 
 - The page you want changed
 - What should be updated and why

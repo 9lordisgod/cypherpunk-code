@@ -78,10 +78,43 @@ See `docs/CONTRIBUTING.md` for structure and editing guide.
 
 Add entries to `resources.json` following the schema in `src/lib/types.ts`. Rebuild to publish.
 
+## Contributing
+
+This is a **private, closed-source** repository. The codebase is not open for public pull requests, forks, or redistribution.
+
+**Maintainers** with repo access can work on branches and deploy through the normal Vercel workflow.
+
+**Everyone else** can still help the project without touching code:
+
+- **Suggest a resource** — send the URL and why it belongs in the catalog
+- **Report a broken link** — include the resource name and what happens when you click
+- **Share feedback** — ideas for the catalog, courses, or learning paths
+
+Contact [@sapherpunk](https://x.com/sapherpunk) on X or use the [contact page](https://cypherpunk-code.ca/about#contact).
+
+Documentation structure and editing notes for maintainers are in [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md).
+
 ## License
 
-Proprietary. All rights reserved. See [LICENSE](LICENSE).
+**Proprietary — all rights reserved.**
+
+Copyright © 2026 Cypherpunk Code. See [LICENSE](LICENSE) for the full terms.
+
+- This repository is private and confidential
+- Unauthorized copying, modification, distribution, or use is prohibited
+- Licensing inquiries: [@sapherpunk](https://x.com/sapherpunk)
+
+Third-party materials used on the site (for example Plan ₿ Network course content) remain under their original licenses and are attributed separately.
 
 ## Security
 
-If you discover a security vulnerability, please report it responsibly. See `SECURITY.md`.
+If you discover a security vulnerability, report it **privately**. Do not post details publicly on X, forums, or issue trackers.
+
+**Report to:**
+
+- [@sapherpunk](https://x.com/sapherpunk) on X, or
+- the [contact page](https://cypherpunk-code.ca/about#contact)
+
+Include a description, steps to reproduce, and potential impact. We aim to acknowledge reports within 48 hours.
+
+Full policy: [SECURITY.md](SECURITY.md).
