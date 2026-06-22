@@ -33,19 +33,3 @@ Cypherpunk Code is built with layered protections for learners and infrastructur
 If you discover a security issue, contact [@CHxmrBrother](https://x.com/CHxmrBrother) responsibly. Do not post exploit details publicly before a fix.
 
 See `SECURITY.md` in the repository for disclosure guidelines.
-
----
-
-## For operators
-
-Security configuration (rate limits, honeypot keys, blocklists) lives in an **encrypted vault** outside version control. Operators initialize it locally:
-
-```bash
-openssl rand -base64 32          # → SECURITY_VAULT_KEY
-npm run security:init
-# edit .security/vault.json
-npm run security:encrypt
-npm run security:export          # → SECURITY_VAULT_B64 for Vercel
-```
-
-Never commit `.security/vault.json` or `.security/vault.enc` to GitHub.
