@@ -45,6 +45,11 @@ export function Footer() {
               <p className="footer-heading mb-2">{t("footerExplore")}</p>
               <ul className="space-y-1">
                 <li>
+                  <Link href="/doc/" className="text-muted hover:text-foreground no-underline">
+                    {t("navDoc")}
+                  </Link>
+                </li>
+                <li>
                   <Link href="/courses" className="text-muted hover:text-foreground no-underline">
                     {t("navCourses")}
                   </Link>

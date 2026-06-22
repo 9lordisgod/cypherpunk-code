@@ -136,6 +136,11 @@ export const pageStringsEn = {
   coursesHeroEyebrow: "Open-source crypto education",
   coursesHeroDescription:
     "From first principles to nodes, privacy, and Lightning — sovereign Bitcoin education on your own terms.",
+  docBannerTitle: "Study Guide & Documentation",
+  docBannerDescription:
+    "Learn how to study from the ground up, get the most from the platform, and follow our roadmap — including the Solana Seeker dApp.",
+  docBannerCta: "Open DOC →",
+
   homeCourseEyebrow: "Open-source crypto education",
   homeCourseTitle: "Bitcoin Course",
   homeCourseSubtitle:
@@ -402,6 +407,11 @@ export const pageStringsZhCN = {
   coursesHeroEyebrow: "开源加密教育",
   coursesHeroDescription:
     "从基础原理到节点、隐私和闪电网络 — 按自己的节奏学习主权比特币。",
+  docBannerTitle: "学习指南与文档",
+  docBannerDescription:
+    "了解如何从基础开始学习、充分利用平台，并查看我们的路线图——包括 Solana Seeker dApp。",
+  docBannerCta: "打开文档 →",
+
   homeCourseEyebrow: "开源加密教育",
   homeCourseTitle: "比特币课程",
   homeCourseSubtitle: "从模块 1 开始 — 学习比特币基础，远离交易杂音。",
@@ -665,6 +675,11 @@ export const pageStringsJa = {
   coursesHeroEyebrow: "オープンソース暗号教育",
   coursesHeroDescription:
     "基礎からノード、プライバシー、ライトニングまで — 自分のペースで主権的なビットコイン教育。",
+  docBannerTitle: "学習ガイドとドキュメント",
+  docBannerDescription:
+    "基礎からの学習方法、プラットフォームの活用術、Solana Seeker dAppを含むロードマップをご覧ください。",
+  docBannerCta: "DOCを開く →",
+
   homeCourseEyebrow: "オープンソース暗号教育",
   homeCourseTitle: "ビットコインコース",
   homeCourseSubtitle:
@@ -936,6 +951,11 @@ export const pageStringsFr = {
   coursesHeroEyebrow: "Éducation crypto open source",
   coursesHeroDescription:
     "Des fondamentaux aux nœuds, la confidentialité et Lightning — une éducation Bitcoin souveraine à votre rythme.",
+  docBannerTitle: "Guide d'étude et documentation",
+  docBannerDescription:
+    "Apprenez à étudier depuis les fondations, tirez le meilleur de la plateforme, et suivez notre feuille de route — y compris le dApp Solana Seeker.",
+  docBannerCta: "Ouvrir le DOC →",
+
   homeCourseEyebrow: "Éducation crypto open source",
   homeCourseTitle: "Cours Bitcoin",
   homeCourseSubtitle:

@@ -10,6 +10,7 @@ import { site } from "@/lib/data";
 import { LOCALE_LABELS } from "@/lib/i18n/types";
 
 const navHrefs = [
+  { href: "/doc/", key: "navDoc" as const, highlight: true },
   { href: "/courses", key: "navCourses" as const },
   { href: "/catalog", key: "navCatalog" as const },
   { href: "/paths", key: "navPaths" as const },
@@ -61,7 +62,11 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="nav-link no-underline text-muted hover:text-foreground"
+                className={`nav-link no-underline hover:text-foreground ${
+                  "highlight" in item && item.highlight
+                    ? "text-accent-orange font-semibold"
+                    : "text-muted"
+                }`}
               >
                 {t(item.key)}
               </Link>
@@ -111,12 +116,16 @@ export function Header() {
             aria-label="Main"
           >
             {navHrefs.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive =
+                pathname === item.href ||
+                (item.href === "/doc/" && pathname.startsWith("/doc"));
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`mobile-nav-link no-underline ${isActive ? "mobile-nav-link--active" : ""}`}
+                  className={`mobile-nav-link no-underline ${isActive ? "mobile-nav-link--active" : ""} ${
+                    "highlight" in item && item.highlight ? "text-accent-orange" : ""
+                  }`}
                   onClick={closeMenu}
                 >
                   {t(item.key)}

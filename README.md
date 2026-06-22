@@ -54,9 +54,22 @@ npm start
 
 Site name, domain, and donation addresses are configured in `site.json`.
 
+## Documentation (DOC)
+
+GitBook-style documentation in `docs/`:
+
+```bash
+npm run docs:dev      # Preview at http://localhost:4000
+npm run docs:build    # Build → public/doc/ (served at /doc/)
+```
+
+See `docs/CONTRIBUTING.md` for structure and editing guide.
+
 ## Pages
 
 - `/` — Homepage with featured resources
+- `/doc/` — Study guide, mission, roadmap, Bitcoin course track
+- `/courses` — Bitcoin Course modules
 - `/catalog` — Searchable, filterable catalog with CP Score
 - `/paths` — Curated learning paths
 - `/resource/[id]` — Resource detail pages

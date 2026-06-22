@@ -14,6 +14,7 @@ const en = {
   langPickerMadeIn: "Made with ♥ in Canada",
 
   // Nav
+  navDoc: "DOC",
   navCourses: "Bitcoin Course",
   navCatalog: "Catalog",
   navPaths: "Learning Paths",
@@ -115,6 +116,7 @@ const zhCN: TranslationStrings = {
   langPickerContinue: "继续",
   langPickerMadeIn: "在加拿大用 ♥ 制作",
 
+  navDoc: "文档",
   navCourses: "比特币课程",
   navCatalog: "资源目录",
   navPaths: "学习路径",
@@ -206,6 +208,7 @@ const ja: TranslationStrings = {
   langPickerContinue: "続ける",
   langPickerMadeIn: "カナダで ♥ を込めて制作",
 
+  navDoc: "DOC",
   navCourses: "ビットコインコース",
   navCatalog: "カタログ",
   navPaths: "学習パス",
@@ -301,6 +304,7 @@ const fr: TranslationStrings = {
   langPickerContinue: "Continuer",
   langPickerMadeIn: "Fait avec ♥ au Canada",
 
+  navDoc: "DOC",
   navCourses: "Cours Bitcoin",
   navCatalog: "Catalogue",
   navPaths: "Parcours",

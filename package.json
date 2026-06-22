@@ -7,8 +7,12 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "build:pages": "node scripts/build-github-pages.mjs",
+    "build:all": "npm run docs:build && npm run build:pages",
     "start": "next start",
     "lint": "eslint",
+    "docs:dev": "honkit serve docs --port 4000",
+    "docs:build": "node scripts/build-docs.mjs",
+    "docs:clean": "rm -rf docs/_book public/doc",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:sql:turso": "prisma migrate diff --from-empty --to-schema prisma/schema.prisma --script -o prisma/turso-init.sql",
@@ -39,6 +43,7 @@
     "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
+    "honkit": "^6.1.4",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",

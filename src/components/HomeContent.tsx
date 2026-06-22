@@ -104,6 +104,33 @@ export function HomeContent({
       </section>
 
       <section className="border-y-4 border-border bg-card">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-2xl">
+              <p
+                className="font-mono text-xs uppercase tracking-wider"
+                style={{ color: "var(--accent-orange)" }}
+              >
+                DOC
+              </p>
+              <h2 className="section-title mt-2 text-xl sm:text-2xl">
+                {t("docBannerTitle")}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                {t("docBannerDescription")}
+              </p>
+            </div>
+            <Link
+              href="/doc/"
+              className="pixel-btn pixel-btn--accent shrink-0 no-underline self-start sm:self-center"
+            >
+              {t("docBannerCta")}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b-4 border-border bg-card">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">

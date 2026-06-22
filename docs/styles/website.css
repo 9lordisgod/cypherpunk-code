@@ -1,0 +1,377 @@
+/* Cypherpunk Code — GitBook Professional Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --cp-bg: #0c1408;
+  --cp-bg-secondary: #162210;
+  --cp-bg-tertiary: #1f3018;
+  --cp-fg: #f2f5e8;
+  --cp-muted: #9aad88;
+  --cp-border: #3d5c28;
+  --cp-accent: #4ade20;
+  --cp-accent-orange: #ff7a18;
+  --cp-accent-dim: rgba(74, 222, 32, 0.15);
+  --cp-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --cp-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cp-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Base ── */
+.book {
+  font-family: var(--cp-font-sans) !important;
+  color: var(--cp-fg) !important;
+  background: var(--cp-bg) !important;
+}
+
+.book .book-body {
+  background: var(--cp-bg) !important;
+}
+
+.book .book-body .page-wrapper {
+  background: var(--cp-bg) !important;
+}
+
+.book .book-body .body-inner {
+  background: var(--cp-bg) !important;
+}
+
+.book .book-body .page-inner {
+  max-width: 820px;
+  padding: 40px 48px 80px;
+}
+
+/* ── Typography ── */
+.book .markdown-section {
+  font-family: var(--cp-font-sans) !important;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--cp-fg);
+}
+
+.book .markdown-section h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--cp-fg);
+  border-bottom: 2px solid var(--cp-border);
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  letter-spacing: -0.02em;
+}
+
+.book .markdown-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cp-fg);
+  margin-top: 2.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.book .markdown-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cp-accent);
+  margin-top: 2em;
+}
+
+.book .markdown-section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cp-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.book .markdown-section p {
+  color: var(--cp-muted);
+  margin-bottom: 1.2em;
+}
+
+.book .markdown-section strong {
+  color: var(--cp-fg);
+  font-weight: 600;
+}
+
+.book .markdown-section a {
+  color: var(--cp-accent-orange);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.book .markdown-section a:hover {
+  border-bottom-color: var(--cp-accent-orange);
+}
+
+.book .markdown-section code {
+  font-family: var(--cp-font-mono) !important;
+  background: var(--cp-bg-tertiary);
+  color: var(--cp-accent);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  border: 1px solid var(--cp-border);
+}
+
+.book .markdown-section pre {
+  background: var(--cp-bg-secondary) !important;
+  border: 1px solid var(--cp-border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: var(--cp-card-shadow);
+}
+
+.book .markdown-section pre code {
+  background: transparent !important;
+  border: none;
+  padding: 0;
+  color: var(--cp-fg);
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+/* ── Blockquotes ── */
+.book .markdown-section blockquote {
+  border-left: 4px solid var(--cp-accent-orange);
+  background: var(--cp-accent-dim);
+  padding: 16px 20px;
+  margin: 1.5em 0;
+  border-radius: 0 8px 8px 0;
+  color: var(--cp-fg);
+  font-style: normal;
+}
+
+.book .markdown-section blockquote p {
+  color: var(--cp-fg);
+  margin-bottom: 0;
+}
+
+/* ── Tables ── */
+.book .markdown-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.92em;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--cp-border);
+}
+
+.book .markdown-section table th {
+  background: var(--cp-bg-tertiary);
+  color: var(--cp-accent);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--cp-border);
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+}
+
+.book .markdown-section table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--cp-border);
+  color: var(--cp-muted);
+}
+
+.book .markdown-section table tr:nth-child(even) {
+  background: var(--cp-bg-secondary);
+}
+
+.book .markdown-section table tr:hover {
+  background: var(--cp-bg-tertiary);
+}
+
+/* ── Lists ── */
+.book .markdown-section ul,
+.book .markdown-section ol {
+  color: var(--cp-muted);
+  padding-left: 1.5em;
+}
+
+.book .markdown-section li {
+  margin-bottom: 0.4em;
+}
+
+.book .markdown-section hr {
+  border: none;
+  border-top: 1px solid var(--cp-border);
+  margin: 2.5em 0;
+}
+
+/* ── Sidebar ── */
+.book .book-summary {
+  background: var(--cp-bg-secondary) !important;
+  border-right: 1px solid var(--cp-border) !important;
+  font-family: var(--cp-font-sans) !important;
+}
+
+.book .book-summary ul.summary {
+  padding-top: 8px;
+}
+
+.book .book-summary .divider {
+  border-bottom: 1px solid var(--cp-border) !important;
+  margin: 8px 0;
+}
+
+.book .book-summary ul.summary li a,
+.book .book-summary ul.summary li span {
+  color: var(--cp-muted) !important;
+  font-size: 13px;
+  padding: 8px 20px;
+  transition: all 0.15s;
+}
+
+.book .book-summary ul.summary li a:hover {
+  color: var(--cp-fg) !important;
+  background: var(--cp-bg-tertiary) !important;
+  text-decoration: none !important;
+}
+
+.book .book-summary ul.summary li.active > a {
+  color: var(--cp-accent) !important;
+  background: var(--cp-accent-dim) !important;
+  border-right: 3px solid var(--cp-accent);
+  font-weight: 600;
+}
+
+.book .book-summary ul.summary li.header {
+  color: var(--cp-accent-orange) !important;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 16px 20px 6px;
+  margin-top: 4px;
+}
+
+/* ── Header bar ── */
+.book .book-header {
+  background: var(--cp-bg-secondary) !important;
+  border-bottom: 1px solid var(--cp-border) !important;
+}
+
+.book .book-header h1 {
+  font-family: var(--cp-font-sans) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--cp-fg) !important;
+}
+
+.book .book-header .btn {
+  color: var(--cp-muted) !important;
+}
+
+/* ── Search ── */
+#book-search-input {
+  background: var(--cp-bg) !important;
+  border: 1px solid var(--cp-border) !important;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 12px 16px;
+  color: var(--cp-fg) !important;
+  font-family: var(--cp-font-sans) !important;
+}
+
+#book-search-input input {
+  color: var(--cp-fg) !important;
+  background: transparent !important;
+}
+
+#book-search-input input::placeholder {
+  color: var(--cp-muted) !important;
+}
+
+/* ── Navigation arrows ── */
+.navigation {
+  font-family: var(--cp-font-sans) !important;
+}
+
+.navigation ul.pagination li a {
+  background: var(--cp-bg-secondary) !important;
+  border: 1px solid var(--cp-border) !important;
+  color: var(--cp-muted) !important;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.navigation ul.pagination li a:hover {
+  background: var(--cp-bg-tertiary) !important;
+  color: var(--cp-accent) !important;
+  border-color: var(--cp-accent) !important;
+}
+
+/* ── GitBook body background fix ── */
+.book.color-theme-1 .book-body,
+.book.color-theme-2 .book-body {
+  background: var(--cp-bg) !important;
+}
+
+.book.color-theme-1 .book-summary,
+.book.color-theme-2 .book-summary {
+  background: var(--cp-bg-secondary) !important;
+}
+
+/* ── Custom header banner ── */
+.book .book-summary::before {
+  content: "CYPHERPUNK CODE";
+  display: block;
+  padding: 20px 20px 4px;
+  font-family: var(--cp-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cp-accent-orange);
+  letter-spacing: 0.15em;
+}
+
+.book .book-summary::after {
+  content: "DOC v1.0";
+  display: block;
+  padding: 0 20px 12px;
+  font-family: var(--cp-font-mono);
+  font-size: 10px;
+  color: var(--cp-muted);
+  border-bottom: 1px solid var(--cp-border);
+  margin-bottom: 4px;
+}
+
+/* ── Checkbox styling (task lists) ── */
+.book .markdown-section input[type="checkbox"] {
+  accent-color: var(--cp-accent);
+  margin-right: 8px;
+}
+
+/* ── Scrollbar ── */
+.book-summary::-webkit-scrollbar {
+  width: 6px;
+}
+
+.book-summary::-webkit-scrollbar-track {
+  background: var(--cp-bg-secondary);
+}
+
+.book-summary::-webkit-scrollbar-thumb {
+  background: var(--cp-border);
+  border-radius: 3px;
+}
+
+.book-summary::-webkit-scrollbar-thumb:hover {
+  background: var(--cp-accent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .book .book-body .page-inner {
+    padding: 24px 20px 60px;
+  }
+
+  .book .markdown-section h1 {
+    font-size: 1.75rem;
+  }
+
+  .book .markdown-section table {
+    font-size: 0.82em;
+  }
+}
