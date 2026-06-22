@@ -40,6 +40,14 @@ function stripHonkitAssets(html) {
   return html;
 }
 
+/** <base href> makes ../styles/ on nested pages resolve outside /doc/ — use one root path. */
+function fixStylesheetPath(html) {
+  return html.replace(
+    /<link rel="stylesheet" href="[^"]*styles\/website\.css"[^>]*>/i,
+    `<link rel="stylesheet" href="${docBasePath}styles/website.css">`
+  );
+}
+
 function stripHonkitScripts(html) {
   return html.replace(/<script[\s\S]*?<\/script>\s*/gi, "");
 }
@@ -111,6 +119,7 @@ function patchHtml(filePath) {
   html = html.replace(/class="book"/g, 'class="book cp-doc"');
 
   html = stripHonkitAssets(html);
+  html = fixStylesheetPath(html);
   html = removeSearchUi(html);
   html = removeHonkitChrome(html);
   html = stripHonkitScripts(html);
