@@ -1,10 +1,31 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { isDevLoginAllowed, verifyAdminPassword } from "@/lib/auth-production";
+import { isDevLoginAllowed } from "@/lib/auth-production";
 import { prisma } from "@/lib/db";
 
 const devLoginEnabled = isDevLoginAllowed();
-const adminEmail = process.env.ADMIN_EMAIL ?? "admin@cypherpunk-code.ca";
+
+async function consumeLoginTicket(identifierPrefix: string, loginTicket: string) {
+  const record = await prisma.verificationToken.findFirst({
+    where: {
+      identifier: `${identifierPrefix}:${loginTicket}`,
+      expires: { gt: new Date() },
+    },
+  });
+
+  if (!record) return null;
+
+  await prisma.verificationToken.delete({
+    where: {
+      identifier_token: {
+        identifier: record.identifier,
+        token: record.token,
+      },
+    },
+  });
+
+  return record.token;
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
@@ -22,25 +43,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const loginTicket = credentials?.loginTicket?.toString().trim();
         if (!loginTicket) return null;
 
-        const record = await prisma.verificationToken.findFirst({
-          where: {
-            identifier: `wallet-login:${loginTicket}`,
-            expires: { gt: new Date() },
-          },
-        });
+        const userId = await consumeLoginTicket("wallet-login", loginTicket);
+        if (!userId) return null;
 
-        if (!record) return null;
-
-        await prisma.verificationToken.delete({
-          where: {
-            identifier_token: {
-              identifier: record.identifier,
-              token: record.token,
-            },
-          },
-        });
-
-        const user = await prisma.user.findUnique({ where: { id: record.token } });
+        const user = await prisma.user.findUnique({ where: { id: userId } });
         if (!user || user.role === "admin") return null;
 
         return {
@@ -51,37 +57,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
     Credentials({
-      id: "admin",
-      name: "Admin",
+      id: "admin-wallet",
+      name: "Admin Wallet",
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        loginTicket: { label: "Admin login ticket", type: "text" },
       },
       async authorize(credentials) {
-        const email = credentials?.email?.toString().trim().toLowerCase();
-        const password = credentials?.password?.toString() ?? "";
-        const configuredPassword = process.env.ADMIN_PASSWORD;
+        const loginTicket = credentials?.loginTicket?.toString().trim();
+        if (!loginTicket) return null;
 
-        if (!email || !password || !configuredPassword) return null;
-        if (email !== adminEmail.toLowerCase()) return null;
+        const userId = await consumeLoginTicket("admin-wallet-login", loginTicket);
+        if (!userId) return null;
 
-        if (!(await verifyAdminPassword(password, configuredPassword))) return null;
-
-        let user = await prisma.user.findUnique({ where: { email } });
-        if (!user) {
-          user = await prisma.user.create({
-            data: { email, name: "Admin", role: "admin" },
-          });
-        } else if (user.role !== "admin") {
-          user = await prisma.user.update({
-            where: { id: user.id },
-            data: { role: "admin" },
-          });
-        }
+        const user = await prisma.user.findUnique({ where: { id: userId } });
+        if (!user || user.role !== "admin") return null;
 
         return {
           id: user.id,
-          email: user.email,
           name: user.name,
           role: user.role,
         };

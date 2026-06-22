@@ -11,7 +11,7 @@ Cypherpunk Code is built with layered protections for learners and infrastructur
 | **Transport** | HTTPS everywhere in production (HSTS) |
 | **Headers** | CSP, X-Frame-Options, nosniff, referrer policy |
 | **API rate limits** | Throttles wallet auth, feedback, progress, and admin endpoints |
-| **Auth** | Wallet signatures with short-lived nonces; admin bcrypt |
+| **Auth** | Wallet signatures with short-lived nonces; admin via whitelisted Solana wallets |
 | **Privacy** | Wallet addresses hashed — raw addresses not stored |
 | **Bot filtering** | Honeypot fields and suspicious user-agent blocks |
 | **Secrets** | Business security config stored encrypted — never in the public repo |

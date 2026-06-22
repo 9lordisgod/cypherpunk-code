@@ -17,11 +17,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Auth, progress, and admin
 
-Learners sign in with Solana or Bitcoin wallets. Progress and feedback are stored in the database. Admins use email/password at `/admin/login`.
+Learners sign in with Solana or Bitcoin wallets. Progress and feedback are stored in the database. Admins sign in with a whitelisted Solana wallet at `/admin/login`.
 
 ```bash
 cp .env.example .env.local
-# Set AUTH_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD (bcrypt hash), then:
+# Set AUTH_SECRET, ADMIN_SOLANA_WALLETS, then:
 npm run db:push   # local SQLite
 npm run dev
 ```
@@ -33,7 +33,7 @@ npm run dev
    - `AUTH_SECRET` — `openssl rand -base64 32`
    - `AUTH_URL` — `https://cypherpunk-code.ca` (no trailing slash)
    - `DATABASE_URL` + `DATABASE_AUTH_TOKEN` — [Turso](https://turso.tech) libSQL (required for production; local SQLite does not persist on serverless)
-   - `ADMIN_EMAIL`, `ADMIN_PASSWORD` — **bcrypt hash required in production** (`node -e "import('bcryptjs').then(b=>b.hash('your-password',12).then(console.log))"`)
+   - `ADMIN_SOLANA_WALLETS` — comma-separated Solana addresses allowed to access `/admin`
    - `DEV_LOGIN_ENABLED` — `false`
    - `SECURITY_VAULT_KEY` + `SECURITY_VAULT_B64` — optional but recommended (see `npm run security:init`)
 3. **One-time database setup** (after first deploy env is configured):

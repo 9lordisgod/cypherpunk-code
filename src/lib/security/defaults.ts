@@ -7,6 +7,7 @@ export const DEFAULT_SECURITY_VAULT: SecurityVault = {
   rateLimits: {
     "api:wallet-nonce": { windowMs: 60_000, max: 8 },
     "api:wallet": { windowMs: 300_000, max: 15 },
+    "api:admin-wallet": { windowMs: 300_000, max: 10 },
     "api:feedback": { windowMs: 3_600_000, max: 4 },
     "api:progress": { windowMs: 60_000, max: 40 },
     "api:admin": { windowMs: 60_000, max: 20 },

@@ -1,13 +1,13 @@
 /**
- * Wallet proof endpoint — verifies signed nonce, issues one-time login ticket.
- * Privacy: only walletKeyHash (SHA-256) is stored; raw addresses are discarded after verify.
+ * Admin wallet proof — Solana signature + whitelist → one-time admin login ticket.
  */
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import { handleApiRoute } from "@/lib/api-handler";
 import { guardApiRequest } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
-import { learnerDisplayName, hashWalletIdentity } from "@/lib/wallet/identity";
+import { isAdminSolanaAddress } from "@/lib/wallet/admin-whitelist";
+import { hashWalletIdentity } from "@/lib/wallet/identity";
 import { consumeWalletNonce } from "@/lib/wallet/nonce";
 import { verifyWalletProof } from "@/lib/wallet/verify-proof";
 
@@ -15,13 +15,13 @@ const LOGIN_TICKET_TTL_MS = 60 * 1000;
 
 export async function POST(request: Request) {
   return handleApiRoute(async () => {
-    const blocked = guardApiRequest(request, "api:wallet");
+    const blocked = guardApiRequest(request, "api:admin-wallet");
     if (blocked) return blocked;
 
     const body = await request.json().catch(() => ({}));
     const verified = verifyWalletProof(body);
 
-    if (!verified) {
+    if (!verified || verified.chain !== "solana") {
       return NextResponse.json({ error: "Invalid wallet proof" }, { status: 400 });
     }
 
@@ -30,25 +30,30 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing nonce" }, { status: 400 });
     }
 
-    const nonceValid = await consumeWalletNonce(verified.chain, nonce);
+    const nonceValid = await consumeWalletNonce("solana", nonce);
     if (!nonceValid) {
       return NextResponse.json({ error: "Expired or invalid nonce" }, { status: 401 });
     }
 
-    const walletKeyHash = hashWalletIdentity(verified.chain, verified.address);
+    if (!isAdminSolanaAddress(verified.address)) {
+      return NextResponse.json({ error: "Wallet not authorized" }, { status: 403 });
+    }
+
+    const walletKeyHash = hashWalletIdentity("solana", verified.address);
 
     let user = await prisma.user.findUnique({ where: { walletKeyHash } });
     if (!user) {
-      const created = await prisma.user.create({
+      user = await prisma.user.create({
         data: {
           walletKeyHash,
-          name: "Learner",
-          role: "learner",
+          name: "Admin",
+          role: "admin",
         },
       });
+    } else if (user.role !== "admin") {
       user = await prisma.user.update({
-        where: { id: created.id },
-        data: { name: learnerDisplayName(created.id) },
+        where: { id: user.id },
+        data: { name: "Admin", role: "admin" },
       });
     }
 
@@ -57,7 +62,7 @@ export async function POST(request: Request) {
 
     await prisma.verificationToken.create({
       data: {
-        identifier: `wallet-login:${loginTicket}`,
+        identifier: `admin-wallet-login:${loginTicket}`,
         token: user.id,
         expires,
       },
