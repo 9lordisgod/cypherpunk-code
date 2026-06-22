@@ -39,9 +39,9 @@ const en = {
   archiveNotice:
     "Freedom education for cypherpunk learners — catalog updated continuously. Content concerns?",
   archiveContact: "Contact",
-  archivePolicyTitle: "Archive & maintenance policy",
+  archivePolicyTitle: "Catalog & maintenance policy",
   archivePolicy1:
-    "{name} is an archive database of cypherpunk information and education — courses, papers, guides, and documentation gathered from public sources. It is a reference index for learners, not a commercial product or trading platform.",
+    "{name} is a freedom education index — courses, papers, guides, and documentation curated for cypherpunk learners. It is a reference catalog, not a commercial product or trading platform.",
   archivePolicy2:
     "The catalog and database are maintained and expanded on an ongoing basis. New resources, corrections, and metadata updates are applied as they become available.",
   archivePolicy3:
@@ -139,9 +139,9 @@ const zhCN: TranslationStrings = {
 
   archiveNotice: "面向密码朋克学习者的自由教育 — 目录持续更新。内容疑虑？",
   archiveContact: "联系",
-  archivePolicyTitle: "档案与维护政策",
+  archivePolicyTitle: "目录与维护政策",
   archivePolicy1:
-    "{name} 是一个密码朋克资讯与教育的档案数据库 — 从公开来源收集的课程、论文、指南和文档。它是学习者的参考索引，不是商业产品或交易平台。",
+    "{name} 是一个自由教育索引 — 为密码朋克学习者策划的课程、论文、指南和文档。它是参考目录，不是商业产品或交易平台。",
   archivePolicy2:
     "目录和数据库持续维护和扩展。新的资源、修正和元数据更新会在可用时应用。",
   archivePolicy3:
@@ -233,9 +233,9 @@ const ja: TranslationStrings = {
   archiveNotice:
     "サイファーパンク学習者のためのフリーダム教育 — カタログは継続的に更新。コンテンツに関する懸念？",
   archiveContact: "連絡",
-  archivePolicyTitle: "アーカイブとメンテナンス方針",
+  archivePolicyTitle: "カタログとメンテナンス方針",
   archivePolicy1:
-    "{name} はサイファーパンク情報と教育のアーカイブデータベースです — 公開ソースから集めたコース、論文、ガイド、ドキュメント。学習者のための参照インデックスであり、商業製品や取引プラットフォームではありません。",
+    "{name} はフリーダム教育インデックスです — サイファーパンク学習者向けにキュレーションされたコース、論文、ガイド、ドキュメント。参照カタログであり、商業製品や取引プラットフォームではありません。",
   archivePolicy2:
     "カタログとデータベースは継続的にメンテナンス・拡張されています。新しいリソース、修正、メタデータの更新は利用可能になり次第適用されます。",
   archivePolicy3:
@@ -330,9 +330,9 @@ const fr: TranslationStrings = {
   archiveNotice:
     "Éducation libertaire pour les apprenants cypherpunk — catalogue mis à jour en continu. Des préoccupations sur le contenu ?",
   archiveContact: "Contacter",
-  archivePolicyTitle: "Politique d'archive et de maintenance",
+  archivePolicyTitle: "Politique du catalogue et de maintenance",
   archivePolicy1:
-    "{name} est une base de données d'archives d'informations et d'éducation cypherpunk — cours, articles, guides et documentation recueillis de sources publiques. C'est un index de référence pour les apprenants, pas un produit commercial ni une plateforme de trading.",
+    "{name} est un index d'éducation libertaire — cours, articles, guides et documentation pour les apprenants cypherpunk. C'est un catalogue de référence, pas un produit commercial ni une plateforme de trading.",
   archivePolicy2:
     "Le catalogue et la base de données sont maintenus et élargis en continu. De nouvelles ressources, corrections et mises à jour de métadonnées sont appliquées dès qu'elles sont disponibles.",
   archivePolicy3:

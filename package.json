@@ -1,15 +1,14 @@
 {
-  "name": "cypherpunk-catalog",
+  "name": "cypherpunk-code",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && npm run docs:build && next build",
-    "build:pages": "node scripts/build-github-pages.mjs",
-    "build:all": "npm run docs:build && npm run build:pages",
     "start": "next start",
     "lint": "eslint",
+    "test": "vitest run",
     "docs:dev": "rm -rf docs/_book && honkit serve docs --port 4000",
     "docs:build": "node scripts/build-docs.mjs",
     "docs:clean": "rm -rf docs/_book public/doc",
@@ -64,6 +63,7 @@
     "honkit": "^6.1.4",
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.4"
   }
 }

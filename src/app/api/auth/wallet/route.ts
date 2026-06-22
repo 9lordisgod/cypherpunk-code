@@ -5,6 +5,7 @@
 import { randomUUID } from "node:crypto";
 import type { SolanaSignInInput, SolanaSignInOutput } from "@solana/wallet-standard-features";
 import { NextResponse } from "next/server";
+import { handleApiRoute } from "@/lib/api-handler";
 import { guardApiRequest } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
 import { learnerDisplayName, hashWalletIdentity } from "@/lib/wallet/identity";
@@ -41,6 +42,7 @@ function deserializeSignInOutput(raw: unknown): SolanaSignInOutput | null {
 }
 
 export async function POST(request: Request) {
+  return handleApiRoute(async () => {
   const blocked = guardApiRequest(request, "api:wallet");
   if (blocked) return blocked;
 
@@ -135,4 +137,5 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json({ loginTicket });
+  });
 }

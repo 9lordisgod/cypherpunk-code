@@ -25,6 +25,7 @@
 # misc
 .DS_Store
 *.pem
+.screenshot-turso*.png
 
 # debug
 npm-debug.log*

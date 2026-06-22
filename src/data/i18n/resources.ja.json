@@ -328,5 +328,65 @@
     "title": "Class Central — 暗号通貨コース",
     "description": "150以上の暗号通貨コースの集約サイト。Cypherpunk Codeのサイファーパンクスコアフィルターで、取引のノイズの中からシグナルを見つける。",
     "provider": "Class Central"
+  },
+  "mit-blockchain-and-money": {
+    "title": "MIT 15.S12 — Blockchain and Money",
+    "description": "Gary GenslerのMIT Sloan講座——ビットコイン基礎、ブロックチェーン技術、分散台帳、スマートコントラクト、金融政策。OpenCourseWareで全講義動画。",
+    "provider": "MIT OpenCourseWare"
+  },
+  "mit-cde-2025": {
+    "title": "MIT MAS.S62 — Cryptocurrency Design and Engineering (2025)",
+    "description": "MIT Digital Currency Initiativeの講座——ビットコインプロトコル設計、暗号学、コンセンサス、マイニング、プライバシー、スケーリング。公開スライド・課題あり。",
+    "provider": "MIT Digital Currency Initiative"
+  },
+  "chaincode-bitcoin-curriculum": {
+    "title": "Chaincode ビットコインプロトコル開発カリキュラム",
+    "description": "ビットコインプロトコル開発のシラバスと勉強会——ホワイトペーパーからソフトフォーク、mempoolポリシー、P2Pネットワーキングまで。",
+    "provider": "Chaincode Labs"
+  },
+  "chaincode-lightning-curriculum": {
+    "title": "Chaincode Lightningプロトコル開発カリキュラム",
+    "description": "Lightning Networkプロトコル開発者向けの包括的カリキュラム——チャネル管理、ルーティング、HTLC、実装概念。",
+    "provider": "Chaincode Labs"
+  },
+  "chaincode-bitcoin-seminar": {
+    "title": "Chaincode ビットコインプロトコル開発セミナー",
+    "description": "Chaincode Residencyによる7部構成のビデオセミナー——ビットコインプロトコル開発。ビットコインカリキュラムの補完教材。",
+    "provider": "Chaincode Labs"
+  },
+  "crypto101": {
+    "title": "Crypto 101",
+    "description": "プログラマー向け無料入門暗号学コース——ブロック暗号、ハッシュ関数、TLS、公開鍵暗号、脆弱性を突く実践演習。",
+    "provider": "Crypto 101 / lvh"
+  },
+  "learning-bitcoin-cli": {
+    "title": "Learning Bitcoin from the Command Line",
+    "description": "CLIで学ぶビットコインプログラミングの完全コース——Bitcoin Core設定、ウォレット、生トランザクション、マルチシグ、PSBT、スクリプト。Blockchain Commons作。",
+    "provider": "Blockchain Commons"
+  },
+  "bitcoin-ed-foundation-curriculum": {
+    "title": "Bitcoin Education Foundation Curriculum",
+    "description": "無料6モジュールのビットコインカリキュラム（CC BY-SA）——マネーの基礎、ビットコインの仕組み、実世界の利用、安全思考。教室向けワークシート付き。",
+    "provider": "Bitcoin Education Foundation"
+  },
+  "bushido-opsec-101": {
+    "title": "Operational Security (OPSEC) 101",
+    "description": "実践的OPSECガイド——ソーシャルメディア安全、アカウント衛生、デバイスセキュリティ、Tor、Signal、VM、公開人物向けの上級ヒント。",
+    "provider": "BushidoUK"
+  },
+  "planb-academy": {
+    "title": "Plan ₿ Academy",
+    "description": "ビットコイン向け多言語eラーニングプラットフォーム——ビットコイン、Lightning、暗号学、マイニング、プライバシーのコース。planb.academyで受講。",
+    "provider": "Plan ₿ Network"
+  },
+  "code-orange-sovereign-bitcoiner": {
+    "title": "Sovereign Bitcoiner Crash Course",
+    "description": "5〜10週間の無料コース（CC0）——ビットコイン哲学、ノード運用、マイニング基礎、マルチシグ、プライバシー。Code Orange Dev School。",
+    "provider": "Code Orange Dev School"
+  },
+  "code-orange-bitcoin-dojo": {
+    "title": "Bitcoin Dojo",
+    "description": "7週間の開発者コホート（CC0）——有限体、楕円曲線、ビットコイン鍵、シリアライゼーション、Script、SegWit。Code Orange Dev School。",
+    "provider": "Code Orange Dev School"
   }
 }

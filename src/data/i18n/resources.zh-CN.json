@@ -328,5 +328,65 @@
     "title": "Class Central — 加密货币课程",
     "description": "150+ 门加密货币课程聚合站。使用 Cypherpunk Code 的密码朋克评分筛选，在交易噪音中找到信号。",
     "provider": "Class Central"
+  },
+  "mit-blockchain-and-money": {
+    "title": "MIT 15.S12 — 区块链与货币",
+    "description": "Gary Gensler 的 MIT 斯隆课程，涵盖比特币基础、区块链技术、分布式账本、智能合约和金融政策——OpenCourseWare 完整讲座视频。",
+    "provider": "MIT OpenCourseWare"
+  },
+  "mit-cde-2025": {
+    "title": "MIT MAS.S62 — 加密货币设计与工程（2025）",
+    "description": "MIT 数字货币倡议课程，涵盖比特币协议设计、密码学、共识、挖矿、隐私和扩展——公开幻灯片、阅读材料和作业。",
+    "provider": "MIT Digital Currency Initiative"
+  },
+  "chaincode-bitcoin-curriculum": {
+    "title": "Chaincode 比特币协议开发课程",
+    "description": "比特币协议开发教学大纲与学习小组——从白皮书到软分叉、mempool 策略和点对点网络。",
+    "provider": "Chaincode Labs"
+  },
+  "chaincode-lightning-curriculum": {
+    "title": "Chaincode 闪电网络协议开发课程",
+    "description": "面向闪电网络协议开发者的完整课程——通道管理、路由、HTLC 和实现概念。",
+    "provider": "Chaincode Labs"
+  },
+  "chaincode-bitcoin-seminar": {
+    "title": "Chaincode 比特币协议开发研讨会",
+    "description": "Chaincode Residency 七部分视频研讨会，涵盖比特币协议开发——比特币课程的配套材料。",
+    "provider": "Chaincode Labs"
+  },
+  "crypto101": {
+    "title": "Crypto 101",
+    "description": "面向程序员的免费密码学入门课程——分组密码、哈希函数、TLS、公钥密码学和动手破解常见漏洞的练习。",
+    "provider": "Crypto 101 / lvh"
+  },
+  "learning-bitcoin-cli": {
+    "title": "Learning Bitcoin from the Command Line",
+    "description": "完整的命令行比特币编程课程——Bitcoin Core 配置、钱包、原始交易、多签、PSBT 和脚本。Blockchain Commons 出品。",
+    "provider": "Blockchain Commons"
+  },
+  "bitcoin-ed-foundation-curriculum": {
+    "title": "Bitcoin Education Foundation 课程",
+    "description": "免费六模块比特币课程（CC BY-SA）——货币基础、比特币原理、实际应用和安全思维。含课堂工作表。",
+    "provider": "Bitcoin Education Foundation"
+  },
+  "bushido-opsec-101": {
+    "title": "操作安全（OPSEC）101",
+    "description": "实用 OPSEC 指南——社交媒体安全、账户卫生、设备安全、Tor、Signal、虚拟机和面向公众人士的高级建议。",
+    "provider": "BushidoUK"
+  },
+  "planb-academy": {
+    "title": "Plan ₿ Academy",
+    "description": "多语言比特币在线学习平台——比特币、闪电网络、密码学、挖矿和隐私课程。在 planb.academy 学习。",
+    "provider": "Plan ₿ Network"
+  },
+  "code-orange-sovereign-bitcoiner": {
+    "title": "主权比特币人速成课",
+    "description": "5–10 周免费课程（CC0），涵盖比特币哲学、运行节点、挖矿基础、多签和隐私——Code Orange Dev School。",
+    "provider": "Code Orange Dev School"
+  },
+  "code-orange-bitcoin-dojo": {
+    "title": "Bitcoin Dojo",
+    "description": "7 周开发者训练营（CC0），涵盖有限域、椭圆曲线、比特币密钥、序列化、Script 和 SegWit——Code Orange Dev School。",
+    "provider": "Code Orange Dev School"
   }
 }

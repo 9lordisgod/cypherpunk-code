@@ -1,9 +1,9 @@
-import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import { isDevLoginAllowed, verifyAdminPassword } from "@/lib/auth-production";
 import { prisma } from "@/lib/db";
 
-const devLoginEnabled = process.env.DEV_LOGIN_ENABLED === "true";
+const devLoginEnabled = isDevLoginAllowed();
 const adminEmail = process.env.ADMIN_EMAIL ?? "admin@cypherpunk-code.ca";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -65,12 +65,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!email || !password || !configuredPassword) return null;
         if (email !== adminEmail.toLowerCase()) return null;
 
-        const passwordOk =
-          configuredPassword.startsWith("$2")
-            ? await bcrypt.compare(password, configuredPassword)
-            : password === configuredPassword;
-
-        if (!passwordOk) return null;
+        if (!(await verifyAdminPassword(password, configuredPassword))) return null;
 
         let user = await prisma.user.findUnique({ where: { email } });
         if (!user) {

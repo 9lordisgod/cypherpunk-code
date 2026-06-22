@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
+import { HONEYPOT_FIELD } from "@/lib/security/constants";
 
 export function FeedbackBox() {
   const { data: session } = useSession();
@@ -10,6 +11,7 @@ export function FeedbackBox() {
   const [name, setName] = useState(session?.user?.name ?? "");
   const [email, setEmail] = useState(session?.user?.email ?? "");
   const [xHandle, setXHandle] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -20,7 +22,13 @@ export function FeedbackBox() {
       const response = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, xHandle, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          xHandle,
+          message,
+          [HONEYPOT_FIELD]: honeypot,
+        }),
       });
       if (!response.ok) throw new Error("Failed");
       setStatus("sent");
@@ -36,6 +44,16 @@ export function FeedbackBox() {
         <h2 className="text-lg font-semibold">{t("feedbackTitle")}</h2>
         <p className="mt-1 text-sm text-muted">{t("feedbackSubtitle")}</p>
       </div>
+      <input
+        type="text"
+        name={HONEYPOT_FIELD}
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-0 w-0 opacity-0"
+      />
       <label className="block text-sm">
         <span className="text-muted">{t("feedbackName")}</span>
         <input
@@ -83,14 +101,16 @@ export function FeedbackBox() {
       >
         {status === "sending" ? t("feedbackSending") : t("feedbackSubmit")}
       </button>
-      {status === "sent" ? (
-        <p className="text-sm" style={{ color: "var(--accent)" }}>
-          {t("feedbackThanks")}
-        </p>
-      ) : null}
-      {status === "error" ? (
-        <p className="text-sm text-red-400">{t("feedbackError")}</p>
-      ) : null}
+      <p aria-live="polite" className="min-h-[1.25rem]">
+        {status === "sent" ? (
+          <span className="text-sm" style={{ color: "var(--accent)" }}>
+            {t("feedbackThanks")}
+          </span>
+        ) : null}
+        {status === "error" ? (
+          <span className="text-sm text-red-400">{t("feedbackError")}</span>
+        ) : null}
+      </p>
     </form>
   );
 }

@@ -21,21 +21,28 @@ Learners sign in with Solana or Bitcoin wallets. Progress and feedback are store
 
 ```bash
 cp .env.example .env.local
-# Set AUTH_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD, then:
-npm run db:push
+# Set AUTH_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD (bcrypt hash), then:
+npm run db:push   # local SQLite
 npm run dev
 ```
 
 ## Deploy (Vercel)
 
-1. Push to GitHub and import the repo in [Vercel](https://vercel.com).
-2. Set environment variables in the Vercel project:
+1. Connect this private GitHub repo to [Vercel](https://vercel.com).
+2. Set environment variables:
    - `AUTH_SECRET` — `openssl rand -base64 32`
-   - `AUTH_URL` — `https://cypherpunk-code.ca`
-   - `DATABASE_URL` + `DATABASE_AUTH_TOKEN` — [Turso](https://turso.tech) libSQL (recommended; local SQLite does not persist on serverless)
-   - `ADMIN_EMAIL`, `ADMIN_PASSWORD` (bcrypt hash recommended)
+   - `AUTH_URL` — `https://cypherpunk-code.ca` (no trailing slash)
+   - `DATABASE_URL` + `DATABASE_AUTH_TOKEN` — [Turso](https://turso.tech) libSQL (required for production; local SQLite does not persist on serverless)
+   - `ADMIN_EMAIL`, `ADMIN_PASSWORD` — **bcrypt hash required in production** (`node -e "import('bcryptjs').then(b=>b.hash('your-password',12).then(console.log))"`)
    - `DEV_LOGIN_ENABLED` — `false`
-3. Deploy. The build runs `prisma db push` then `next build`.
+   - `SECURITY_VAULT_KEY` + `SECURITY_VAULT_B64` — optional but recommended (see `npm run security:init`)
+3. **One-time database setup** (after first deploy env is configured):
+
+```bash
+DATABASE_URL="libsql://..." DATABASE_AUTH_TOKEN="..." npm run db:init:turso
+```
+
+4. Deploy. The build runs `prisma generate`, `docs:build`, then `next build` — it does **not** apply schema changes automatically.
 
 ```bash
 npm run build

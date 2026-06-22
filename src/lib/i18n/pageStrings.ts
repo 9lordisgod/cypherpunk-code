@@ -3,7 +3,7 @@ export const pageStringsEn = {
   clearFilters: "Clear filters",
   resourcesCount: "{count} resources",
   notFoundTitle: "Not Found",
-  notFoundDescription: "This page does not exist in the archive.",
+  notFoundDescription: "This page is not in the catalog.",
   notFoundBackHome: "Back to home",
   backToCatalog: "← Back to catalog",
   tagsLabel: "Tags",
@@ -56,9 +56,9 @@ export const pageStringsEn = {
     "Mathematical foundations for understanding protocols under the hood — university-level theory.",
 
   aboutPageTitle: "About {name}",
-  aboutArchiveMission: "Archive mission",
+  aboutArchiveMission: "Our mission",
   aboutArchiveMission1:
-    "{name} is a public archive database of cypherpunk information and education. We index and organize freely available material so learners can find signal without wading through trading noise. This is a reference tool — not financial advice, not a course provider, and not affiliated with the projects listed unless noted.",
+    "{name} is a freedom education index for cypherpunk and cryptocurrency learning. We curate and organize material so learners can find signal without wading through trading noise. This is a reference tool — not financial advice, not a course provider, and not affiliated with the projects listed unless noted.",
   aboutArchiveMission2:
     "The catalog is reviewed and updated on an ongoing basis. If any rights holder, author, or project is unhappy with a listing, contact {handle} and the content will be pulled or corrected without delay.",
   aboutWhatIsThis: "What is this?",
@@ -75,7 +75,7 @@ export const pageStringsEn = {
   aboutStatsFree: "{free} free resources",
   aboutStatsCoverage:
     "Covers Bitcoin, Monero, OpSec, cryptography, and cypherpunk history",
-  aboutStatsNoTracking: "No user tracking, no accounts required to browse",
+  aboutStatsNoTracking: "No tracking. Wallet sign-in is optional for saving course progress",
   aboutSupport: "Support the project",
   aboutSupportText:
     "Donations in Bitcoin or Monero help keep {name} free for learners. No payment processors, no KYC.",
@@ -109,7 +109,7 @@ export const pageStringsEn = {
     "67+ curated resources across Bitcoin, Monero, OpSec & cypherpunk history",
   roadmapPhase1Item2: "Searchable catalog with Cypherpunk Score filter",
   roadmapPhase1Item3: "6 structured learning paths",
-  roadmapPhase1Item4: "Freedom education catalog — free to browse, no accounts required",
+  roadmapPhase1Item4: "Freedom education catalog — free to browse; wallet optional for progress",
   roadmapPhase1Item5: "Deploy at cypherpunk-code.ca",
   roadmapPhase2Label: "Phase 2 — Grow the database",
   roadmapPhase2Item1: "Expand catalog with community submissions",
@@ -181,6 +181,11 @@ export const pageStringsEn = {
   "courseTopic_social studies": "Social studies",
   heroCourses: "Bitcoin Course",
   heroCoursesSubtitle: "Freedom education for sovereign learners",
+  coursesErrorTitle: "Course unavailable",
+  coursesErrorDescription:
+    "We could not load this course module right now. Try again, or return to the course list.",
+  coursesErrorRetry: "Try again",
+  coursesErrorBack: "Back to courses",
   aboutPlanBSection: "Bitcoin course & attribution",
   aboutPlanBText:
     "The Bitcoin Course uses educational materials from Plan ₿ Network (CC BY-SA 4.0). Each module includes TASL attribution. This site is independently operated and is not affiliated with or endorsed by Plan ₿ Academy.",
@@ -282,7 +287,7 @@ export const pageStringsZhCN = {
   clearFilters: "清除筛选",
   resourcesCount: "{count} 个资源",
   notFoundTitle: "未找到",
-  notFoundDescription: "档案中不存在此页面。",
+  notFoundDescription: "目录中不存在此页面。",
   notFoundBackHome: "返回首页",
   backToCatalog: "← 返回目录",
   tagsLabel: "标签",
@@ -335,9 +340,9 @@ export const pageStringsZhCN = {
     "理解底层协议的数学基础 — 大学水平的理论。",
 
   aboutPageTitle: "关于 {name}",
-  aboutArchiveMission: "档案使命",
+  aboutArchiveMission: "我们的使命",
   aboutArchiveMission1:
-    "{name} 是一个公开的密码朋克资讯与教育档案数据库。我们索引和组织免费开放的材料，让学习者能在交易杂音中找到信号。这是一个参考工具 — 非财务建议，非课程提供商，除非注明，否则与所列项目无关联。",
+    "{name} 是一个面向密码朋克和加密货币学习的自由教育索引。我们策划和组织材料，让学习者能在交易杂音中找到信号。这是一个参考工具 — 非财务建议，非课程提供商，除非注明，否则与所列项目无关联。",
   aboutArchiveMission2:
     "目录持续审查和更新。如有权利持有人、作者或项目对列载不满，请联系 {handle}，内容将立即撤下或更正。",
   aboutWhatIsThis: "这是什么？",
@@ -353,7 +358,7 @@ export const pageStringsZhCN = {
   aboutStatsResources: "{count} 个精选资源",
   aboutStatsFree: "{free} 个免费资源",
   aboutStatsCoverage: "涵盖比特币、门罗币、操作安全、密码学和密码朋克历史",
-  aboutStatsNoTracking: "无用户追踪，浏览无需账户",
+  aboutStatsNoTracking: "无追踪。钱包登录可选，用于保存课程进度",
   aboutSupport: "支持项目",
   aboutSupportText:
     "比特币或门罗币捐赠帮助保持 {name} 对学习者免费。无支付处理商，无 KYC。",
@@ -384,7 +389,7 @@ export const pageStringsZhCN = {
   roadmapPhase1Item1: "67+ 精选资源，涵盖比特币、门罗币、操作安全和密码朋克历史",
   roadmapPhase1Item2: "可搜索目录，带密码朋克评分筛选",
   roadmapPhase1Item3: "6 条结构化学习路径",
-  roadmapPhase1Item4: "自由教育目录 — 免费浏览，无需账户",
+  roadmapPhase1Item4: "自由教育目录 — 免费浏览；钱包可选以保存进度",
   roadmapPhase1Item5: "部署于 cypherpunk-code.ca",
   roadmapPhase2Label: "第二阶段 — 扩展数据库",
   roadmapPhase2Item1: "通过社区提交扩展目录",
@@ -452,6 +457,10 @@ export const pageStringsZhCN = {
   "courseTopic_social studies": "社会研究",
   heroCourses: "比特币课程",
   heroCoursesSubtitle: "面向主权学习者的自由教育",
+  coursesErrorTitle: "课程暂时不可用",
+  coursesErrorDescription: "目前无法加载此课程模块。请重试或返回课程列表。",
+  coursesErrorRetry: "重试",
+  coursesErrorBack: "返回课程",
   aboutPlanBSection: "比特币课程与署名",
   aboutPlanBText:
     "比特币课程使用 Plan ₿ Network 的教育材料（CC BY-SA 4.0）。每个模块均含 TASL 署名。本网站独立运营，与 Plan ₿ Academy 无关联或背书关系。",
@@ -548,7 +557,7 @@ export const pageStringsJa = {
   clearFilters: "フィルターをクリア",
   resourcesCount: "{count} 件のリソース",
   notFoundTitle: "見つかりません",
-  notFoundDescription: "このページはアーカイブに存在しません。",
+  notFoundDescription: "このページはカタログに存在しません。",
   notFoundBackHome: "ホームに戻る",
   backToCatalog: "← カタログに戻る",
   tagsLabel: "タグ",
@@ -601,9 +610,9 @@ export const pageStringsJa = {
     "プロトコルの内部を理解するための数学的基礎 — 大学レベルの理論。",
 
   aboutPageTitle: "{name} について",
-  aboutArchiveMission: "アーカイブの使命",
+  aboutArchiveMission: "私たちの使命",
   aboutArchiveMission1:
-    "{name} はサイファーパンク情報と教育の公開アーカイブデータベースです。無料で利用可能な資料を索引・整理し、学習者がトレードのノイズに溺れずにシグナルを見つけられるようにします。参考ツールであり — 金融アドバイスでも、コース提供者でもなく、特記がない限り掲載プロジェクトと提携していません。",
+    "{name} はサイファーパンクと暗号通貨学習のためのフリーダム教育インデックスです。資料をキュレーション・整理し、学習者がトレードのノイズに溺れずにシグナルを見つけられるようにします。参考ツールであり — 金融アドバイスでも、コース提供者でもなく、特記がない限り掲載プロジェクトと提携していません。",
   aboutArchiveMission2:
     "カタログは継続的にレビュー・更新されます。権利者、著者、プロジェクトが掲載に不満がある場合は {handle} にご連絡ください。コンテンツは遅延なく削除または修正されます。",
   aboutWhatIsThis: "これは何？",
@@ -620,7 +629,7 @@ export const pageStringsJa = {
   aboutStatsFree: "{free} 件の無料リソース",
   aboutStatsCoverage:
     "ビットコイン、モネロ、OpSec、暗号学、サイファーパンク史をカバー",
-  aboutStatsNoTracking: "ユーザートラッキングなし、閲覧にアカウント不要",
+  aboutStatsNoTracking: "トラッキングなし。コース進捗保存用のウォレットサインインは任意",
   aboutSupport: "プロジェクトを支援",
   aboutSupportText:
     "ビットコインまたはモネロの寄付で {name} を学習者に無料で提供し続けられます。決済処理業者なし、KYCなし。",
@@ -653,7 +662,7 @@ export const pageStringsJa = {
     "ビットコイン、モネロ、OpSec、サイファーパンク史にわたる67+厳選リソース",
   roadmapPhase1Item2: "サイファーパンクスコアフィルター付き検索可能カタログ",
   roadmapPhase1Item3: "6つの構造化学習パス",
-  roadmapPhase1Item4: "フリーダム教育カタログ — 無料閲覧、アカウント不要",
+  roadmapPhase1Item4: "フリーダム教育カタログ — 無料閲覧、進捗保存はウォレット任意",
   roadmapPhase1Item5: "cypherpunk-code.ca にデプロイ",
   roadmapPhase2Label: "フェーズ 2 — データベース拡大",
   roadmapPhase2Item1: "コミュニティ投稿でカタログ拡張",
@@ -724,6 +733,10 @@ export const pageStringsJa = {
   "courseTopic_social studies": "社会研究",
   heroCourses: "ビットコインコース",
   heroCoursesSubtitle: "主権的学習者のためのフリーダム教育",
+  coursesErrorTitle: "コースを読み込めません",
+  coursesErrorDescription: "このコースモジュールを現在読み込めません。再試行するか、コース一覧に戻ってください。",
+  coursesErrorRetry: "再試行",
+  coursesErrorBack: "コースに戻る",
   aboutPlanBSection: "ビットコインコースと帰属表示",
   aboutPlanBText:
     "ビットコインコースは Plan ₿ Network の教材（CC BY-SA 4.0）を使用。各モジュールに TASL 帰属表示あり。本サイトは独立運営で Plan ₿ Academy と提携・後援関係はありません。",
@@ -824,7 +837,7 @@ export const pageStringsFr = {
   clearFilters: "Effacer les filtres",
   resourcesCount: "{count} ressources",
   notFoundTitle: "Introuvable",
-  notFoundDescription: "Cette page n'existe pas dans l'archive.",
+  notFoundDescription: "Cette page n'est pas dans le catalogue.",
   notFoundBackHome: "Retour à l'accueil",
   backToCatalog: "← Retour au catalogue",
   tagsLabel: "Tags",
@@ -877,9 +890,9 @@ export const pageStringsFr = {
     "Fondements mathématiques pour comprendre les protocoles en profondeur — théorie de niveau universitaire.",
 
   aboutPageTitle: "À propos de {name}",
-  aboutArchiveMission: "Mission de l'archive",
+  aboutArchiveMission: "Notre mission",
   aboutArchiveMission1:
-    "{name} est une base de données d'archives publique d'informations et d'éducation cypherpunk. Nous indexons et organisons du matériel librement disponible pour que les apprenants trouvent du signal sans le bruit du trading. C'est un outil de référence — pas un conseil financier, pas un fournisseur de cours, et non affilié aux projets listés sauf mention contraire.",
+    "{name} est un index d'éducation libertaire pour l'apprentissage cypherpunk et cryptomonnaie. Nous organisons du matériel pour que les apprenants trouvent du signal sans le bruit du trading. C'est un outil de référence — pas un conseil financier, pas un fournisseur de cours, et non affilié aux projets listés sauf mention contraire.",
   aboutArchiveMission2:
     "Le catalogue est révisé et mis à jour en continu. Si un titulaire de droits, auteur ou projet n'est pas satisfait d'un listing, contactez {handle} et le contenu sera retiré ou corrigé sans délai.",
   aboutWhatIsThis: "Qu'est-ce que c'est ?",
@@ -897,7 +910,7 @@ export const pageStringsFr = {
   aboutStatsCoverage:
     "Couvre Bitcoin, Monero, OpSec, cryptographie et histoire cypherpunk",
   aboutStatsNoTracking:
-    "Pas de suivi utilisateur, aucun compte requis pour parcourir",
+    "Pas de suivi. Connexion portefeuille optionnelle pour sauvegarder la progression",
   aboutSupport: "Soutenir le projet",
   aboutSupportText:
     "Les dons en Bitcoin ou Monero aident à garder {name} gratuit pour les apprenants. Pas de processeurs de paiement, pas de KYC.",
@@ -932,7 +945,7 @@ export const pageStringsFr = {
     "67+ ressources curatées sur Bitcoin, Monero, OpSec et histoire cypherpunk",
   roadmapPhase1Item2: "Catalogue consultable avec filtre Score Cypherpunk",
   roadmapPhase1Item3: "6 parcours d'apprentissage structurés",
-  roadmapPhase1Item4: "Catalogue d'éducation libertaire — navigation gratuite, sans compte",
+  roadmapPhase1Item4: "Catalogue d'éducation libertaire — navigation gratuite, portefeuille optionnel pour la progression",
   roadmapPhase1Item5: "Déploiement sur cypherpunk-code.ca",
   roadmapPhase2Label: "Phase 2 — Agrandir la base",
   roadmapPhase2Item1: "Élargir le catalogue avec les soumissions communautaires",
@@ -1004,6 +1017,11 @@ export const pageStringsFr = {
   "courseTopic_social studies": "Études sociales",
   heroCourses: "Cours Bitcoin",
   heroCoursesSubtitle: "Éducation libertaire pour apprenants souverains",
+  coursesErrorTitle: "Cours indisponible",
+  coursesErrorDescription:
+    "Impossible de charger ce module pour le moment. Réessayez ou revenez à la liste des cours.",
+  coursesErrorRetry: "Réessayer",
+  coursesErrorBack: "Retour aux cours",
   aboutPlanBSection: "Cours Bitcoin et attribution",
   aboutPlanBText:
     "Le cours Bitcoin utilise les matériaux de Plan ₿ Network (CC BY-SA 4.0). Chaque module inclut une attribution TASL. Ce site est exploité indépendamment et n'est pas affilié à Plan ₿ Academy.",

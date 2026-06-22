@@ -328,5 +328,65 @@
     "title": "Class Central — Cours sur les cryptomonnaies",
     "description": "Agrégateur de plus de 150 cours sur les cryptomonnaies. Utilisez le filtre de score cypherpunk de Cypherpunk Code pour trouver le signal au milieu du bruit du trading.",
     "provider": "Class Central"
+  },
+  "mit-blockchain-and-money": {
+    "title": "MIT 15.S12 — Blockchain and Money",
+    "description": "Cours de Gary Gensler au MIT Sloan sur les fondamentaux du Bitcoin, la technologie blockchain, les registres distribués, les contrats intelligents et la politique financière — vidéos complètes sur OpenCourseWare.",
+    "provider": "MIT OpenCourseWare"
+  },
+  "mit-cde-2025": {
+    "title": "MIT MAS.S62 — Cryptocurrency Design and Engineering (2025)",
+    "description": "Cours du MIT Digital Currency Initiative sur la conception du protocole Bitcoin, la cryptographie, le consensus, le minage, la confidentialité et la scalabilité — diapositives, lectures et devoirs ouverts.",
+    "provider": "MIT Digital Currency Initiative"
+  },
+  "chaincode-bitcoin-curriculum": {
+    "title": "Chaincode — Curriculum de développement du protocole Bitcoin",
+    "description": "Programme et groupes d'étude pour le développement du protocole Bitcoin — du livre blanc aux soft forks, la politique du mempool et le réseau pair-à-pair.",
+    "provider": "Chaincode Labs"
+  },
+  "chaincode-lightning-curriculum": {
+    "title": "Chaincode — Curriculum de développement Lightning",
+    "description": "Programme complet pour les développeurs du protocole Lightning — gestion des canaux, routage, HTLC et concepts d'implémentation.",
+    "provider": "Chaincode Labs"
+  },
+  "chaincode-bitcoin-seminar": {
+    "title": "Chaincode — Séminaire sur le protocole Bitcoin",
+    "description": "Séminaire vidéo en sept parties de Chaincode Residency sur le développement du protocole Bitcoin — complément du curriculum Bitcoin.",
+    "provider": "Chaincode Labs"
+  },
+  "crypto101": {
+    "title": "Crypto 101",
+    "description": "Cours d'introduction gratuit à la cryptographie pour programmeurs — chiffrements par blocs, fonctions de hachage, TLS, crypto à clé publique et exercices pratiques.",
+    "provider": "Crypto 101 / lvh"
+  },
+  "learning-bitcoin-cli": {
+    "title": "Learning Bitcoin from the Command Line",
+    "description": "Cours complet de programmation Bitcoin en CLI — configuration Bitcoin Core, portefeuilles, transactions brutes, multisig, PSBT et script. Par Blockchain Commons.",
+    "provider": "Blockchain Commons"
+  },
+  "bitcoin-ed-foundation-curriculum": {
+    "title": "Bitcoin Education Foundation Curriculum",
+    "description": "Curriculum Bitcoin gratuit en 6 modules (CC BY-SA) — fondamentaux de la monnaie, fonctionnement du Bitcoin, usage réel et réflexion critique sur la sécurité. Prêt pour la salle de classe.",
+    "provider": "Bitcoin Education Foundation"
+  },
+  "bushido-opsec-101": {
+    "title": "Operational Security (OPSEC) 101",
+    "description": "Guide OPSEC pratique — sécurité des réseaux sociaux, hygiène des comptes, sécurité des appareils, Tor, Signal, VMs et conseils avancés pour les personnes exposées.",
+    "provider": "BushidoUK"
+  },
+  "planb-academy": {
+    "title": "Plan ₿ Academy",
+    "description": "Plateforme d'apprentissage multilingue pour le Bitcoin — cours sur Bitcoin, Lightning, cryptographie, minage et confidentialité. Cours sur planb.academy.",
+    "provider": "Plan ₿ Network"
+  },
+  "code-orange-sovereign-bitcoiner": {
+    "title": "Sovereign Bitcoiner Crash Course",
+    "description": "Cours gratuit de 5 à 10 semaines (CC0) sur la philosophie Bitcoin, l'exploitation de nœuds, les bases du minage, le multisig et la confidentialité — Code Orange Dev School.",
+    "provider": "Code Orange Dev School"
+  },
+  "code-orange-bitcoin-dojo": {
+    "title": "Bitcoin Dojo",
+    "description": "Cohorte développeur de 7 semaines (CC0) couvrant les corps finis, les courbes elliptiques, les clés Bitcoin, la sérialisation, Script et SegWit — Code Orange Dev School.",
+    "provider": "Code Orange Dev School"
   }
 }
