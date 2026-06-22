@@ -40,12 +40,61 @@ function stripHonkitAssets(html) {
   return html;
 }
 
-/** <base href> makes ../styles/ on nested pages resolve outside /doc/ — use one root path. */
+/** Absolute path so theme CSS loads on every nested page. */
 function fixStylesheetPath(html) {
   return html.replace(
     /<link rel="stylesheet" href="[^"]*styles\/website\.css"[^>]*>/i,
     `<link rel="stylesheet" href="${docBasePath}styles/website.css">`
   );
+}
+
+function resolveDocHref(filePath, href) {
+  if (
+    !href ||
+    href.startsWith("http://") ||
+    href.startsWith("https://") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("#") ||
+    href.startsWith("javascript:")
+  ) {
+    return href;
+  }
+
+  if (href.startsWith("/") && !href.startsWith(docBasePath)) {
+    return href;
+  }
+
+  if (href.startsWith(docBasePath)) {
+    return href;
+  }
+
+  const relFile = filePath.slice(publicDir.length + 1);
+  const fileDir = relFile.includes("/")
+    ? relFile.slice(0, relFile.lastIndexOf("/") + 1)
+    : "";
+
+  const resolved = [];
+  for (const part of (fileDir + href).split("/")) {
+    if (!part || part === ".") continue;
+    if (part === "..") {
+      resolved.pop();
+      continue;
+    }
+    resolved.push(part);
+  }
+
+  return docBasePath + resolved.join("/");
+}
+
+/** <base href> breaks HonKit's relative sidebar links on nested pages → 404. */
+function fixInternalLinks(html, filePath) {
+  return html.replace(/\bhref="([^"]+)"/gi, (_match, href) => {
+    return `href="${resolveDocHref(filePath, href)}"`;
+  });
+}
+
+function removeBaseTag(html) {
+  return html.replace(/<base[^>]*>\s*/gi, "");
 }
 
 function stripHonkitScripts(html) {
@@ -82,14 +131,10 @@ function removeHonkitChrome(html) {
 function patchHtml(filePath) {
   let html = readFileSync(filePath, "utf8");
 
-  if (!html.includes("<base ")) {
-    html = html.replace(/<head>/i, `<head>\n    <base href="${docBasePath}">`);
-  }
-
   if (!html.includes('rel="icon"')) {
     html = html.replace(
       /<head>/i,
-      `<head>\n    <link rel="icon" href="${docBasePath}../favicon-32x32.png" type="image/png">`
+      `<head>\n    <link rel="icon" href="/favicon-32x32.png" type="image/png">`
     );
   }
 
@@ -119,7 +164,9 @@ function patchHtml(filePath) {
   html = html.replace(/class="book"/g, 'class="book cp-doc"');
 
   html = stripHonkitAssets(html);
+  html = removeBaseTag(html);
   html = fixStylesheetPath(html);
+  html = fixInternalLinks(html, filePath);
   html = removeSearchUi(html);
   html = removeHonkitChrome(html);
   html = stripHonkitScripts(html);
