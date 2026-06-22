@@ -129,4 +129,4 @@ For private money beyond Bitcoin's limitations, study the [Monero Privacy Path](
 - [Deep Cryptography](https://cypherpunk-code.ca/paths#deep-cryptography) — mathematical foundations
 - [Monero Privacy Path](https://cypherpunk-code.ca/paths#monero-privacy) — private money
 - [Practical OpSec Path](https://cypherpunk-code.ca/paths#practical-opsec) — operational security
-- [Seeker dApp Roadmap](../solana/seeker-dapp-roadmap.md) — onchain learning future
+- [Project Roadmap](../doc/roadmap.md) — onchain learning future

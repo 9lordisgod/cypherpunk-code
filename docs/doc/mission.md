@@ -103,7 +103,7 @@ New resources are added through curator review and community suggestions. If any
 4. **Solana Seeker dApp** — secondary distribution channel for crypto-native learners
 5. **Sustainable funding** — sponsorships, grants, and affiliates (never from learners)
 
-See [Project Roadmap](roadmap.md) and [Seeker dApp Strategy](../solana/seeker-dapp-roadmap.md) for details.
+See [Project Roadmap](roadmap.md) for public milestones.
 
 ---
 

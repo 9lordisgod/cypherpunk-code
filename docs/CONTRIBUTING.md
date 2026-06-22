@@ -30,7 +30,6 @@ Output is copied to `public/doc/` and served at `/doc/` by Next.js.
 | `styles/website.css` | Custom cypherpunk theme |
 | `doc/` | Start-here guides (study, platform, mission, roadmap) |
 | `bitcoin/` | Bitcoin course track |
-| `solana/` | Seeker dApp strategy and features |
 | `reference/` | CP Score, paths index, FAQ, glossary |
 
 ## Adding a page

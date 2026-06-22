@@ -98,11 +98,11 @@ Bitcoin and Monero addresses are on the [About page](https://cypherpunk-code.ca/
 
 ### Will there be a mobile app?
 
-The web platform is already mobile-responsive. A Solana Seeker dApp is planned for 2027+ as a secondary channel. See [Seeker dApp Strategy](../solana/seeker-dapp-roadmap.md).
+The web platform is already mobile-responsive. A Solana Seeker dApp is planned for 2027+ as a secondary channel. See [Project Roadmap](../doc/roadmap.md).
 
 ### Will there be onchain certificates?
 
-Yes — free verifiable certificates (Soulbound tokens on Solana) are planned for 2027. See [Feature Roadmap](../solana/feature-roadmap.md).
+Yes — free verifiable certificates (Soulbound tokens on Solana) are planned for 2027. See [Project Roadmap](../doc/roadmap.md).
 
 ### Will you add more resources?
 
@@ -110,4 +110,4 @@ Yes. The catalog is maintained and expanded continuously. Community submissions 
 
 ### Will you ever charge for content?
 
-No. The platform will always be free for learners. See [Monetization](../solana/monetization.md) for how the project sustains itself.
+No. The platform will always be free for learners. The project is sustained through sponsorships, grants, donations, and related channels — never learner fees.

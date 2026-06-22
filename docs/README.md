@@ -4,7 +4,7 @@
 
 Welcome to the official documentation for [Cypherpunk Code](https://cypherpunk-code.ca) — an open archive and learning platform for Bitcoin, Monero, cryptography, and cypherpunk education.
 
-This documentation explains **how to study effectively**, **how to get the most from our platform**, and where the project is headed — including our roadmap to the **Solana Seeker dApp Store**.
+This documentation explains **how to study effectively**, **how to get the most from our platform**, and where the project is headed.
 
 ---
 

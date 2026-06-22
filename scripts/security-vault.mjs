@@ -18,7 +18,10 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const securityDir = join(root, ".security");
-const templatePath = join(securityDir, "vault.template.json");
+const localPrivateDir = join(root, ".local-private", "security");
+const templatePath = [join(localPrivateDir, "vault.template.json"), join(securityDir, "vault.template.json")].find(
+  (p) => existsSync(p)
+);
 const plainPath = join(securityDir, "vault.json");
 const encPath = join(securityDir, "vault.enc");
 
@@ -56,6 +59,10 @@ const cmd = process.argv[2];
 if (cmd === "init") {
   if (existsSync(plainPath)) {
     console.error("vault.json already exists");
+    process.exit(1);
+  }
+  if (!templatePath) {
+    console.error("Missing vault template — copy .local-private/security/vault.template.json to .security/");
     process.exit(1);
   }
   copyFileSync(templatePath, plainPath);

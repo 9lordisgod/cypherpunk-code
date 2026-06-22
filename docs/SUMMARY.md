@@ -17,12 +17,6 @@
 * [Phase 3 — Sovereignty & Full Node](bitcoin/phase-3-sovereignty.md)
 * [Phase 4 — Privacy Techniques](bitcoin/phase-4-privacy.md)
 
-## Solana Mobile dApp
-
-* [Seeker dApp Store Strategy](solana/seeker-dapp-roadmap.md)
-* [Feature Roadmap](solana/feature-roadmap.md)
-* [Monetization (Without Charging Learners)](solana/monetization.md)
-
 ## Reference
 
 * [Cypherpunk Score Explained](reference/cypherpunk-score.md)

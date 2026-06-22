@@ -87,7 +87,7 @@ Phase 3: Seeker dApp (secondary) →  Crypto-native mobile users
 - 0% platform fees
 - Aligns with cypherpunk/privacy values
 
-See the full strategy: [Seeker dApp Store Roadmap](../solana/seeker-dapp-roadmap.md)
+Detailed Seeker dApp strategy is maintained privately by the project operators.
 
 ---
 

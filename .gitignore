@@ -36,9 +36,13 @@ yarn-error.log*
 .env*
 !.env.example
 
+# local-only private copies (operator + business strategy — never commit)
+.local-private/
+
 # encrypted security vault (business secrets — never commit)
 .security/vault.json
 .security/vault.enc
+.security/vault.template.json
 .security/*.key
 .pages-build-api-backup
 

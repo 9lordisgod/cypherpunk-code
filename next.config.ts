@@ -28,9 +28,9 @@ const nextConfig: NextConfig = {
             ["phase-2-technical.html", "/doc/bitcoin/phase-2-technical.html"],
             ["phase-3-sovereignty.html", "/doc/bitcoin/phase-3-sovereignty.html"],
             ["phase-4-privacy.html", "/doc/bitcoin/phase-4-privacy.html"],
-            ["seeker-dapp-roadmap.html", "/doc/solana/seeker-dapp-roadmap.html"],
-            ["feature-roadmap.html", "/doc/solana/feature-roadmap.html"],
-            ["monetization.html", "/doc/solana/monetization.html"],
+            ["seeker-dapp-roadmap.html", "/doc/doc/roadmap.html"],
+            ["feature-roadmap.html", "/doc/doc/roadmap.html"],
+            ["monetization.html", "/doc/doc/roadmap.html"],
             ["cypherpunk-score.html", "/doc/reference/cypherpunk-score.html"],
             ["learning-paths.html", "/doc/reference/learning-paths.html"],
             ["faq.html", "/doc/reference/faq.html"],
@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
               destination,
               permanent: true,
             })),
+            {
+              source: "/doc/solana/:path*",
+              destination: "/doc/doc/roadmap.html",
+              permanent: true,
+            },
           ];
         },
       }
