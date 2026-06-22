@@ -1292,6 +1292,11 @@ body.mobile-menu-open {
   backdrop-filter: blur(8px);
 }
 
+.wallet-connect-card--inline {
+  max-width: 480px;
+  margin-inline: auto;
+}
+
 .wallet-connect-card {
   position: relative;
   width: 100%;
