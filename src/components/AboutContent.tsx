@@ -53,6 +53,18 @@ export function AboutContent() {
             </p>
           </section>
 
+          <section id="openness">
+            <h2 className="text-xl font-semibold">{t("aboutOpennessTitle")}</h2>
+            <p className="mt-2 leading-relaxed text-muted">{t("aboutOpennessLead")}</p>
+            <p className="mt-3 leading-relaxed text-muted">{t("aboutOpennessDataFirst")}</p>
+            <p className="mt-3 leading-relaxed text-muted">{t("aboutOpennessCodeSecond")}</p>
+            <p className="mt-3">
+              <Link href="/doc/doc/openness-policy.html" className="text-accent hover:underline">
+                {t("aboutOpennessLink")} →
+              </Link>
+            </p>
+          </section>
+
           <section>
             <h2 className="text-xl font-semibold">{t("aboutWhatIsThis")}</h2>
             <p className="mt-2 leading-relaxed text-muted">{t("aboutWhatIsThisText")}</p>

@@ -26,6 +26,8 @@ Where Cypherpunk Code is headed — freedom education for learners.
 | --- | --- |
 | Expand catalog with community submissions | Q3 2026 |
 | Resource submission form (no X scraping required) | Q3 2026 |
+| **Open catalog data layer** (`resources.json`, `paths.json`, `site.json`) | Q3 2026 |
+| Publish [Openness Policy](openness-policy.md) — data first, code second | Q3 2026 |
 | More Monero & Bitcoin privacy resources | Ongoing |
 | Periodic automated checks for broken links | Q3 2026 |
 | Changelog page for database updates | Q3 2026 |

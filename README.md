@@ -85,6 +85,19 @@ See `docs/CONTRIBUTING.md` for structure and editing guide.
 
 Add entries to `resources.json` following the schema in `src/lib/types.ts`. Rebuild to publish.
 
+## Openness policy
+
+The application is **closed source at this stage** — auth, wallet sign-in, and admin tooling are still maturing. That is intentional.
+
+We compensate with public transparency where it matters: the live site, mission, roadmap, and documentation are all open to learners.
+
+**Opening schedule (data first, code second):**
+
+- **Q3 2026** — when the resource submission form ships, we publish the catalog data layer (`resources.json`, `paths.json`, `site.json`) under an open license
+- **After that** — application code opens in stages as wallet, auth, and tooling stabilize (no fixed date for full open source yet)
+
+Full policy: [`docs/doc/openness-policy.md`](docs/doc/openness-policy.md) (also served at `/doc/` after `npm run docs:build`).
+
 ## Contributing
 
 This is a **private, closed-source** repository. The codebase is not open for public pull requests, forks, or redistribution.

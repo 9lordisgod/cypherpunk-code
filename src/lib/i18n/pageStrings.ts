@@ -61,6 +61,14 @@ export const pageStringsEn = {
     "{name} is a freedom education index for cypherpunk and cryptocurrency learning. We curate and organize material so learners can find signal without wading through trading noise. This is a reference tool — not financial advice, not a course provider, and not affiliated with the projects listed unless noted.",
   aboutArchiveMission2:
     "The catalog is reviewed and updated on an ongoing basis. If any rights holder, author, or project is unhappy with a listing, contact {handle} and the content will be pulled or corrected without delay.",
+  aboutOpennessTitle: "Openness policy",
+  aboutOpennessLead:
+    "The application codebase is closed source at this stage — auth, wallet sign-in, and admin tooling are still maturing. That is intentional.",
+  aboutOpennessDataFirst:
+    "We open what matters first: the live site, documentation, mission, and roadmap are public today. When the resource submission form ships (Q3 2026), we will publish the catalog data layer — resources, paths, and site metadata — under an open license.",
+  aboutOpennessCodeSecond:
+    "Application code will follow in stages as features stabilize. We are not overpromising a full open-source date; we are committing to data before code.",
+  aboutOpennessLink: "Read the full openness policy",
   aboutWhatIsThis: "What is this?",
   aboutWhatIsThisText:
     'A freedom education index for the cypherpunk and cryptocurrency community. Courses, papers, guides, documentation, manifestos, podcasts, and events — with an editorial "Cypherpunk Score" that surfaces resources about privacy, sovereignty, and cryptography.',
@@ -345,6 +353,14 @@ export const pageStringsZhCN = {
     "{name} 是一个面向密码朋克和加密货币学习的自由教育索引。我们策划和组织材料，让学习者能在交易杂音中找到信号。这是一个参考工具 — 非财务建议，非课程提供商，除非注明，否则与所列项目无关联。",
   aboutArchiveMission2:
     "目录持续审查和更新。如有权利持有人、作者或项目对列载不满，请联系 {handle}，内容将立即撤下或更正。",
+  aboutOpennessTitle: "开放政策",
+  aboutOpennessLead:
+    "应用代码库目前为闭源 — 认证、钱包登录和管理工具仍在完善中。这是有意为之。",
+  aboutOpennessDataFirst:
+    "我们先开放最重要的部分：网站、文档、使命和路线图现已公开。当资源提交表单上线（2026年第三季度）时，我们将以开放许可发布目录数据层 — 资源、路径和站点元数据。",
+  aboutOpennessCodeSecond:
+    "应用代码将随功能稳定分阶段开放。我们不承诺具体的全面开源日期；我们承诺数据先于代码。",
+  aboutOpennessLink: "阅读完整开放政策",
   aboutWhatIsThis: "这是什么？",
   aboutWhatIsThisText:
     "面向密码朋克和加密货币社区的自由教育索引。课程、论文、指南、文档、宣言、播客和活动 — 带有编辑「密码朋克评分」，突出隐私、主权和密码学相关资源。",
@@ -615,6 +631,14 @@ export const pageStringsJa = {
     "{name} はサイファーパンクと暗号通貨学習のためのフリーダム教育インデックスです。資料をキュレーション・整理し、学習者がトレードのノイズに溺れずにシグナルを見つけられるようにします。参考ツールであり — 金融アドバイスでも、コース提供者でもなく、特記がない限り掲載プロジェクトと提携していません。",
   aboutArchiveMission2:
     "カタログは継続的にレビュー・更新されます。権利者、著者、プロジェクトが掲載に不満がある場合は {handle} にご連絡ください。コンテンツは遅延なく削除または修正されます。",
+  aboutOpennessTitle: "オープン方針",
+  aboutOpennessLead:
+    "アプリケーションのコードベースは現段階でクローズドソースです — 認証、ウォレットサインイン、管理ツールはまだ成熟途上です。これは意図的な判断です。",
+  aboutOpennessDataFirst:
+    "重要なものから開放します：ライブサイト、ドキュメント、使命、ロードマップはすでに公開されています。リソース投稿フォームの公開時（2026年Q3）に、カタログデータ層 — リソース、パス、サイトメタデータ — をオープンライセンスで公開します。",
+  aboutOpennessCodeSecond:
+    "アプリケーションコードは機能が安定するにつれ段階的に開放します。全面オープンソースの具体的日程は約束しません。データをコードより先に開放することは約束します。",
+  aboutOpennessLink: "オープン方針の全文を読む",
   aboutWhatIsThis: "これは何？",
   aboutWhatIsThisText:
     "サイファーパンクと暗号通貨コミュニティのためのフリーダム教育インデックス。コース、論文、ガイド、ドキュメント、マニフェスト、ポッドキャスト、イベント — プライバシー、主権、暗号学に関するリソースを浮き彫りにする編集「サイファーパンクスコア」付き。",
@@ -895,6 +919,14 @@ export const pageStringsFr = {
     "{name} est un index d'éducation libertaire pour l'apprentissage cypherpunk et cryptomonnaie. Nous organisons du matériel pour que les apprenants trouvent du signal sans le bruit du trading. C'est un outil de référence — pas un conseil financier, pas un fournisseur de cours, et non affilié aux projets listés sauf mention contraire.",
   aboutArchiveMission2:
     "Le catalogue est révisé et mis à jour en continu. Si un titulaire de droits, auteur ou projet n'est pas satisfait d'un listing, contactez {handle} et le contenu sera retiré ou corrigé sans délai.",
+  aboutOpennessTitle: "Politique d'ouverture",
+  aboutOpennessLead:
+    "Le code de l'application est fermé à ce stade — l'authentification, la connexion portefeuille et les outils d'administration sont encore en maturation. C'est intentionnel.",
+  aboutOpennessDataFirst:
+    "Nous ouvrons d'abord ce qui compte : le site, la documentation, la mission et la feuille de route sont publics aujourd'hui. À la sortie du formulaire de soumission de ressources (T3 2026), nous publierons la couche de données du catalogue — ressources, parcours et métadonnées du site — sous licence ouverte.",
+  aboutOpennessCodeSecond:
+    "Le code de l'application suivra par étapes au fur et à mesure que les fonctionnalités se stabilisent. Nous ne promettons pas de date pour une ouverture totale ; nous nous engageons à ouvrir les données avant le code.",
+  aboutOpennessLink: "Lire la politique d'ouverture complète",
   aboutWhatIsThis: "Qu'est-ce que c'est ?",
   aboutWhatIsThisText:
     "Un index d'éducation libertaire pour la communauté cypherpunk et cryptomonnaie. Cours, articles, guides, documentation, manifestes, podcasts et événements — avec un « Score Cypherpunk » éditorial qui met en avant les ressources sur la vie privée, la souveraineté et la cryptographie.",

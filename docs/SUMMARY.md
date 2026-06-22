@@ -7,6 +7,7 @@
 * [How to Study (Bottom → Top)](doc/how-to-study.md)
 * [Platform Guide — Get the Most Out of It](doc/platform-guide.md)
 * [Mission & Values](doc/mission.md)
+* [Openness Policy](doc/openness-policy.md)
 * [Project Roadmap](doc/roadmap.md)
 
 ## Bitcoin Course Track

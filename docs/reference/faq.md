@@ -74,7 +74,11 @@ No. We do not use user tracking, analytics cookies, or behavioral profiling.
 
 ### Can I export the catalog data?
 
-Not yet — JSON/CSV export is on the [roadmap](../doc/roadmap.md) for Phase 3.
+Not yet. The catalog database (`resources.json`, `paths.json`) will be published under an open license in **Q3 2026**, when the submission form ships. Full JSON/CSV export tooling is planned for Phase 3. See [Openness Policy](../doc/openness-policy.md).
+
+### Is the project open source?
+
+**Not yet.** The application codebase is private while auth, wallet sign-in, and admin tooling mature. The live site, documentation, mission, and roadmap are public. We open **data first, code second** — catalog data in Q3 2026; application source in stages afterward. See [Openness Policy](../doc/openness-policy.md).
 
 ---
 

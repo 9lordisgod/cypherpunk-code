@@ -103,7 +103,7 @@ New resources are added through curator review and community suggestions. If any
 4. **Solana Seeker dApp** — secondary distribution channel for crypto-native learners
 5. **Sustainable funding** — sponsorships, grants, and affiliates (never from learners)
 
-See [Project Roadmap](roadmap.md) for public milestones.
+See [Project Roadmap](roadmap.md) for public milestones and [Openness Policy](openness-policy.md) for how we open the data layer before the codebase.
 
 ---
 
@@ -117,7 +117,9 @@ See [Project Roadmap](roadmap.md) for public milestones.
 | Freedom education focus | Permanent |
 | Editorial curation (CP Score) | Permanent |
 | Multilingual support | Expanding |
-| Community submissions | Planned |
+| Open catalog data (JSON) | Planned — Q3 2026 |
+| Community submissions | Planned — Q3 2026 |
+| Application source code | Staged release — date TBD |
 | Onchain learning features | Planned |
 
 ---
