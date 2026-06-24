@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { buildCanonicalRedirectUrl, isLegacyHost } from "@/lib/canonical-site";
 
 const SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
@@ -40,6 +41,15 @@ function buildCsp(pathname: string) {
 }
 
 export function proxy(request: NextRequest) {
+  const host = request.headers.get("host")?.split(":")[0] ?? "";
+  if (isLegacyHost(host)) {
+    const { pathname, search } = request.nextUrl;
+    return NextResponse.redirect(
+      buildCanonicalRedirectUrl(pathname, search),
+      308
+    );
+  }
+
   const response = NextResponse.next();
   const { pathname } = request.nextUrl;
 

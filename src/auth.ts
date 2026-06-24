@@ -1,7 +1,10 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { isDevLoginAllowed } from "@/lib/auth-production";
+import { ensureCanonicalAuthEnv } from "@/lib/canonical-site";
 import { prisma } from "@/lib/db";
+
+ensureCanonicalAuthEnv();
 
 const devLoginEnabled = isDevLoginAllowed();
 

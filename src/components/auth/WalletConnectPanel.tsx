@@ -11,6 +11,7 @@ import {
   fetchSolanaNonce,
   type SolanaNoncePayload,
 } from "@/lib/wallet/nonce-client";
+import { navigateToAppPath } from "@/lib/navigation";
 import { loginWithSolanaWallet } from "@/lib/wallet/session";
 
 type Step = "pick" | "connecting" | "signing";
@@ -128,7 +129,7 @@ export function WalletConnectPanel({
         if (onSuccess) {
           onSuccess();
         } else {
-          window.location.href = mode === "admin" ? "/admin" : "/account";
+          navigateToAppPath(mode === "admin" ? "/admin" : "/account");
         }
       })
       .catch((caught) => {

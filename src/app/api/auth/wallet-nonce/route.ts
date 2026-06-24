@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { handleApiRoute } from "@/lib/api-handler";
 import { guardApiRequest } from "@/lib/security/guard";
+import { normalizeAuthHost } from "@/lib/canonical-site";
 import { createWalletNonce } from "@/lib/wallet/nonce";
 
 export async function POST(request: Request) {
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const host = request.headers.get("host") ?? "localhost";
-    const domain = host.split(":")[0];
+    const domain = normalizeAuthHost(host);
 
     const payload = await createWalletNonce(domain);
     return NextResponse.json(payload);

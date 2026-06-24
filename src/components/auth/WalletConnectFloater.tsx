@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { WalletConnectPanel } from "@/components/auth/WalletConnectPanel";
+import { navigateToAppPath } from "@/lib/navigation";
 import { useWalletConnect } from "@/components/auth/WalletConnectProvider";
 
 export function WalletConnectFloater() {
@@ -45,7 +46,7 @@ export function WalletConnectFloater() {
           onAdminLinkClick={closeWalletConnect}
           onSuccess={() => {
             closeWalletConnect();
-            window.location.href = "/account";
+            navigateToAppPath("/account");
           }}
         />
       </div>
