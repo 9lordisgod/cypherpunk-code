@@ -31,7 +31,7 @@ export function WalletConnectPanel({
   onAdminLinkClick,
 }: WalletConnectPanelProps) {
   const { t } = useLanguage();
-  const { wallets, select, connect, disconnect } = useWallet();
+  const { wallets, select, disconnect } = useWallet();
   const [error, setError] = useState("");
   const [step, setStep] = useState<Step>("pick");
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -50,6 +50,12 @@ export function WalletConnectPanel({
       })),
     [wallets]
   );
+
+  const stepLabels = [
+    { id: "pick" as const, label: t("walletConnectStepPick") },
+    { id: "connecting" as const, label: t("walletConnectStepConnectLabel") },
+    { id: "signing" as const, label: t("walletConnectStepSignLabel") },
+  ];
 
   useEffect(() => {
     let cancelled = false;
@@ -106,7 +112,7 @@ export function WalletConnectPanel({
 
     const authPromise = (async () => {
       select(target.adapter.name);
-      await connect();
+      await target.adapter.connect();
       setStep("signing");
 
       if (mode === "admin") {
@@ -115,7 +121,7 @@ export function WalletConnectPanel({
         await loginWithSolanaWallet(target.adapter, solanaNonce);
       }
 
-      await disconnect().catch(() => undefined);
+      await target.adapter.disconnect().catch(() => undefined);
     })();
 
     void authPromise
@@ -185,9 +191,32 @@ export function WalletConnectPanel({
       <h2 className="wallet-connect-title">{title}</h2>
       <p className="wallet-connect-subtitle">{subtitle}</p>
 
+      <ul className="wallet-connect-intro" aria-label="Sign-in steps overview">
+        <li>{t("walletConnectIntro1")}</li>
+        <li>{t("walletConnectIntro2")}</li>
+        <li>{t("walletConnectIntro3")}</li>
+      </ul>
+
+      <ol className="wallet-connect-steps" aria-label="Current sign-in progress">
+        {stepLabels.map((entry) => (
+          <li
+            key={entry.id}
+            className={`wallet-connect-steps__item${
+              step === entry.id ? " wallet-connect-steps__item--active" : ""
+            }${stepLabels.findIndex((item) => item.id === step) > stepLabels.findIndex((item) => item.id === entry.id) ? " wallet-connect-steps__item--done" : ""}`}
+          >
+            {entry.label}
+          </li>
+        ))}
+      </ol>
+
       {nonceLoading ? (
         <p className="wallet-connect-preparing">{t("walletConnectPreparing")}</p>
       ) : null}
+
+      <div className="wallet-connect-callout wallet-connect-callout--warn" role="note">
+        {t("walletConnectSafetyWarn")}
+      </div>
 
       <div className="wallet-connect-section">
         <div className="wallet-connect-section__head">
@@ -208,6 +237,9 @@ export function WalletConnectPanel({
       <p className="wallet-connect-note">
         {mode === "admin" ? t("adminLoginWalletNote") : t("loginWalletNote")}
       </p>
+      <div className="wallet-connect-callout wallet-connect-callout--info" role="note">
+        {t("walletConnectSafetyInfo")}
+      </div>
       {mode === "learner" ? (
         <p className="wallet-connect-privacy">{t("loginWalletPrivacy")}</p>
       ) : null}

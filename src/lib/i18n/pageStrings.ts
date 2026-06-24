@@ -205,17 +205,17 @@ export const pageStringsEn = {
   navAdmin: "Admin",
   loginTitle: "Sign in to save progress",
   loginSubtitle:
-    "Connect a Solana or Bitcoin wallet to save your course progress and resume anytime.",
+    "Connect a Solana wallet to save your course progress and resume anytime.",
   loginWalletSolana: "Connect Solana wallet",
-  loginWalletBitcoin: "Connect Bitcoin wallet",
+  loginWalletBitcoin: "Connect Solana wallet",
   loginWalletConnecting: "Connecting wallet…",
-  loginWalletSolanaHint: "Works with Phantom and other Solana wallets.",
-  loginWalletBitcoinHint: "Works with Unisat, Xverse, Leather, and other Bitcoin wallets.",
+  loginWalletSolanaHint: "Uses @solana/wallet-adapter — Phantom, Solflare, and other Solana wallets.",
+  loginWalletBitcoinHint: "Uses @solana/wallet-adapter — Phantom, Solflare, and other Solana wallets.",
   loginWalletSolanaDetected: "Solana wallet detected in this browser.",
-  loginWalletBitcoinDetected: "Bitcoin wallet detected in this browser.",
+  loginWalletBitcoinDetected: "Solana wallet detected in this browser.",
   loginWalletSolanaMissing: "Install a Solana wallet such as Phantom, then refresh this page.",
   loginWalletBitcoinMissing:
-    "Install a Bitcoin wallet such as Unisat or Xverse, then refresh this page.",
+    "Install a Solana wallet such as Phantom or Solflare, then refresh this page.",
   loginWalletNote:
     "We never move funds. Your wallet only signs a short message to prove you own the address.",
   loginWalletPrivacy:
@@ -224,8 +224,20 @@ export const pageStringsEn = {
   loginWalletUserRejected: "You cancelled the wallet request. Try again when ready.",
   loginWalletInstallFirst: "Install the wallet extension, then click Refresh wallets.",
   walletConnectClose: "Close",
-  walletConnectPickWallet: "Pick your wallet — same flow used by Phantom, Xverse, and other dApps.",
-  walletConnectPickWalletAdmin: "Connect your Solana wallet — Phantom, Solflare, or Backpack.",
+  walletConnectPickWallet:
+    "Follow the Solana wallet flow: pick a wallet, connect, then sign to verify ownership.",
+  walletConnectPickWalletAdmin:
+    "Connect your whitelisted Solana wallet — Phantom or Solflare via wallet-adapter.",
+  walletConnectIntro1: "Pick an installed Solana wallet extension (Phantom, Solflare, etc.).",
+  walletConnectIntro2: "Approve the connection popup — same step as Solana docs “Connect to the Playground”.",
+  walletConnectIntro3: "Sign the login message — no SOL is spent and no transaction is sent.",
+  walletConnectStepPick: "1. Pick wallet",
+  walletConnectStepConnectLabel: "2. Connect",
+  walletConnectStepSignLabel: "3. Sign in",
+  walletConnectSafetyWarn:
+    "Sign-in uses mainnet addresses for verification only. We never request a transfer — approve only the sign-in message.",
+  walletConnectSafetyInfo:
+    "Use a wallet you control. Browser extensions store keys locally; clearing cache can remove saved wallets.",
   walletConnectInstalled: "Ready",
   walletConnectInstall: "Install",
   walletConnectStepConnect: "Connecting…",
@@ -488,16 +500,16 @@ export const pageStringsZhCN = {
   navMyLearning: "我的学习",
   navAdmin: "管理",
   loginTitle: "登录以保存学习进度",
-  loginSubtitle: "连接 Solana 或比特币钱包，保存课程进度并随时继续学习。",
+  loginSubtitle: "连接 Solana 钱包，保存课程进度并随时继续学习。",
   loginWalletSolana: "连接 Solana 钱包",
-  loginWalletBitcoin: "连接比特币钱包",
+  loginWalletBitcoin: "连接 Solana 钱包",
   loginWalletConnecting: "正在连接钱包…",
-  loginWalletSolanaHint: "支持 Phantom 等 Solana 钱包。",
-  loginWalletBitcoinHint: "支持 Unisat、Xverse、Leather 等比特币钱包。",
+  loginWalletSolanaHint: "使用 @solana/wallet-adapter — 支持 Phantom、Solflare 等 Solana 钱包。",
+  loginWalletBitcoinHint: "使用 @solana/wallet-adapter — 支持 Phantom、Solflare 等 Solana 钱包。",
   loginWalletSolanaDetected: "已检测到浏览器中的 Solana 钱包。",
-  loginWalletBitcoinDetected: "已检测到浏览器中的比特币钱包。",
+  loginWalletBitcoinDetected: "已检测到浏览器中的 Solana 钱包。",
   loginWalletSolanaMissing: "请安装 Phantom 等 Solana 钱包，然后刷新页面。",
-  loginWalletBitcoinMissing: "请安装 Unisat 或 Xverse 等比特币钱包，然后刷新页面。",
+  loginWalletBitcoinMissing: "请安装 Phantom 或 Solflare 等 Solana 钱包，然后刷新页面。",
   loginWalletNote: "我们不会动用资金。钱包仅签署一条短消息以证明地址归属。",
   loginWalletPrivacy:
     "我们不存储钱包地址 — 仅保存单向哈希以关联学习进度。管理员只能看到学习活动，看不到钱包。",
@@ -505,8 +517,18 @@ export const pageStringsZhCN = {
   loginWalletUserRejected: "你已取消钱包请求，准备好后可重试。",
   loginWalletInstallFirst: "请先安装钱包扩展，然后点击刷新钱包。",
   walletConnectClose: "关闭",
-  walletConnectPickWallet: "选择钱包 — 与 Phantom、Xverse 等 dApp 相同流程。",
-  walletConnectPickWalletAdmin: "连接 Solana 钱包 — Phantom、Solflare 或 Backpack。",
+  walletConnectPickWallet: "按 Solana 钱包流程：选择钱包 → 连接 → 签名验证所有权。",
+  walletConnectPickWalletAdmin: "连接已授权的 Solana 钱包 — 通过 wallet-adapter 使用 Phantom 或 Solflare。",
+  walletConnectIntro1: "选择已安装的 Solana 钱包扩展（Phantom、Solflare 等）。",
+  walletConnectIntro2: "在弹窗中批准连接 — 与 Solana 文档“连接 Playground”相同步骤。",
+  walletConnectIntro3: "签署登录消息 — 不花费 SOL，不发送交易。",
+  walletConnectStepPick: "1. 选择钱包",
+  walletConnectStepConnectLabel: "2. 连接",
+  walletConnectStepSignLabel: "3. 登录",
+  walletConnectSafetyWarn:
+    "登录仅使用主网地址验证身份。我们从不请求转账 — 请只批准登录签名。",
+  walletConnectSafetyInfo:
+    "请使用您控制的钱包。浏览器扩展在本地存储密钥；清除缓存可能删除已保存的钱包。",
   walletConnectInstalled: "可用",
   walletConnectInstall: "安装",
   walletConnectStepConnect: "连接中…",
@@ -775,17 +797,17 @@ export const pageStringsJa = {
   navAdmin: "管理",
   loginTitle: "サインインして進捗を保存",
   loginSubtitle:
-    "Solana または Bitcoin ウォレットを接続して、コースの進捗を保存し、いつでも再開できます。",
+    "Solana ウォレットを接続して、コースの進捗を保存し、いつでも再開できます。",
   loginWalletSolana: "Solana ウォレットを接続",
-  loginWalletBitcoin: "Bitcoin ウォレットを接続",
+  loginWalletBitcoin: "Solana ウォレットを接続",
   loginWalletConnecting: "ウォレット接続中…",
-  loginWalletSolanaHint: "Phantom などの Solana ウォレットに対応。",
-  loginWalletBitcoinHint: "Unisat、Xverse、Leather などの Bitcoin ウォレットに対応。",
+  loginWalletSolanaHint: "@solana/wallet-adapter 対応 — Phantom、Solflare など。",
+  loginWalletBitcoinHint: "@solana/wallet-adapter 対応 — Phantom、Solflare など。",
   loginWalletSolanaDetected: "このブラウザで Solana ウォレットを検出しました。",
-  loginWalletBitcoinDetected: "このブラウザで Bitcoin ウォレットを検出しました。",
+  loginWalletBitcoinDetected: "このブラウザで Solana ウォレットを検出しました。",
   loginWalletSolanaMissing: "Phantom などの Solana ウォレットをインストールしてページを更新してください。",
   loginWalletBitcoinMissing:
-    "Unisat や Xverse などの Bitcoin ウォレットをインストールしてページを更新してください。",
+    "Phantom や Solflare などの Solana ウォレットをインストールしてページを更新してください。",
   loginWalletNote:
     "資金は動かしません。ウォレットはアドレス所有の証明のための短いメッセージにのみ署名します。",
   loginWalletPrivacy:
@@ -794,8 +816,20 @@ export const pageStringsJa = {
   loginWalletUserRejected: "ウォレットリクエストがキャンセルされました。準備ができたら再試行してください。",
   loginWalletInstallFirst: "ウォレット拡張をインストールしてから「ウォレットを更新」を押してください。",
   walletConnectClose: "閉じる",
-  walletConnectPickWallet: "ウォレットを選択 — Phantom、Xverse などの dApp と同じフローです。",
-  walletConnectPickWalletAdmin: "Solana ウォレットを接続 — Phantom、Solflare、または Backpack。",
+  walletConnectPickWallet:
+    "Solana ウォレットの流れ：ウォレット選択 → 接続 → 署名で所有権を確認。",
+  walletConnectPickWalletAdmin:
+    "許可された Solana ウォレットを接続 — wallet-adapter 経由の Phantom または Solflare。",
+  walletConnectIntro1: "インストール済みの Solana ウォレット拡張（Phantom、Solflare など）を選択。",
+  walletConnectIntro2: "接続ポップアップを承認 — Solana ドキュメントの「Playground に接続」と同じ手順。",
+  walletConnectIntro3: "ログインメッセージに署名 — SOL は消費されず、トランザクションは送信されません。",
+  walletConnectStepPick: "1. ウォレット選択",
+  walletConnectStepConnectLabel: "2. 接続",
+  walletConnectStepSignLabel: "3. サインイン",
+  walletConnectSafetyWarn:
+    "サインインは検証のため mainnet アドレスを使用します。送金は要求しません — サインインメッセージのみ承認してください。",
+  walletConnectSafetyInfo:
+    "自分が管理するウォレットを使用してください。ブラウザ拡張はローカルに鍵を保存します。キャッシュ削除でウォレットが消える場合があります。",
   walletConnectInstalled: "利用可能",
   walletConnectInstall: "インストール",
   walletConnectStepConnect: "接続中…",
@@ -1070,18 +1104,18 @@ export const pageStringsFr = {
   navAdmin: "Admin",
   loginTitle: "Connectez-vous pour sauvegarder votre progression",
   loginSubtitle:
-    "Connectez un portefeuille Solana ou Bitcoin pour sauvegarder votre progression et reprendre à tout moment.",
+    "Connectez un portefeuille Solana pour sauvegarder votre progression et reprendre à tout moment.",
   loginWalletSolana: "Connecter un portefeuille Solana",
-  loginWalletBitcoin: "Connecter un portefeuille Bitcoin",
+  loginWalletBitcoin: "Connecter un portefeuille Solana",
   loginWalletConnecting: "Connexion du portefeuille…",
-  loginWalletSolanaHint: "Compatible avec Phantom et autres portefeuilles Solana.",
-  loginWalletBitcoinHint: "Compatible avec Unisat, Xverse, Leather et autres portefeuilles Bitcoin.",
+  loginWalletSolanaHint: "Via @solana/wallet-adapter — Phantom, Solflare et autres portefeuilles Solana.",
+  loginWalletBitcoinHint: "Via @solana/wallet-adapter — Phantom, Solflare et autres portefeuilles Solana.",
   loginWalletSolanaDetected: "Portefeuille Solana détecté dans ce navigateur.",
-  loginWalletBitcoinDetected: "Portefeuille Bitcoin détecté dans ce navigateur.",
+  loginWalletBitcoinDetected: "Portefeuille Solana détecté dans ce navigateur.",
   loginWalletSolanaMissing:
     "Installez un portefeuille Solana comme Phantom, puis actualisez la page.",
   loginWalletBitcoinMissing:
-    "Installez un portefeuille Bitcoin comme Unisat ou Xverse, puis actualisez la page.",
+    "Installez un portefeuille Solana comme Phantom ou Solflare, puis actualisez la page.",
   loginWalletNote:
     "Nous ne déplaçons jamais de fonds. Votre portefeuille signe seulement un court message pour prouver la propriété de l'adresse.",
   loginWalletPrivacy:
@@ -1090,8 +1124,21 @@ export const pageStringsFr = {
   loginWalletUserRejected: "Vous avez annulé la demande du portefeuille. Réessayez quand vous êtes prêt.",
   loginWalletInstallFirst: "Installez l'extension du portefeuille, puis cliquez sur Actualiser.",
   walletConnectClose: "Fermer",
-  walletConnectPickWallet: "Choisissez votre portefeuille — même flux que Phantom, Xverse et autres dApps.",
-  walletConnectPickWalletAdmin: "Connectez votre portefeuille Solana — Phantom, Solflare ou Backpack.",
+  walletConnectPickWallet:
+    "Suivez le flux Solana : choisir un portefeuille, connecter, puis signer pour vérifier la propriété.",
+  walletConnectPickWalletAdmin:
+    "Connectez votre portefeuille Solana autorisé — Phantom ou Solflare via wallet-adapter.",
+  walletConnectIntro1: "Choisissez une extension Solana installée (Phantom, Solflare, etc.).",
+  walletConnectIntro2:
+    "Approuvez la fenêtre de connexion — même étape que « Connect to the Playground » dans la doc Solana.",
+  walletConnectIntro3: "Signez le message de connexion — aucun SOL dépensé, aucune transaction envoyée.",
+  walletConnectStepPick: "1. Choisir",
+  walletConnectStepConnectLabel: "2. Connecter",
+  walletConnectStepSignLabel: "3. Se connecter",
+  walletConnectSafetyWarn:
+    "La connexion utilise des adresses mainnet pour vérification uniquement. Aucun transfert demandé — approuvez seulement le message de connexion.",
+  walletConnectSafetyInfo:
+    "Utilisez un portefeuille que vous contrôlez. Les extensions stockent les clés localement ; vider le cache peut supprimer les portefeuilles enregistrés.",
   walletConnectInstalled: "Prêt",
   walletConnectInstall: "Installer",
   walletConnectStepConnect: "Connexion…",

@@ -3,7 +3,6 @@ import { Press_Start_2P, VT323 } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { auth } from "@/auth";
 import { site } from "@/lib/data";
-import "@solana/wallet-adapter-react-ui/styles.css";
 import "./globals.css";
 
 const pixelFont = Press_Start_2P({
