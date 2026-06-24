@@ -16,8 +16,8 @@ export function SiteLogo({ size = "md", className = "" }: SiteLogoProps) {
     <Image
       src="/logo.png"
       alt="Cypherpunk Code"
-      width={128}
-      height={128}
+      width={512}
+      height={512}
       className={`${sizeClasses[size]} ${className}`.trim()}
       priority={size === "lg"}
     />

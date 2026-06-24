@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     type: "website",
-    images: [{ url: "/logo.png", width: 128, height: 128, alt: site.name }],
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: site.name }],
   },
   icons: {
     icon: [
