@@ -80,7 +80,7 @@ npm run dev              # http://localhost:3000
 
 ## ◈ Authentication
 
-Solana wallet sign-in via the official [`@solana/wallet-adapter`](https://solana.com/docs/intro/quick-start) stack — **Phantom** and **Solflare**.
+Solana wallet sign-in via the official [`@solana/wallet-adapter`](https://solana.com/docs/intro/quick-start) stack — **Phantom** and **Solflare** (desktop browser extensions; mobile MWA stack excluded to keep install lean).
 
 ```bash
 # .env.local

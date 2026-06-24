@@ -55,6 +55,7 @@
   },
   "overrides": {
     "@hono/node-server": "^1.19.13",
+    "@solana-mobile/wallet-adapter-mobile": "file:vendor/solana-mobile-stub",
     "axios": "^1.18.0",
     "valibot": "^1.4.1",
     "postcss": "^8.5.15"

@@ -1,0 +1,14 @@
+{
+  "name": "@solana-mobile/wallet-adapter-mobile",
+  "version": "2.2.0-stub",
+  "private": true,
+  "description": "Desktop-web stub — excludes react-native mobile wallet stack from install tree",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "peerDependencies": {
+    "@solana/wallet-adapter-base": "^0.9.27"
+  }
+}
