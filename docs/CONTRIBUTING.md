@@ -42,7 +42,7 @@ Output is copied to `public/doc/` and served at `/doc/` by Next.js.
 ## Editorial guidelines
 
 - Keep content aligned with the cypherpunk mission: privacy, sovereignty, cryptography
-- Link to platform resources at `https://cypherpunk-code.ca` where relevant
+- Link to platform resources at `https://cypherpunk-code.com` where relevant
 - Maintain the web-first strategy; Seeker dApp is a secondary channel
 - All education content must remain 100% free — no paywall language
 - Credit [@CHxmrBrother](https://x.com/CHxmrBrother) as curator where appropriate

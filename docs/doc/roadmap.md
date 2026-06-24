@@ -14,7 +14,7 @@ Where Cypherpunk Code is headed — freedom education for learners.
 | Searchable catalog with Cypherpunk Score filter | ✅ Done |
 | 6 structured learning paths | ✅ Done |
 | Freedom education catalog — free to browse, no accounts required | ✅ Done |
-| Deploy at cypherpunk-code.ca | ✅ Done |
+| Deploy at cypherpunk-code.com | ✅ Done |
 | Multilingual UI (EN, FR, JA, ZH) | ✅ Done |
 | **DOC — GitBook documentation** | ✅ Done |
 

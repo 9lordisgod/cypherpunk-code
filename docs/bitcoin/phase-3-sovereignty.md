@@ -42,7 +42,7 @@ Reading about Bitcoin is not enough. Sovereignty means running your own infrastr
 
 ### Platform resources
 
-- [catalog?topic=bitcoin&topic=wallets](https://cypherpunk-code.ca/catalog?topic=bitcoin&topic=wallets)
+- [catalog?topic=bitcoin&topic=wallets](https://cypherpunk-code.com/catalog?topic=bitcoin&topic=wallets)
 - BTC Sessions tutorials (indexed in catalog)
 
 ---
@@ -102,8 +102,8 @@ bitcoin-cli -testnet getconnectioncount
 
 ### Platform resources
 
-- [catalog?topic=bitcoin&topic=nodes](https://cypherpunk-code.ca/catalog?topic=bitcoin&topic=nodes)
-- [catalog?topic=lightning](https://cypherpunk-code.ca/catalog?topic=lightning)
+- [catalog?topic=bitcoin&topic=nodes](https://cypherpunk-code.com/catalog?topic=bitcoin&topic=nodes)
+- [catalog?topic=lightning](https://cypherpunk-code.com/catalog?topic=lightning)
 
 ---
 
@@ -117,4 +117,4 @@ Before moving to [Phase 4](phase-4-privacy.md), confirm:
 - [ ] I can verify a transaction using my own node
 - [ ] I understand the difference between SPV and full validation
 
-**Platform path:** [Bitcoin Sovereignty](https://cypherpunk-code.ca/paths#bitcoin-sovereignty) — steps 4–6
+**Platform path:** [Bitcoin Sovereignty](https://cypherpunk-code.com/paths#bitcoin-sovereignty) — steps 4–6

@@ -33,8 +33,8 @@ No. This is an education index. Nothing here constitutes financial, investment, 
 ### Where do I start?
 
 1. Read [How to Study (Bottom → Top)](../doc/how-to-study.md)
-2. Follow the [Cypherpunk Foundations](https://cypherpunk-code.ca/paths#cypherpunk-foundations) path
-3. Then move to [Bitcoin Sovereignty](https://cypherpunk-code.ca/paths#bitcoin-sovereignty)
+2. Follow the [Cypherpunk Foundations](https://cypherpunk-code.com/paths#cypherpunk-foundations) path
+3. Then move to [Bitcoin Sovereignty](https://cypherpunk-code.com/paths#bitcoin-sovereignty)
 
 ### How long does it take to complete all paths?
 
@@ -94,7 +94,7 @@ Resource suggestions and feedback are welcome. Contact [@sapherpunk](https://x.c
 
 ### How do I donate?
 
-Bitcoin and Monero addresses are on the [About page](https://cypherpunk-code.ca/about#donate). No payment processors, no KYC.
+Bitcoin and Monero addresses are on the [About page](https://cypherpunk-code.com/about#donate). No payment processors, no KYC.
 
 ---
 

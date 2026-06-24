@@ -6,7 +6,7 @@
 
 Freedom education for Bitcoin, Monero, and cypherpunk sovereignty.
 
-**[cypherpunk-code.ca](https://cypherpunk-code.ca)**
+**[cypherpunk-code.com](https://cypherpunk-code.com)**
 
 [@CHxmrBrother](https://x.com/CHxmrBrother) · [@sapherpunk](https://x.com/sapherpunk)
 
@@ -19,6 +19,6 @@ npm run db:push
 npm run dev
 ```
 
-[Docs](https://cypherpunk-code.ca/doc/) · [Security](SECURITY.md) · [License](LICENSE)
+[Docs](https://cypherpunk-code.com/doc/) · [Security](SECURITY.md) · [License](LICENSE)
 
 Private repo · Proprietary © 2026

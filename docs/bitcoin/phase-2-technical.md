@@ -105,4 +105,4 @@ Before moving to [Phase 3](phase-3-sovereignty.md), confirm:
 - [ ] I can read a block explorer and understand what I see
 - [ ] I have completed at least 3 weeks of the Princeton course (or equivalent reading)
 
-**Platform path:** [Bitcoin Sovereignty](https://cypherpunk-code.ca/paths#bitcoin-sovereignty) — steps 1–3
+**Platform path:** [Bitcoin Sovereignty](https://cypherpunk-code.com/paths#bitcoin-sovereignty) — steps 1–3

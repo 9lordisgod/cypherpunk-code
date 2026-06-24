@@ -18,7 +18,7 @@ Bitcoin is transparent by default. Every transaction is permanently recorded on 
 | Samourai Wallet | Mobile privacy wallet |
 | JoinMarket | Decentralized CoinJoin market |
 
-**Platform path:** [Bitcoin Privacy Techniques](https://cypherpunk-code.ca/paths#bitcoin-privacy)
+**Platform path:** [Bitcoin Privacy Techniques](https://cypherpunk-code.com/paths#bitcoin-privacy)
 
 ---
 
@@ -109,7 +109,7 @@ Multiple users collaborate to create a transaction where inputs and outputs cann
 
 ### Parallel: Monero
 
-For private money beyond Bitcoin's limitations, study the [Monero Privacy Path](https://cypherpunk-code.ca/paths#monero-privacy) in parallel during weeks 10–12.
+For private money beyond Bitcoin's limitations, study the [Monero Privacy Path](https://cypherpunk-code.com/paths#monero-privacy) in parallel during weeks 10–12.
 
 ---
 
@@ -126,7 +126,7 @@ For private money beyond Bitcoin's limitations, study the [Monero Privacy Path](
 
 ### Where to go next
 
-- [Deep Cryptography](https://cypherpunk-code.ca/paths#deep-cryptography) — mathematical foundations
-- [Monero Privacy Path](https://cypherpunk-code.ca/paths#monero-privacy) — private money
-- [Practical OpSec Path](https://cypherpunk-code.ca/paths#practical-opsec) — operational security
+- [Deep Cryptography](https://cypherpunk-code.com/paths#deep-cryptography) — mathematical foundations
+- [Monero Privacy Path](https://cypherpunk-code.com/paths#monero-privacy) — private money
+- [Practical OpSec Path](https://cypherpunk-code.com/paths#practical-opsec) — operational security
 - [Project Roadmap](../doc/roadmap.md) — onchain learning future

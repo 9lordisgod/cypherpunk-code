@@ -2,7 +2,7 @@
 
 > **100% free. Privacy-first. Built for sovereignty.**
 
-Welcome to the official documentation for [Cypherpunk Code](https://cypherpunk-code.ca) — freedom education for Bitcoin, Monero, cryptography, and cypherpunk sovereignty.
+Welcome to the official documentation for [Cypherpunk Code](https://cypherpunk-code.com) — freedom education for Bitcoin, Monero, cryptography, and cypherpunk sovereignty.
 
 This documentation explains **how to study effectively**, **how to get the most from our platform**, and where the project is headed.
 

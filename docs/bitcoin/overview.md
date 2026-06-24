@@ -47,7 +47,7 @@ These are the backbone of the Bitcoin track, in study order:
 | 6 | Bitcoin Full Node Guide | 9 | Guide |
 | 7 | Bitcoin Core Documentation | 8 | Documentation |
 
-All indexed on the platform with full metadata at [cypherpunk-code.ca/catalog?topic=bitcoin](https://cypherpunk-code.ca/catalog?topic=bitcoin).
+All indexed on the platform with full metadata at [cypherpunk-code.com/catalog?topic=bitcoin](https://cypherpunk-code.com/catalog?topic=bitcoin).
 
 ---
 
@@ -61,7 +61,7 @@ For deeper theory, these university courses complement the track:
 | Blockchain and Money | MIT (OCW) | Economics, policy, and engineering |
 | Bitcoin Protocol Development | Chaincode Labs | Protocol-level development |
 
-Filter: [catalog?topic=bitcoin&type=course&minScore=7](https://cypherpunk-code.ca/catalog?topic=bitcoin&type=course&minScore=7)
+Filter: [catalog?topic=bitcoin&type=course&minScore=7](https://cypherpunk-code.com/catalog?topic=bitcoin&type=course&minScore=7)
 
 ---
 

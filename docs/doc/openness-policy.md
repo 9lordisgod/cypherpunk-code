@@ -22,7 +22,7 @@ This policy is our commitment to open the parts that matter first.
 
 | Layer | Status | Where |
 | --- | --- | --- |
-| The live platform | Open | [cypherpunk-code.ca](https://cypherpunk-code.ca) — free to browse, no accounts required |
+| The live platform | Open | [cypherpunk-code.com](https://cypherpunk-code.com) — free to browse, no accounts required |
 | Mission, values, and roadmap | Open | [DOC](/doc/) |
 | Editorial philosophy (CP Score) | Open | [Cypherpunk Score](/doc/reference/cypherpunk-score.html) |
 | Security reporting process | Open | [Platform Security](/doc/reference/security.html) |
@@ -90,7 +90,7 @@ See [Project Roadmap](roadmap.md) for milestone timing.
 - **Share feedback** — catalog, courses, paths, or documentation ideas
 - **Spread the word** — share paths and resources with learners
 
-Contact [@sapherpunk](https://x.com/sapherpunk) on X or use the [contact section](https://cypherpunk-code.ca/about#contact).
+Contact [@sapherpunk](https://x.com/sapherpunk) on X or use the [contact section](https://cypherpunk-code.com/about#contact).
 
 ---
 

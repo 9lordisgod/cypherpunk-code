@@ -2,7 +2,7 @@
 
 All curated learning paths on Cypherpunk Code, with study order and resource counts.
 
-> Access paths at [cypherpunk-code.ca/paths](https://cypherpunk-code.ca/paths) on the platform.
+> Access paths at [cypherpunk-code.com/paths](https://cypherpunk-code.com/paths) on the platform.
 
 ---
 

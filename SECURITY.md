@@ -15,7 +15,7 @@ If you believe you have found a security vulnerability in Cypherpunk Code, pleas
 **Report privately via:**
 
 - [@sapherpunk](https://x.com/sapherpunk) on X, or
-- the contact form at [cypherpunk-code.ca/about#contact](https://cypherpunk-code.ca/about#contact)
+- the contact form at [cypherpunk-code.com/about#contact](https://cypherpunk-code.com/about#contact)
 
 Please include:
 - Description of the vulnerability

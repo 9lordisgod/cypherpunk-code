@@ -59,8 +59,8 @@ describe("verifyWalletProof", () => {
 
 describe("buildSolanaSignInInput", () => {
   it("builds SIWS input with mainnet chainId and domain", () => {
-    const input = buildSolanaSignInInput("nonce123", "cypherpunk-code.ca");
-    expect(input.domain).toBe("cypherpunk-code.ca");
+    const input = buildSolanaSignInInput("nonce123", "cypherpunk-code.com");
+    expect(input.domain).toBe("cypherpunk-code.com");
     expect(input.nonce).toBe("nonce123");
     expect(input.chainId).toBe("mainnet");
     expect(input.statement).toContain("charge fees");

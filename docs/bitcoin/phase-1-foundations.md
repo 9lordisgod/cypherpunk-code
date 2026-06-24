@@ -78,4 +78,4 @@ Before moving to [Phase 2](phase-2-technical.md), confirm:
 - [ ] I understand why Bitcoin is pseudonymous, not anonymous
 - [ ] I have browsed at least 3 entries in the Nakamoto Institute Library
 
-**Platform path:** [Cypherpunk Foundations](https://cypherpunk-code.ca/paths#cypherpunk-foundations)
+**Platform path:** [Cypherpunk Foundations](https://cypherpunk-code.com/paths#cypherpunk-foundations)
