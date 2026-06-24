@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src=".github/app-icon-box.png" alt="Cypherpunk Code app icon" width="128" />
+<img src=".github/app-icon-box.png" alt="Cypherpunk Code app icon" width="144" />
 
 # Cypherpunk Code
 

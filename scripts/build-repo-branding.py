@@ -45,7 +45,7 @@ def build_app_icon_box() -> None:
     rounded_rect(draw, (32, 32, SIZE - 32, SIZE - 32), RADIUS, outline=BORDER, width=3)
 
     logo = Image.open(LOGO_SRC).convert("RGBA")
-    target = int(SIZE * 0.52)
+    target = int(SIZE * 0.74)
     logo.thumbnail((target, target), Image.Resampling.LANCZOS)
     x = (SIZE - logo.width) // 2
     y = (SIZE - logo.height) // 2
