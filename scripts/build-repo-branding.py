@@ -12,10 +12,10 @@ OUT_BANNER = ROOT / ".github" / "repo-banner.png"
 SIZE = 512
 RADIUS = 96
 BG = (13, 17, 23, 255)          # #0d1117
-BORDER = (0, 200, 83, 255)      # #00c853
-GLOW = (0, 200, 83, 60)
+BORDER = (255, 102, 0, 255)     # #ff6600 Monero orange
+GLOW = (255, 102, 0, 60)
 INNER = (22, 27, 34, 255)        # #161b22
-GRID = (0, 200, 83, 28)
+GRID = (255, 102, 0, 28)
 
 
 def rounded_rect(draw: ImageDraw.ImageDraw, box, radius: int, fill=None, outline=None, width=1):
