@@ -1,11 +1,9 @@
 "use client";
 
+import type { WalletAdapter } from "@solana/wallet-adapter-base";
 import { signIn } from "next-auth/react";
 import type { SolanaSignInInput } from "@solana/wallet-standard-features";
-import {
-  authenticateSolanaWallet,
-  type SolanaWalletId,
-} from "./solana-connect";
+import { authenticateSolanaWallet } from "./solana-connect";
 import type { SolanaNoncePayload } from "./nonce-client";
 
 type SolanaProof =
@@ -48,10 +46,10 @@ async function completeAdminSession(loginTicket: string) {
 }
 
 export async function loginAdminWithSolanaWallet(
-  walletId: SolanaWalletId,
+  adapter: WalletAdapter,
   payload: SolanaNoncePayload
 ) {
-  const proof = await authenticateSolanaWallet(walletId, payload);
+  const proof = await authenticateSolanaWallet(adapter, payload);
 
   const body: SolanaProof =
     proof.mode === "siws"

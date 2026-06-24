@@ -1,20 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import type { Session } from "next-auth";
 import { signOut, useSession } from "next-auth/react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useWalletConnect } from "@/components/auth/WalletConnectProvider";
 
-export function AuthButton({ mobile = false }: { mobile?: boolean }) {
-  const { data: session, status } = useSession();
+export function AuthButton({
+  mobile = false,
+  initialSession,
+}: {
+  mobile?: boolean;
+  initialSession?: Session | null;
+}) {
+  const { data: session } = useSession();
   const { t } = useLanguage();
   const { openWalletConnect } = useWalletConnect();
+  const activeSession = session ?? initialSession;
 
-  if (status === "loading") {
-    return <span className="auth-box auth-box--loading text-xs text-muted">…</span>;
-  }
-
-  if (!session?.user) {
+  if (!activeSession?.user) {
     return (
       <button
         type="button"
@@ -28,7 +32,7 @@ export function AuthButton({ mobile = false }: { mobile?: boolean }) {
   }
 
   const label =
-    session.user.role === "admin" ? t("navAdmin") : t("navMyLearning");
+    activeSession.user.role === "admin" ? t("navAdmin") : t("navMyLearning");
 
   return (
     <div
@@ -36,7 +40,7 @@ export function AuthButton({ mobile = false }: { mobile?: boolean }) {
     >
       <span className="auth-box__glow" aria-hidden="true" />
       <Link
-        href={session.user.role === "admin" ? "/admin" : "/account"}
+        href={activeSession.user.role === "admin" ? "/admin" : "/account"}
         className="auth-box__link"
       >
         {label}

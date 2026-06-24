@@ -1,24 +1,18 @@
 "use client";
 
+import type { Session } from "next-auth";
 import { Suspense } from "react";
 import { AuthSessionProvider } from "@/components/auth/SessionProvider";
+import { SolanaProvider } from "@/components/auth/SolanaProvider";
 import { WalletConnectFloater } from "@/components/auth/WalletConnectFloater";
 import {
   useWalletConnect,
   WalletConnectProvider,
+  WalletConnectRouteSync,
 } from "@/components/auth/WalletConnectProvider";
 import { FeedbackFloater } from "@/components/FeedbackFloater";
 import { LanguagePicker } from "@/components/LanguagePicker";
 import { LanguageProvider } from "@/components/LanguageProvider";
-
-function WalletConnectLayer({ children }: { children: React.ReactNode }) {
-  return (
-    <WalletConnectProvider>
-      <WalletConnectFloaterBridge />
-      {children}
-    </WalletConnectProvider>
-  );
-}
 
 function WalletConnectFloaterBridge() {
   const { isOpen, sessionKey } = useWalletConnect();
@@ -26,14 +20,26 @@ function WalletConnectFloaterBridge() {
   return <WalletConnectFloater key={sessionKey} />;
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session?: Session | null;
+}) {
   return (
-    <AuthSessionProvider>
+    <AuthSessionProvider session={session}>
       <LanguageProvider>
-        <Suspense fallback={null}>
-          <WalletConnectLayer>{children}</WalletConnectLayer>
-          <FeedbackFloater />
-        </Suspense>
+        <SolanaProvider>
+          <WalletConnectProvider>
+            <Suspense fallback={null}>
+              <WalletConnectRouteSync />
+            </Suspense>
+            <WalletConnectFloaterBridge />
+            {children}
+            <FeedbackFloater />
+          </WalletConnectProvider>
+        </SolanaProvider>
         <LanguagePicker />
       </LanguageProvider>
     </AuthSessionProvider>

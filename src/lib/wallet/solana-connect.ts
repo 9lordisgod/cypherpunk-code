@@ -1,49 +1,12 @@
 "use client";
 
+import type { WalletAdapter } from "@solana/wallet-adapter-base";
 import type { SolanaSignInInput, SolanaSignInOutput } from "@solana/wallet-standard-features";
-import type { SolanaProvider } from "@/types/wallets";
-import { walletBrandAssets } from "./brand-assets";
 import type { SolanaNoncePayload } from "./nonce-client";
 
-export type SolanaWalletId = "phantom" | "solflare" | "backpack";
-
-export type SolanaWalletOption = {
-  id: SolanaWalletId;
-  name: string;
-  icon: string;
-  installed: boolean;
-  installUrl: string;
+type SignInCapableAdapter = WalletAdapter & {
+  signIn?: (input: SolanaSignInInput) => Promise<SolanaSignInOutput>;
 };
-
-const SOLANA_WALLETS: Array<{
-  id: SolanaWalletId;
-  name: string;
-  icon: string;
-  installUrl: string;
-  detect: () => SolanaProvider | null;
-}> = [
-  {
-    id: "phantom",
-    name: "Phantom",
-    icon: walletBrandAssets.phantom,
-    installUrl: "https://phantom.app/download",
-    detect: () => window.phantom?.solana ?? (window.solana?.isPhantom ? window.solana : null) ?? null,
-  },
-  {
-    id: "solflare",
-    name: "Solflare",
-    icon: walletBrandAssets.solflare,
-    installUrl: "https://solflare.com/download",
-    detect: () => window.solflare?.isSolflare ? window.solflare : null,
-  },
-  {
-    id: "backpack",
-    name: "Backpack",
-    icon: walletBrandAssets.backpack,
-    installUrl: "https://backpack.app/download",
-    detect: () => window.backpack?.isBackpack ? window.backpack : null,
-  },
-];
 
 function bytesToBase64(bytes: Uint8Array) {
   const view = Uint8Array.from(bytes);
@@ -68,41 +31,31 @@ function serializeSignInOutput(output: SolanaSignInOutput) {
   };
 }
 
-export function listSolanaWallets(): SolanaWalletOption[] {
-  return SOLANA_WALLETS.map((wallet) => ({
-    id: wallet.id,
-    name: wallet.name,
-    icon: wallet.icon,
-    installed: Boolean(wallet.detect()),
-    installUrl: wallet.installUrl,
-  }));
-}
-
-function getProvider(id: SolanaWalletId): SolanaProvider {
-  const entry = SOLANA_WALLETS.find((wallet) => wallet.id === id);
-  const provider = entry?.detect();
-  if (!provider) throw new Error("WALLET_NOT_INSTALLED");
-  return provider;
+function rejectIfUserCancelled(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  if (
+    message.toLowerCase().includes("reject") ||
+    message.includes("4001") ||
+    message.includes("User rejected")
+  ) {
+    throw new Error("USER_REJECTED");
+  }
 }
 
 export async function authenticateSolanaWallet(
-  walletId: SolanaWalletId,
+  adapter: WalletAdapter,
   payload: SolanaNoncePayload
 ) {
-  const provider = getProvider(walletId);
-
-  // Connect first so the extension popup opens reliably, then sign.
-  try {
-    await provider.connect({ onlyIfTrusted: false });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "";
-    if (message.toLowerCase().includes("reject") || message.includes("4001")) {
-      throw new Error("USER_REJECTED");
+  if (!adapter.connected) {
+    try {
+      await adapter.connect();
+    } catch (error) {
+      rejectIfUserCancelled(error);
+      throw error;
     }
-    throw error;
   }
 
-  const address = provider.publicKey?.toBase58();
+  const address = adapter.publicKey?.toBase58();
   if (!address) throw new Error("NO_ACCOUNT");
 
   const signInInput: SolanaSignInInput = {
@@ -110,9 +63,10 @@ export async function authenticateSolanaWallet(
     address,
   };
 
-  if (typeof provider.signIn === "function") {
+  const signInAdapter = adapter as SignInCapableAdapter;
+  if (typeof signInAdapter.signIn === "function") {
     try {
-      const output = await provider.signIn(signInInput);
+      const output = await signInAdapter.signIn(signInInput);
       return {
         mode: "siws" as const,
         address: output.account.address,
@@ -120,29 +74,25 @@ export async function authenticateSolanaWallet(
         signInOutput: serializeSignInOutput(output),
       };
     } catch (error) {
-      const message = error instanceof Error ? error.message : "";
-      if (message.toLowerCase().includes("reject") || message.includes("4001")) {
-        throw new Error("USER_REJECTED");
-      }
+      rejectIfUserCancelled(error);
     }
+  }
+
+  if (!("signMessage" in adapter) || typeof adapter.signMessage !== "function") {
+    throw new Error("SIGN_MESSAGE_UNSUPPORTED");
   }
 
   const messageBytes = new TextEncoder().encode(payload.legacyMessage);
-  let signed: { signature: Uint8Array; signedMessage?: Uint8Array };
   try {
-    signed = await provider.signMessage(messageBytes, "utf8");
+    const signature = await adapter.signMessage(messageBytes);
+    return {
+      mode: "legacy" as const,
+      address,
+      signature: bytesToBase64(signature),
+      signedMessage: bytesToBase64(messageBytes),
+    };
   } catch (error) {
-    const message = error instanceof Error ? error.message : "";
-    if (message.toLowerCase().includes("reject") || message.includes("4001")) {
-      throw new Error("USER_REJECTED");
-    }
-    signed = await provider.signMessage(messageBytes);
+    rejectIfUserCancelled(error);
+    throw error;
   }
-
-  return {
-    mode: "legacy" as const,
-    address,
-    signature: bytesToBase64(signed.signature),
-    signedMessage: bytesToBase64(signed.signedMessage ?? messageBytes),
-  };
 }

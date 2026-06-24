@@ -1,6 +1,5 @@
 import type { SolanaSignInInput, SolanaSignInOutput } from "@solana/wallet-standard-features";
 import { buildLegacySignMessage } from "@/lib/wallet/nonce";
-import { verifyBitcoinSignature } from "@/lib/wallet/verify-bitcoin";
 import {
   verifySolanaLegacySignature,
   verifySolanaSiws,
@@ -18,7 +17,7 @@ export type WalletProofBody = {
 };
 
 export type VerifiedWalletProof = {
-  chain: "solana" | "bitcoin";
+  chain: "solana";
   address: string;
 };
 
@@ -51,33 +50,27 @@ export function verifyWalletProof(body: WalletProofBody): VerifiedWalletProof | 
   const nonce = body.nonce?.toString();
   const address = body.address?.toString().trim();
 
-  if (!mode || !chain || !nonce || !address) return null;
-  if (chain !== "solana" && chain !== "bitcoin") return null;
+  if (!mode || chain !== "solana" || !nonce || !address) return null;
 
   let signatureValid = false;
   let verifiedAddress = address;
 
-  if (mode === "siws" && chain === "solana") {
+  if (mode === "siws") {
     const signInInput = body.signInInput;
     const signInOutput = deserializeSignInOutput(body.signInOutput);
     if (!signInInput || !signInOutput) return null;
     if (signInInput.nonce !== nonce) return null;
     signatureValid = verifySolanaSiws(signInInput, signInOutput);
     if (signatureValid) verifiedAddress = signInOutput.account.address;
-  } else if (mode === "legacy" && chain === "solana") {
+  } else if (mode === "legacy") {
     const signature = body.signature?.toString();
     const signedMessage = body.signedMessage?.toString();
     if (!signature || !signedMessage) return null;
     signatureValid = verifySolanaLegacySignature(address, signedMessage, signature, nonce);
-  } else if (mode === "bitcoin" && chain === "bitcoin") {
-    const signature = body.signature?.toString();
-    if (!signature) return null;
-    const message = buildLegacySignMessage("bitcoin", nonce);
-    signatureValid = verifyBitcoinSignature(address, message, signature);
   } else {
     return null;
   }
 
   if (!signatureValid) return null;
-  return { chain, address: verifiedAddress };
+  return { chain: "solana", address: verifiedAddress };
 }

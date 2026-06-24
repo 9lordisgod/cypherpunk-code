@@ -11,14 +11,14 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => ({}));
     const chain = body.chain?.toString();
 
-    if (chain !== "solana" && chain !== "bitcoin") {
+    if (chain !== "solana") {
       return NextResponse.json({ error: "Invalid chain" }, { status: 400 });
     }
 
     const host = request.headers.get("host") ?? "localhost";
     const domain = host.split(":")[0];
 
-    const payload = await createWalletNonce(chain, domain);
+    const payload = await createWalletNonce(domain);
     return NextResponse.json(payload);
   });
 }

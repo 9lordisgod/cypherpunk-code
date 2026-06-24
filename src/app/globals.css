@@ -864,12 +864,22 @@ body.mobile-menu-open {
   color: #ffe8d6;
 }
 
-.auth-box--loading {
-  padding: 6px 10px;
-  border-color: transparent;
-  background: transparent;
-  box-shadow: none;
-  animation: none;
+.auth-slot {
+  display: inline-flex;
+  align-items: center;
+  min-width: 4.5rem;
+  min-height: 1.75rem;
+}
+
+.auth-slot--mobile {
+  display: block;
+  width: 100%;
+}
+
+.auth-slot:has(> .auth-box__signin:not(.auth-box__signin--ssr))
+  > .auth-box__signin--ssr,
+.auth-slot:has(> .auth-box--signed-in:not(.auth-box--ssr)) > .auth-box--ssr {
+  display: none;
 }
 
 @keyframes auth-box-breathe {

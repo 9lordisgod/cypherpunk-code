@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { auth } from "@/auth";
 import { site } from "@/lib/data";
+import "@solana/wallet-adapter-react-ui/styles.css";
 import "./globals.css";
 
 const pixelFont = Press_Start_2P({
@@ -48,11 +50,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html
       lang="en"
@@ -60,7 +64,7 @@ export default function RootLayout({
       className={`${pixelFont.variable} ${pixelBody.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
-        <Providers>{children}</Providers>
+        <Providers session={session}>{children}</Providers>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 
-export type WalletChain = "solana" | "bitcoin";
+export type WalletChain = "solana";
 
 /** One-way key — raw wallet addresses are never stored. */
 export function hashWalletIdentity(chain: WalletChain, address: string) {

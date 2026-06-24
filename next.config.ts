@@ -2,6 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: { unoptimized: true },
+  transpilePackages: [
+    "@solana/wallet-adapter-base",
+    "@solana/wallet-adapter-react",
+    "@solana/wallet-adapter-react-ui",
+    "@solana/wallet-adapter-wallets",
+  ],
   async redirects() {
     const docLegacy = [
       ["how-to-study.html", "/doc/doc/how-to-study.html"],

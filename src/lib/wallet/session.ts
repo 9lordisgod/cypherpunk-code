@@ -1,16 +1,10 @@
 "use client";
 
+import type { WalletAdapter } from "@solana/wallet-adapter-base";
 import { signIn } from "next-auth/react";
 import type { SolanaSignInInput } from "@solana/wallet-standard-features";
-import {
-  authenticateBitcoinWallet,
-  type BitcoinWalletId,
-} from "./bitcoin-connect";
-import type { BitcoinNoncePayload, SolanaNoncePayload } from "./nonce-client";
-import {
-  authenticateSolanaWallet,
-  type SolanaWalletId,
-} from "./solana-connect";
+import type { SolanaNoncePayload } from "./nonce-client";
+import { authenticateSolanaWallet } from "./solana-connect";
 
 type SolanaProof =
   | {
@@ -30,15 +24,7 @@ type SolanaProof =
       signedMessage: string;
     };
 
-type BitcoinProof = {
-  mode: "bitcoin";
-  chain: "bitcoin";
-  nonce: string;
-  address: string;
-  signature: string;
-};
-
-async function verifyWallet(proof: SolanaProof | BitcoinProof) {
+async function verifyWallet(proof: SolanaProof) {
   const response = await fetch("/api/auth/wallet", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -60,10 +46,10 @@ async function completeSession(loginTicket: string) {
 }
 
 export async function loginWithSolanaWallet(
-  walletId: SolanaWalletId,
+  adapter: WalletAdapter,
   payload: SolanaNoncePayload
 ) {
-  const proof = await authenticateSolanaWallet(walletId, payload);
+  const proof = await authenticateSolanaWallet(adapter, payload);
 
   const body: SolanaProof =
     proof.mode === "siws"
@@ -85,22 +71,5 @@ export async function loginWithSolanaWallet(
         };
 
   const { loginTicket } = await verifyWallet(body);
-  await completeSession(loginTicket);
-}
-
-export async function loginWithBitcoinWallet(
-  walletId: BitcoinWalletId,
-  payload: BitcoinNoncePayload
-) {
-  const proof = await authenticateBitcoinWallet(walletId, payload);
-
-  const { loginTicket } = await verifyWallet({
-    mode: "bitcoin",
-    chain: "bitcoin",
-    nonce: payload.nonce,
-    address: proof.address,
-    signature: proof.signature,
-  });
-
   await completeSession(loginTicket);
 }

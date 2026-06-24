@@ -1,34 +1,17 @@
 "use client";
 
+import { WalletReadyState } from "@solana/wallet-adapter-base";
+import { useWallet } from "@solana/wallet-adapter-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
-import { BitcoinIcon, SolanaIcon } from "@/components/auth/WalletChainIcon";
+import { SolanaIcon } from "@/components/auth/WalletChainIcon";
 import { loginAdminWithSolanaWallet } from "@/lib/wallet/admin-session";
 import {
-  listBitcoinWallets,
-  type BitcoinWalletId,
-  type BitcoinWalletOption,
-} from "@/lib/wallet/bitcoin-connect";
-import {
-  fetchBitcoinNonce,
   fetchSolanaNonce,
-  type BitcoinNoncePayload,
   type SolanaNoncePayload,
 } from "@/lib/wallet/nonce-client";
-import {
-  loginWithBitcoinWallet,
-  loginWithSolanaWallet,
-} from "@/lib/wallet/session";
-import {
-  listSolanaWallets,
-  type SolanaWalletId,
-  type SolanaWalletOption,
-} from "@/lib/wallet/solana-connect";
-
-type WalletTarget =
-  | { chain: "solana"; wallet: SolanaWalletOption }
-  | { chain: "bitcoin"; wallet: BitcoinWalletOption };
+import { loginWithSolanaWallet } from "@/lib/wallet/session";
 
 type Step = "pick" | "connecting" | "signing";
 
@@ -48,17 +31,25 @@ export function WalletConnectPanel({
   onAdminLinkClick,
 }: WalletConnectPanelProps) {
   const { t } = useLanguage();
+  const { wallets, select, connect, disconnect } = useWallet();
   const [error, setError] = useState("");
   const [step, setStep] = useState<Step>("pick");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
   const [solanaNonce, setSolanaNonce] = useState<SolanaNoncePayload | null>(null);
-  const [bitcoinNonce, setBitcoinNonce] = useState<BitcoinNoncePayload | null>(null);
   const [nonceLoading, setNonceLoading] = useState(false);
   const [noncesReady, setNoncesReady] = useState(false);
 
-  const solanaWallets = useMemo(() => listSolanaWallets(), [refreshKey]); // eslint-disable-line react-hooks/exhaustive-deps
-  const bitcoinWallets = useMemo(() => listBitcoinWallets(), [refreshKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  const walletOptions = useMemo(
+    () =>
+      wallets.map((wallet) => ({
+        name: wallet.adapter.name,
+        icon: wallet.adapter.icon,
+        installUrl: wallet.adapter.url,
+        installed: wallet.readyState === WalletReadyState.Installed,
+      })),
+    [wallets]
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -67,21 +58,11 @@ export function WalletConnectPanel({
       setNonceLoading(true);
       setNoncesReady(false);
       setSolanaNonce(null);
-      setBitcoinNonce(null);
 
-      const noncePromise =
-        mode === "admin"
-          ? fetchSolanaNonce().then((solana) => ({ solana, bitcoin: null as BitcoinNoncePayload | null }))
-          : Promise.all([fetchSolanaNonce(), fetchBitcoinNonce()]).then(([solana, bitcoin]) => ({
-              solana,
-              bitcoin,
-            }));
-
-      noncePromise
+      fetchSolanaNonce()
         .then((payload) => {
           if (cancelled) return;
-          setSolanaNonce(payload.solana);
-          setBitcoinNonce(payload.bitcoin);
+          setSolanaNonce(payload);
           setNoncesReady(true);
         })
         .catch(() => {
@@ -101,35 +82,44 @@ export function WalletConnectPanel({
     };
   }, [mode, refreshKey, t]);
 
-  const handleWalletClick = (target: WalletTarget) => {
-    const walletId = `${target.chain}:${target.wallet.id}`;
+  const handleWalletClick = (walletName: string) => {
     setError("");
 
-    if (!target.wallet.installed) {
-      window.open(target.wallet.installUrl, "_blank", "noopener,noreferrer");
+    const target = wallets.find((wallet) => wallet.adapter.name === walletName);
+    if (!target) return;
+
+    if (target.readyState !== WalletReadyState.Installed) {
+      if (target.adapter.url) {
+        window.open(target.adapter.url, "_blank", "noopener,noreferrer");
+      }
       setError(t("loginWalletInstallFirst"));
       return;
     }
 
-    const nonce = target.chain === "solana" ? solanaNonce : bitcoinNonce;
-    if (!nonce) {
+    if (!solanaNonce) {
       setError(mode === "admin" ? t("adminLoginError") : t("loginError"));
       return;
     }
 
-    const authPromise =
-      mode === "admin"
-        ? loginAdminWithSolanaWallet(target.wallet.id as SolanaWalletId, nonce as SolanaNoncePayload)
-        : target.chain === "solana"
-          ? loginWithSolanaWallet(target.wallet.id as SolanaWalletId, nonce as SolanaNoncePayload)
-          : loginWithBitcoinWallet(target.wallet.id as BitcoinWalletId, nonce as BitcoinNoncePayload);
-
-    setActiveId(walletId);
+    setActiveId(walletName);
     setStep("connecting");
+
+    const authPromise = (async () => {
+      select(target.adapter.name);
+      await connect();
+      setStep("signing");
+
+      if (mode === "admin") {
+        await loginAdminWithSolanaWallet(target.adapter, solanaNonce);
+      } else {
+        await loginWithSolanaWallet(target.adapter, solanaNonce);
+      }
+
+      await disconnect().catch(() => undefined);
+    })();
 
     void authPromise
       .then(() => {
-        setStep("signing");
         if (onSuccess) {
           onSuccess();
         } else {
@@ -150,35 +140,35 @@ export function WalletConnectPanel({
         setStep("pick");
         setActiveId(null);
         setRefreshKey((value) => value + 1);
+        void disconnect().catch(() => undefined);
       });
   };
 
   const renderWalletRow = (
-    target: WalletTarget,
+    wallet: (typeof walletOptions)[number],
     installedLabel: string,
     installLabel: string
   ) => {
-    const walletId = `${target.chain}:${target.wallet.id}`;
-    const isActive = activeId === walletId;
+    const isActive = activeId === wallet.name;
     const isLoading = isActive && step !== "pick";
 
     return (
       <button
-        key={walletId}
+        key={wallet.name}
         type="button"
         disabled={step !== "pick" || nonceLoading || !noncesReady}
-        onClick={() => handleWalletClick(target)}
+        onClick={() => handleWalletClick(wallet.name)}
         className={`wallet-option${isActive ? " wallet-option--active" : ""}`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={target.wallet.icon} alt="" className="wallet-option__icon" />
-        <span className="wallet-option__name">{target.wallet.name}</span>
+        <img src={wallet.icon} alt="" className="wallet-option__icon" />
+        <span className="wallet-option__name">{wallet.name}</span>
         <span className="wallet-option__status">
           {isLoading
             ? step === "connecting"
               ? t("walletConnectStepConnect")
               : t("walletConnectStepSign")
-            : target.wallet.installed
+            : wallet.installed
               ? installedLabel
               : installLabel}
         </span>
@@ -205,33 +195,15 @@ export function WalletConnectPanel({
           <span>Solana</span>
         </div>
         <div className="wallet-connect-grid">
-          {solanaWallets.map((wallet) =>
+          {walletOptions.map((wallet) =>
             renderWalletRow(
-              { chain: "solana", wallet },
+              wallet,
               t("walletConnectInstalled"),
               t("walletConnectInstall")
             )
           )}
         </div>
       </div>
-
-      {mode === "learner" ? (
-        <div className="wallet-connect-section">
-          <div className="wallet-connect-section__head">
-            <BitcoinIcon className="wallet-connect-section__logo" />
-            <span>Bitcoin</span>
-          </div>
-          <div className="wallet-connect-grid">
-            {bitcoinWallets.map((wallet) =>
-              renderWalletRow(
-                { chain: "bitcoin", wallet },
-                t("walletConnectInstalled"),
-                t("walletConnectInstall")
-              )
-            )}
-          </div>
-        </div>
-      ) : null}
 
       <p className="wallet-connect-note">
         {mode === "admin" ? t("adminLoginWalletNote") : t("loginWalletNote")}

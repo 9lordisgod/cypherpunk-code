@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing nonce" }, { status: 400 });
     }
 
-    const nonceValid = await consumeWalletNonce(verified.chain, nonce);
+    const nonceValid = await consumeWalletNonce(nonce);
     if (!nonceValid) {
       return NextResponse.json({ error: "Expired or invalid nonce" }, { status: 401 });
     }

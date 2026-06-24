@@ -1,18 +1,26 @@
 import { describe, expect, it } from "vitest";
-import { verifyBitcoinSignature } from "@/lib/wallet/verify-bitcoin";
+import { verifySolanaLegacySignature } from "@/lib/wallet/verify-solana";
 
-describe("verifyBitcoinSignature", () => {
+describe("verifySolanaLegacySignature", () => {
   it("rejects invalid signatures", () => {
     expect(
-      verifyBitcoinSignature(
-        "bc1qre5ureack5s6alknv8s7etza5z0rjupwkzctg6",
-        "Sign in to Cypherpunk Code",
-        "not-a-valid-signature"
+      verifySolanaLegacySignature(
+        "9xQeWvG816bUx9EPjHmaT23yv3T3BYyMDb8iDLauyfrM",
+        Buffer.from("Sign in to Cypherpunk Code").toString("base64"),
+        "not-a-valid-signature",
+        "abc123"
       )
     ).toBe(false);
   });
 
-  it("rejects empty signature", () => {
-    expect(verifyBitcoinSignature("bc1qtest", "message", "")).toBe(false);
+  it("rejects messages missing the nonce", () => {
+    expect(
+      verifySolanaLegacySignature(
+        "9xQeWvG816bUx9EPjHmaT23yv3T3BYyMDb8iDLauyfrM",
+        Buffer.from("Sign in to Cypherpunk Code").toString("base64"),
+        "abc",
+        "missing-nonce"
+      )
+    ).toBe(false);
   });
 });

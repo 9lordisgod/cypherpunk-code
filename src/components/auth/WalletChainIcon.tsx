@@ -11,15 +11,3 @@ export function SolanaIcon({ className = "h-5 w-5" }: { className?: string }) {
     />
   );
 }
-
-export function BitcoinIcon({ className = "h-5 w-5" }: { className?: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={chainBrandAssets.bitcoin}
-      alt=""
-      className={className}
-      aria-hidden="true"
-    />
-  );
-}

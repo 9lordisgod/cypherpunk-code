@@ -4,8 +4,8 @@ import { prisma } from "@/lib/db";
 
 const NONCE_TTL_MS = 5 * 60 * 1000;
 
-export function buildLegacySignMessage(chain: "solana" | "bitcoin", nonce: string) {
-  return `Sign in to Cypherpunk Code\n\nChain: ${chain}\nNonce: ${nonce}`;
+export function buildLegacySignMessage(nonce: string) {
+  return `Sign in to Cypherpunk Code\n\nChain: solana\nNonce: ${nonce}`;
 }
 
 export function buildSolanaSignInInput(
@@ -23,50 +23,36 @@ export function buildSolanaSignInInput(
   };
 }
 
-export async function createWalletNonce(
-  chain: "solana" | "bitcoin",
-  domain = "localhost"
-) {
+export async function createWalletNonce(domain = "localhost") {
   const nonce = randomUUID().replace(/-/g, "").slice(0, 16);
   const expires = new Date(Date.now() + NONCE_TTL_MS);
 
-  // identifier = chain, token = nonce (token is globally unique in this table)
   await prisma.verificationToken.deleteMany({
     where: {
-      identifier: chain,
+      identifier: "solana",
       expires: { lt: new Date() },
     },
   });
 
   await prisma.verificationToken.create({
     data: {
-      identifier: chain,
+      identifier: "solana",
       token: nonce,
       expires,
     },
   });
 
-  const legacyMessage = buildLegacySignMessage(chain, nonce);
-
-  if (chain === "solana") {
-    return {
-      nonce,
-      legacyMessage,
-      signInInput: buildSolanaSignInInput(nonce, domain),
-    };
-  }
-
   return {
     nonce,
-    legacyMessage,
-    connectMessage: "Connect to Cypherpunk Code to save progress.",
+    legacyMessage: buildLegacySignMessage(nonce),
+    signInInput: buildSolanaSignInInput(nonce, domain),
   };
 }
 
-export async function consumeWalletNonce(chain: "solana" | "bitcoin", nonce: string) {
+export async function consumeWalletNonce(nonce: string) {
   const record = await prisma.verificationToken.findFirst({
     where: {
-      identifier: chain,
+      identifier: "solana",
       token: nonce,
       expires: { gt: new Date() },
     },
