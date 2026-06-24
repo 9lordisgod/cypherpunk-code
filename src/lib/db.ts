@@ -10,7 +10,7 @@ function resolveDatabaseUrl(): string {
   const filePath = raw.slice("file:".length);
   if (path.isAbsolute(filePath)) return raw;
 
-  return `file:${path.join(process.cwd(), filePath)}`;
+  return `file:${path.join(/* turbopackIgnore: true */ process.cwd(), filePath)}`;
 }
 
 function isLibsqlUrl(url: string) {

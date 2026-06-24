@@ -5,7 +5,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && npm run docs:build && next build",
+    "build": "prisma generate && npm run docs:build && next build && node scripts/sync-out-branding.mjs",
+    "verify:solana": "node scripts/verify-solana-build.mjs",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
@@ -57,6 +58,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
@@ -64,6 +67,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "happy-dom": "^20.10.6",
     "honkit": "^6.1.4",
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
