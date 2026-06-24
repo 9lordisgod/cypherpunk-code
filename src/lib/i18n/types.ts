@@ -8,7 +8,7 @@ export const LOCALE_LABELS: Record<
   Locale,
   { native: string; english: string; flag: string }
 > = {
-  en: { native: "English", english: "English", flag: "🇨🇦" },
+  en: { native: "English", english: "English", flag: "🇬🇧" },
   "zh-CN": { native: "简体中文", english: "Chinese (Simplified)", flag: "🇨🇳" },
   ja: { native: "日本語", english: "Japanese", flag: "🇯🇵" },
   fr: { native: "Français", english: "French", flag: "🇫🇷" },

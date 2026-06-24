@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
 import { useLanguage } from "@/components/LanguageProvider";
-import { PixelCanadaFlag } from "@/components/pixel/PixelCanadaFlag";
 import { ResourceCard } from "@/components/ResourceCard";
 import { HeroAnimeFigure } from "@/components/HeroAnimeFigure";
 import { SiteLogo } from "@/components/SiteLogo";
@@ -92,10 +91,6 @@ export function HomeContent({
                 >
                   @{creatorHandle}
                 </a>
-              </p>
-              <p className="hero-canada-badge">
-                <PixelCanadaFlag className="h-4 w-8" />
-                {t("heroCanadaProud")}
               </p>
             </div>
             <HeroAnimeFigure />

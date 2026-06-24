@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 import { BuiltWithSolana } from "@/components/BuiltWithSolana";
-import { PixelCanadaFlag } from "@/components/pixel/PixelCanadaFlag";
 import { SiteLogo } from "@/components/SiteLogo";
 import { site } from "@/lib/data";
 
@@ -23,10 +22,6 @@ export function Footer() {
               {site.domain}
             </p>
             <p className="mt-1 max-w-sm text-sm text-muted">{t("footerTagline")}</p>
-            <p className="mt-3 flex items-center gap-2 text-xs text-muted">
-              <PixelCanadaFlag className="h-3 w-6" />
-              {t("heroCanadaProud")}
-            </p>
             <p className="mt-4 text-xs text-muted">
               {t("heroCuratedBy")}{" "}
               <a

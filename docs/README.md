@@ -40,4 +40,4 @@ This documentation explains **how to study effectively**, **how to get the most 
 
 ---
 
-*Curated by [@CHxmrBrother](https://x.com/CHxmrBrother) · Proudly built in Canada 🇨🇦*
+*Curated by [@CHxmrBrother](https://x.com/CHxmrBrother)*

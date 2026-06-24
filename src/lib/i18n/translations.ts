@@ -11,7 +11,7 @@ const en = {
   langPickerTitle: "Choose your language",
   langPickerSubtitle: "Pick a language — we'll translate the whole site for you!",
   langPickerContinue: "Continue",
-  langPickerMadeIn: "Made with ♥ in Canada",
+  langPickerMadeIn: "Made with ♥ for freedom learners worldwide",
 
   // Nav
   navDoc: "DOC",
@@ -32,7 +32,6 @@ const en = {
   heroBrowse: "Browse {count} resources",
   heroPaths: "Learning paths",
   heroCuratedBy: "Curated by",
-  heroCanadaProud: "Proudly built in Canada 🇨🇦",
 
   // Archive notice
   archiveNotice:
@@ -114,7 +113,7 @@ const zhCN: TranslationStrings = {
   langPickerTitle: "选择你的语言",
   langPickerSubtitle: "选择一种语言 — 我们会为你翻译整个网站！",
   langPickerContinue: "继续",
-  langPickerMadeIn: "在加拿大用 ♥ 制作",
+  langPickerMadeIn: "用 ♥ 为全球自由学习者制作",
 
   navDoc: "文档",
   navCourses: "比特币课程",
@@ -133,7 +132,6 @@ const zhCN: TranslationStrings = {
   heroBrowse: "浏览 {count} 个资源",
   heroPaths: "学习路径",
   heroCuratedBy: "策划者",
-  heroCanadaProud: "自豪地在加拿大制作 🇨🇦",
 
   archiveNotice: "面向密码朋克学习者的自由教育 — 目录持续更新。内容疑虑？",
   archiveContact: "联系",
@@ -206,7 +204,7 @@ const ja: TranslationStrings = {
   langPickerTitle: "言語を選んでください",
   langPickerSubtitle: "言語を選ぶと、サイト全体が翻訳されます！",
   langPickerContinue: "続ける",
-  langPickerMadeIn: "カナダで ♥ を込めて制作",
+  langPickerMadeIn: "世界中の自由学習者のために ♥ を込めて制作",
 
   navDoc: "DOC",
   navCourses: "ビットコインコース",
@@ -225,7 +223,6 @@ const ja: TranslationStrings = {
   heroBrowse: "{count} 件のリソースを見る",
   heroPaths: "学習パス",
   heroCuratedBy: "キュレーション",
-  heroCanadaProud: "カナダで誇りを持って制作 🇨🇦",
 
   archiveNotice:
     "サイファーパンク学習者のためのフリーダム教育 — カタログは継続的に更新。コンテンツに関する懸念？",
@@ -302,7 +299,7 @@ const fr: TranslationStrings = {
   langPickerSubtitle:
     "Choisissez une langue — nous traduirons tout le site pour vous !",
   langPickerContinue: "Continuer",
-  langPickerMadeIn: "Fait avec ♥ au Canada",
+  langPickerMadeIn: "Fait avec ♥ pour les apprenants du monde entier",
 
   navDoc: "DOC",
   navCourses: "Cours Bitcoin",
@@ -321,7 +318,6 @@ const fr: TranslationStrings = {
   heroBrowse: "Parcourir {count} ressources",
   heroPaths: "Parcours d'apprentissage",
   heroCuratedBy: "Curaté par",
-  heroCanadaProud: "Fièrement construit au Canada 🇨🇦",
 
   archiveNotice:
     "Éducation libertaire pour les apprenants cypherpunk — catalogue mis à jour en continu. Des préoccupations sur le contenu ?",

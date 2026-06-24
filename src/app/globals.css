@@ -13,7 +13,7 @@
   --accent-cyan: #ff9f43;
   --accent-orange: #ff7a18;
   --accent-purple: #6bcf4a;
-  --canada-red: #ff6b35;
+
   --pixel-shadow: #050a04;
   --duo-green: #58cc02;
   --duo-green-dark: #46a302;
@@ -649,15 +649,6 @@ body.mobile-menu-open {
 @keyframes anime-scan {
   0% { background-position: 0% 0%; }
   100% { background-position: 0% 200%; }
-}
-
-.hero-canada-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 12px;
-  font-size: 14px;
-  color: var(--canada-red);
 }
 
 /* Cards */
