@@ -15,6 +15,7 @@
     "docs:dev": "rm -rf docs/_book && honkit serve docs --port 4000",
     "docs:build": "node scripts/build-docs.mjs",
     "docs:clean": "rm -rf docs/_book public/doc",
+    "branding:repo": "python3 scripts/build-repo-branding.py",
     "security:init": "node scripts/security-vault.mjs init",
     "security:encrypt": "node scripts/security-vault.mjs encrypt",
     "security:export": "node scripts/security-vault.mjs export-b64",

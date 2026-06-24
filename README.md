@@ -1,227 +1,235 @@
-<p align="center">
-  <a href="https://cypherpunk-code.ca">
-    <img src=".github/logo.png" alt="Cypherpunk Code" width="120" />
-  </a>
-</p>
+<div align="center">
 
-<h1 align="center">Cypherpunk Code</h1>
+<img src=".github/app-icon-box.png" alt="Cypherpunk Code app icon" width="128" />
 
-<p align="center">
-  <strong>Freedom education for Bitcoin, Monero, and cypherpunk sovereignty.</strong>
-</p>
+# Cypherpunk Code
 
-<p align="center">
-  <a href="https://cypherpunk-code.ca"><img src="https://img.shields.io/badge/site-cypherpunk--code.ca-00c853?style=for-the-badge" alt="Site" /></a>
-  <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" /></a>
-  <a href="https://solana.com"><img src="https://img.shields.io/badge/auth-Solana%20wallet-9945FF?style=for-the-badge&logo=solana" alt="Solana auth" /></a>
-</p>
+**Freedom education for Bitcoin, Monero, and cypherpunk sovereignty.**
 
-<p align="center">
-  Curated by <a href="https://x.com/CHxmrBrother">@CHxmrBrother</a> · Contact <a href="https://x.com/sapherpunk">@sapherpunk</a>
-</p>
+[![site](https://img.shields.io/badge/⟡_live-cypherpunk--code.ca-00c853?style=flat-square&labelColor=0d1117)](https://cypherpunk-code.ca)
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js&logoColor=white&labelColor=0d1117)](https://nextjs.org)
+[![Solana](https://img.shields.io/badge/auth-Solana_wallet-9945FF?style=flat-square&logo=solana&logoColor=white&labelColor=0d1117)](https://solana.com/docs/intro/quick-start)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white&labelColor=0d1117)](https://www.typescriptlang.org)
+[![CI](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white&labelColor=0d1117)](.github/workflows/ci.yml)
 
----
+<br />
 
-## Overview
+`Next.js 16` · `React 19` · `Prisma` · `Solana wallet-adapter` · `Turso`
 
-Cypherpunk Code is a curated freedom-education platform: courses, papers, guides, and documentation for cryptocurrency, privacy technology, and cypherpunk philosophy. No trading noise — just signal.
+<br />
 
-| | |
-|---|---|
-| **Live site** | [cypherpunk-code.ca](https://cypherpunk-code.ca) |
-| **Documentation** | [/doc/](https://cypherpunk-code.ca/doc/) |
-| **Admin** | [/admin/login](https://cypherpunk-code.ca/admin/login) (whitelisted Solana wallets) |
+Curated by [**@CHxmrBrother**](https://x.com/CHxmrBrother) · Contact [**@sapherpunk**](https://x.com/sapherpunk)
 
----
+</div>
 
-## Table of contents
+<br />
 
-- [Quick start](#quick-start)
-- [Authentication](#authentication)
-- [Deploy on Vercel](#deploy-on-vercel)
-- [Project structure](#project-structure)
-- [Documentation](#documentation)
-- [Site pages](#site-pages)
-- [Openness policy](#openness-policy)
-- [Contributing](#contributing)
-- [Security](#security)
-- [License](#license)
+## ◈ Overview
 
----
+> A curated freedom-education index — courses, papers, guides, and documentation for cryptocurrency, privacy technology, and cypherpunk philosophy. **No trading noise. Just signal.**
 
-## Quick start
+<table>
+<tr>
+<td width="50%">
+
+**Platform**
+- [cypherpunk-code.ca](https://cypherpunk-code.ca) — live site
+- [/doc/](https://cypherpunk-code.ca/doc/) — study guide & roadmap
+- [/catalog](https://cypherpunk-code.ca/catalog) — searchable resource index
+
+</td>
+<td width="50%">
+
+**Access**
+- [/login](https://cypherpunk-code.ca/login) — learner Solana sign-in
+- [/admin/login](https://cypherpunk-code.ca/admin/login) — whitelisted admin wallets
+- [/about](https://cypherpunk-code.ca/about) — mission & donations
+
+</td>
+</tr>
+</table>
+
+<br />
+
+## ◈ Quick start
 
 ```bash
-git clone <repo-url>
-cd cypherpunk-code
+git clone <repo-url> && cd cypherpunk-code
 npm install
 cp .env.example .env.local
-npm run db:push    # local SQLite
-npm run dev
+npm run db:push          # local SQLite
+npm run dev              # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+<details>
+<summary><strong>Developer commands</strong></summary>
 
-**Useful scripts**
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Production build (Prisma + docs + Next.js) |
+| Command | What it does |
+|---------|----------------|
+| `npm run dev` | Development server |
+| `npm run build` | Prisma → docs → Next.js production build |
 | `npm run lint` | ESLint |
-| `npm test` | Vitest test suite |
-| `npm run docs:dev` | Preview docs at port 4000 |
+| `npm test` | Vitest (28 tests) |
+| `npm run docs:dev` | Docs preview on port 4000 |
+| `npm run exercise:solana` | Wallet module smoke exercise |
+| `npm run verify:solana` | Post-build Solana artifact check |
 
----
+</details>
 
-## Authentication
+<br />
 
-Learners and admins sign in with a **Solana wallet** (Phantom, Solflare) using the official [`@solana/wallet-adapter`](https://solana.com/docs/intro/quick-start) stack. Progress and feedback are stored in the database.
+## ◈ Authentication
+
+Solana wallet sign-in via the official [`@solana/wallet-adapter`](https://solana.com/docs/intro/quick-start) stack — **Phantom** and **Solflare**.
 
 ```bash
-# .env.local (minimum for local auth)
-AUTH_SECRET=<openssl rand -base64 32>
-ADMIN_SOLANA_WALLETS=<comma-separated-admin-addresses>
+# .env.local
+AUTH_SECRET=$(openssl rand -base64 32)
+ADMIN_SOLANA_WALLETS=<comma-separated-solana-addresses>
 ```
 
-| Role | Sign-in | Route |
-|------|---------|-------|
-| Learner | Solana wallet | `/login` |
+| Role | Method | Route |
+|:--|:--|:--|
+| Learner | Solana wallet connect + sign | `/login` |
 | Admin | Whitelisted Solana wallet | `/admin/login` |
 
----
+<br />
 
-## Deploy on Vercel
+## ◈ Deploy
 
-1. Connect this private GitHub repo to [Vercel](https://vercel.com).
-2. Configure environment variables:
+**Target:** [Vercel](https://vercel.com) · **Domain:** `cypherpunk-code.ca`
 
-| Variable | Required | Notes |
-|----------|----------|-------|
-| `AUTH_SECRET` | Yes | `openssl rand -base64 32` |
-| `AUTH_URL` | Yes | `https://cypherpunk-code.ca` (no trailing slash) |
-| `DATABASE_URL` | Yes | Turso libSQL URL |
-| `DATABASE_AUTH_TOKEN` | Yes | Turso auth token |
-| `ADMIN_SOLANA_WALLETS` | Yes | Comma-separated admin addresses |
-| `DEV_LOGIN_ENABLED` | Yes | `false` in production |
-| `SECURITY_VAULT_KEY` | Optional | See `npm run security:init` |
-| `SECURITY_VAULT_B64` | Optional | Encrypted secrets blob |
+<details open>
+<summary><strong>1 — Environment variables</strong></summary>
 
-3. **One-time database setup** after env is configured:
+| Variable | Required | Value |
+|----------|:--------:|-------|
+| `AUTH_SECRET` | ✓ | `openssl rand -base64 32` |
+| `AUTH_URL` | ✓ | `https://cypherpunk-code.ca` |
+| `DATABASE_URL` | ✓ | Turso libSQL URL |
+| `DATABASE_AUTH_TOKEN` | ✓ | Turso auth token |
+| `ADMIN_SOLANA_WALLETS` | ✓ | Admin wallet addresses |
+| `DEV_LOGIN_ENABLED` | ✓ | `false` |
+| `SECURITY_VAULT_KEY` | — | `npm run security:init` |
+| `SECURITY_VAULT_B64` | — | Encrypted secrets blob |
+
+</details>
+
+<details>
+<summary><strong>2 — Database init (one-time)</strong></summary>
 
 ```bash
 DATABASE_URL="libsql://..." DATABASE_AUTH_TOKEN="..." npm run db:init:turso
 ```
 
-4. Deploy. The build runs `prisma generate` → `docs:build` → `next build`. Schema changes are **not** applied automatically during build.
+</details>
+
+<details>
+<summary><strong>3 — Build & run</strong></summary>
 
 ```bash
-npm run build
+npm run build    # prisma generate → docs:build → next build
 npm start
 ```
 
-> Local SQLite does not persist on serverless — use Turso in production.
+> SQLite is for local dev only. Production requires Turso — serverless has no persistent disk.
 
----
+</details>
 
-## Project structure
+<br />
 
-| Path | Purpose |
-|------|---------|
-| `src/data/resources.json` | Resource catalog database |
-| `src/data/paths.json` | Learning path sequences |
-| `src/data/site.json` | Site name, domain, donations |
-| `src/components/auth/` | Solana wallet connect UI |
-| `src/lib/wallet/` | Wallet verification and session |
-| `docs/` | GitBook-style documentation source |
-| `public/branding/` | Logos and wallet icons |
+## ◈ Architecture
 
-Site name, domain, and donation addresses live in `site.json`.
-
-**Adding resources** — add entries to `resources.json` following the schema in `src/lib/types.ts`, then rebuild.
-
----
-
-## Documentation
-
-GitBook-style docs in `docs/`:
-
-```bash
-npm run docs:dev      # http://localhost:4000
-npm run docs:build    # → public/doc/ (served at /doc/)
+```
+cypherpunk-code/
+├── src/
+│   ├── app/              # Next.js App Router pages & API
+│   ├── components/auth/  # SolanaProvider, WalletConnectPanel
+│   ├── lib/wallet/       # verify-solana, session, nonce
+│   └── data/             # resources.json, paths.json, site.json
+├── docs/                 # GitBook documentation source
+├── public/branding/      # Logos & wallet icons
+├── prisma/               # Schema & migrations
+└── tests/                # Vitest unit + DOM tests
 ```
 
-Maintainers: see [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for structure and editing notes.
+| File | Purpose |
+|------|---------|
+| `src/data/resources.json` | Resource catalog |
+| `src/data/paths.json` | Learning path sequences |
+| `src/data/site.json` | Site name, domain, donations |
+| `src/lib/types.ts` | Resource schema (for new entries) |
 
----
+<br />
 
-## Site pages
+## ◈ Routes
 
 | Route | Description |
 |-------|-------------|
-| `/` | Homepage with featured resources |
-| `/doc/` | Study guide, mission, roadmap, Bitcoin course |
+| `/` | Homepage — featured resources |
+| `/doc/` | Mission, roadmap, Bitcoin course track |
 | `/courses` | Bitcoin Course modules |
-| `/catalog` | Searchable catalog with CP Score |
+| `/catalog` | Filterable catalog with CP Score |
 | `/paths` | Curated learning paths |
-| `/resource/[id]` | Resource detail |
-| `/about` | About and donations |
-| `/login` | Learner Solana wallet sign-in |
+| `/resource/[id]` | Resource detail page |
+| `/about` | About & donation addresses |
+| `/login` | Learner wallet sign-in |
 
----
+<br />
 
-## Openness policy
+## ◈ Documentation
 
-The application is **closed source** while auth, wallet sign-in, and admin tooling mature. That is intentional.
+```bash
+npm run docs:dev      # http://localhost:4000
+npm run docs:build    # → public/doc/ served at /doc/
+```
 
-Public transparency where it matters: the live site, mission, roadmap, and documentation remain open to learners.
+Maintainer guide: [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md)
 
-| Milestone | What opens |
-|-----------|------------|
-| **Q3 2026** | Catalog data layer (`resources.json`, `paths.json`, `site.json`) under an open license when the submission form ships |
-| **After that** | Application code in stages as wallet and auth stabilize |
+<br />
 
-Full policy: [`docs/doc/openness-policy.md`](docs/doc/openness-policy.md) · served at `/doc/` after `npm run docs:build`.
+## ◈ Openness policy
 
----
+Closed source while auth and admin tooling mature. Public transparency via the live site, docs, and roadmap.
 
-## Contributing
+| When | What opens |
+|------|------------|
+| **Q3 2026** | Catalog data layer under open license |
+| **After** | Application code in stages |
 
-This is a **private, closed-source** repository. Public pull requests, forks, and redistribution are not permitted.
+→ [`docs/doc/openness-policy.md`](docs/doc/openness-policy.md)
 
-**Maintainers** with repo access work on branches and deploy via Vercel.
+<br />
 
-**Everyone else** can help without code:
+## ◈ Contributing
 
-- Suggest a resource — URL and why it belongs in the catalog
-- Report a broken link — resource name and what happens
-- Share feedback — catalog, courses, or learning paths
+Private repository — no public PRs, forks, or redistribution.
 
-Reach [@sapherpunk](https://x.com/sapherpunk) on X or the [contact page](https://cypherpunk-code.ca/about#contact).
+**Maintainers:** branch → Vercel deploy.
 
----
+**Community (no code needed):**
+- Suggest a resource for the catalog
+- Report broken links
+- Share feedback on courses or paths
 
-## Security
+→ [@sapherpunk](https://x.com/sapherpunk) · [contact page](https://cypherpunk-code.ca/about#contact)
 
-Report vulnerabilities **privately**. Do not post details on X, forums, or public issue trackers.
+<br />
 
-- [@sapherpunk](https://x.com/sapherpunk) on X
-- [Contact page](https://cypherpunk-code.ca/about#contact)
+## ◈ Security
 
-Include description, reproduction steps, and potential impact. We aim to acknowledge within 48 hours.
+Report vulnerabilities **privately** — not on X or public trackers.
 
-Full policy: [SECURITY.md](SECURITY.md).
+→ [@sapherpunk](https://x.com/sapherpunk) · [SECURITY.md](SECURITY.md)
 
----
+<br />
 
-## License
+<div align="center">
 
-**Proprietary — all rights reserved.**
+**Proprietary — all rights reserved**
 
 Copyright © 2026 Cypherpunk Code · [LICENSE](LICENSE)
 
-- Private and confidential repository
-- Unauthorized copying, modification, distribution, or use is prohibited
-- Licensing inquiries: [@sapherpunk](https://x.com/sapherpunk)
+*Unauthorized copying, modification, distribution, or use is prohibited.*
 
-Third-party materials (e.g. Plan ₿ Network course content) remain under their original licenses and are attributed separately.
+</div>
