@@ -1,5 +1,4 @@
 import type { SolanaSignInInput, SolanaSignInOutput } from "@solana/wallet-standard-features";
-import { buildLegacySignMessage } from "@/lib/wallet/nonce";
 import {
   verifySolanaLegacySignature,
   verifySolanaSiws,

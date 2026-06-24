@@ -13,13 +13,13 @@ export function AuthButtonShell({
 }) {
   if (!session?.user) {
     return (
-      <a
+      <Link
         href="/?wallet=1"
         className={`auth-box__signin auth-box__signin--ssr${mobile ? " auth-box__signin--mobile" : ""}`}
       >
         <span className="auth-box__glow" aria-hidden="true" />
         <span className="auth-box__label">{t(locale, "navLogin")}</span>
-      </a>
+      </Link>
     );
   }
 
