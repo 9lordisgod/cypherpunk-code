@@ -1,7 +1,7 @@
 "use client";
 
 import type { WalletAdapter } from "@solana/wallet-adapter-base";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import type { SolanaSignInInput } from "@solana/wallet-standard-features";
 import type { SolanaNoncePayload } from "./nonce-client";
 import { authenticateSolanaWallet } from "./solana-connect";
@@ -43,6 +43,7 @@ async function completeSession(loginTicket: string) {
   });
 
   if (result?.error) throw new Error("SESSION_FAILED");
+  await getSession();
 }
 
 export async function loginWithSolanaWallet(

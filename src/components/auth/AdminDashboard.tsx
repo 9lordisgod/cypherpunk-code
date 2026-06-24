@@ -12,7 +12,14 @@ type Overview = {
     progressEvents: number;
     completedChapters: number;
     feedbackCount: number;
+    activeLearners7d: number;
   };
+  topCourses: Array<{
+    courseSlug: string;
+    courseTitle: string;
+    views: number;
+    completions: number;
+  }>;
   recentUsers: Array<{
     id: string;
     name: string | null;
@@ -37,6 +44,10 @@ type Overview = {
     message: string;
     createdAt: string;
   }>;
+  meta: {
+    database: "turso" | "sqlite-file" | "unset";
+    privacyNote: string;
+  };
   generatedAt: string;
 };
 
@@ -45,16 +56,36 @@ export function AdminDashboard() {
   const { t } = useLanguage();
   const [data, setData] = useState<Overview | null>(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const load = useCallback(async () => {
-    const response = await fetch("/api/admin/overview");
-    if (!response.ok) {
-      setError(t("adminForbidden"));
+    setLoading(true);
+    try {
+      const response = await fetch("/api/admin/overview", {
+        cache: "no-store",
+        credentials: "same-origin",
+      });
+
+      if (response.status === 403) {
+        setError(t("adminForbidden"));
+        setData(null);
+        return;
+      }
+
+      if (!response.ok) {
+        setError(t("adminLoadError"));
+        setData(null);
+        return;
+      }
+
+      setError("");
+      setData(await response.json());
+    } catch {
+      setError(t("adminLoadError"));
       setData(null);
-      return;
+    } finally {
+      setLoading(false);
     }
-    setError("");
-    setData(await response.json());
   }, [t]);
 
   useEffect(() => {
@@ -91,6 +122,17 @@ export function AdminDashboard() {
     );
   }
 
+  const hasActivity =
+    data &&
+    (data.stats.learners > 0 ||
+      data.stats.progressEvents > 0 ||
+      data.stats.feedbackCount > 0);
+
+  const showDbWarning =
+    data?.meta.database === "sqlite-file" &&
+    typeof window !== "undefined" &&
+    !["localhost", "127.0.0.1"].includes(window.location.hostname);
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -108,11 +150,19 @@ export function AdminDashboard() {
       </div>
 
       {error ? <p className="mt-4 text-red-400">{error}</p> : null}
+      {loading && !data ? <p className="mt-4 text-sm text-muted">{t("adminLoading")}</p> : null}
+
+      {showDbWarning ? (
+        <p className="mt-4 rounded border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+          {t("adminDbWarning")}
+        </p>
+      ) : null}
 
       {data ? (
         <>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <StatCard label={t("adminStatLearners")} value={data.stats.learners} />
+            <StatCard label={t("adminStatActive")} value={data.stats.activeLearners7d} />
             <StatCard label={t("adminStatProgress")} value={data.stats.progressEvents} />
             <StatCard label={t("adminStatCompleted")} value={data.stats.completedChapters} />
             <StatCard label={t("adminStatFeedback")} value={data.stats.feedbackCount} />
@@ -120,69 +170,109 @@ export function AdminDashboard() {
           <p className="mt-2 text-xs text-muted">
             {t("adminUpdated", { time: new Date(data.generatedAt).toLocaleString() })}
           </p>
+          <p className="mt-1 text-xs text-muted">{data.meta.privacyNote}</p>
+
+          {!hasActivity ? (
+            <div className="mt-8 pixel-panel p-6">
+              <h2 className="text-lg font-semibold">{t("adminEmptyTitle")}</h2>
+              <p className="mt-2 text-sm text-muted">{t("adminEmptyBody")}</p>
+            </div>
+          ) : null}
+
+          <section className="mt-10">
+            <h2 className="text-lg font-semibold">{t("adminTopCourses")}</h2>
+            <p className="mt-1 text-sm text-muted">{t("adminTopCoursesHint")}</p>
+            {data.topCourses.length === 0 ? (
+              <p className="mt-4 text-sm text-muted">{t("adminNoCourseData")}</p>
+            ) : (
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {data.topCourses.map((course) => (
+                  <div key={course.courseSlug} className="pixel-panel p-4 text-sm">
+                    <p className="font-semibold">{course.courseTitle}</p>
+                    <p className="mt-2 text-xs text-muted">
+                      {t("adminCourseViews")}: {course.views} · {t("adminCourseCompletions")}:{" "}
+                      {course.completions}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
 
           <section className="mt-10">
             <h2 className="text-lg font-semibold">{t("adminRecentProgress")}</h2>
-            <div className="mt-4 overflow-x-auto">
-              <table className="admin-table w-full text-sm">
-                <thead>
-                  <tr>
-                    <th>{t("feedbackName")}</th>
-                    <th>{t("adminCourse")}</th>
-                    <th>{t("adminChapter")}</th>
-                    <th>{t("adminStatus")}</th>
-                    <th>{t("adminWhen")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.recentProgress.map((row) => (
-                    <tr key={row.id}>
-                      <td>{row.user.name ?? row.user.email ?? "—"}</td>
-                      <td>{row.courseTitle ?? row.courseSlug}</td>
-                      <td>{row.chapterTitle}</td>
-                      <td>{row.completed ? t("progressCompleted") : t("adminReading")}</td>
-                      <td>{new Date(row.lastReadAt).toLocaleString()}</td>
+            {data.recentProgress.length === 0 ? (
+              <p className="mt-4 text-sm text-muted">{t("adminNoCourseData")}</p>
+            ) : (
+              <div className="mt-4 overflow-x-auto">
+                <table className="admin-table w-full text-sm">
+                  <thead>
+                    <tr>
+                      <th>{t("feedbackName")}</th>
+                      <th>{t("adminCourse")}</th>
+                      <th>{t("adminChapter")}</th>
+                      <th>{t("adminStatus")}</th>
+                      <th>{t("adminWhen")}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {data.recentProgress.map((row) => (
+                      <tr key={row.id}>
+                        <td>{row.user.name ?? row.user.email ?? "—"}</td>
+                        <td>{row.courseTitle ?? row.courseSlug}</td>
+                        <td>{row.chapterTitle}</td>
+                        <td>{row.completed ? t("progressCompleted") : t("adminReading")}</td>
+                        <td>{new Date(row.lastReadAt).toLocaleString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </section>
 
           <section className="mt-10">
             <h2 className="text-lg font-semibold">{t("adminLearners")}</h2>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {data.recentUsers.map((user) => (
-                <div key={user.id} className="pixel-panel p-4 text-sm">
-                  <p className="font-semibold">{user.name ?? "Learner"}</p>
-                  <p className="text-muted">{user.email ?? user.name ?? "—"}</p>
-                  <p className="mt-2 text-xs text-muted">
-                    {t("adminUserStats", {
-                      progress: user._count.progress,
-                      feedback: user._count.feedback,
-                    })}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {data.recentUsers.length === 0 ? (
+              <p className="mt-4 text-sm text-muted">{t("adminEmptyTitle")}</p>
+            ) : (
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {data.recentUsers.map((user) => (
+                  <div key={user.id} className="pixel-panel p-4 text-sm">
+                    <p className="font-semibold">{user.name ?? "Learner"}</p>
+                    <p className="text-muted">{user.email ?? user.name ?? "—"}</p>
+                    <p className="mt-2 text-xs text-muted">
+                      {t("adminUserStats", {
+                        progress: user._count.progress,
+                        feedback: user._count.feedback,
+                      })}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </section>
 
           <section className="mt-10">
             <h2 className="text-lg font-semibold">{t("adminFeedback")}</h2>
-            <div className="mt-4 space-y-3">
-              {data.recentFeedback.map((item) => (
-                <div key={item.id} className="pixel-panel p-4 text-sm">
-                  <p className="font-semibold">
-                    {item.name} · {item.email}
-                    {item.xHandle ? ` · ${item.xHandle}` : ""}
-                  </p>
-                  <p className="mt-2 text-muted">{item.message}</p>
-                  <p className="mt-2 text-xs text-muted">
-                    {new Date(item.createdAt).toLocaleString()}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {data.recentFeedback.length === 0 ? (
+              <p className="mt-4 text-sm text-muted">{t("adminEmptyTitle")}</p>
+            ) : (
+              <div className="mt-4 space-y-3">
+                {data.recentFeedback.map((item) => (
+                  <div key={item.id} className="pixel-panel p-4 text-sm">
+                    <p className="font-semibold">
+                      {item.name} · {item.email}
+                      {item.xHandle ? ` · ${item.xHandle}` : ""}
+                    </p>
+                    <p className="mt-2 text-muted">{item.message}</p>
+                    <p className="mt-2 text-xs text-muted">
+                      {new Date(item.createdAt).toLocaleString()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </section>
         </>
       ) : null}
