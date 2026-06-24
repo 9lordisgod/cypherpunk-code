@@ -33,13 +33,13 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        has: [{ type: "host", value: "cypherpunk-code.com" }],
+        has: [{ type: "host", value: "cypherpunk-code.ca" }],
         destination: "https://cypherpunk-code.com/:path*",
         permanent: true,
       },
       {
         source: "/:path*",
-        has: [{ type: "host", value: "www.cypherpunk-code.com" }],
+        has: [{ type: "host", value: "www.cypherpunk-code.ca" }],
         destination: "https://cypherpunk-code.com/:path*",
         permanent: true,
       },
