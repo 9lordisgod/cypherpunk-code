@@ -2,7 +2,7 @@ import type { SolanaSignInInput, SolanaSignInOutput } from "@solana/wallet-stand
 import {
   verifySolanaLegacySignature,
   verifySolanaSiws,
-} from "@/lib/wallet/verify-solana";
+} from "./verify-solana";
 
 export type WalletProofBody = {
   mode?: string;

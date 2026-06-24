@@ -31,7 +31,7 @@ export function WalletConnectPanel({
   onAdminLinkClick,
 }: WalletConnectPanelProps) {
   const { t } = useLanguage();
-  const { wallets, select, disconnect } = useWallet();
+  const { wallets, disconnect } = useWallet();
   const [error, setError] = useState("");
   const [step, setStep] = useState<Step>("pick");
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -111,7 +111,6 @@ export function WalletConnectPanel({
     setStep("connecting");
 
     const authPromise = (async () => {
-      select(target.adapter.name);
       await target.adapter.connect();
       setStep("signing");
 

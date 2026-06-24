@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Auth, progress, and admin
 
-Learners sign in with Solana or Bitcoin wallets. Progress and feedback are stored in the database. Admins sign in with a whitelisted Solana wallet at `/admin/login`.
+Learners sign in with a Solana wallet via `@solana/wallet-adapter` (Phantom, Solflare, etc.). Progress and feedback are stored in the database. Admins sign in with a whitelisted Solana wallet at `/admin/login`.
 
 ```bash
 cp .env.example .env.local

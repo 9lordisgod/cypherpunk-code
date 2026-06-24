@@ -31,6 +31,7 @@ describe("Solana provider structure", () => {
     expect(panel).toContain('walletConnectSafetyWarn');
     expect(panel).toContain('walletConnectIntro1');
     expect(strings).toContain("walletConnectStepPick");
+    expect(strings).not.toContain("loginWalletBitcoin");
     expect(strings).not.toContain("Xverse");
   });
 });

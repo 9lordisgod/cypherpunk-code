@@ -1,6 +1,7 @@
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { describe, expect, it } from "vitest";
 import {
+  getSolanaProviderSpec,
   getSolanaRpcEndpoint,
   getSolanaWalletConfig,
   SOLANA_WALLET_ADAPTER_NAMES,
@@ -26,5 +27,15 @@ describe("solana wallet config", () => {
     expect(config.adapterNames).toEqual([...SOLANA_WALLET_ADAPTER_NAMES]);
     expect(config.adapterNames).toContain("Phantom");
     expect(config.adapterNames).toContain("Solflare");
+  });
+
+  it("describes the official wallet-adapter provider tree", () => {
+    const spec = getSolanaProviderSpec();
+    expect(spec.providers).toEqual([
+      "ConnectionProvider",
+      "WalletProvider",
+      "WalletModalProvider",
+    ]);
+    expect(spec.stylesheets[0]).toContain("wallet-adapter-react-ui");
   });
 });

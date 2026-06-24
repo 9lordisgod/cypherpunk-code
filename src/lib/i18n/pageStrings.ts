@@ -207,15 +207,10 @@ export const pageStringsEn = {
   loginSubtitle:
     "Connect a Solana wallet to save your course progress and resume anytime.",
   loginWalletSolana: "Connect Solana wallet",
-  loginWalletBitcoin: "Connect Solana wallet",
   loginWalletConnecting: "Connecting wallet…",
   loginWalletSolanaHint: "Uses @solana/wallet-adapter — Phantom, Solflare, and other Solana wallets.",
-  loginWalletBitcoinHint: "Uses @solana/wallet-adapter — Phantom, Solflare, and other Solana wallets.",
   loginWalletSolanaDetected: "Solana wallet detected in this browser.",
-  loginWalletBitcoinDetected: "Solana wallet detected in this browser.",
   loginWalletSolanaMissing: "Install a Solana wallet such as Phantom, then refresh this page.",
-  loginWalletBitcoinMissing:
-    "Install a Solana wallet such as Phantom or Solflare, then refresh this page.",
   loginWalletNote:
     "We never move funds. Your wallet only signs a short message to prove you own the address.",
   loginWalletPrivacy:
@@ -502,14 +497,10 @@ export const pageStringsZhCN = {
   loginTitle: "登录以保存学习进度",
   loginSubtitle: "连接 Solana 钱包，保存课程进度并随时继续学习。",
   loginWalletSolana: "连接 Solana 钱包",
-  loginWalletBitcoin: "连接 Solana 钱包",
   loginWalletConnecting: "正在连接钱包…",
   loginWalletSolanaHint: "使用 @solana/wallet-adapter — 支持 Phantom、Solflare 等 Solana 钱包。",
-  loginWalletBitcoinHint: "使用 @solana/wallet-adapter — 支持 Phantom、Solflare 等 Solana 钱包。",
   loginWalletSolanaDetected: "已检测到浏览器中的 Solana 钱包。",
-  loginWalletBitcoinDetected: "已检测到浏览器中的 Solana 钱包。",
   loginWalletSolanaMissing: "请安装 Phantom 等 Solana 钱包，然后刷新页面。",
-  loginWalletBitcoinMissing: "请安装 Phantom 或 Solflare 等 Solana 钱包，然后刷新页面。",
   loginWalletNote: "我们不会动用资金。钱包仅签署一条短消息以证明地址归属。",
   loginWalletPrivacy:
     "我们不存储钱包地址 — 仅保存单向哈希以关联学习进度。管理员只能看到学习活动，看不到钱包。",
@@ -799,15 +790,10 @@ export const pageStringsJa = {
   loginSubtitle:
     "Solana ウォレットを接続して、コースの進捗を保存し、いつでも再開できます。",
   loginWalletSolana: "Solana ウォレットを接続",
-  loginWalletBitcoin: "Solana ウォレットを接続",
   loginWalletConnecting: "ウォレット接続中…",
   loginWalletSolanaHint: "@solana/wallet-adapter 対応 — Phantom、Solflare など。",
-  loginWalletBitcoinHint: "@solana/wallet-adapter 対応 — Phantom、Solflare など。",
   loginWalletSolanaDetected: "このブラウザで Solana ウォレットを検出しました。",
-  loginWalletBitcoinDetected: "このブラウザで Solana ウォレットを検出しました。",
   loginWalletSolanaMissing: "Phantom などの Solana ウォレットをインストールしてページを更新してください。",
-  loginWalletBitcoinMissing:
-    "Phantom や Solflare などの Solana ウォレットをインストールしてページを更新してください。",
   loginWalletNote:
     "資金は動かしません。ウォレットはアドレス所有の証明のための短いメッセージにのみ署名します。",
   loginWalletPrivacy:
@@ -1106,16 +1092,11 @@ export const pageStringsFr = {
   loginSubtitle:
     "Connectez un portefeuille Solana pour sauvegarder votre progression et reprendre à tout moment.",
   loginWalletSolana: "Connecter un portefeuille Solana",
-  loginWalletBitcoin: "Connecter un portefeuille Solana",
   loginWalletConnecting: "Connexion du portefeuille…",
   loginWalletSolanaHint: "Via @solana/wallet-adapter — Phantom, Solflare et autres portefeuilles Solana.",
-  loginWalletBitcoinHint: "Via @solana/wallet-adapter — Phantom, Solflare et autres portefeuilles Solana.",
   loginWalletSolanaDetected: "Portefeuille Solana détecté dans ce navigateur.",
-  loginWalletBitcoinDetected: "Portefeuille Solana détecté dans ce navigateur.",
   loginWalletSolanaMissing:
     "Installez un portefeuille Solana comme Phantom, puis actualisez la page.",
-  loginWalletBitcoinMissing:
-    "Installez un portefeuille Solana comme Phantom ou Solflare, puis actualisez la page.",
   loginWalletNote:
     "Nous ne déplaçons jamais de fonds. Votre portefeuille signe seulement un court message pour prouver la propriété de l'adresse.",
   loginWalletPrivacy:

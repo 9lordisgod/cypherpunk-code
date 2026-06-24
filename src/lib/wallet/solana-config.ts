@@ -17,3 +17,12 @@ export function getSolanaWalletConfig() {
     adapterNames: [...SOLANA_WALLET_ADAPTER_NAMES],
   } as const;
 }
+
+/** Provider tree matching @solana/wallet-adapter-react official layout. */
+export function getSolanaProviderSpec() {
+  return {
+    providers: ["ConnectionProvider", "WalletProvider", "WalletModalProvider"] as const,
+    stylesheets: ["@solana/wallet-adapter-react-ui/styles.css"] as const,
+    config: getSolanaWalletConfig(),
+  } as const;
+}

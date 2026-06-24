@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
+    "exercise:solana": "tsx scripts/direct-exercise-solana.ts",
     "docs:dev": "rm -rf docs/_book && honkit serve docs --port 4000",
     "docs:build": "node scripts/build-docs.mjs",
     "docs:clean": "rm -rf docs/_book public/doc",
@@ -66,6 +67,7 @@
     "honkit": "^6.1.4",
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
+    "tsx": "^4.22.4",
     "typescript": "^5",
     "vitest": "^3.2.4"
   }
