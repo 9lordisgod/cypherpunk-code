@@ -23,6 +23,7 @@
     "db:push": "prisma db push",
     "db:sql:turso": "prisma migrate diff --from-empty --to-schema prisma/schema.prisma --script -o prisma/turso-init.sql",
     "db:init:turso": "node scripts/init-turso.mjs",
+    "db:init:turso:analytics": "node scripts/init-turso-analytics.mjs",
     "postinstall": "prisma generate"
   },
   "dependencies": {
