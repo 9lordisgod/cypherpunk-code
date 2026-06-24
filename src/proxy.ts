@@ -39,7 +39,7 @@ function buildCsp(pathname: string) {
   ].join("; ");
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   const { pathname } = request.nextUrl;
 

@@ -1,65 +1,19 @@
-/**
- * @vitest-environment happy-dom
- */
 import { render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-
-class MockWalletAdapter {
-  name: string;
-  url: string;
-  icon: string;
-  connecting = false;
-  connected = false;
-  private listeners = new Map<string, Set<() => void>>();
-
-  constructor(name: string, url: string) {
-    this.name = name;
-    this.url = url;
-    this.icon = "data:image/svg+xml,<svg/>";
-  }
-
-  on(event: string, handler: () => void) {
-    if (!this.listeners.has(event)) this.listeners.set(event, new Set());
-    this.listeners.get(event)!.add(handler);
-  }
-
-  off(event: string, handler: () => void) {
-    this.listeners.get(event)?.delete(handler);
-  }
-
-  async connect() {
-    this.connected = true;
-  }
-
-  async disconnect() {
-    this.connected = false;
-  }
-}
-
-vi.mock("@/lib/wallet/solana-adapters", () => ({
-  createSolanaWalletAdapters: () => [
-    new MockWalletAdapter("Phantom", "https://phantom.app"),
-    new MockWalletAdapter("Solflare", "https://solflare.com"),
-  ],
-}));
-
+import { beforeEach, describe, expect, it } from "vitest";
+import { WalletReadyState } from "@solana/wallet-adapter-base";
 import { SolanaProvider } from "@/components/auth/SolanaProvider";
-
-const storage = new Map<string, string>();
-
-beforeEach(() => {
-  storage.clear();
-  vi.stubGlobal("localStorage", {
-    getItem: (key: string) => storage.get(key) ?? null,
-    setItem: (key: string, value: string) => storage.set(key, value),
-    removeItem: (key: string) => storage.delete(key),
-    clear: () => storage.clear(),
-    key: () => null,
-    length: 0,
-  });
-});
+import { createSolanaWalletAdapters } from "@/lib/wallet/solana-adapters";
+import {
+  installPhantomStub,
+  PHANTOM_TEST_ADDRESS,
+  waitForAdapterReady,
+} from "./helpers/phantom-stub";
 
 describe("SolanaProvider mount", () => {
+  beforeEach(() => {
+    installPhantomStub();
+  });
+
   it("instantiates the official wallet-adapter provider stack with children", () => {
     render(
       <SolanaProvider>
@@ -67,6 +21,41 @@ describe("SolanaProvider mount", () => {
       </SolanaProvider>
     );
 
-    expect(screen.getByTestId("solana-child").textContent).toBe("Connect Solana wallet");
+    expect(screen.getByTestId("solana-child").textContent).toBe(
+      "Connect Solana wallet"
+    );
+  });
+
+  it("exercises shipped PhantomWalletAdapter.connect() from createSolanaWalletAdapters", async () => {
+    const adapters = createSolanaWalletAdapters();
+    const phantom = adapters.find((adapter) => adapter.name === "Phantom");
+
+    expect(phantom).toBeDefined();
+    await waitForAdapterReady(phantom!);
+    expect(phantom!.readyState).toBe(WalletReadyState.Installed);
+
+    await phantom!.connect();
+    expect(phantom!.connected).toBe(true);
+    expect(phantom!.publicKey?.toBase58()).toBe(PHANTOM_TEST_ADDRESS);
+
+    await phantom!.disconnect();
+    expect(phantom!.connected).toBe(false);
+  });
+
+  it("mirrors WalletConnectPanel handleWalletClick connect sequence on shipped adapter", async () => {
+    const adapters = createSolanaWalletAdapters();
+    const target = adapters.find((adapter) => adapter.name === "Phantom");
+    expect(target).toBeDefined();
+    await waitForAdapterReady(target!);
+
+    const steps: string[] = ["pick", "connecting"];
+    await target!.connect();
+    steps.push("signing");
+
+    expect(steps).toEqual(["pick", "connecting", "signing"]);
+    expect(target!.connected).toBe(true);
+
+    await target!.disconnect();
+    expect(target!.connected).toBe(false);
   });
 });

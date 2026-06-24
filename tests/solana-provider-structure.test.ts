@@ -15,6 +15,9 @@ describe("Solana provider structure", () => {
     expect(source).toContain("WalletProvider");
     expect(source).toContain("WalletModalProvider");
     expect(source).toContain("@solana/wallet-adapter-react-ui/styles.css");
+    expect(source).toContain("getSolanaWalletConfig");
+    expect(source).not.toContain("getSolanaRpcEndpoint");
+    expect(source).not.toContain("SOLANA_WALLET_NETWORK");
   });
 
   it("wraps the app in SolanaProvider from Providers", () => {

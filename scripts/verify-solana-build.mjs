@@ -1,13 +1,37 @@
 /**
- * Verification plan step 5: inspect build artifacts and optional live page smoke.
+ * Verification plan step 5: inspect build artifacts and live page smoke.
  */
-import { execSync, spawn } from "node:child_process";
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { spawn } from "node:child_process";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.cwd();
 const nextDir = join(root, ".next");
 const outWalletDir = join(root, "out", "branding", "wallets");
+
+const FILENAME_MARKERS = [
+  "wallet-adapter",
+  "solflare-wallet",
+  "phantom-wallet",
+  "wallet-standard",
+];
+
+const CONTENT_MARKERS = [
+  "@solana/wallet-adapter",
+  "wallet-adapter-button",
+  "wallet-adapter-react",
+  "ConnectionProvider",
+];
+
+function sampleFileContent(filePath, maxBytes = 200_000) {
+  try {
+    const size = statSync(filePath).size;
+    const buf = readFileSync(filePath);
+    return buf.subarray(0, Math.min(size, maxBytes)).toString("utf8");
+  } catch {
+    return "";
+  }
+}
 
 function findWalletAdapterChunks(dir, hits = []) {
   if (!existsSync(dir)) return hits;
@@ -15,11 +39,20 @@ function findWalletAdapterChunks(dir, hits = []) {
     const full = join(dir, entry.name);
     if (entry.isDirectory()) {
       findWalletAdapterChunks(full, hits);
-    } else if (
-      entry.name.includes("wallet-adapter") ||
-      entry.name.includes("solflare-wallet")
-    ) {
-      hits.push(full.replace(root, ""));
+      continue;
+    }
+    if (!/\.(js|css|map)$/.test(entry.name)) continue;
+
+    const nameHit = FILENAME_MARKERS.some((marker) => entry.name.includes(marker));
+    const content = sampleFileContent(full);
+    const contentHit = CONTENT_MARKERS.some((marker) => content.includes(marker));
+
+    if (nameHit || contentHit) {
+      hits.push({
+        path: full.replace(root, ""),
+        nameHit,
+        contentHit,
+      });
     }
   }
   return hits;
@@ -35,8 +68,25 @@ if (chunks.length === 0) {
   process.exit(1);
 }
 
+const markerHits = {
+  "wallet-adapter-filename": chunks.filter((c) => c.nameHit && c.path.includes("wallet-adapter"))
+    .length,
+  "wallet-adapter-content": chunks.filter((c) =>
+    sampleFileContent(join(root, c.path)).includes("@solana/wallet-adapter")
+  ).length,
+  "wallet-adapter-css": chunks.filter((c) => c.path.endsWith(".css")).length,
+  "solflare-wallet": chunks.filter((c) => c.path.includes("solflare-wallet")).length,
+  total: chunks.length,
+};
+
 console.log("verify-solana-build: wallet-adapter chunks found:", chunks.length);
-chunks.slice(0, 10).forEach((chunk) => console.log("  ", chunk));
+console.log("verify-solana-build: marker hits:", markerHits);
+chunks.slice(0, 12).forEach((chunk) => console.log("  ", chunk.path));
+
+if (markerHits["wallet-adapter-content"] === 0 && markerHits["wallet-adapter-css"] === 0) {
+  console.error("verify-solana-build: missing wallet-adapter content in build artifacts");
+  process.exit(1);
+}
 
 if (existsSync(outWalletDir)) {
   const wallets = readdirSync(outWalletDir);
@@ -74,7 +124,7 @@ async function waitForServer(ms = 20000) {
   throw new Error("server did not become ready");
 }
 
-try {
+async function fetchSmoke() {
   const html = await waitForServer();
   const checks = [
     ["auth-slot", html.includes("auth-slot")],
@@ -87,7 +137,58 @@ try {
     }
     console.log(`verify-solana-build: homepage contains '${label}'`);
   }
+}
 
+async function playwrightSmoke() {
+  let chromium;
+  try {
+    ({ chromium } = await import("playwright"));
+  } catch {
+    console.log("verify-solana-build: playwright not installed, fetch smoke only");
+    return fetchSmoke();
+  }
+
+  const browser = await chromium.launch({ headless: true });
+  const consoleErrors = [];
+  const pageErrors = [];
+
+  try {
+    const page = await browser.newPage();
+    page.on("console", (msg) => {
+      if (msg.type() !== "error") return;
+      const text = msg.text();
+      if (text.includes("Failed to load resource")) return;
+      consoleErrors.push(text);
+    });
+    page.on("pageerror", (err) => pageErrors.push(err.message));
+
+    await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: "networkidle" });
+    await page.waitForSelector('[class*="auth-slot"], a:has-text("Sign in")', {
+      timeout: 10000,
+    });
+
+    const signInVisible = await page.locator('text=Sign in').first().isVisible();
+    if (!signInVisible) {
+      console.error("verify-solana-build: Sign in not visible in browser");
+      process.exit(1);
+    }
+    console.log("verify-solana-build: browser smoke — Sign in visible");
+
+    if (consoleErrors.length > 0) {
+      console.error("verify-solana-build: browser console errors:", consoleErrors);
+      process.exit(1);
+    }
+    if (pageErrors.length > 0) {
+      console.error("verify-solana-build: page errors:", pageErrors);
+      process.exit(1);
+    }
+    console.log("verify-solana-build: browser smoke — zero console/page errors");
+  } finally {
+    await browser.close();
+  }
+}
+
+try {
   const panelSource = readFileSync(
     join(root, "src/components/auth/WalletConnectPanel.tsx"),
     "utf8"
@@ -97,6 +198,8 @@ try {
     process.exit(1);
   }
   console.log("verify-solana-build: WalletConnectPanel ships wallet-connect-steps UI");
+
+  await playwrightSmoke();
 } catch (error) {
   console.error("verify-solana-build: page smoke failed:", error);
   console.error(serverLog.slice(-2000));

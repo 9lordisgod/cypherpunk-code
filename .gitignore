@@ -22,6 +22,9 @@
 /docs/_book
 /public/doc
 
+# audit artifacts (local verification only)
+.solana-audit-stamp.json
+
 # misc
 .DS_Store
 *.pem
