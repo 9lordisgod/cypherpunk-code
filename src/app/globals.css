@@ -1243,6 +1243,37 @@ body.mobile-menu-open {
   color: var(--planb-orange);
 }
 
+.built-with-solana__box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(var(--background), var(--background)) padding-box,
+    linear-gradient(135deg, #9945ff, #19fb9b) border-box;
+  padding: 8px 14px;
+  box-shadow: 3px 3px 0 var(--pixel-shadow);
+  transition: transform 100ms;
+}
+
+.built-with-solana:hover .built-with-solana__box {
+  transform: translate(-1px, -1px);
+}
+
+.built-with-solana__logo {
+  width: 20px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.built-with-solana__text {
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  color: var(--foreground);
+  white-space: nowrap;
+}
+
 .planb-attribution {
   border-color: var(--planb-orange);
 }
