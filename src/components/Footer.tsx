@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 import { BuiltWithSolana } from "@/components/BuiltWithSolana";
-import { PoweredByPlanB } from "@/components/planb/PoweredByPlanB";
 import { PixelCanadaFlag } from "@/components/pixel/PixelCanadaFlag";
 import { SiteLogo } from "@/components/SiteLogo";
 import { site } from "@/lib/data";
@@ -95,10 +94,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center gap-3 border-t-2 border-border pt-6">
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-            <PoweredByPlanB />
-            <BuiltWithSolana />
-          </div>
+          <BuiltWithSolana />
           <p className="text-center text-xs text-muted">{t("footerNote")}</p>
         </div>
       </div>
