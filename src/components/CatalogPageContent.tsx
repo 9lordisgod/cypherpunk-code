@@ -1,17 +1,12 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { CatalogClient } from "@/components/CatalogClient";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Resource } from "@/lib/types";
-import { site } from "@/lib/data";
 
 export function CatalogPageContent({ resources }: { resources: Resource[] }) {
   const { t } = useLanguage();
-
-  useEffect(() => {
-    document.title = `${t("catalogTitle")} · ${site.name}`;
-  }, [t]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">

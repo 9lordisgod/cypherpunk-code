@@ -7,6 +7,20 @@ import {
   resources,
   site,
 } from "@/lib/data";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata = buildPageMetadata({
+  title: site.tagline,
+  description: site.description,
+  path: "/",
+  keywords: [
+    "cypherpunk education",
+    "bitcoin course free",
+    "monero learning",
+    "privacy resources",
+    "cryptography curriculum",
+  ],
+});
 
 export default function HomePage() {
   const featured = getFeaturedResources();

@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { buildCanonicalRedirectUrl, isLegacyHost } from "@/lib/canonical-site";
+import {
+  buildCanonicalRedirectUrl,
+  shouldRedirectToCanonicalHost,
+} from "@/lib/canonical-site";
+import { isTopicSlug } from "@/lib/seo/topics";
 
 const SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
@@ -42,7 +46,8 @@ function buildCsp(pathname: string) {
 
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
-  if (isLegacyHost(host)) {
+
+  if (shouldRedirectToCanonicalHost(host)) {
     const { pathname, search } = request.nextUrl;
     return NextResponse.redirect(
       buildCanonicalRedirectUrl(pathname, search),
@@ -50,8 +55,24 @@ export function proxy(request: NextRequest) {
     );
   }
 
+  const { pathname, searchParams } = request.nextUrl;
+  if (pathname === "/catalog") {
+    const topic = searchParams.get("topic");
+    const paramKeys = [...searchParams.keys()];
+    if (
+      topic &&
+      isTopicSlug(topic) &&
+      paramKeys.length === 1 &&
+      paramKeys[0] === "topic"
+    ) {
+      return NextResponse.redirect(
+        buildCanonicalRedirectUrl(`/topics/${topic}`),
+        308
+      );
+    }
+  }
+
   const response = NextResponse.next();
-  const { pathname } = request.nextUrl;
 
   for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
     response.headers.set(key, value);

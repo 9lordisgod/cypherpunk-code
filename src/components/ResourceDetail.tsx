@@ -1,14 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { ScoreBadge } from "@/components/ScoreBadge";
 import { TopicBadge } from "@/components/TopicBadge";
 import { useResourceText } from "@/lib/i18n/useResourceText";
 import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
 import type { Resource } from "@/lib/types";
-import { site } from "@/lib/data";
 
 export function ResourceDetail({ resource }: { resource: Resource }) {
   const { t } = useLanguage();
@@ -24,10 +22,6 @@ export function ResourceDetail({ resource }: { resource: Resource }) {
   const title = getResourceTitle(resource.id, resource.title);
   const description = getResourceDescription(resource.id, resource.description);
   const provider = getResourceProvider(resource.id, resource.provider);
-
-  useEffect(() => {
-    document.title = `${title} · ${site.name}`;
-  }, [title, t]);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">

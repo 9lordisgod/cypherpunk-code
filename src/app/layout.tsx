@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { auth } from "@/auth";
 import { site } from "@/lib/data";
+import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/json-ld";
+import { absoluteUrl } from "@/lib/seo/metadata";
 import "./globals.css";
 
 const pixelFont = Press_Start_2P({
@@ -26,17 +29,65 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: site.name,
+    default: `${site.name} — ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  keywords: [
+    "cypherpunk",
+    "bitcoin education",
+    "monero privacy",
+    "cryptography course",
+    "digital sovereignty",
+    "privacy technology",
+    "learning paths",
+    "freedom education",
+  ],
+  applicationName: site.name,
+  authors: [{ name: site.creator.handle, url: site.creator.url }],
+  creator: site.creator.handle,
+  publisher: site.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: site.url,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: site.name,
     description: site.tagline,
     url: site.url,
     siteName: site.name,
     type: "website",
-    images: [{ url: "/logo.png", width: 512, height: 512, alt: site.name }],
+    locale: "en_US",
+    images: [
+      {
+        url: absoluteUrl("/logo.png"),
+        width: 512,
+        height: 512,
+        alt: site.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.tagline,
+    images: [absoluteUrl("/logo.png")],
+    creator: `@${site.creator.handle}`,
   },
   icons: {
     icon: [
@@ -62,6 +113,9 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${pixelFont.variable} ${pixelBody.variable} h-full`}
     >
+      <head>
+        <JsonLd data={[buildWebsiteJsonLd(), buildOrganizationJsonLd()]} />
+      </head>
       <body className="flex min-h-full flex-col">
         <Providers session={session}>{children}</Providers>
       </body>

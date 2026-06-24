@@ -34,13 +34,13 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         has: [{ type: "host", value: "cypherpunk-code.ca" }],
-        destination: "https://cypherpunk-code.com/:path*",
+        destination: "https://www.cypherpunk-code.com/:path*",
         permanent: true,
       },
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.cypherpunk-code.ca" }],
-        destination: "https://cypherpunk-code.com/:path*",
+        destination: "https://www.cypherpunk-code.com/:path*",
         permanent: true,
       },
       { source: "/roadmap", destination: "/doc/doc/roadmap.html", permanent: true },

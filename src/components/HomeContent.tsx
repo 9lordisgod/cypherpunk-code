@@ -171,7 +171,7 @@ export function HomeContent({
               .map(([key, label]) => (
                 <Link
                   key={key}
-                  href={`/catalog?topic=${key}`}
+                  href={`/topics/${key}`}
                   className="topic-pill flex items-center justify-between no-underline text-foreground"
                 >
                   <span>{label}</span>
