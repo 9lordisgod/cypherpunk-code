@@ -291,6 +291,15 @@ export const pageStringsEn = {
   adminDbWarning:
     "Production is using a local SQLite file. Configure Turso (DATABASE_URL + DATABASE_AUTH_TOKEN) or activity will not persist on Vercel.",
   adminStatActive: "Active learners (7d)",
+  adminStatAnonVisitors: "Anonymous visitors (7d)",
+  adminStatAnonViews: "Anonymous page views (7d)",
+  adminStatSignedViews: "Signed-in page views (7d)",
+  adminAnonTrendsTitle: "Anonymous visitor trends",
+  adminAnonTrendsHint:
+    "First-party localStorage ID only — no wallet data, no ad cookies, aggregate paths and catalog resources.",
+  adminAnonNoData: "No anonymous traffic recorded yet. Browse the site without signing in to seed trends.",
+  adminTopPages: "Top pages (anonymous)",
+  adminTopResources: "Top catalog resources (anonymous)",
   adminTopCourses: "Most studied courses",
   adminTopCoursesHint: "Based on signed-in chapter opens — not anonymous catalog views.",
   adminCourseViews: "Chapter opens",
@@ -590,6 +599,14 @@ export const pageStringsZhCN = {
   adminDbWarning:
     "生产环境正在使用本地 SQLite 文件。请配置 Turso（DATABASE_URL + DATABASE_AUTH_TOKEN），否则 Vercel 上数据无法持久保存。",
   adminStatActive: "活跃学习者（7 天）",
+  adminStatAnonVisitors: "匿名访客（7 天）",
+  adminStatAnonViews: "匿名页面浏览（7 天）",
+  adminStatSignedViews: "已登录页面浏览（7 天）",
+  adminAnonTrendsTitle: "匿名访客趋势",
+  adminAnonTrendsHint: "仅使用第一方 localStorage ID — 无钱包数据、无广告 Cookie，汇总路径与目录资源。",
+  adminAnonNoData: "尚无匿名流量记录。不登录浏览网站即可产生趋势数据。",
+  adminTopPages: "热门页面（匿名）",
+  adminTopResources: "热门目录资源（匿名）",
   adminTopCourses: "学习最多的课程",
   adminTopCoursesHint: "基于已登录用户的章节打开次数 — 非匿名目录浏览。",
   adminCourseViews: "章节打开",
@@ -900,6 +917,15 @@ export const pageStringsJa = {
   adminDbWarning:
     "本番環境でローカル SQLite ファイルを使用しています。Turso（DATABASE_URL + DATABASE_AUTH_TOKEN）を設定しないと、Vercel 上でデータは永続化されません。",
   adminStatActive: "アクティブ学習者（7 日）",
+  adminStatAnonVisitors: "匿名訪問者（7 日）",
+  adminStatAnonViews: "匿名ページビュー（7 日）",
+  adminStatSignedViews: "サインイン済みページビュー（7 日）",
+  adminAnonTrendsTitle: "匿名訪問者トレンド",
+  adminAnonTrendsHint:
+    "第一者 localStorage ID のみ — ウォレットデータや広告 Cookie なし。パスとカタログリソースを集計。",
+  adminAnonNoData: "匿名トラフィックはまだ記録されていません。サインインせずに閲覧するとデータが蓄積されます。",
+  adminTopPages: "人気ページ（匿名）",
+  adminTopResources: "人気リソース（匿名）",
   adminTopCourses: "最も学習されているコース",
   adminTopCoursesHint: "サインイン後の章オープンに基づく — 匿名カタログ閲覧ではありません。",
   adminCourseViews: "章オープン",
@@ -1219,6 +1245,16 @@ export const pageStringsFr = {
   adminDbWarning:
     "La production utilise un fichier SQLite local. Configurez Turso (DATABASE_URL + DATABASE_AUTH_TOKEN) sinon les données ne persistent pas sur Vercel.",
   adminStatActive: "Apprenants actifs (7 j)",
+  adminStatAnonVisitors: "Visiteurs anonymes (7 j)",
+  adminStatAnonViews: "Pages vues anonymes (7 j)",
+  adminStatSignedViews: "Pages vues connectées (7 j)",
+  adminAnonTrendsTitle: "Tendances des visiteurs anonymes",
+  adminAnonTrendsHint:
+    "ID localStorage first-party uniquement — pas de données portefeuille ni cookies pub. Chemins et ressources agrégés.",
+  adminAnonNoData:
+    "Aucun trafic anonyme enregistré. Naviguez sans vous connecter pour alimenter les tendances.",
+  adminTopPages: "Pages populaires (anonymes)",
+  adminTopResources: "Ressources populaires (anonymes)",
   adminTopCourses: "Cours les plus étudiés",
   adminTopCoursesHint:
     "Basé sur les ouvertures de chapitres connectées — pas les vues anonymes du catalogue.",

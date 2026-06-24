@@ -13,7 +13,12 @@ type Overview = {
     completedChapters: number;
     feedbackCount: number;
     activeLearners7d: number;
+    anonymousVisitors7d: number;
+    anonymousPageViews7d: number;
+    signedInPageViews7d: number;
   };
+  topAnonymousPages: Array<{ path: string; views: number }>;
+  topAnonymousResources: Array<{ resourceId: string; views: number }>;
   topCourses: Array<{
     courseSlug: string;
     courseTitle: string;
@@ -126,7 +131,8 @@ export function AdminDashboard() {
     data &&
     (data.stats.learners > 0 ||
       data.stats.progressEvents > 0 ||
-      data.stats.feedbackCount > 0);
+      data.stats.feedbackCount > 0 ||
+      data.stats.anonymousPageViews7d > 0);
 
   const showDbWarning =
     data?.meta.database === "sqlite-file" &&
@@ -160,9 +166,12 @@ export function AdminDashboard() {
 
       {data ? (
         <>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <StatCard label={t("adminStatLearners")} value={data.stats.learners} />
             <StatCard label={t("adminStatActive")} value={data.stats.activeLearners7d} />
+            <StatCard label={t("adminStatAnonVisitors")} value={data.stats.anonymousVisitors7d} />
+            <StatCard label={t("adminStatAnonViews")} value={data.stats.anonymousPageViews7d} />
+            <StatCard label={t("adminStatSignedViews")} value={data.stats.signedInPageViews7d} />
             <StatCard label={t("adminStatProgress")} value={data.stats.progressEvents} />
             <StatCard label={t("adminStatCompleted")} value={data.stats.completedChapters} />
             <StatCard label={t("adminStatFeedback")} value={data.stats.feedbackCount} />
@@ -178,6 +187,39 @@ export function AdminDashboard() {
               <p className="mt-2 text-sm text-muted">{t("adminEmptyBody")}</p>
             </div>
           ) : null}
+
+          <section className="mt-10">
+            <h2 className="text-lg font-semibold">{t("adminAnonTrendsTitle")}</h2>
+            <p className="mt-1 text-sm text-muted">{t("adminAnonTrendsHint")}</p>
+            {data.topAnonymousPages.length === 0 && data.topAnonymousResources.length === 0 ? (
+              <p className="mt-4 text-sm text-muted">{t("adminAnonNoData")}</p>
+            ) : (
+              <div className="mt-4 grid gap-6 lg:grid-cols-2">
+                <div>
+                  <h3 className="text-sm font-semibold">{t("adminTopPages")}</h3>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {data.topAnonymousPages.map((row) => (
+                      <li key={row.path} className="flex justify-between gap-3 pixel-panel px-3 py-2">
+                        <span className="truncate">{row.path}</span>
+                        <span className="text-muted">{row.views}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold">{t("adminTopResources")}</h3>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {data.topAnonymousResources.map((row) => (
+                      <li key={row.resourceId} className="flex justify-between gap-3 pixel-panel px-3 py-2">
+                        <span className="truncate">{row.resourceId}</span>
+                        <span className="text-muted">{row.views}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </section>
 
           <section className="mt-10">
             <h2 className="text-lg font-semibold">{t("adminTopCourses")}</h2>

@@ -7,7 +7,12 @@ export type AdminOverviewPayload = {
     completedChapters: number;
     feedbackCount: number;
     activeLearners7d: number;
+    anonymousVisitors7d: number;
+    anonymousPageViews7d: number;
+    signedInPageViews7d: number;
   };
+  topAnonymousPages: Array<{ path: string; views: number }>;
+  topAnonymousResources: Array<{ resourceId: string; views: number }>;
   topCourses: Array<{
     courseSlug: string;
     courseTitle: string;
@@ -56,6 +61,58 @@ export function getDatabaseMode(): AdminOverviewPayload["meta"]["database"] {
   return "unset";
 }
 
+async function loadAnonymousAnalytics(
+  prisma: PrismaClient,
+  sevenDaysAgo: Date
+) {
+  try {
+    const [anonymousVisitors7d, anonymousPageViews7d, signedInPageViews7d, pageGroups, resourceGroups] =
+      await Promise.all([
+        prisma.analyticsEvent.findMany({
+          where: { createdAt: { gte: sevenDaysAgo }, signedIn: false },
+          distinct: ["visitorId"],
+          select: { visitorId: true },
+        }),
+        prisma.analyticsEvent.count({
+          where: { createdAt: { gte: sevenDaysAgo }, signedIn: false },
+        }),
+        prisma.analyticsEvent.count({
+          where: { createdAt: { gte: sevenDaysAgo }, signedIn: true },
+        }),
+        prisma.analyticsEvent.groupBy({
+          by: ["path"],
+          where: { createdAt: { gte: sevenDaysAgo }, signedIn: false },
+          _count: { _all: true },
+        }),
+        prisma.analyticsEvent.groupBy({
+          by: ["resourceId"],
+          where: {
+            createdAt: { gte: sevenDaysAgo },
+            signedIn: false,
+            resourceId: { not: null },
+          },
+          _count: { _all: true },
+        }),
+      ]);
+
+    return {
+      anonymousVisitors7d,
+      anonymousPageViews7d,
+      signedInPageViews7d,
+      pageGroups,
+      resourceGroups,
+    };
+  } catch {
+    return {
+      anonymousVisitors7d: [],
+      anonymousPageViews7d: 0,
+      signedInPageViews7d: 0,
+      pageGroups: [] as Array<{ path: string; _count: { _all: number } }>,
+      resourceGroups: [] as Array<{ resourceId: string | null; _count: { _all: number } }>,
+    };
+  }
+}
+
 export async function buildAdminOverview(
   prisma: PrismaClient
 ): Promise<AdminOverviewPayload> {
@@ -73,6 +130,7 @@ export async function buildAdminOverview(
     courseGroups,
     completedGroups,
     courseTitles,
+    anonymousAnalytics,
   ] = await Promise.all([
     prisma.user.count({ where: { role: "learner" } }),
     prisma.chapterProgress.count(),
@@ -123,7 +181,16 @@ export async function buildAdminOverview(
       select: { courseSlug: true, courseTitle: true },
       orderBy: { lastReadAt: "desc" },
     }),
+    loadAnonymousAnalytics(prisma, sevenDaysAgo),
   ]);
+
+  const {
+    anonymousVisitors7d,
+    anonymousPageViews7d,
+    signedInPageViews7d,
+    pageGroups,
+    resourceGroups,
+  } = anonymousAnalytics;
 
   const completionMap = new Map(
     completedGroups.map((row) => [row.courseSlug, row._count._all])
@@ -134,6 +201,20 @@ export async function buildAdminOverview(
       row.courseTitle?.trim() || row.courseSlug,
     ])
   );
+
+  const topAnonymousPages = pageGroups
+    .map((row) => ({ path: row.path, views: row._count._all }))
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 10);
+
+  const topAnonymousResources = resourceGroups
+    .filter((row) => row.resourceId)
+    .map((row) => ({
+      resourceId: row.resourceId as string,
+      views: row._count._all,
+    }))
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 10);
 
   const topCourses = courseGroups
     .map((row) => ({
@@ -152,7 +233,12 @@ export async function buildAdminOverview(
       completedChapters,
       feedbackCount,
       activeLearners7d: activeLearners7d.length,
+      anonymousVisitors7d: anonymousVisitors7d.length,
+      anonymousPageViews7d,
+      signedInPageViews7d,
     },
+    topAnonymousPages,
+    topAnonymousResources,
     topCourses,
     recentUsers,
     recentProgress,
@@ -160,7 +246,7 @@ export async function buildAdminOverview(
     meta: {
       database: getDatabaseMode(),
       privacyNote:
-        "Wallet addresses are never stored — only one-way hashes and anonymous learner labels.",
+        "Wallet addresses are never stored. Anonymous trends use a first-party random ID in localStorage — no ad cookies, no cross-site tracking.",
     },
     generatedAt: new Date().toISOString(),
   };

@@ -97,3 +97,27 @@ CREATE UNIQUE INDEX "ChapterProgress_userId_courseSlug_chapterSlug_key" ON "Chap
 
 -- CreateIndex
 CREATE INDEX "Feedback_createdAt_idx" ON "Feedback"("createdAt");
+
+-- CreateTable
+CREATE TABLE "AnalyticsEvent" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "visitorId" TEXT NOT NULL,
+    "path" TEXT NOT NULL,
+    "resourceId" TEXT,
+    "courseSlug" TEXT,
+    "chapterSlug" TEXT,
+    "signedIn" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateIndex
+CREATE INDEX "AnalyticsEvent_createdAt_idx" ON "AnalyticsEvent"("createdAt");
+
+-- CreateIndex
+CREATE INDEX "AnalyticsEvent_path_idx" ON "AnalyticsEvent"("path");
+
+-- CreateIndex
+CREATE INDEX "AnalyticsEvent_visitorId_createdAt_idx" ON "AnalyticsEvent"("visitorId", "createdAt");
+
+-- CreateIndex
+CREATE INDEX "AnalyticsEvent_signedIn_createdAt_idx" ON "AnalyticsEvent"("signedIn", "createdAt");

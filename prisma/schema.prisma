@@ -85,3 +85,19 @@ model Feedback {
 
   @@index([createdAt])
 }
+
+model AnalyticsEvent {
+  id          String   @id @default(cuid())
+  visitorId   String
+  path        String
+  resourceId  String?
+  courseSlug  String?
+  chapterSlug String?
+  signedIn    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([path])
+  @@index([visitorId, createdAt])
+  @@index([signedIn, createdAt])
+}

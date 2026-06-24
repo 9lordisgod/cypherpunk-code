@@ -10,6 +10,7 @@ import {
   WalletConnectProvider,
   WalletConnectRouteSync,
 } from "@/components/auth/WalletConnectProvider";
+import { AnalyticsBeacon } from "@/components/AnalyticsBeacon";
 import { FeedbackFloater } from "@/components/FeedbackFloater";
 import { LanguagePicker } from "@/components/LanguagePicker";
 import { LanguageProvider } from "@/components/LanguageProvider";
@@ -34,6 +35,7 @@ export function Providers({
           <WalletConnectProvider>
             <Suspense fallback={null}>
               <WalletConnectRouteSync />
+              <AnalyticsBeacon />
             </Suspense>
             <WalletConnectFloaterBridge />
             {children}
