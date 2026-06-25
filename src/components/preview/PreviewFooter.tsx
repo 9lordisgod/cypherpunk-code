@@ -16,7 +16,6 @@ export function PreviewFooter() {
             <PreviewSiteLogo size="sm" />
             <span className="preview-footer__name">{site.name}</span>
           </div>
-          <p className="preview-footer__tagline">{t("footerTagline")}</p>
         </div>
         <div className="preview-footer__links">
           <Link href="/catalog" className="preview-footer__link">
