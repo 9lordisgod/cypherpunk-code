@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useLanguage } from "@/components/LanguageProvider";
 import { PreviewSiteLogo } from "@/components/preview/PreviewSiteLogo";
 import { site } from "@/lib/data";
 
 export function PreviewFooter() {
-  const { t } = useLanguage();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="preview-footer">
@@ -29,7 +28,9 @@ export function PreviewFooter() {
           </Link>
         </div>
       </div>
-      <p className="preview-footer__bottom">{t("footerNote")}</p>
+      <p className="preview-footer__bottom">
+        © {year} {site.name}. All rights reserved.
+      </p>
     </footer>
   );
 }
