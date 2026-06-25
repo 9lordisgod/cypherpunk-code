@@ -7,7 +7,7 @@ import {
 } from "@/lib/data";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata = buildPageMetadata({
+const homeMetadata = buildPageMetadata({
   title: "cypherpunk code",
   description: site.description,
   path: "/",
@@ -19,6 +19,11 @@ export const metadata = buildPageMetadata({
     "digital sovereignty",
   ],
 });
+
+export const metadata = {
+  ...homeMetadata,
+  title: { absolute: "cypherpunk code" },
+};
 
 export default function HomePage() {
   const featured = getFeaturedResources();
