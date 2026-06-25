@@ -21,7 +21,12 @@ export function PreviewVisualDivider({ variant }: PreviewVisualDividerProps) {
 
   return (
     <div className="preview-visual-divider preview-reveal" aria-hidden="true">
-      <Illustration className="preview-visual-divider__art" />
+      <div className="preview-visual-divider__frame">
+        <div className="preview-visual-divider__scan" />
+        <div className="preview-visual-divider__flow" />
+        <div className="preview-visual-divider__glow" />
+        <Illustration className="preview-visual-divider__art" />
+      </div>
     </div>
   );
 }

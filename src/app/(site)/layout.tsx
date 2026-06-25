@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { PreviewChromeHider } from "@/components/preview/PreviewChromeHider";
 import { PreviewFooter } from "@/components/preview/PreviewFooter";
 import { PreviewHeader } from "@/components/preview/PreviewHeader";
+import { PreviewAmbient } from "@/components/preview/PreviewAmbient";
 import { PreviewMotion } from "@/components/preview/PreviewMotion";
 import { ParticleField } from "@/components/preview/ParticleField";
 import "@/styles/preview-redesign.css";
@@ -20,6 +21,7 @@ export default function SiteLayout({
   return (
     <div className={`preview-theme ${siteSans.variable}`}>
       <PreviewChromeHider />
+      <PreviewAmbient />
       <PreviewMotion />
       <ParticleField />
       <PreviewHeader />

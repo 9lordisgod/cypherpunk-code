@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { PreviewSiteLogo } from "@/components/preview/PreviewSiteLogo";
 import { site } from "@/lib/data";
 
@@ -14,9 +15,19 @@ const navItems = [
 
 export function PreviewHeader() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="preview-header">
+    <header
+      className={`preview-header${scrolled ? " preview-header--scrolled" : ""}`}
+    >
       <div className="preview-header__inner">
         <Link href="/" className="preview-header__brand">
           <PreviewSiteLogo size="lg" />

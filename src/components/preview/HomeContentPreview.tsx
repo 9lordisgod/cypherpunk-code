@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
+import { HeroTitleReveal } from "@/components/preview/HeroTitleReveal";
 import { PreviewVisualDivider } from "@/components/preview/PreviewVisualDivider";
 import {
   HeroIllustration,
@@ -44,16 +45,20 @@ export function HomeContentPreview({
       <section className="preview-hero preview-hero--split">
         <div className="preview-hero__content">
           <p className="preview-hero__brand">{site.name}</p>
-          <h1 className="preview-hero__title">
-            {t("heroTitle1")} {t("heroTitle2")}
-          </h1>
+          <HeroTitleReveal
+            line1={t("heroTitle1")}
+            line2={t("heroTitle2")}
+          />
           <p className="preview-hero__subtitle">{t("heroDescription")}</p>
-          <Link href="/catalog" className="preview-btn preview-hero__cta">
+          <Link href="/catalog" className="preview-btn preview-btn--glow preview-hero__cta">
             {t("heroBrowse", { count: resourceCount })}
           </Link>
         </div>
-        <div className="preview-hero__visual preview-reveal" aria-hidden="true">
-          <HeroIllustration className="preview-hero__illus" />
+        <div
+          className="preview-hero__visual preview-hero__visual--parallax preview-reveal"
+          aria-hidden="true"
+        >
+          <HeroIllustration className="preview-hero__illus preview-hero__illus--float" />
         </div>
       </section>
 
@@ -61,8 +66,8 @@ export function HomeContentPreview({
 
       <section className="preview-section preview-section--split preview-reveal">
         <div className="preview-section__inner">
-          <div className="preview-section__header preview-section__header--with-visual">
-            <div>
+          <div className="preview-section__header preview-section__header--with-visual preview-stagger-group">
+            <div className="preview-stagger-group__item">
               <p className="preview-section__eyebrow">Learning Path</p>
               <h2 className="preview-section__title">{t("learningPathsTitle")}</h2>
               <p className="preview-section__desc">{t("learningPathsSubtitle")}</p>
@@ -70,16 +75,19 @@ export function HomeContentPreview({
                 {t("allPaths")} →
               </Link>
             </div>
-            <div className="preview-section__visual preview-section__visual--compact">
-              <ProtocolsIllustration className="preview-section__illus" />
+            <div
+              className="preview-section__visual preview-section__visual--compact preview-stagger-group__item"
+              data-parallax="0.14"
+            >
+              <ProtocolsIllustration className="preview-section__illus preview-section__illus--float" />
             </div>
           </div>
-          <div className="preview-path-list">
+          <div className="preview-path-list preview-stagger-group">
             {learningPaths.slice(0, 3).map((path) => (
               <Link
                 key={path.id}
                 href={`/paths#${path.id}`}
-                className="preview-path-item"
+                className="preview-path-item preview-stagger-group__item"
               >
                 <div>
                   <p className="preview-path-item__title">
@@ -102,17 +110,21 @@ export function HomeContentPreview({
 
       <section className="preview-section preview-section--surface preview-reveal">
         <div className="preview-section__inner">
-          <div className="preview-section__header preview-section__header--center">
-            <h2 className="preview-section__title">{t("featuredTitle")}</h2>
-            <p className="preview-section__desc">{t("featuredSubtitle")}</p>
+          <div className="preview-section__header preview-section__header--center preview-stagger-group">
+            <h2 className="preview-section__title preview-stagger-group__item">
+              {t("featuredTitle")}
+            </h2>
+            <p className="preview-section__desc preview-stagger-group__item">
+              {t("featuredSubtitle")}
+            </p>
           </div>
           <div className="preview-grid preview-grid--3">
             {featured.slice(0, 3).map((resource) => (
               <PreviewResourceCard key={resource.id} resource={resource} />
             ))}
           </div>
-          <div className="preview-section__cta-center">
-            <Link href="/catalog" className="preview-btn">
+          <div className="preview-section__cta-center preview-reveal">
+            <Link href="/catalog" className="preview-btn preview-btn--glow">
               {t("viewAll")} →
             </Link>
           </div>
