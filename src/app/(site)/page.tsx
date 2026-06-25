@@ -8,7 +8,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
-  title: site.tagline,
+  title: "cypherpunk code",
   description: site.description,
   path: "/",
   keywords: [
