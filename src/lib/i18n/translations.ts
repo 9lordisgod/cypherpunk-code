@@ -68,7 +68,7 @@ const en = {
   footerSupport: "Support",
   footerDonate: "Donate BTC/XMR",
   footerContact: "Contact us",
-  footerTagline: "Freedom education for Bitcoin, Monero & cypherpunk sovereignty",
+  footerTagline: "Freedom education",
   footerNote: "Cypherpunk Code — freedom education",
 
   // Labels
@@ -162,7 +162,7 @@ const zhCN: TranslationStrings = {
   footerSupport: "支持",
   footerDonate: "捐赠 BTC/XMR",
   footerContact: "联系我们",
-  footerTagline: "比特币、门罗币与密码朋克主权的自由教育",
+  footerTagline: "自由教育",
   footerNote: "Cypherpunk Code — 自由教育",
 
   topicBitcoin: "比特币",
@@ -255,8 +255,7 @@ const ja: TranslationStrings = {
   footerSupport: "サポート",
   footerDonate: "BTC/XMR を寄付",
   footerContact: "お問い合わせ",
-  footerTagline:
-    "ビットコイン、モネロ、サイファーパンク主権のためのフリーダム教育",
+  footerTagline: "フリーダム教育",
   footerNote: "Cypherpunk Code — フリーダム教育",
 
   topicBitcoin: "ビットコイン",
@@ -350,8 +349,7 @@ const fr: TranslationStrings = {
   footerSupport: "Soutien",
   footerDonate: "Donner BTC/XMR",
   footerContact: "Nous contacter",
-  footerTagline:
-    "Éducation libertaire pour la souveraineté Bitcoin, Monero et cypherpunk",
+  footerTagline: "Éducation libertaire",
   footerNote: "Cypherpunk Code — éducation libertaire",
 
   topicBitcoin: "Bitcoin",
