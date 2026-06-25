@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLanguage } from "@/components/LanguageProvider";
 import {
   SidebarKeyIcon,
   SidebarNodeIcon,
@@ -46,7 +45,6 @@ const sidebarLinks = [
 
 export function PreviewDocContent() {
   const pathname = usePathname();
-  const { t } = useLanguage();
 
   return (
     <div className="preview-doc-layout preview-reveal">

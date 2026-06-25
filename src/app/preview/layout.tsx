@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Inter } from "next/font/google";
 import { PreviewFooter } from "@/components/preview/PreviewFooter";
 import { PreviewHeader } from "@/components/preview/PreviewHeader";
@@ -33,7 +34,7 @@ export default function PreviewLayout({
         <span>—</span>
         <span>White + orange redesign</span>
         <span>·</span>
-        <a href="/">View current site →</a>
+        <Link href="/">View current site →</Link>
       </div>
       <ParticleField />
       <PreviewHeader />
