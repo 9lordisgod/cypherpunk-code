@@ -1,10 +1,12 @@
 type IllusProps = { className?: string };
 
 const ORANGE = "#f97316";
-const ORANGE_SOFT = "rgba(249, 115, 22, 0.35)";
-const ORANGE_FAINT = "rgba(249, 115, 22, 0.12)";
-const GRAY = "#e5e7eb";
-const MUTED = "#9ca3af";
+const ORANGE_SOFT = "rgba(249, 115, 22, 0.45)";
+const ORANGE_FAINT = "rgba(249, 115, 22, 0.16)";
+const GRAY = "rgba(255, 255, 255, 0.14)";
+const MUTED = "#737373";
+const SURFACE = "#111111";
+const WHITE = "#f5f5f5";
 
 export function HeroIllustration({ className = "" }: IllusProps) {
   return (
@@ -80,7 +82,7 @@ export function FoundationIllustration({ className = "" }: IllusProps) {
         strokeWidth="1.5"
         opacity="0.5"
       />
-      <circle cx="140" cy="148" r="16" stroke="#1a1a1a" strokeWidth="1.5" />
+      <circle cx="140" cy="148" r="16" stroke={WHITE} strokeWidth="1.5" opacity="0.85" />
       <rect x="136" y="132" width="8" height="32" rx="2" fill={ORANGE} />
       <rect x="124" y="148" width="32" height="8" rx="2" fill={ORANGE} opacity="0.7" />
       {[
@@ -95,9 +97,9 @@ export function FoundationIllustration({ className = "" }: IllusProps) {
 export function CryptographyIllustration({ className = "" }: IllusProps) {
   return (
     <svg className={className} viewBox="0 0 280 200" fill="none" aria-hidden="true">
-      <rect x="100" y="60" width="80" height="64" rx="8" stroke={ORANGE} strokeWidth="2" fill="#fff" />
+      <rect x="100" y="60" width="80" height="64" rx="8" stroke={ORANGE} strokeWidth="2" fill={SURFACE} />
       <path d="M116 60 V48 C116 36 164 36 164 48 V60" stroke={ORANGE} strokeWidth="2" />
-      <circle cx="140" cy="92" r="10" stroke="#1a1a1a" strokeWidth="1.5" />
+      <circle cx="140" cy="92" r="10" stroke={WHITE} strokeWidth="1.5" opacity="0.85" />
       <rect x="137" y="92" width="6" height="14" rx="1" fill={ORANGE} />
       <text x="40" y="160" fill={MUTED} fontFamily="monospace" fontSize="11" opacity="0.7">
         01001101
@@ -118,10 +120,10 @@ export function ProtocolsIllustration({ className = "" }: IllusProps) {
   return (
     <svg className={className} viewBox="0 0 320 220" fill="none" aria-hidden="true">
       <circle cx="160" cy="110" r="12" fill={ORANGE} opacity="0.9" />
-      <circle cx="60" cy="60" r="8" stroke={ORANGE} strokeWidth="1.5" fill="#fff" />
-      <circle cx="260" cy="60" r="8" stroke={ORANGE} strokeWidth="1.5" fill="#fff" />
-      <circle cx="60" cy="160" r="8" stroke={ORANGE} strokeWidth="1.5" fill="#fff" />
-      <circle cx="260" cy="160" r="8" stroke={ORANGE} strokeWidth="1.5" fill="#fff" />
+      <circle cx="60" cy="60" r="8" stroke={ORANGE} strokeWidth="1.5" fill={SURFACE} />
+      <circle cx="260" cy="60" r="8" stroke={ORANGE} strokeWidth="1.5" fill={SURFACE} />
+      <circle cx="60" cy="160" r="8" stroke={ORANGE} strokeWidth="1.5" fill={SURFACE} />
+      <circle cx="260" cy="160" r="8" stroke={ORANGE} strokeWidth="1.5" fill={SURFACE} />
       <circle cx="30" cy="110" r="5" fill={MUTED} opacity="0.5" />
       <circle cx="290" cy="110" r="5" fill={MUTED} opacity="0.5" />
       <path
@@ -138,9 +140,9 @@ export function ImplementationIllustration({ className = "" }: IllusProps) {
   return (
     <svg className={className} viewBox="0 0 360 200" fill="none" aria-hidden="true">
       <path d="M80 140 L120 100 L160 120 L200 80 L240 110 L280 90" stroke={ORANGE} strokeWidth="1.5" opacity="0.5" />
-      <rect x="100" y="120" width="40" height="40" rx="4" stroke={GRAY} strokeWidth="1" fill="#fff" />
+      <rect x="100" y="120" width="40" height="40" rx="4" stroke={GRAY} strokeWidth="1" fill={SURFACE} />
       <rect x="160" y="100" width="40" height="56" rx="4" stroke={ORANGE} strokeWidth="1.5" fill={ORANGE_FAINT} />
-      <rect x="220" y="110" width="40" height="46" rx="4" stroke={GRAY} strokeWidth="1" fill="#fff" />
+      <rect x="220" y="110" width="40" height="46" rx="4" stroke={GRAY} strokeWidth="1" fill={SURFACE} />
       <path d="M120 140 H200 M140 120 V160 M180 100 V156" stroke={ORANGE} strokeWidth="1" opacity="0.4" />
       <circle cx="180" cy="128" r="6" fill={ORANGE} opacity="0.7" />
       <path d="M60 160 H300" stroke={GRAY} strokeWidth="1" />
