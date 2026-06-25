@@ -19,14 +19,7 @@ export function ResourceCard({ resource }: { resource: Resource }) {
     >
       <div className="mb-3 flex items-start justify-between gap-3">
         <div className="flex flex-wrap gap-2">
-          <span
-            className="px-2 py-0.5 text-xs text-muted"
-            style={{
-              border: "2px solid var(--border)",
-              fontFamily: "var(--font-pixel)",
-              fontSize: "7px",
-            }}
-          >
+          <span className="resource-card__type">
             {typeLabels[resource.type]}
           </span>
           <span className="rounded bg-background px-2 py-0.5 text-xs text-muted">
@@ -36,10 +29,7 @@ export function ResourceCard({ resource }: { resource: Resource }) {
         <ScoreBadge score={resource.cypherpunkScore} />
       </div>
 
-      <h3
-        className="mb-2 text-base font-semibold leading-snug group-hover:text-accent"
-        style={{ fontFamily: "var(--font-pixel)", fontSize: "9px", lineHeight: 1.8 }}
-      >
+      <h3 className="resource-card__title mb-2 text-base font-semibold leading-snug group-hover:text-accent">
         {getResourceTitle(resource.id, resource.title)}
       </h3>
 

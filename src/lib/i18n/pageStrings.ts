@@ -31,6 +31,8 @@ export const pageStringsEn = {
   catalogSortScore: "CP Score",
   catalogSortTitle: "Title A–Z",
   catalogSortRelevance: "Relevance",
+  catalogFilters: "Filters",
+  catalogFiltersActive: "{count} active",
 
   pathsPageTitle: "Learning Paths",
   pathsPageDescription:
@@ -354,6 +356,8 @@ export const pageStringsZhCN = {
   catalogSortScore: "CP 评分",
   catalogSortTitle: "标题 A–Z",
   catalogSortRelevance: "相关性",
+  catalogFilters: "筛选",
+  catalogFiltersActive: "{count} 项已选",
 
   pathsPageTitle: "学习路径",
   pathsPageDescription:
@@ -661,6 +665,8 @@ export const pageStringsJa = {
   catalogSortScore: "CP スコア",
   catalogSortTitle: "タイトル A–Z",
   catalogSortRelevance: "関連性",
+  catalogFilters: "フィルター",
+  catalogFiltersActive: "{count} 件適用中",
 
   pathsPageTitle: "学習パス",
   pathsPageDescription:
@@ -980,6 +986,8 @@ export const pageStringsFr = {
   catalogSortScore: "Score CP",
   catalogSortTitle: "Titre A–Z",
   catalogSortRelevance: "Pertinence",
+  catalogFilters: "Filtres",
+  catalogFiltersActive: "{count} actifs",
 
   pathsPageTitle: "Parcours d'apprentissage",
   pathsPageDescription:

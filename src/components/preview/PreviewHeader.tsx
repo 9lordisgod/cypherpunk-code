@@ -13,9 +13,15 @@ const navItems = [
   { href: "/about", label: "About" },
 ];
 
+function isNavActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function PreviewHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -24,25 +30,82 @@ export function PreviewHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.classList.toggle("preview-menu-open", menuOpen);
+    return () => document.body.classList.remove("preview-menu-open");
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   return (
     <header
-      className={`preview-header${scrolled ? " preview-header--scrolled" : ""}`}
+      className={`preview-header${scrolled ? " preview-header--scrolled" : ""}${menuOpen ? " preview-header--menu-open" : ""}`}
     >
       <div className="preview-header__inner">
         <Link href="/" className="preview-header__brand">
           <PreviewSiteLogo size="lg" />
           <span className="preview-header__name">{site.name}</span>
         </Link>
+
         <nav className="preview-header__nav" aria-label="Main">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={`preview-nav-link ${
-                pathname === item.href || pathname.startsWith(`${item.href}/`)
-                  ? "preview-nav-link--active"
+                isNavActive(pathname, item.href) ? "preview-nav-link--active" : ""
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <button
+          type="button"
+          className={`preview-header__menu-btn${menuOpen ? " preview-header__menu-btn--open" : ""}`}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="preview-mobile-nav"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className="preview-header__menu-icon" aria-hidden="true">
+            <span className="preview-header__menu-bar" />
+            <span className="preview-header__menu-bar" />
+            <span className="preview-header__menu-bar" />
+          </span>
+        </button>
+      </div>
+
+      <div
+        id="preview-mobile-nav"
+        className={`preview-mobile-nav${menuOpen ? " preview-mobile-nav--open" : ""}`}
+        hidden={!menuOpen}
+      >
+        <nav className="preview-mobile-nav__inner" aria-label="Mobile">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`preview-mobile-nav__link ${
+                isNavActive(pathname, item.href)
+                  ? "preview-mobile-nav__link--active"
                   : ""
               }`}
+              onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </Link>

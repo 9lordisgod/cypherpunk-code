@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 import {
@@ -52,6 +52,19 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
     [resources, filters, filterHelpers]
   );
 
+  const activeFilterCount = useMemo(() => {
+    let count = 0;
+    if (filters.query.trim()) count += 1;
+    if (filters.minCypherpunkScore > 0) count += 1;
+    count += filters.topics.length;
+    count += filters.types.length;
+    if (filters.difficulty) count += 1;
+    if (filters.pricing) count += 1;
+    return count;
+  }, [filters]);
+
+  const [filtersOpen, setFiltersOpen] = useState(false);
+
   function toggleTopic(topic: (typeof allTopics)[number]) {
     updateFilters((f) => ({
       ...f,
@@ -71,9 +84,31 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   }
 
   return (
-    <div className="flex flex-col gap-8 lg:flex-row">
-      <aside className="w-full shrink-0 lg:w-64">
-        <div className="space-y-6 rounded-lg border border-border bg-card p-5 lg:sticky lg:top-20">
+    <div className="catalog-layout flex flex-col gap-8 lg:flex-row">
+      <button
+        type="button"
+        className="catalog-filters-toggle lg:hidden"
+        aria-expanded={filtersOpen}
+        aria-controls="catalog-filters-panel"
+        onClick={() => setFiltersOpen((open) => !open)}
+      >
+        <span className="catalog-filters-toggle__label">{t("catalogFilters")}</span>
+        {activeFilterCount > 0 ? (
+          <span className="catalog-filters-toggle__badge">
+            {t("catalogFiltersActive", { count: activeFilterCount })}
+          </span>
+        ) : null}
+        <span
+          className={`catalog-filters-toggle__chevron${filtersOpen ? " catalog-filters-toggle__chevron--open" : ""}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      <aside
+        id="catalog-filters-panel"
+        className={`catalog-filters w-full shrink-0 lg:w-64${filtersOpen ? " catalog-filters--open" : ""}`}
+      >
+        <div className="catalog-filters__panel space-y-6 rounded-lg border border-border bg-card p-5 lg:sticky lg:top-20">
           <div>
             <label
               htmlFor="catalog-search"
@@ -254,7 +289,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
         </div>
       </aside>
 
-      <div className="min-w-0 flex-1">
+      <div className="catalog-results min-w-0 flex-1">
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted">
             {t("resourcesCount", { count: filtered.length })}
