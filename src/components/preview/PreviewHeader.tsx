@@ -21,7 +21,8 @@ function isNavActive(pathname: string, href: string) {
 export function PreviewHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState<string | null>(null);
+  const menuOpen = menuPath === pathname;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -29,10 +30,6 @@ export function PreviewHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.classList.toggle("preview-menu-open", menuOpen);
@@ -43,7 +40,7 @@ export function PreviewHeader() {
     if (!menuOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") setMenuPath(null);
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -80,7 +77,7 @@ export function PreviewHeader() {
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           aria-controls="preview-mobile-nav"
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() => setMenuPath(menuOpen ? null : pathname)}
         >
           <span className="preview-header__menu-icon" aria-hidden="true">
             <span className="preview-header__menu-bar" />
@@ -105,7 +102,7 @@ export function PreviewHeader() {
                   ? "preview-mobile-nav__link--active"
                   : ""
               }`}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => setMenuPath(null)}
             >
               {item.label}
             </Link>
