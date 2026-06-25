@@ -23,15 +23,15 @@ Where Cypherpunk Code is headed — freedom education for learners.
 
 | Milestone | Target |
 | --- | --- |
-| Expand catalog with community submissions | Q3 2026 |
-| Resource submission form (no X scraping required) | Q3 2026 |
-| **Open catalog data layer** (`resources.json`, `paths.json`, `site.json`) | Q3 2026 |
-| Publish [Openness Policy](openness-policy.md) — data first, code second | Q3 2026 |
+| Expand catalog with community submissions | Q3 2027 |
+| Resource submission form (no X scraping required) | Q3 2027 |
+| **Open catalog data layer** (`resources.json`, `paths.json`, `site.json`) | Q3 2027 |
+| Publish [Openness Policy](openness-policy.md) — data first, code second | Q3 2027 |
 | More Monero & Bitcoin privacy resources | Ongoing |
-| Periodic automated checks for broken links | Q3 2026 |
-| Changelog page for database updates | Q3 2026 |
-| Community-based NFT PFP collection | Q4 2026 |
-| Analytics and user feedback loops | Q3 2026 |
+| Periodic automated checks for broken links | Q3 2027 |
+| Changelog page for database updates | Q3 2027 |
+| Community-based NFT PFP collection | Q4 2027 |
+| Analytics and user feedback loops | Q3 2027 |
 
 ---
 
@@ -39,13 +39,13 @@ Where Cypherpunk Code is headed — freedom education for learners.
 
 | Milestone | Target |
 | --- | --- |
-| Multilingual resource tags | 2027 |
-| RSS / feed for new catalog entries | 2027 |
-| Improved learning path builder | 2027 |
-| Contributor credits for submitted resources | 2027 |
-| Export catalog data (JSON/CSV) | 2027 |
-| Onchain quizzes with verifiable progress | 2027 |
-| Free verifiable certificates (Soulbound tokens on Solana) | 2027 |
+| Multilingual resource tags | 2028 |
+| RSS / feed for new catalog entries | 2028 |
+| Improved learning path builder | 2028 |
+| Contributor credits for submitted resources | 2028 |
+| Export catalog data (JSON/CSV) | 2028 |
+| Onchain quizzes with verifiable progress | 2028 |
+| Free verifiable certificates (Soulbound tokens on Solana) | 2028 |
 
 ---
 
@@ -53,12 +53,12 @@ Where Cypherpunk Code is headed — freedom education for learners.
 
 | Milestone | Target |
 | --- | --- |
-| Public API for developers | 2027+ |
-| Nostr-based update notifications | 2027+ |
-| Community curation workflow | 2027+ |
-| Mirror-friendly static archive dumps | 2027+ |
-| **Solana Seeker dApp Store launch** | 2027+ |
-| Gamification: badges, achievements, streaks | 2027+ |
+| Public API for developers | 2029+ |
+| Nostr-based update notifications | 2029+ |
+| Community curation workflow | 2029+ |
+| Mirror-friendly static archive dumps | 2029+ |
+| **Solana Seeker dApp Store launch** | 2029+ |
+| Gamification: badges, achievements, streaks | 2029+ |
 
 ---
 
@@ -119,10 +119,10 @@ Contact: [@sapherpunk](https://x.com/sapherpunk)
 
 ```
 2026 Q2  ████████████  Phase 1 Launch + DOC
-2026 Q3  ░░░░░░░░░░░░  Phase 2 — Grow database
-2026 Q4  ░░░░░░░░░░░░  Phase 2 — Interactive features
-2027     ░░░░░░░░░░░░  Phase 3 — Discovery + onchain learning
-2027+    ░░░░░░░░░░░░  Phase 4 — Ecosystem + Seeker dApp
+2027 Q3  ░░░░░░░░░░░░  Phase 2 — Grow database
+2027 Q4  ░░░░░░░░░░░░  Phase 2 — Interactive features
+2028     ░░░░░░░░░░░░  Phase 3 — Discovery + onchain learning
+2029+    ░░░░░░░░░░░░  Phase 4 — Ecosystem + Seeker dApp
 ```
 
 ---
