@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src=".github/app-icon-box.png" alt="Cypherpunk Code" width="128" />
+<img src=".github/app-icon-box.png" alt="Cypherpunk Education & Crypto Wikipedia" width="128" />
 
-# Cypherpunk Code
+# Cypherpunk Education & Crypto Wikipedia
 
-Freedom education for Bitcoin, Monero, and cypherpunk sovereignty.
+A database of the crypto world — the Wikipedia of the crypto industry.
 
 **[cypherpunk-code.com](https://cypherpunk-code.com)**
 

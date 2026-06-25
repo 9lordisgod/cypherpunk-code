@@ -23,7 +23,7 @@ export async function generateMetadata({
 
   return buildPageMetadata({
     title: "Resource Catalog",
-    description: `Search and filter ${resources.length} curated freedom education resources for Bitcoin, Monero, privacy, and cypherpunk sovereignty.`,
+    description: `Search and filter ${resources.length} curated crypto encyclopedia resources — the database of the crypto world for Bitcoin, Monero, privacy, and cypherpunk education.`,
     path: "/catalog",
     keywords: [
       "crypto resource catalog",

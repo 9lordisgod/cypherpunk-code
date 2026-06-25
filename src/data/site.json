@@ -1,9 +1,9 @@
 {
-  "name": "Cypherpunk Code",
+  "name": "Cypherpunk Education & Crypto Wikipedia",
   "domain": "www.cypherpunk-code.com",
   "url": "https://www.cypherpunk-code.com",
-  "tagline": "Freedom education",
-  "description": "A curated freedom education index — courses, papers, guides, and documentation for cryptocurrency, privacy technology, and cypherpunk philosophy. No trading noise, just signal.",
+  "tagline": "Crypto Wikipedia",
+  "description": "A living database of the crypto world — the Wikipedia of the crypto industry. Cypherpunk education, curated resources, and encyclopedic coverage of protocols, privacy, history, and tools.",
   "creator": {
     "handle": "CHxmrBrother",
     "url": "https://x.com/CHxmrBrother"
