@@ -28,6 +28,7 @@
 # misc
 .DS_Store
 *.pem
+.screenshot-temp.png
 .screenshot-turso*.png
 
 # debug
@@ -60,3 +61,14 @@ next-env.d.ts
 # database
 /prisma/*.db
 /prisma/*.db-journal
+
+# logo experiments (use scripts/deploy-logo.py with a source PNG)
+/logo-review/
+
+# marketing manager (local bot + generated media)
+/tools/marketing-manager/.env
+/tools/marketing-manager/.venv/
+/tools/marketing-manager/__pycache__/
+/tools/marketing-manager/**/__pycache__/
+/tools/marketing-manager/output/
+/tools/marketing-manager/state/
