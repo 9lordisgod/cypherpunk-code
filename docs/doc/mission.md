@@ -117,8 +117,8 @@ See [Project Roadmap](roadmap.md) for public milestones and [Openness Policy](op
 | Freedom education focus | Permanent |
 | Editorial curation (CP Score) | Permanent |
 | Multilingual support | Expanding |
-| Open catalog data (JSON) | Planned — Q3 2026 |
-| Community submissions | Planned — Q3 2026 |
+| Open catalog data (JSON) | Planned — Q3 2027 |
+| Community submissions | Planned — Q3 2027 |
 | Application source code | Staged release — date TBD |
 | Onchain learning features | Planned |
 

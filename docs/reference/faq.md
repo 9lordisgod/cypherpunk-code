@@ -74,11 +74,11 @@ No third-party trackers, ad cookies, or behavioral profiling. Anonymous page-vie
 
 ### Can I export the catalog data?
 
-Not yet. The catalog database (`resources.json`, `paths.json`) will be published under an open license in **Q3 2026**, when the submission form ships. Full JSON/CSV export tooling is planned for Phase 3. See [Openness Policy](../doc/openness-policy.md).
+Not yet. The catalog database (`resources.json`, `paths.json`) will be published under an open license in **Q3 2027**, when the submission form ships. Full JSON/CSV export tooling is planned for Phase 3. See [Openness Policy](../doc/openness-policy.md).
 
 ### Is the project open source?
 
-**Not yet.** The application codebase is private while admin tooling and production infrastructure mature. The live site, documentation, mission, and roadmap are public. We open **data first, code second** — catalog data in Q3 2026; application source in stages afterward. See [Openness Policy](../doc/openness-policy.md).
+**Not yet.** The application codebase is private while admin tooling and production infrastructure mature. The live site, documentation, mission, and roadmap are public. We open **data first, code second** — catalog data in Q3 2027; application source in stages afterward. See [Openness Policy](../doc/openness-policy.md).
 
 ---
 
@@ -102,11 +102,11 @@ Bitcoin and Monero addresses are on the [About page](https://cypherpunk-code.com
 
 ### Will there be a mobile app?
 
-The web platform is already mobile-responsive. A Solana Seeker dApp is planned for 2027+ as a secondary channel. See [Project Roadmap](../doc/roadmap.md).
+The web platform is already mobile-responsive. A Solana Seeker dApp is planned for 2029+ as a secondary channel. See [Project Roadmap](../doc/roadmap.md).
 
 ### Will there be onchain certificates?
 
-Yes — free verifiable certificates (Soulbound tokens on Solana) are planned for 2027. See [Project Roadmap](../doc/roadmap.md).
+Yes — free verifiable certificates (Soulbound tokens on Solana) are planned for 2028. See [Project Roadmap](../doc/roadmap.md).
 
 ### Will you add more resources?
 

@@ -48,7 +48,7 @@ The repository is **private and proprietary**. We do not accept public pull requ
 
 We will not flip a single “open source everything” switch. Openness will roll out in layers, tied to real milestones.
 
-### Trigger: Q3 2026 (Phase 2)
+### Trigger: Q3 2027 (Phase 2)
 
 When we ship the **resource submission form** and begin formal community curation, we will **publish the catalog data layer** under an open license:
 
@@ -97,7 +97,7 @@ Contact [@sapherpunk](https://x.com/sapherpunk) on X or use the [contact section
 
 | Asset | Current | Target |
 | --- | --- | --- |
-| Catalog data (`resources.json`, `paths.json`, `site.json`) | Proprietary (bundled with private repo) | Open license — **from Q3 2026** |
+| Catalog data (`resources.json`, `paths.json`, `site.json`) | Proprietary (bundled with private repo) | Open license — **from Q3 2027** |
 | Documentation (`docs/`) | Proprietary (bundled with private repo) | Open license — **with or before data release** |
 | Application code | Proprietary, all rights reserved | Staged open release — **date TBD** |
 

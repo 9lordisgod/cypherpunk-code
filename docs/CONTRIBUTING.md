@@ -50,7 +50,7 @@ Output is copied to `public/doc/` and served at `/doc/` by Next.js.
 
 This repository is **private and closed source**. Direct edits to code or documentation require maintainer access.
 
-Public transparency commitments — including opening the catalog data layer in Q3 2026 — are documented in [`doc/openness-policy.md`](doc/openness-policy.md).
+Public transparency commitments — including opening the catalog data layer in Q3 2027 — are documented in [`doc/openness-policy.md`](doc/openness-policy.md).
 
 ## Suggesting changes
 
