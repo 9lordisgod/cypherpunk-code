@@ -1,4 +1,5 @@
 import { PathsContent } from "@/components/PathsContent";
+import { PreviewPageWrap } from "@/components/preview/PreviewPageWrap";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
@@ -15,5 +16,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function PathsPage() {
-  return <PathsContent />;
+  return (
+    <PreviewPageWrap>
+      <PathsContent />
+    </PreviewPageWrap>
+  );
 }

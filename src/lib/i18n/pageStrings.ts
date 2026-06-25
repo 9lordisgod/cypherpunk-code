@@ -317,7 +317,7 @@ export const pageStringsEn = {
   adminWhen: "When",
   adminReading: "Reading",
   adminLearners: "Learners",
-  adminUserStats: "{progress} chapters tracked · {feedback} feedback",
+  adminUserStats: "{feedback} feedback submissions",
   adminFeedback: "Feedback inbox",
 } as const;
 
@@ -624,7 +624,7 @@ export const pageStringsZhCN = {
   adminWhen: "时间",
   adminReading: "阅读中",
   adminLearners: "学习者",
-  adminUserStats: "已追踪 {progress} 章 · {feedback} 条反馈",
+  adminUserStats: "{feedback} 条反馈",
   adminFeedback: "反馈收件箱",
 } as const;
 
@@ -943,7 +943,7 @@ export const pageStringsJa = {
   adminWhen: "日時",
   adminReading: "閲覧中",
   adminLearners: "学習者",
-  adminUserStats: "{progress} 章を追跡 · {feedback} 件のフィードバック",
+  adminUserStats: "{feedback} 件のフィードバック",
   adminFeedback: "フィードバック受信箱",
 } as const;
 
@@ -1273,6 +1273,6 @@ export const pageStringsFr = {
   adminWhen: "Quand",
   adminReading: "En lecture",
   adminLearners: "Apprenants",
-  adminUserStats: "{progress} chapitres suivis · {feedback} commentaires",
+  adminUserStats: "{feedback} commentaires",
   adminFeedback: "Boîte de commentaires",
 } as const;

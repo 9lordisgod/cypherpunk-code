@@ -52,8 +52,6 @@ All curated learning paths on Cypherpunk Code, with study order and resource cou
 
 **Outcome:** Understand Bitcoin technically and run your own infrastructure.
 
-**DOC track:** [Bitcoin Learning Overview](../bitcoin/overview.md)
-
 ---
 
 ## 3. Monero Privacy Path
@@ -104,8 +102,6 @@ All curated learning paths on Cypherpunk Code, with study order and resource cou
 | 5 | Samourai Wallet | 8 |
 
 **Outcome:** Reclaim fungibility with CoinJoin and privacy wallets.
-
-**DOC track:** [Phase 4 — Privacy Techniques](../bitcoin/phase-4-privacy.md)
 
 ---
 

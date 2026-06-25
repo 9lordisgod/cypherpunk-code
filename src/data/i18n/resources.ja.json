@@ -374,11 +374,6 @@
     "description": "実践的OPSECガイド——ソーシャルメディア安全、アカウント衛生、デバイスセキュリティ、Tor、Signal、VM、公開人物向けの上級ヒント。",
     "provider": "BushidoUK"
   },
-  "planb-academy": {
-    "title": "Plan ₿ Academy",
-    "description": "ビットコイン向け多言語eラーニングプラットフォーム——ビットコイン、Lightning、暗号学、マイニング、プライバシーのコース。planb.academyで受講。",
-    "provider": "Plan ₿ Network"
-  },
   "code-orange-sovereign-bitcoiner": {
     "title": "Sovereign Bitcoiner Crash Course",
     "description": "5〜10週間の無料コース（CC0）——ビットコイン哲学、ノード運用、マイニング基礎、マルチシグ、プライバシー。Code Orange Dev School。",

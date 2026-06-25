@@ -32,7 +32,7 @@ No. This is an education index. Nothing here constitutes financial, investment, 
 
 ### Where do I start?
 
-1. Read [How to Study (Bottom → Top)](../doc/how-to-study.md)
+1. Read [How to Study](../doc/how-to-study.md)
 2. Follow the [Cypherpunk Foundations](https://cypherpunk-code.com/paths#cypherpunk-foundations) path
 3. Then move to [Bitcoin Sovereignty](https://cypherpunk-code.com/paths#bitcoin-sovereignty)
 
@@ -70,7 +70,7 @@ Contact [@sapherpunk](https://x.com/sapherpunk) on X. Include the resource name 
 
 ### Is my browsing tracked?
 
-No. We do not use user tracking, analytics cookies, or behavioral profiling.
+No third-party trackers, ad cookies, or behavioral profiling. Anonymous page-view counts use a first-party random ID in localStorage only — no accounts, no cross-site tracking. See [Platform Security](security.md).
 
 ### Can I export the catalog data?
 
@@ -78,7 +78,7 @@ Not yet. The catalog database (`resources.json`, `paths.json`) will be published
 
 ### Is the project open source?
 
-**Not yet.** The application codebase is private while auth, wallet sign-in, and admin tooling mature. The live site, documentation, mission, and roadmap are public. We open **data first, code second** — catalog data in Q3 2026; application source in stages afterward. See [Openness Policy](../doc/openness-policy.md).
+**Not yet.** The application codebase is private while admin tooling and production infrastructure mature. The live site, documentation, mission, and roadmap are public. We open **data first, code second** — catalog data in Q3 2026; application source in stages afterward. See [Openness Policy](../doc/openness-policy.md).
 
 ---
 

@@ -12,7 +12,7 @@ This documentation explains **how to study effectively**, **how to get the most 
 
 | You are… | Start here |
 | --- | --- |
-| A complete beginner | [How to Study (Bottom → Top)](doc/how-to-study.md) |
+| A complete beginner | [How to Study](doc/how-to-study.md) |
 | Returning to crypto after trading noise | [Platform Guide](doc/platform-guide.md) |
 | A contributor or curator | [Mission & Values](doc/mission.md) |
 | Curious about what's next | [Project Roadmap](doc/roadmap.md) |

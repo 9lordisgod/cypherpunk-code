@@ -1,4 +1,5 @@
 import { CatalogPageContent } from "@/components/CatalogPageContent";
+import { PreviewPageWrap } from "@/components/preview/PreviewPageWrap";
 import { resources } from "@/lib/data";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getTopicSeo, isTopicSlug } from "@/lib/seo/topics";
@@ -34,5 +35,9 @@ export async function generateMetadata({
 }
 
 export default function CatalogPage() {
-  return <CatalogPageContent resources={resources} />;
+  return (
+    <PreviewPageWrap>
+      <CatalogPageContent resources={resources} />
+    </PreviewPageWrap>
+  );
 }

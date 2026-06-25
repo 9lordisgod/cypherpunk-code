@@ -10,9 +10,9 @@ How Cypherpunk Code balances transparency with a private codebase during early d
 
 **The application codebase is closed source at this stage — and that is intentional.**
 
-Cypherpunk Code is an early-stage project with auth, wallet sign-in, admin tooling, and production infrastructure still maturing. Keeping the implementation private while we stabilize security and architecture is the right call for now.
+Cypherpunk Code is an early-stage project with admin tooling and production infrastructure still maturing. Keeping the implementation private while we stabilize security and architecture is the right call for now.
 
-**The risk is not being private. The risk is staying private too long without compensating transparency** — especially as wallet features and community curation go live.
+**The risk is not being private. The risk is staying private too long without compensating transparency** — especially as community curation and the open data layer go live.
 
 This policy is our commitment to open the parts that matter first.
 
@@ -62,9 +62,8 @@ This is the highest-leverage transparency step: the editorial work — CP Scores
 
 Application code will open in stages as features stabilize:
 
-1. **Wallet and progress features** — once auth paths are reviewed and hardened
-2. **Catalog tooling** — export scripts, link checkers, submission workflows
-3. **Core platform** — when architecture is stable enough to welcome maintainers
+1. **Catalog tooling** — export scripts, link checkers, submission workflows
+2. **Core platform** — when architecture is stable enough to welcome maintainers
 
 We are **not** committing to a specific date for full application open source. We *are* committing to this order: **public data and docs before private implementation details**.
 

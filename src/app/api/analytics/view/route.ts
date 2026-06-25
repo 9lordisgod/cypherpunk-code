@@ -33,8 +33,6 @@ export async function POST(request: Request) {
         visitorId,
         path: parsed.path,
         resourceId: parsed.resourceId,
-        courseSlug: parsed.courseSlug,
-        chapterSlug: parsed.chapterSlug,
         signedIn,
       },
     });

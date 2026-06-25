@@ -1072,20 +1072,6 @@
     "tags": ["opsec", "practical", "open-source"]
   },
   {
-    "id": "planb-academy",
-    "title": "Plan ₿ Academy",
-    "description": "Multilingual open-source e-learning platform for Bitcoin — courses on Bitcoin, Lightning, cryptography, mining, and privacy. Content repo on GitHub, courses at planb.academy.",
-    "url": "https://planb.academy/courses",
-    "type": "course",
-    "topics": ["bitcoin", "lightning", "cryptography", "mining", "privacy"],
-    "difficulty": "beginner",
-    "pricing": "free",
-    "provider": "Plan ₿ Network",
-    "language": "English",
-    "cypherpunkScore": 8,
-    "tags": ["multilingual", "open-source", "community"]
-  },
-  {
     "id": "code-orange-sovereign-bitcoiner",
     "title": "Sovereign Bitcoiner Crash Course",
     "description": "Free 5–10 week open-source course (CC0) on Bitcoin philosophy, running nodes, mining basics, multisig, and privacy — from Code Orange Dev School.",

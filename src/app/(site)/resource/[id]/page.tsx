@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { PreviewPageWrap } from "@/components/preview/PreviewPageWrap";
 import { ResourceDetail } from "@/components/ResourceDetail";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getResourceById, resources } from "@/lib/data";
@@ -57,7 +58,9 @@ export default async function ResourcePage({
           ]),
         ]}
       />
-      <ResourceDetail resource={resource} />
+      <PreviewPageWrap>
+        <ResourceDetail resource={resource} />
+      </PreviewPageWrap>
     </>
   );
 }

@@ -1,8 +1,6 @@
-import { HomeContent } from "@/components/HomeContent";
+import { HomeContentPreview } from "@/components/preview/HomeContentPreview";
 import {
   getFeaturedResources,
-  getTopicCounts,
-  getTypeCounts,
   learningPaths,
   resources,
   site,
@@ -15,29 +13,21 @@ export const metadata = buildPageMetadata({
   path: "/",
   keywords: [
     "cypherpunk education",
-    "bitcoin course free",
     "monero learning",
     "privacy resources",
     "cryptography curriculum",
+    "digital sovereignty",
   ],
 });
 
 export default function HomePage() {
   const featured = getFeaturedResources();
-  const topicCounts = getTopicCounts();
-  const typeCounts = getTypeCounts();
-  const freeCount = resources.filter((r) => r.pricing === "free").length;
 
   return (
-    <HomeContent
+    <HomeContentPreview
       featured={featured}
-      topicCounts={topicCounts}
-      typeCounts={typeCounts}
       learningPaths={learningPaths}
       resourceCount={resources.length}
-      freeCount={freeCount}
-      creatorHandle={site.creator.handle}
-      creatorUrl={site.creator.url}
     />
   );
 }

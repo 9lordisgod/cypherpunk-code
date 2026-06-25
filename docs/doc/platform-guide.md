@@ -1,4 +1,4 @@
-# Platform Guide — Get the Most Out of It
+# Platform Guide
 
 Cypherpunk Code is not a traditional course platform with videos and quizzes. It is a **freedom education index** with editorial curation — a wiki-style catalog where every resource is scored, categorized, and sequenced into learning paths.
 
@@ -157,7 +157,7 @@ If a link is broken or a listing is inaccurate, contact the curator. Broken link
 
 ## 8. Security & privacy
 
-The platform uses layered protections: HTTPS, security headers, API rate limits, wallet nonce auth, and encrypted operator configuration (never stored in the public repo).
+The platform uses layered protections: HTTPS, security headers, API rate limits, and encrypted operator configuration (never stored in the public repo). No wallet sign-in is required to browse.
 
 See [Platform Security](../reference/security.md) for the public overview.
 
@@ -217,7 +217,7 @@ Catalog search → filter by topic + type → open resource → follow tags to r
 
 ## Next steps
 
-- [How to Study (Bottom → Top)](how-to-study.md)
+- [How to Study](how-to-study.md)
 - [Mission & Values](mission.md)
 - [Project Roadmap](roadmap.md)
 - [FAQ](../reference/faq.md)

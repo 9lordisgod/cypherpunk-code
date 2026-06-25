@@ -4,19 +4,11 @@
 
 ## DOC — Start Here
 
-* [How to Study (Bottom → Top)](doc/how-to-study.md)
-* [Platform Guide — Get the Most Out of It](doc/platform-guide.md)
+* [How to Study](doc/how-to-study.md)
+* [Platform Guide](doc/platform-guide.md)
 * [Mission & Values](doc/mission.md)
 * [Openness Policy](doc/openness-policy.md)
 * [Project Roadmap](doc/roadmap.md)
-
-## Bitcoin Course Track
-
-* [Bitcoin Learning Overview](bitcoin/overview.md)
-* [Phase 1 — Philosophy & Whitepaper](bitcoin/phase-1-foundations.md)
-* [Phase 2 — Technical Deep Dive](bitcoin/phase-2-technical.md)
-* [Phase 3 — Sovereignty & Full Node](bitcoin/phase-3-sovereignty.md)
-* [Phase 4 — Privacy Techniques](bitcoin/phase-4-privacy.md)
 
 ## Reference
 

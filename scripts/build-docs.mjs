@@ -142,20 +142,22 @@ function patchHtml(filePath) {
 <div class="cp-doc-topbar">
   <button type="button" class="cp-doc-topbar__menu" aria-label="Toggle sidebar">☰</button>
   <a class="cp-doc-topbar__brand" href="/">
-    <span class="cp-doc-topbar__mark">◆</span>
+    <img src="/logo-brand.png" alt="" class="cp-doc-topbar__logo" width="48" height="48" />
     <span>Cypherpunk Code</span>
   </a>
-  <span class="cp-doc-topbar__badge">DOC</span>
+  <nav class="cp-doc-topbar__nav" aria-label="Main">
+    <a href="/doc/" class="is-active">Beacon</a>
+    <a href="/catalog">Catalog</a>
+    <a href="/paths">Learning Path</a>
+    <a href="/about">About</a>
+  </nav>
   <a class="cp-doc-topbar__back" href="/">← Back to site</a>
 </div>`;
 
-  if (!html.includes("cp-doc-topbar")) {
+  if (html.includes("cp-doc-topbar")) {
+    html = html.replace(/<div class="cp-doc-topbar">[\s\S]*?<\/div>/i, topBar);
+  } else {
     html = html.replace(/<body[^>]*>/i, (match) => `${match}\n${topBar}`);
-  } else if (!html.includes("cp-doc-topbar__menu")) {
-    html = html.replace(
-      /<div class="cp-doc-topbar">\s*/,
-      `<div class="cp-doc-topbar">\n  <button type="button" class="cp-doc-topbar__menu" aria-label="Toggle sidebar">☰</button>\n  `
-    );
   }
 
   html = html.replace(/class="book honkit-cloak"/g, 'class="book cp-doc"');

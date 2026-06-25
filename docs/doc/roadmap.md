@@ -32,7 +32,6 @@ Where Cypherpunk Code is headed — freedom education for learners.
 | Periodic automated checks for broken links | Q3 2026 |
 | Changelog page for database updates | Q3 2026 |
 | Community-based NFT PFP collection | Q4 2026 |
-| Basic wallet connection for interactive modules | Q4 2026 |
 | Analytics and user feedback loops | Q3 2026 |
 
 ---
@@ -70,7 +69,7 @@ The Solana Seeker dApp Store is planned as a **secondary distribution channel**,
 
 ```
 Phase 1: Web + PWA (primary)     →  Maximum reach, all devices
-Phase 2: Interactive features    →  Wallet connect, onchain learning
+Phase 2: Community & data        →  Submissions, open catalog data
 Phase 3: Seeker dApp (secondary) →  Crypto-native mobile users
 ```
 
@@ -97,7 +96,7 @@ Detailed Seeker dApp strategy is maintained privately by the project operators.
 
 | Metric | Why it matters |
 | --- | --- |
-| Course completion rate | Are paths working? |
+| Path engagement | Are learning paths working? |
 | Returning users / engagement | Is the archive useful? |
 | Community growth (Nostr/X) | Is word spreading? |
 | Time spent learning | Depth of engagement |

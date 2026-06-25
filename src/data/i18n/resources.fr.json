@@ -374,11 +374,6 @@
     "description": "Guide OPSEC pratique — sécurité des réseaux sociaux, hygiène des comptes, sécurité des appareils, Tor, Signal, VMs et conseils avancés pour les personnes exposées.",
     "provider": "BushidoUK"
   },
-  "planb-academy": {
-    "title": "Plan ₿ Academy",
-    "description": "Plateforme d'apprentissage multilingue pour le Bitcoin — cours sur Bitcoin, Lightning, cryptographie, minage et confidentialité. Cours sur planb.academy.",
-    "provider": "Plan ₿ Network"
-  },
   "code-orange-sovereign-bitcoiner": {
     "title": "Sovereign Bitcoiner Crash Course",
     "description": "Cours gratuit de 5 à 10 semaines (CC0) sur la philosophie Bitcoin, l'exploitation de nœuds, les bases du minage, le multisig et la confidentialité — Code Orange Dev School.",

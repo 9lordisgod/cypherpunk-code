@@ -98,7 +98,7 @@ New resources are added through curator review and community suggestions. If any
 ## Long-term vision
 
 1. **Web-first platform** — excellent PWA experience accessible to everyone
-2. **Interactive learning** — wallet connection, onchain simulations, verifiable progress
+2. **Interactive learning** — hands-on labs, structured paths, and practice-first modules
 3. **Community growth** — Nostr integration, private in-person community
 4. **Solana Seeker dApp** — secondary distribution channel for crypto-native learners
 5. **Sustainable funding** — sponsorships, grants, and affiliates (never from learners)

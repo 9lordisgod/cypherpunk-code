@@ -1,4 +1,4 @@
-# How to Study (Bottom → Top)
+# How to Study
 
 The most common mistake in crypto education is starting at the top — wallets, exchanges, price charts — without understanding **why** any of it matters. Cypherpunk Code is designed to be studied **from the bottom up**: foundations first, tools second, advanced sovereignty last.
 
@@ -8,26 +8,11 @@ Think of learning like building a tower. You cannot place the roof before the fo
 
 ## The study pyramid
 
-<div class="cp-pyramid">
-
-<div class="cp-pyramid__layer cp-pyramid__layer--top">
-<strong>Advanced Sovereignty</strong>
-<span>Deep cryptography · protocol dev · full nodes · CoinJoin · Monero</span>
-</div>
-
-<div class="cp-pyramid__layer">
-<strong>Technical Layer</strong>
-<span>Bitcoin internals · wallets · nodes · scripting</span>
-</div>
-
-<div class="cp-pyramid__layer cp-pyramid__layer--base">
-<strong>Philosophy & History</strong>
-<span>Cypherpunk manifesto · why privacy matters · historical context</span>
-</div>
-
-</div>
-
-**Always start at the bottom.** Each layer supports everything above it.
+| Layer | Topics |
+| --- | --- |
+| **Advanced Sovereignty** | Deep cryptography · protocol dev · full nodes · CoinJoin · Monero |
+| **Technical Layer** | Bitcoin internals · wallets · nodes · scripting |
+| **Philosophy & History** *(start here)* | Cypherpunk manifesto · why privacy matters · historical context |
 
 ---
 
@@ -157,23 +142,7 @@ Use the **Cypherpunk Score filter** in the catalog (7+) to automatically hide lo
 
 ---
 
-## Study milestones
-
-Check off each milestone before moving to the next level:
-
-- [ ] Read the Cypherpunk Manifesto and can summarize its core thesis
-- [ ] Read the Bitcoin whitepaper and understand UTXOs at a high level
-- [ ] Set up a Bitcoin wallet (self-custody, not exchange)
-- [ ] Complete one full learning path end-to-end
-- [ ] Run Tor Browser and understand what it does
-- [ ] Set up GPG and encrypt/decrypt a message
-- [ ] Explain CoinJoin to someone in plain language
-- [ ] Run or connect to a Bitcoin full node
-
----
-
 ## Next steps
 
 - [Platform Guide](platform-guide.md) — how to use every feature of Cypherpunk Code
-- [Bitcoin Learning Overview](../bitcoin/overview.md) — detailed Bitcoin course track
 - [Learning Paths Index](../reference/learning-paths.md) — all curated paths

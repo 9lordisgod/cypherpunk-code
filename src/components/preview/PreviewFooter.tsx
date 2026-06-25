@@ -1,0 +1,36 @@
+"use client";
+
+import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
+import { PreviewSiteLogo } from "@/components/preview/PreviewSiteLogo";
+import { site } from "@/lib/data";
+
+export function PreviewFooter() {
+  const { t } = useLanguage();
+
+  return (
+    <footer className="preview-footer">
+      <div className="preview-footer__inner">
+        <div>
+          <div className="preview-footer__brand">
+            <PreviewSiteLogo size="sm" />
+            <span className="preview-footer__name">{site.name}</span>
+          </div>
+          <p className="preview-footer__tagline">{t("footerTagline")}</p>
+        </div>
+        <div className="preview-footer__links">
+          <Link href="/catalog" className="preview-footer__link">
+            Catalog
+          </Link>
+          <Link href="/paths" className="preview-footer__link">
+            Learning Path
+          </Link>
+          <Link href="/about" className="preview-footer__link">
+            About
+          </Link>
+        </div>
+      </div>
+      <p className="preview-footer__bottom">{t("footerNote")}</p>
+    </footer>
+  );
+}

@@ -19,7 +19,6 @@ model User {
   updatedAt     DateTime          @updatedAt
   accounts      Account[]
   sessions      Session[]
-  progress      ChapterProgress[]
   feedback      Feedback[]
 }
 
@@ -57,22 +56,6 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model ChapterProgress {
-  id           String   @id @default(cuid())
-  userId       String
-  courseSlug   String
-  chapterSlug  String
-  chapterTitle String
-  courseTitle  String?
-  completed    Boolean  @default(false)
-  lastReadAt   DateTime @default(now())
-  completedAt  DateTime?
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, courseSlug, chapterSlug])
-  @@index([userId, lastReadAt])
-}
-
 model Feedback {
   id        String   @id @default(cuid())
   userId    String?
@@ -91,8 +74,6 @@ model AnalyticsEvent {
   visitorId   String
   path        String
   resourceId  String?
-  courseSlug  String?
-  chapterSlug String?
   signedIn    Boolean  @default(false)
   createdAt   DateTime @default(now())
 

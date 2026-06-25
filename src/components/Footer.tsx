@@ -45,11 +45,6 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/courses" className="text-muted hover:text-foreground no-underline">
-                    {t("navCourses")}
-                  </Link>
-                </li>
-                <li>
                   <Link href="/catalog" className="text-muted hover:text-foreground no-underline">
                     {t("navCatalog")}
                   </Link>

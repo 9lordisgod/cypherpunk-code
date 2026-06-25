@@ -46,20 +46,6 @@ CREATE TABLE "VerificationToken" (
 );
 
 -- CreateTable
-CREATE TABLE "ChapterProgress" (
-    "id" TEXT NOT NULL PRIMARY KEY,
-    "userId" TEXT NOT NULL,
-    "courseSlug" TEXT NOT NULL,
-    "chapterSlug" TEXT NOT NULL,
-    "chapterTitle" TEXT NOT NULL,
-    "courseTitle" TEXT,
-    "completed" BOOLEAN NOT NULL DEFAULT false,
-    "lastReadAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "completedAt" DATETIME,
-    CONSTRAINT "ChapterProgress_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
-);
-
--- CreateTable
 CREATE TABLE "Feedback" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT,
@@ -90,12 +76,6 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
 
 -- CreateIndex
-CREATE INDEX "ChapterProgress_userId_lastReadAt_idx" ON "ChapterProgress"("userId", "lastReadAt");
-
--- CreateIndex
-CREATE UNIQUE INDEX "ChapterProgress_userId_courseSlug_chapterSlug_key" ON "ChapterProgress"("userId", "courseSlug", "chapterSlug");
-
--- CreateIndex
 CREATE INDEX "Feedback_createdAt_idx" ON "Feedback"("createdAt");
 
 -- CreateTable
@@ -104,8 +84,6 @@ CREATE TABLE "AnalyticsEvent" (
     "visitorId" TEXT NOT NULL,
     "path" TEXT NOT NULL,
     "resourceId" TEXT,
-    "courseSlug" TEXT,
-    "chapterSlug" TEXT,
     "signedIn" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

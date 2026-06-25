@@ -1,17 +1,19 @@
-/* Cypherpunk Code — DOC (flat layout, no HonKit chrome) */
+/* Cypherpunk Code — Documentation (clean white + orange) */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
-  --cp-bg: #0c1408;
-  --cp-bg-secondary: #10180c;
-  --cp-fg: #f2f5e8;
-  --cp-muted: #9aad88;
-  --cp-border: #2d4a20;
-  --cp-accent: #4ade20;
-  --cp-accent-orange: #ff7a18;
-  --cp-accent-dim: rgba(74, 222, 32, 0.12);
-  --cp-topbar-h: 52px;
-  --cp-sidebar-w: 260px;
+  --cp-bg: #ffffff;
+  --cp-bg-secondary: #f8f9fa;
+  --cp-fg: #000000;
+  --cp-fg-soft: #1a1a1a;
+  --cp-muted: #6b7280;
+  --cp-muted-dark: #374151;
+  --cp-border: #e5e7eb;
+  --cp-accent: #f97316;
+  --cp-accent-hover: #ea580c;
+  --cp-accent-soft: rgba(249, 115, 22, 0.08);
+  --cp-topbar-h: 64px;
+  --cp-sidebar-w: 240px;
   --cp-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --cp-font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
@@ -27,9 +29,14 @@ body {
   margin: 0;
   padding: 0;
   background: var(--cp-bg);
-  color: var(--cp-fg);
+  color: var(--cp-fg-soft);
   font-family: var(--cp-font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--cp-accent-soft);
+  color: var(--cp-accent);
 }
 
 /* ── Top bar ── */
@@ -40,9 +47,10 @@ body {
   height: var(--cp-topbar-h);
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 20px;
-  background: var(--cp-bg);
+  gap: 16px;
+  padding: 0 32px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--cp-border);
 }
 
@@ -54,8 +62,8 @@ body {
   height: 36px;
   padding: 0;
   border: 1px solid var(--cp-border);
-  border-radius: 6px;
-  background: transparent;
+  border-radius: 8px;
+  background: #ffffff;
   color: var(--cp-muted);
   cursor: pointer;
   font-size: 18px;
@@ -63,45 +71,77 @@ body {
 }
 
 .cp-doc-topbar__menu:hover {
-  color: var(--cp-fg);
+  color: var(--cp-fg-soft);
   border-color: var(--cp-accent);
 }
 
 .cp-doc-topbar__brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: var(--cp-fg);
+  gap: 14px;
+  color: var(--cp-fg-soft);
   text-decoration: none;
   font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.cp-doc-topbar__logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.cp-doc-topbar__nav {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.cp-doc-topbar__nav a {
+  padding: 8px 14px;
   font-size: 14px;
+  font-weight: 500;
+  color: var(--cp-muted);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
-.cp-doc-topbar__mark {
-  color: var(--cp-accent-orange);
-  font-size: 11px;
+.cp-doc-topbar__nav a:hover {
+  color: var(--cp-fg-soft);
+  background: var(--cp-bg-secondary);
 }
 
-.cp-doc-topbar__badge {
-  font-family: var(--cp-font-mono);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+.cp-doc-topbar__nav a.is-active {
   color: var(--cp-accent);
-  background: var(--cp-accent-dim);
-  padding: 3px 8px;
-  border-radius: 4px;
 }
 
 .cp-doc-topbar__back {
   margin-left: auto;
-  color: var(--cp-muted);
+  padding: 8px 16px;
+  color: var(--cp-accent);
+  background: #ffffff;
+  border: 1px solid var(--cp-accent);
+  border-radius: 8px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s ease;
 }
 
 .cp-doc-topbar__back:hover {
-  color: var(--cp-accent-orange);
+  background: var(--cp-accent-soft);
+  color: var(--cp-accent-hover);
+}
+
+@media (min-width: 900px) {
+  .cp-doc-topbar__nav {
+    display: flex;
+  }
 }
 
 /* ── Shell: sidebar + content ── */
@@ -119,7 +159,7 @@ body {
   width: var(--cp-sidebar-w);
   height: calc(100vh - var(--cp-topbar-h));
   overflow-y: auto;
-  background: var(--cp-bg);
+  background: var(--cp-bg-secondary);
   border-right: 1px solid var(--cp-border);
 }
 
@@ -138,7 +178,6 @@ body {
   background: transparent;
 }
 
-/* Hide HonKit leftovers */
 .book-header,
 .navigation-prev,
 .navigation-next,
@@ -151,7 +190,7 @@ body {
 
 /* ── Sidebar nav ── */
 .book .book-summary nav {
-  padding: 12px 0 24px;
+  padding: 20px 0 32px;
 }
 
 .book .book-summary ul.summary {
@@ -167,33 +206,33 @@ body {
 .book .book-summary ul.summary li a,
 .book .book-summary ul.summary li span {
   display: block;
-  color: var(--cp-muted);
-  font-size: 13px;
-  line-height: 1.35;
-  padding: 8px 20px;
+  color: var(--cp-muted-dark);
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 9px 24px;
   text-decoration: none;
   border: none;
   transition: color 0.12s ease, background 0.12s ease;
 }
 
 .book .book-summary ul.summary li a:hover {
-  color: var(--cp-fg);
-  background: var(--cp-bg-secondary);
+  color: var(--cp-fg-soft);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .book .book-summary ul.summary li.active > a {
   color: var(--cp-accent);
-  background: var(--cp-accent-dim);
+  background: var(--cp-accent-soft);
   font-weight: 600;
 }
 
 .book .book-summary ul.summary li.header {
-  color: var(--cp-accent-orange);
-  font-size: 10px;
-  font-weight: 700;
+  color: var(--cp-muted);
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 16px 20px 6px;
+  padding: 20px 24px 8px;
   pointer-events: none;
 }
 
@@ -203,41 +242,42 @@ body {
 
 /* ── Main content ── */
 .book .book-body .page-inner {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 36px 40px 72px;
+  padding: 48px 40px 80px;
 }
 
 .book .markdown-section {
   font-size: 16px;
   line-height: 1.75;
-  color: var(--cp-muted);
+  color: var(--cp-muted-dark);
 }
 
 .book .markdown-section h1 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 600;
   color: var(--cp-fg);
   margin: 0 0 0.75em;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   border: none;
   padding: 0;
 }
 
 .book .markdown-section h2 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--cp-fg);
-  margin: 2em 0 0.6em;
+  margin: 2.25em 0 0.65em;
   padding: 0;
   border: none;
+  letter-spacing: -0.02em;
 }
 
 .book .markdown-section h3 {
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--cp-accent);
-  margin: 1.5em 0 0.5em;
+  color: var(--cp-fg-soft);
+  margin: 1.75em 0 0.5em;
 }
 
 .book .markdown-section p {
@@ -249,28 +289,29 @@ body {
 }
 
 .book .markdown-section a {
-  color: var(--cp-accent-orange);
+  color: var(--cp-accent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .book .markdown-section a:hover {
-  color: #ff9a4d;
+  color: var(--cp-accent-hover);
 }
 
 .book .markdown-section code {
   font-family: var(--cp-font-mono);
-  background: var(--cp-accent-dim);
-  color: var(--cp-accent);
+  background: var(--cp-bg-secondary);
+  color: var(--cp-fg-soft);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.88em;
+  border: 1px solid var(--cp-border);
 }
 
 .book .markdown-section pre {
   background: var(--cp-bg-secondary);
-  border-left: 2px solid var(--cp-border);
-  border-radius: 0;
+  border: 1px solid var(--cp-border);
+  border-radius: 8px;
   padding: 16px 20px;
   margin: 1.25em 0;
   overflow-x: auto;
@@ -278,19 +319,20 @@ body {
 
 .book .markdown-section pre code {
   background: transparent;
-  color: var(--cp-fg);
+  color: var(--cp-fg-soft);
+  border: none;
   padding: 0;
 }
 
 .book .markdown-section blockquote {
-  border-left: 3px solid var(--cp-accent-orange);
+  border-left: 3px solid var(--cp-accent);
   margin: 1.25em 0;
   padding: 0 0 0 16px;
-  color: var(--cp-fg);
+  color: var(--cp-muted-dark);
 }
 
 .book .markdown-section blockquote p {
-  color: var(--cp-fg);
+  color: var(--cp-muted-dark);
 }
 
 .book .markdown-section hr {
@@ -308,7 +350,7 @@ body {
 
 .book .markdown-section table th {
   text-align: left;
-  color: var(--cp-accent);
+  color: var(--cp-muted);
   font-size: 0.78em;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -318,8 +360,8 @@ body {
 
 .book .markdown-section table td {
   padding: 10px 12px 10px 0;
-  border-bottom: 1px solid rgba(45, 74, 32, 0.45);
-  color: var(--cp-muted);
+  border-bottom: 1px solid var(--cp-border);
+  color: var(--cp-muted-dark);
 }
 
 .book .markdown-section ul,
@@ -332,7 +374,6 @@ body {
   accent-color: var(--cp-accent);
 }
 
-/* Platform glance list */
 .cp-glance {
   margin: 1.5em 0;
   display: grid;
@@ -343,7 +384,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 12px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--cp-border);
 }
 
@@ -357,7 +398,6 @@ body {
   font-size: 0.88rem;
 }
 
-/* Study pyramid */
 .cp-pyramid {
   margin: 1.5em 0;
   display: flex;
@@ -385,12 +425,11 @@ body {
 }
 
 .cp-pyramid__layer--base {
-  border-bottom: 2px solid var(--cp-accent-orange);
+  border-bottom: 2px solid var(--cp-accent);
 }
 
-/* Bottom prev/next */
 .navigation {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 40px 48px;
 }
@@ -405,16 +444,16 @@ body {
 }
 
 .navigation ul.pagination li a {
-  color: var(--cp-muted);
-  text-decoration: underline;
+  color: var(--cp-accent);
+  text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .navigation ul.pagination li a:hover {
-  color: var(--cp-accent);
+  text-decoration: underline;
 }
 
-/* Scrollbars */
 .book-summary::-webkit-scrollbar {
   width: 4px;
 }
@@ -424,10 +463,18 @@ body {
   border-radius: 2px;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
+  .cp-doc-topbar {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
   .cp-doc-topbar__menu {
     display: inline-flex;
+  }
+
+  .cp-doc-topbar__logo {
+    height: 40px;
   }
 
   .book.cp-doc .book-summary {
@@ -437,7 +484,7 @@ body {
     z-index: 90;
     transform: translateX(-100%);
     transition: transform 0.2s ease;
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
   }
 
   .book.cp-doc.sidebar-open .book-summary {
@@ -445,7 +492,7 @@ body {
   }
 
   .book .book-body .page-inner {
-    padding: 28px 20px 56px;
+    padding: 32px 20px 56px;
   }
 
   .navigation {
@@ -453,7 +500,7 @@ body {
   }
 
   .book .markdown-section h1 {
-    font-size: 1.65rem;
+    font-size: 1.75rem;
   }
 }
 

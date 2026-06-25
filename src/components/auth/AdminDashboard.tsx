@@ -9,8 +9,6 @@ import { site } from "@/lib/data";
 type Overview = {
   stats: {
     learners: number;
-    progressEvents: number;
-    completedChapters: number;
     feedbackCount: number;
     activeLearners7d: number;
     anonymousVisitors7d: number;
@@ -19,27 +17,12 @@ type Overview = {
   };
   topAnonymousPages: Array<{ path: string; views: number }>;
   topAnonymousResources: Array<{ resourceId: string; views: number }>;
-  topCourses: Array<{
-    courseSlug: string;
-    courseTitle: string;
-    views: number;
-    completions: number;
-  }>;
   recentUsers: Array<{
     id: string;
     name: string | null;
     email: string | null;
     createdAt: string;
-    _count: { progress: number; feedback: number };
-  }>;
-  recentProgress: Array<{
-    id: string;
-    courseSlug: string;
-    courseTitle: string | null;
-    chapterTitle: string;
-    completed: boolean;
-    lastReadAt: string;
-    user: { name: string | null; email: string | null };
+    _count: { feedback: number };
   }>;
   recentFeedback: Array<{
     id: string;
@@ -130,7 +113,6 @@ export function AdminDashboard() {
   const hasActivity =
     data &&
     (data.stats.learners > 0 ||
-      data.stats.progressEvents > 0 ||
       data.stats.feedbackCount > 0 ||
       data.stats.anonymousPageViews7d > 0);
 
@@ -172,8 +154,6 @@ export function AdminDashboard() {
             <StatCard label={t("adminStatAnonVisitors")} value={data.stats.anonymousVisitors7d} />
             <StatCard label={t("adminStatAnonViews")} value={data.stats.anonymousPageViews7d} />
             <StatCard label={t("adminStatSignedViews")} value={data.stats.signedInPageViews7d} />
-            <StatCard label={t("adminStatProgress")} value={data.stats.progressEvents} />
-            <StatCard label={t("adminStatCompleted")} value={data.stats.completedChapters} />
             <StatCard label={t("adminStatFeedback")} value={data.stats.feedbackCount} />
           </div>
           <p className="mt-2 text-xs text-muted">
@@ -222,58 +202,6 @@ export function AdminDashboard() {
           </section>
 
           <section className="mt-10">
-            <h2 className="text-lg font-semibold">{t("adminTopCourses")}</h2>
-            <p className="mt-1 text-sm text-muted">{t("adminTopCoursesHint")}</p>
-            {data.topCourses.length === 0 ? (
-              <p className="mt-4 text-sm text-muted">{t("adminNoCourseData")}</p>
-            ) : (
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {data.topCourses.map((course) => (
-                  <div key={course.courseSlug} className="pixel-panel p-4 text-sm">
-                    <p className="font-semibold">{course.courseTitle}</p>
-                    <p className="mt-2 text-xs text-muted">
-                      {t("adminCourseViews")}: {course.views} · {t("adminCourseCompletions")}:{" "}
-                      {course.completions}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </section>
-
-          <section className="mt-10">
-            <h2 className="text-lg font-semibold">{t("adminRecentProgress")}</h2>
-            {data.recentProgress.length === 0 ? (
-              <p className="mt-4 text-sm text-muted">{t("adminNoCourseData")}</p>
-            ) : (
-              <div className="mt-4 overflow-x-auto">
-                <table className="admin-table w-full text-sm">
-                  <thead>
-                    <tr>
-                      <th>{t("feedbackName")}</th>
-                      <th>{t("adminCourse")}</th>
-                      <th>{t("adminChapter")}</th>
-                      <th>{t("adminStatus")}</th>
-                      <th>{t("adminWhen")}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.recentProgress.map((row) => (
-                      <tr key={row.id}>
-                        <td>{row.user.name ?? row.user.email ?? "—"}</td>
-                        <td>{row.courseTitle ?? row.courseSlug}</td>
-                        <td>{row.chapterTitle}</td>
-                        <td>{row.completed ? t("progressCompleted") : t("adminReading")}</td>
-                        <td>{new Date(row.lastReadAt).toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </section>
-
-          <section className="mt-10">
             <h2 className="text-lg font-semibold">{t("adminLearners")}</h2>
             {data.recentUsers.length === 0 ? (
               <p className="mt-4 text-sm text-muted">{t("adminEmptyTitle")}</p>
@@ -284,10 +212,7 @@ export function AdminDashboard() {
                     <p className="font-semibold">{user.name ?? "Learner"}</p>
                     <p className="text-muted">{user.email ?? user.name ?? "—"}</p>
                     <p className="mt-2 text-xs text-muted">
-                      {t("adminUserStats", {
-                        progress: user._count.progress,
-                        feedback: user._count.feedback,
-                      })}
+                      {t("adminUserStats", { feedback: user._count.feedback })}
                     </p>
                   </div>
                 ))}

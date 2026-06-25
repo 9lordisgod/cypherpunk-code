@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
 import { useLanguage } from "@/components/LanguageProvider";
-import { PoweredByPlanB } from "@/components/planb/PoweredByPlanB";
 import { resources, site } from "@/lib/data";
 
 export function AboutContent() {
@@ -117,17 +116,6 @@ export function AboutContent() {
                 </p>
                 <p className="mt-1 break-all font-mono text-sm">{site.donations.monero}</p>
               </div>
-            </div>
-          </section>
-
-          <section id="bitcoin-course">
-            <h2 className="text-xl font-semibold">{t("aboutPlanBSection")}</h2>
-            <p className="mt-2 leading-relaxed text-muted">{t("aboutPlanBText")}</p>
-            <div className="mt-4 flex flex-wrap items-center gap-4">
-              <Link href="/courses" className="pixel-btn pixel-btn--planb no-underline text-sm">
-                {t("coursesPageTitle")} →
-              </Link>
-              <PoweredByPlanB />
             </div>
           </section>
 

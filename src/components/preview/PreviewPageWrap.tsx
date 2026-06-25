@@ -1,0 +1,3 @@
+export function PreviewPageWrap({ children }: { children: React.ReactNode }) {
+  return <div className="preview-page">{children}</div>;
+}

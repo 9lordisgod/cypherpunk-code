@@ -374,11 +374,6 @@
     "description": "实用 OPSEC 指南——社交媒体安全、账户卫生、设备安全、Tor、Signal、虚拟机和面向公众人士的高级建议。",
     "provider": "BushidoUK"
   },
-  "planb-academy": {
-    "title": "Plan ₿ Academy",
-    "description": "多语言比特币在线学习平台——比特币、闪电网络、密码学、挖矿和隐私课程。在 planb.academy 学习。",
-    "provider": "Plan ₿ Network"
-  },
   "code-orange-sovereign-bitcoiner": {
     "title": "主权比特币人速成课",
     "description": "5–10 周免费课程（CC0），涵盖比特币哲学、运行节点、挖矿基础、多签和隐私——Code Orange Dev School。",

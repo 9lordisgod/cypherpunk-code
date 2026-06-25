@@ -1,4 +1,5 @@
 import { AboutContent } from "@/components/AboutContent";
+import { PreviewPageWrap } from "@/components/preview/PreviewPageWrap";
 import { site } from "@/lib/data";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
@@ -15,5 +16,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function AboutPage() {
-  return <AboutContent />;
+  return (
+    <PreviewPageWrap>
+      <AboutContent />
+    </PreviewPageWrap>
+  );
 }

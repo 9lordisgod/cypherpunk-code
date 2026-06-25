@@ -9,7 +9,7 @@ export const DEFAULT_SECURITY_VAULT: SecurityVault = {
     "api:wallet": { windowMs: 300_000, max: 15 },
     "api:admin-wallet": { windowMs: 300_000, max: 10 },
     "api:feedback": { windowMs: 3_600_000, max: 4 },
-    "api:progress": { windowMs: 60_000, max: 40 },
+
     "api:admin": { windowMs: 60_000, max: 20 },
     "api:analytics": { windowMs: 60_000, max: 60 },
     "api:global": { windowMs: 60_000, max: 120 },

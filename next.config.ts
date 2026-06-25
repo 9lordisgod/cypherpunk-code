@@ -9,17 +9,22 @@ const nextConfig: NextConfig = {
     "@solana/wallet-adapter-phantom",
     "@solana/wallet-adapter-solflare",
   ],
+  async rewrites() {
+    return [
+      { source: "/doc", destination: "/doc/index.html" },
+    ];
+  },
   async redirects() {
     const docLegacy = [
       ["how-to-study.html", "/doc/doc/how-to-study.html"],
       ["platform-guide.html", "/doc/doc/platform-guide.html"],
       ["mission.html", "/doc/doc/mission.html"],
       ["roadmap.html", "/doc/doc/roadmap.html"],
-      ["overview.html", "/doc/bitcoin/overview.html"],
-      ["phase-1-foundations.html", "/doc/bitcoin/phase-1-foundations.html"],
-      ["phase-2-technical.html", "/doc/bitcoin/phase-2-technical.html"],
-      ["phase-3-sovereignty.html", "/doc/bitcoin/phase-3-sovereignty.html"],
-      ["phase-4-privacy.html", "/doc/bitcoin/phase-4-privacy.html"],
+      ["overview.html", "/doc/doc/platform-guide.html"],
+      ["phase-1-foundations.html", "/doc/doc/platform-guide.html"],
+      ["phase-2-technical.html", "/doc/doc/platform-guide.html"],
+      ["phase-3-sovereignty.html", "/doc/doc/platform-guide.html"],
+      ["phase-4-privacy.html", "/doc/doc/platform-guide.html"],
       ["seeker-dapp-roadmap.html", "/doc/doc/roadmap.html"],
       ["feature-roadmap.html", "/doc/doc/roadmap.html"],
       ["monetization.html", "/doc/doc/roadmap.html"],
@@ -43,6 +48,10 @@ const nextConfig: NextConfig = {
         destination: "https://www.cypherpunk-code.com/:path*",
         permanent: true,
       },
+      { source: "/preview", destination: "/", permanent: true },
+      { source: "/preview/:path*", destination: "/:path*", permanent: true },
+      { source: "/courses", destination: "/catalog", permanent: true },
+      { source: "/courses/:path*", destination: "/catalog", permanent: true },
       { source: "/roadmap", destination: "/doc/doc/roadmap.html", permanent: true },
       { source: "/cypherscan", destination: "/", permanent: true },
       { source: "/cypherscan/:path*", destination: "/", permanent: true },
