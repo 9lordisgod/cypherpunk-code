@@ -5,14 +5,13 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
   title: "About",
-  description: `${site.name} is a database of the crypto world and the Wikipedia of the crypto industry — maintained by @${site.creator.handle}.`,
+  description: `${site.name} is a curated freedom education index for Bitcoin, Monero, privacy technology, and cypherpunk philosophy — maintained by @${site.creator.handle}.`,
   path: "/about",
   keywords: [
-    "crypto wikipedia",
-    "cypherpunk education",
-    "cryptocurrency database",
+    "cypherpunk code",
+    "freedom education",
     "bitcoin monero education",
-    "crypto industry encyclopedia",
+    "privacy learning platform",
   ],
 });
 

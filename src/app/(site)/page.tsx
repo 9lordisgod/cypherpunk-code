@@ -8,22 +8,21 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 const homeMetadata = buildPageMetadata({
-  title: "cypherpunk education · crypto wikipedia",
+  title: "cypherpunk code",
   description: site.description,
   path: "/",
   keywords: [
-    "crypto wikipedia",
     "cypherpunk education",
-    "cryptocurrency database",
-    "bitcoin education",
+    "monero learning",
     "privacy resources",
-    "crypto industry encyclopedia",
+    "cryptography curriculum",
+    "digital sovereignty",
   ],
 });
 
 export const metadata = {
   ...homeMetadata,
-  title: { absolute: "cypherpunk education · crypto wikipedia" },
+  title: { absolute: "cypherpunk code" },
 };
 
 export default function HomePage() {

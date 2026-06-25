@@ -2,9 +2,9 @@
 
 ## Our mission
 
-> **Be the database of the crypto world and the Wikipedia of the crypto industry.**
+> **Make cypherpunk education accessible, free, and free from trading noise.**
 
-Cypherpunk Education & Crypto Wikipedia exists to index, organize, and sequence the best freely available material for learning cryptocurrency, privacy technology, and cypherpunk philosophy. We are a **living encyclopedia** — not a course provider, not a trading platform, and not financial advice.
+Cypherpunk Code exists to index, organize, and sequence the best freely available material for learning cryptocurrency, privacy technology, and cypherpunk philosophy. We are a **reference archive** — not a course provider, not a trading platform, and not financial advice.
 
 ---
 
@@ -32,7 +32,7 @@ The crypto space is flooded with trading content, speculation, and hype. We appl
 
 ### 6. Clarity and independence
 
-We are upfront about what this project is: a database of the crypto world and a Wikipedia of the crypto industry, not a trading platform or certification body. The catalog and documentation are free to browse. We practice what we teach.
+We are upfront about what this project is: a curated freedom education index, not a trading platform or certification body. The catalog and documentation are free to browse. We practice what we teach.
 
 ---
 
@@ -40,8 +40,7 @@ We are upfront about what this project is: a database of the crypto world and a 
 
 | We are | We are not |
 | --- | --- |
-| A database of the crypto world | A course platform with video hosting |
-| The Wikipedia of the crypto industry | A trading or price-analysis site |
+| A freedom education index | A course platform with video hosting |
 | An editorial index with CP Score | An algorithmic recommendation engine |
 | A curated learning path builder | A MOOC provider |
 | A community hub (private, in-person) | A public Discord with thousands of strangers |
@@ -80,7 +79,7 @@ A Princeton Bitcoin course scores 8. A trading masterclass scores 2. Both might 
 
 ## Stewardship
 
-Cypherpunk Education & Crypto Wikipedia is curated and maintained by [@CHxmrBrother](https://x.com/CHxmrBrother).
+Cypherpunk Code is curated and maintained by [@CHxmrBrother](https://x.com/CHxmrBrother).
 
 The initial database was seeded from public sources including:
 

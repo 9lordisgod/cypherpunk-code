@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db";
 const NONCE_TTL_MS = 5 * 60 * 1000;
 
 export function buildLegacySignMessage(nonce: string) {
-  return `Sign in to Cypherpunk Education\n\nChain: solana\nNonce: ${nonce}`;
+  return `Sign in to Cypherpunk Code\n\nChain: solana\nNonce: ${nonce}`;
 }
 
 export function buildSolanaSignInInput(

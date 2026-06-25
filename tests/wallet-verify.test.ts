@@ -8,7 +8,7 @@ describe("verifySolanaLegacySignature", () => {
     expect(
       verifySolanaLegacySignature(
         "9xQeWvG816bUx9EPjHmaT23yv3T3BYyMDb8iDLauyfrM",
-        Buffer.from("Sign in to Cypherpunk Education").toString("base64"),
+        Buffer.from("Sign in to Cypherpunk Code").toString("base64"),
         "not-a-valid-signature",
         "abc123"
       )
@@ -19,7 +19,7 @@ describe("verifySolanaLegacySignature", () => {
     expect(
       verifySolanaLegacySignature(
         "9xQeWvG816bUx9EPjHmaT23yv3T3BYyMDb8iDLauyfrM",
-        Buffer.from("Sign in to Cypherpunk Education").toString("base64"),
+        Buffer.from("Sign in to Cypherpunk Code").toString("base64"),
         "abc",
         "missing-nonce"
       )
@@ -30,7 +30,7 @@ describe("verifySolanaLegacySignature", () => {
 describe("verifyWalletProof", () => {
   it("rejects legacy proofs with invalid signatures", () => {
     const nonce = "testnonce123456";
-    const message = `Sign in to Cypherpunk Education\n\nChain: solana\nNonce: ${nonce}`;
+    const message = `Sign in to Cypherpunk Code\n\nChain: solana\nNonce: ${nonce}`;
 
     expect(
       verifyWalletProof({

@@ -21,7 +21,7 @@ export function PreviewSiteLogo({
   return (
     <Image
       src="/logo-brand.png"
-      alt="Cypherpunk Education & Crypto Wikipedia"
+      alt="Cypherpunk Code"
       width={px}
       height={px}
       className={`preview-logo preview-logo--${size} ${className}`.trim()}

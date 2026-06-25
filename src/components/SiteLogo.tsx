@@ -15,7 +15,7 @@ export function SiteLogo({ size = "md", className = "" }: SiteLogoProps) {
   return (
     <Image
       src="/logo.png"
-      alt="Cypherpunk Education & Crypto Wikipedia"
+      alt="Cypherpunk Code"
       width={512}
       height={512}
       className={`${sizeClasses[size]} ${className}`.trim()}

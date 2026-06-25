@@ -24,22 +24,22 @@ const en = {
   navMenuClose: "Close menu",
 
   // Hero
-  heroBadge: "Crypto Wikipedia",
-  heroTitle1: "The database of crypto.",
-  heroTitle2: "The Wikipedia of the industry.",
+  heroBadge: "Freedom Education",
+  heroTitle1: "Learn freedom.",
+  heroTitle2: "Skip the trading noise.",
   heroDescription:
-    "A living database of the crypto world — the Wikipedia of the crypto industry. Cypherpunk education, curated resources, and encyclopedic coverage of protocols, privacy, history, and tools.",
+    "A curated freedom education index — courses, papers, guides, and documentation for cryptocurrency, privacy technology, and cypherpunk philosophy. No trading noise, just signal.",
   heroBrowse: "Browse {count} resources",
   heroPaths: "Learning paths",
   heroCuratedBy: "Curated by",
 
   // Archive notice
   archiveNotice:
-    "The crypto industry's Wikipedia — catalog updated continuously. Content concerns?",
+    "Freedom education for cypherpunk learners — catalog updated continuously. Content concerns?",
   archiveContact: "Contact",
   archivePolicyTitle: "Catalog & maintenance policy",
   archivePolicy1:
-    "{name} is a database of the crypto world and a Wikipedia of the crypto industry — courses, papers, guides, and documentation curated for learners. It is a reference encyclopedia, not a commercial product or trading platform.",
+    "{name} is a freedom education index — courses, papers, guides, and documentation curated for cypherpunk learners. It is a reference catalog, not a commercial product or trading platform.",
   archivePolicy2:
     "The catalog and database are maintained and expanded on an ongoing basis. New resources, corrections, and metadata updates are applied as they become available.",
   archivePolicy3:
@@ -68,8 +68,8 @@ const en = {
   footerSupport: "Support",
   footerDonate: "Donate BTC/XMR",
   footerContact: "Contact us",
-  footerTagline: "Crypto Wikipedia",
-  footerNote: "Cypherpunk Education & Crypto Wikipedia",
+  footerTagline: "Freedom education",
+  footerNote: "Cypherpunk Code — freedom education",
 
   // Labels
   topicBitcoin: "Bitcoin",
@@ -124,20 +124,20 @@ const zhCN: TranslationStrings = {
   navMenuOpen: "打开菜单",
   navMenuClose: "关闭菜单",
 
-  heroBadge: "加密维基百科",
-  heroTitle1: "加密世界的数据库。",
-  heroTitle2: "加密行业的维基百科。",
+  heroBadge: "自由教育",
+  heroTitle1: "学习自由。",
+  heroTitle2: "跳过交易杂音。",
   heroDescription:
-    "加密世界的活数据库 — 加密行业的维基百科。密码朋克教育、精选资源，以及协议、隐私、历史与工具的百科式覆盖。",
+    "精心策划的自由教育索引 — 加密货币、隐私技术与密码朋克哲学的课程、论文、指南和文档。没有交易杂音，只有信号。",
   heroBrowse: "浏览 {count} 个资源",
   heroPaths: "学习路径",
   heroCuratedBy: "策划者",
 
-  archiveNotice: "加密行业的维基百科 — 目录持续更新。内容疑虑？",
+  archiveNotice: "面向密码朋克学习者的自由教育 — 目录持续更新。内容疑虑？",
   archiveContact: "联系",
   archivePolicyTitle: "目录与维护政策",
   archivePolicy1:
-    "{name} 是加密世界的数据库和加密行业的维基百科 — 为学习者策划的课程、论文、指南和文档。它是参考百科，不是商业产品或交易平台。",
+    "{name} 是一个自由教育索引 — 为密码朋克学习者策划的课程、论文、指南和文档。它是参考目录，不是商业产品或交易平台。",
   archivePolicy2:
     "目录和数据库持续维护和扩展。新的资源、修正和元数据更新会在可用时应用。",
   archivePolicy3:
@@ -162,8 +162,8 @@ const zhCN: TranslationStrings = {
   footerSupport: "支持",
   footerDonate: "捐赠 BTC/XMR",
   footerContact: "联系我们",
-  footerTagline: "加密维基百科",
-  footerNote: "密码朋克教育与加密维基百科",
+  footerTagline: "自由教育",
+  footerNote: "Cypherpunk Code — 自由教育",
 
   topicBitcoin: "比特币",
   topicMonero: "门罗币",
@@ -215,21 +215,21 @@ const ja: TranslationStrings = {
   navMenuOpen: "メニューを開く",
   navMenuClose: "メニューを閉じる",
 
-  heroBadge: "暗号ウィキペディア",
-  heroTitle1: "暗号世界のデータベース。",
-  heroTitle2: "暗号業界のウィキペディア。",
+  heroBadge: "フリーダム教育",
+  heroTitle1: "自由を学ぼう。",
+  heroTitle2: "トレードのノイズはスキップ。",
   heroDescription:
-    "暗号世界の生きたデータベース — 暗号業界のウィキペディア。サイファーパンク教育、厳選リソース、プロトコル・プライバシー・歴史・ツールの百科的カバレッジ。",
+    "暗号通貨、プライバシー技術、サイファーパンク哲学のための厳選フリーダム教育インデックス。トレードのノイズなし、シグナルだけ。",
   heroBrowse: "{count} 件のリソースを見る",
   heroPaths: "学習パス",
   heroCuratedBy: "キュレーション",
 
   archiveNotice:
-    "暗号業界のウィキペディア — カタログは継続的に更新。コンテンツに関する懸念？",
+    "サイファーパンク学習者のためのフリーダム教育 — カタログは継続的に更新。コンテンツに関する懸念？",
   archiveContact: "連絡",
   archivePolicyTitle: "カタログとメンテナンス方針",
   archivePolicy1:
-    "{name} は暗号世界のデータベースであり暗号業界のウィキペディアです — 学習者向けにキュレーションされたコース、論文、ガイド、ドキュメント。参照百科であり、商業製品や取引プラットフォームではありません。",
+    "{name} はフリーダム教育インデックスです — サイファーパンク学習者向けにキュレーションされたコース、論文、ガイド、ドキュメント。参照カタログであり、商業製品や取引プラットフォームではありません。",
   archivePolicy2:
     "カタログとデータベースは継続的にメンテナンス・拡張されています。新しいリソース、修正、メタデータの更新は利用可能になり次第適用されます。",
   archivePolicy3:
@@ -255,8 +255,8 @@ const ja: TranslationStrings = {
   footerSupport: "サポート",
   footerDonate: "BTC/XMR を寄付",
   footerContact: "お問い合わせ",
-  footerTagline: "暗号ウィキペディア",
-  footerNote: "サイファーパンク教育と暗号ウィキペディア",
+  footerTagline: "フリーダム教育",
+  footerNote: "Cypherpunk Code — フリーダム教育",
 
   topicBitcoin: "ビットコイン",
   topicMonero: "モネロ",
@@ -309,21 +309,21 @@ const fr: TranslationStrings = {
   navMenuOpen: "Ouvrir le menu",
   navMenuClose: "Fermer le menu",
 
-  heroBadge: "Wikipédia crypto",
-  heroTitle1: "La base de données du monde crypto.",
-  heroTitle2: "La Wikipédia de l'industrie.",
+  heroBadge: "Éducation libertaire",
+  heroTitle1: "Apprenez la liberté.",
+  heroTitle2: "Ignorez le bruit du trading.",
   heroDescription:
-    "Une base de données vivante du monde crypto — la Wikipédia de l'industrie cryptographique. Éducation cypherpunk, ressources curatées et couverture encyclopédique des protocoles, de la vie privée, de l'histoire et des outils.",
+    "Un index d'éducation libertaire — cours, articles, guides et documentation sur la cryptomonnaie, la vie privée et la philosophie cypherpunk. Pas de bruit du trading, que du signal.",
   heroBrowse: "Parcourir {count} ressources",
   heroPaths: "Parcours d'apprentissage",
   heroCuratedBy: "Curaté par",
 
   archiveNotice:
-    "La Wikipédia de l'industrie crypto — catalogue mis à jour en continu. Des préoccupations sur le contenu ?",
+    "Éducation libertaire pour les apprenants cypherpunk — catalogue mis à jour en continu. Des préoccupations sur le contenu ?",
   archiveContact: "Contacter",
   archivePolicyTitle: "Politique du catalogue et de maintenance",
   archivePolicy1:
-    "{name} est une base de données du monde crypto et la Wikipédia de l'industrie — cours, articles, guides et documentation pour les apprenants. C'est une encyclopédie de référence, pas un produit commercial ni une plateforme de trading.",
+    "{name} est un index d'éducation libertaire — cours, articles, guides et documentation pour les apprenants cypherpunk. C'est un catalogue de référence, pas un produit commercial ni une plateforme de trading.",
   archivePolicy2:
     "Le catalogue et la base de données sont maintenus et élargis en continu. De nouvelles ressources, corrections et mises à jour de métadonnées sont appliquées dès qu'elles sont disponibles.",
   archivePolicy3:
@@ -349,8 +349,8 @@ const fr: TranslationStrings = {
   footerSupport: "Soutien",
   footerDonate: "Donner BTC/XMR",
   footerContact: "Nous contacter",
-  footerTagline: "Wikipédia crypto",
-  footerNote: "Cypherpunk Education & Crypto Wikipedia",
+  footerTagline: "Éducation libertaire",
+  footerNote: "Cypherpunk Code — éducation libertaire",
 
   topicBitcoin: "Bitcoin",
   topicMonero: "Monero",
