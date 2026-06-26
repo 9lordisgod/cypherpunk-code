@@ -2,6 +2,26 @@ import { NextResponse } from "next/server";
 import { loadSecurityVault } from "./vault";
 import { checkRateLimit, rateLimitKey } from "./rate-limit";
 
+const SUSPICIOUS_PATH_PATTERNS = [
+  /\.\./,
+  /\/\.env/i,
+  /\/wp-admin/i,
+  /\/phpmyadmin/i,
+  /\/\.git/i,
+  /\/vendor\/phpunit/i,
+  /\/cgi-bin/i,
+  /<script/i,
+];
+
+export function pathnameLooksSuspicious(request: Request): boolean {
+  try {
+    const { pathname } = new URL(request.url);
+    return SUSPICIOUS_PATH_PATTERNS.some((pattern) => pattern.test(pathname));
+  } catch {
+    return true;
+  }
+}
+
 export function getClientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) return forwarded.split(",")[0]?.trim() || "unknown";
@@ -26,6 +46,10 @@ export function guardApiRequest(
     if (ua.includes(blocked.toLowerCase())) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
+  }
+
+  if (pathnameLooksSuspicious(request)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
   const globalRule = vault.rateLimits["api:global"];

@@ -32,7 +32,7 @@ This documentation explains **how to study effectively**, **how to get the most 
 ## Platform at a glance
 
 <div class="cp-glance">
-  <div class="cp-glance__item"><strong>Catalog</strong><span>Search 67+ curated resources</span></div>
+  <div class="cp-glance__item"><strong>Catalog</strong><span>Search 68 curated resources</span></div>
   <div class="cp-glance__item"><strong>Paths</strong><span>Progressive study sequences</span></div>
   <div class="cp-glance__item"><strong>CP Score</strong><span>Editorial relevance filter (1–10)</span></div>
   <div class="cp-glance__item"><strong>DOC</strong><span>This documentation (you are here)</span></div>

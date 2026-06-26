@@ -102,11 +102,11 @@ Bitcoin and Monero addresses are on the [About page](https://cypherpunk-code.com
 
 ### Will there be a mobile app?
 
-The web platform is already mobile-responsive. A Solana Seeker dApp is planned for 2029+ as a secondary channel. See [Project Roadmap](../doc/roadmap.md).
+The web platform is already mobile-responsive. Future mobile improvements will stay web-first. See [Project Roadmap](../doc/roadmap.md).
 
 ### Will there be onchain certificates?
 
-Yes — free verifiable certificates (Soulbound tokens on Solana) are planned for 2028. See [Project Roadmap](../doc/roadmap.md).
+Yes — free verifiable certificates are planned for 2028. See [Project Roadmap](../doc/roadmap.md).
 
 ### Will you add more resources?
 

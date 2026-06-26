@@ -9,5 +9,6 @@ export type SecurityVault = {
   rateLimits: Record<string, RateLimitRule>;
   blockedIps: string[];
   blockedUserAgents: string[];
+  blockedCatalogDomains: string[];
   requestPepper: string;
 };

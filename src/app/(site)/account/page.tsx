@@ -1,8 +1,5 @@
-import { AccountContent } from "@/components/auth/AccountContent";
-import { privatePageMetadata } from "@/lib/seo/metadata";
-
-export const metadata = privatePageMetadata("/account", "Account");
+import { redirect } from "next/navigation";
 
 export default function AccountPage() {
-  return <AccountContent />;
+  redirect("/catalog");
 }

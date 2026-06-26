@@ -78,7 +78,7 @@ All curated learning paths on Cypherpunk Code, with study order and resource cou
 
 | Step | Resource | CP Score |
 | --- | --- | --- |
-| 1 | Cypherpunk School 101 | 9 |
+| 1 | Operational Security (OPSEC) 101 | 8 |
 | 2 | GNU Privacy Handbook | 8 |
 | 3 | PGP Best Practices | 8 |
 | 4 | Tor Project Documentation | 9 |
@@ -98,8 +98,7 @@ All curated learning paths on Cypherpunk Code, with study order and resource cou
 | 1 | Bitcoin Fungibility Wiki | 8 |
 | 2 | CoinJoin (Bitcoin Developer Guide) | 8 |
 | 3 | Wasabi Wallet Documentation | 8 |
-| 4 | JoinMarket | 7 |
-| 5 | Samourai Wallet | 8 |
+| 4 | JoinMarket | 9 |
 
 **Outcome:** Reclaim fungibility with CoinJoin and privacy wallets.
 
@@ -112,7 +111,7 @@ All curated learning paths on Cypherpunk Code, with study order and resource cou
 | Step | Resource | CP Score |
 | --- | --- | --- |
 | 1 | Dan Boneh Cryptography (Coursera) | 8 |
-| 2 | MIT OCW Cryptography | 8 |
+| 2 | Crypto 101 | 8 |
 | 3 | Applied Cryptography (Schneier) | 9 |
 | 4 | Monero Research Lab | 8 |
 | 5 | Signal Protocol | 8 |

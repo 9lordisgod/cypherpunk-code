@@ -1,113 +1,173 @@
 {
-  "cypherpunk-school-101": {
-    "title": "Cypherpunk School 101",
-    "description": "为期 12 周的实践课程，涵盖威胁建模、GPG、加密文件系统、Tor、SSH 隧道与数字主权。以终端为先、零废话、完全免费。",
-    "provider": "Cypherpunk School"
+  "andreas-antonopoulos-talks": {
+    "title": "aantonop（YouTube）",
+    "description": "数百场免费演讲与问答，涵盖比特币、开放区块链、隐私及去中心化货币哲学。",
+    "provider": "Andreas Antonopoulos"
   },
-  "cypherpunk-school-privacy-101": {
-    "title": "隐私 101",
-    "description": "面向初学者的图形界面隐私基础课程。全部 12 周已上线——作为 Cypherpunk 101 的配套课程，适合数字隐私新手。",
-    "provider": "Cypherpunk School"
+  "applied-cryptography-schneier": {
+    "title": "应用密码学（Schneier）",
+    "description": "实用密码学经典参考——协议、算法与真实世界安全。密码朋克文献中广泛引用。",
+    "provider": "Bruce Schneier"
   },
-  "cypherpunk-manifesto": {
-    "title": "密码朋克宣言",
-    "description": "Eric Hughes 于 1993 年撰写的奠基性文本，定义了密码朋克哲学：隐私即选择性披露、代码优于政策、密码学即解放。",
-    "provider": "Eric Hughes / Nakamoto Institute"
-  },
-  "bitcoin-whitepaper": {
-    "title": "比特币：一种点对点的电子现金系统",
-    "description": "中本聪 2008 年原创白皮书，首次提出比特币。理解无需可信第三方的点对点电子现金，此为必读文献。",
-    "provider": "Satoshi Nakamoto"
-  },
-  "nakamoto-institute-library": {
-    "title": "中本聪研究所图书馆",
-    "description": "密码朋克与比特币奠基文献档案——宣言、邮件列表帖子、早期密码学论文及历史文献。",
-    "provider": "Satoshi Nakamoto Institute"
-  },
-  "princeton-bitcoin-coursera": {
-    "title": "比特币与加密货币技术",
-    "description": "普林斯顿大学综合课程，涵盖比特币技术基础、密码学、共识、挖矿、钱包、匿名性、监管与山寨币。",
-    "provider": "Princeton University / Coursera"
-  },
-  "mit-crypto-engineering": {
-    "title": "加密货币工程与设计",
-    "description": "MIT 比特币与加密货币设计课程——密码学、博弈论、网络架构、闪电网络及工程实践。",
-    "provider": "MIT OpenCourseWare"
+  "bitcoin-core-docs": {
+    "title": "Bitcoin Core 文档",
+    "description": "Bitcoin Core 官方文档——安装、配置、RPC 及参与参考实现的贡献。",
+    "provider": "Bitcoin Core"
   },
   "bitcoin-developer-docs": {
     "title": "比特币开发者文档",
     "description": "官方开发者指南，涵盖区块链、交易、钱包、P2P 网络、挖矿、支付处理及完整 RPC API 参考。",
     "provider": "Bitcoin.org"
   },
-  "bitcoin-org-getting-started": {
-    "title": "比特币入门指南",
-    "description": "面向个人的比特币实用入门——钱包、安全、交易及运行自有节点。",
-    "provider": "Bitcoin.org"
+  "bitcoin-ed-foundation-curriculum": {
+    "title": "Bitcoin Education Foundation 课程",
+    "description": "免费六模块比特币课程（CC BY-SA）——货币基础、比特币原理、实际应用和安全思维。含课堂工作表。",
+    "provider": "Bitcoin Education Foundation"
+  },
+  "bitcoin-foundation-education": {
+    "title": "为何比特币教育至关重要（2026）",
+    "description": "比特币基金会视角：在监管与机构格局变化下，比特币素养日益重要。",
+    "provider": "Bitcoin Foundation"
   },
   "bitcoin-full-node": {
     "title": "运行全节点",
     "description": "运行自有比特币全节点指南，实现主权、验证与网络参与，无需信任第三方。",
     "provider": "Bitcoin.org"
   },
-  "moneropedia": {
-    "title": "Moneropedia",
-    "description": "社区维护的门罗币术语百科——环签名、隐匿地址、RingCT、RandomX、可替代性等。",
+  "bitcoin-fungibility-wiki": {
+    "title": "比特币维基 — 隐私与可替代性",
+    "description": "社区维基文章，涵盖比特币隐私技术、可替代性挑战及持续改进。",
+    "provider": "Bitcoin Wiki"
+  },
+  "bitcoin-org-getting-started": {
+    "title": "比特币入门指南",
+    "description": "面向个人的比特币实用入门——钱包、安全、交易及运行自有节点。",
+    "provider": "Bitcoin.org"
+  },
+  "bitcoin-whitepaper": {
+    "title": "比特币：一种点对点的电子现金系统",
+    "description": "中本聪 2008 年原创白皮书，首次提出比特币。理解无需可信第三方的点对点电子现金，此为必读文献。",
+    "provider": "Satoshi Nakamoto"
+  },
+  "btc-session-tutorials": {
+    "title": "BTC Sessions（YouTube）",
+    "description": "实用比特币教程——硬件钱包、节点、闪电网络、多重签名及面向非技术用户的自托管。",
+    "provider": "BTC Sessions"
+  },
+  "bushido-opsec-101": {
+    "title": "操作安全（OPSEC）101",
+    "description": "实用 OPSEC 指南——社交媒体安全、账户卫生、设备安全、Tor、Signal、虚拟机和面向公众人士的高级建议。",
+    "provider": "BushidoUK"
+  },
+  "ccs-monero": {
+    "title": "门罗币社区众筹系统",
+    "description": "门罗币开发提案的透明众筹——了解开源隐私项目如何自筹资金。",
     "provider": "Monero Project"
   },
-  "monero-user-guides": {
-    "title": "门罗币用户指南",
-    "description": "官方指南：钱包、挖矿、节点、Tor 集成、只读钱包、多重签名及区块链导入。",
-    "provider": "Monero Project"
+  "chaincode-bitcoin-curriculum": {
+    "title": "Chaincode 比特币协议开发课程",
+    "description": "比特币协议开发教学大纲与学习小组——从白皮书到软分叉、mempool 策略和点对点网络。",
+    "provider": "Chaincode Labs"
   },
-  "monero-developer-guides": {
-    "title": "门罗币开发者指南",
-    "description": "面向门罗币开发者的技术文档——守护进程、钱包 RPC、密码学原语及集成模式。",
-    "provider": "Monero Project"
+  "chaincode-bitcoin-seminar": {
+    "title": "Chaincode 比特币协议开发研讨会",
+    "description": "Chaincode Residency 七部分视频研讨会，涵盖比特币协议开发——比特币课程的配套材料。",
+    "provider": "Chaincode Labs"
   },
-  "monero-research-lab": {
-    "title": "门罗币研究实验室",
-    "description": "门罗币隐私协议的学术研究——Bulletproofs、CLSAG、Seraphis、Triptych 及持续密码学改进。",
-    "provider": "Monero Research Lab"
+  "chaincode-lightning-curriculum": {
+    "title": "Chaincode 闪电网络协议开发课程",
+    "description": "面向闪电网络协议开发者的完整课程——通道管理、路由、HTLC 和实现概念。",
+    "provider": "Chaincode Labs"
   },
-  "monero-docs": {
-    "title": "门罗币文档",
-    "description": "全面技术文档——使用 systemd 运行节点、Tor/I2P 集成、钱包操作及网络配置。",
-    "provider": "Monero Project"
+  "code-orange-bitcoin-dojo": {
+    "title": "Bitcoin Dojo",
+    "description": "7 周开发者训练营（CC0），涵盖有限域、椭圆曲线、比特币密钥、序列化、Script 和 SegWit——Code Orange Dev School。",
+    "provider": "Code Orange Dev School"
   },
-  "monero-how": {
-    "title": "Monero.how",
-    "description": "社区资源，解释门罗币概念、配置指南及面向日常用户的隐私教程。",
-    "provider": "Monero.how"
+  "code-orange-sovereign-bitcoiner": {
+    "title": "主权比特币人速成课",
+    "description": "5–10 周免费课程（CC0），涵盖比特币哲学、运行节点、挖矿基础、多签和隐私——Code Orange Dev School。",
+    "provider": "Code Orange Dev School"
   },
-  "sethforprivacy-monero-node": {
-    "title": "运行门罗币节点",
-    "description": "隐私倡导者 Seth For Privacy 撰写的分步指南，运行自有门罗币节点以实现最大隐私与网络健康。",
-    "provider": "Seth For Privacy"
-  },
-  "monero-tor-wallet": {
-    "title": "通过 Tor 连接门罗币钱包",
-    "description": "官方指南：通过 Tor 路由门罗币钱包，保护 IP 元数据并增强交易隐私。",
-    "provider": "Monero Project"
-  },
-  "monero-whonix-qubes": {
-    "title": "Qubes + Whonix 上的门罗币",
-    "description": "高级指南：使用 Qubes OS 与 Whonix 实现钱包-守护进程隔离——面向高威胁模型的隔离式门罗币使用。",
-    "provider": "Monero Project"
+  "coinjoin-bitcoin": {
+    "title": "CoinJoin（比特币开发者指南）",
+    "description": "CoinJoin 交易模式技术概述，通过协作交易提升比特币交易隐私。",
+    "provider": "Bitcoin.org"
   },
   "crypto-anarchist-manifesto": {
     "title": "加密无政府主义者宣言",
     "description": "Timothy C. May 1988 年宣言，展望超越政府控制的加密无政府社区——密码朋克起源文献。",
     "provider": "Timothy C. May / Nakamoto Institute"
   },
-  "why-wont-jim-encrypt": {
-    "title": "为什么 Johnny 不会加密",
-    "description": "关于加密工具在实践中为何失败的里程碑式可用性研究——构建与使用隐私技术的重要背景。",
-    "provider": "Whitten & Tygar"
+  "crypto-and-cypherpunk-ethics": {
+    "title": "密码学与密码朋克伦理（教学模块）",
+    "description": "大学教学模块，探讨密码学、监控与密码朋克运动的伦理维度。",
+    "provider": "Bemidji State University"
   },
-  "applied-cryptography-schneier": {
-    "title": "应用密码学（Schneier）",
-    "description": "实用密码学经典参考——协议、算法与真实世界安全。密码朋克文献中广泛引用。",
-    "provider": "Bruce Schneier"
+  "crypto101": {
+    "title": "Crypto 101",
+    "description": "面向程序员的免费密码学入门课程——分组密码、哈希函数、TLS、公钥密码学和动手破解常见漏洞的练习。",
+    "provider": "Crypto 101 / lvh"
+  },
+  "cypherpunk-manifesto": {
+    "title": "密码朋克宣言",
+    "description": "Eric Hughes 于 1993 年撰写的奠基性文本，定义了密码朋克哲学：隐私即选择性披露、代码优于政策、密码学即解放。",
+    "provider": "Eric Hughes / Nakamoto Institute"
+  },
+  "danboneh-cryptography-coursera": {
+    "title": "密码学 I（Coursera）",
+    "description": "斯坦福 Dan Boneh 讲授核心密码学——分组密码、MAC、公钥加密与 TLS。重要的理论基础。",
+    "provider": "Stanford / Coursera"
+  },
+  "eff-surveillance-self-defense": {
+    "title": "监控自卫指南",
+    "description": "EFF 电子监控防护指南——威胁建模、工具与策略，面向活动人士与日常用户。",
+    "provider": "Electronic Frontier Foundation"
+  },
+  "ethereum-classic-cypherpunks": {
+    "title": "以太坊经典课程：密码朋克",
+    "description": "密码朋克运动历史课程——邮件列表、关键人物、宣言及去中心化系统背后的哲学。",
+    "provider": "Ethereum Classic"
+  },
+  "freenode-cypherpunk-archive": {
+    "title": "密码朋克邮件列表档案",
+    "description": "密码朋克邮件列表（1992 年至今）历史档案——塑造现代密码学与数字权利的辩论。",
+    "provider": "Cryptoanarchy.wiki"
+  },
+  "fungibility-monero": {
+    "title": "理解可替代性（Moneropedia）",
+    "description": "深入探讨可替代性对健全货币的重要性，以及门罗币如何通过默认隐私实现可替代性。",
+    "provider": "Monero Project"
+  },
+  "gnu-privacy-handbook": {
+    "title": "GNU 隐私手册",
+    "description": "GnuPG 实用入门——密钥生成、加密、签名及安全通讯的密钥管理。",
+    "provider": "GnuPG Project"
+  },
+  "harvard-crypto-blockchain": {
+    "title": "加密货币与区块链：技术与挑战",
+    "description": "哈佛延伸课程，探讨加密货币技术、监管挑战与社会影响。",
+    "provider": "Harvard Extension"
+  },
+  "jameson-lopp-knowledge": {
+    "title": "Jameson Lopp 的比特币资源",
+    "description": "精心整理的比特币资源大全——书籍、文章、播客、工具与教育材料，由 Casa 联合创始人维护。",
+    "provider": "Jameson Lopp"
+  },
+  "joinmarket": {
+    "title": "JoinMarket",
+    "description": "比特币开源 CoinJoin 实现——作为做市商赚取手续费，或作为接受方付费获取隐私。",
+    "provider": "JoinMarket"
+  },
+  "learn-me-a-bitcoin": {
+    "title": "Learn Me A Bitcoin",
+    "description": "可视化、面向初学者的比特币内部机制讲解——区块、交易、密钥与脚本，通俗易懂。",
+    "provider": "Greg Walker"
+  },
+  "learning-bitcoin-cli": {
+    "title": "Learning Bitcoin from the Command Line",
+    "description": "完整的命令行比特币编程课程——Bitcoin Core 配置、钱包、原始交易、多签、PSBT 和脚本。Blockchain Commons 出品。",
+    "provider": "Blockchain Commons"
   },
   "mastering-bitcoin": {
     "title": "精通比特币（第 3 版）",
@@ -119,215 +179,10 @@
     "description": "开源书籍，涵盖闪电网络架构、路由、通道管理及在比特币二层上的构建。",
     "provider": "Antonopoulos, Osuntokun, Pickhardt"
   },
-  "learn-me-a-bitcoin": {
-    "title": "Learn Me A Bitcoin",
-    "description": "可视化、面向初学者的比特币内部机制讲解——区块、交易、密钥与脚本，通俗易懂。",
-    "provider": "Greg Walker"
-  },
-  "bitcoin-core-docs": {
-    "title": "Bitcoin Core 文档",
-    "description": "Bitcoin Core 官方文档——安装、配置、RPC 及参与参考实现的贡献。",
-    "provider": "Bitcoin Core"
-  },
-  "umbrel-bitcoin-node": {
-    "title": "Umbrel — 个人服务器",
-    "description": "简易自托管比特币节点与应用平台。降低运行自有基础设施以实现主权的门槛。",
-    "provider": "Umbrel"
-  },
   "mempool-space": {
     "title": "Mempool.space",
     "description": "开源比特币区块浏览器与内存池可视化工具。理解手续费、区块与网络活动的教学工具。",
     "provider": "Mempool"
-  },
-  "tor-project-docs": {
-    "title": "Tor 项目文档",
-    "description": "Tor 官方文档——洋葱服务、网桥、可插拔传输及匿名网络的操作安全。",
-    "provider": "Tor Project"
-  },
-  "eff-surveillance-self-defense": {
-    "title": "监控自卫指南",
-    "description": "EFF 电子监控防护指南——威胁建模、工具与策略，面向活动人士与日常用户。",
-    "provider": "Electronic Frontier Foundation"
-  },
-  "privacy-guides": {
-    "title": "Privacy Guides",
-    "description": "社区驱动的隐私友好工具推荐——操作系统、浏览器与通讯应用。",
-    "provider": "Privacy Guides"
-  },
-  "gnu-privacy-handbook": {
-    "title": "GNU 隐私手册",
-    "description": "GnuPG 实用入门——密钥生成、加密、签名及安全通讯的密钥管理。",
-    "provider": "GnuPG Project"
-  },
-  "signal-protocol": {
-    "title": "Signal 协议规范",
-    "description": "Signal 协议技术规范——双棘轮、X3DH 密钥协商及消息中的前向保密。",
-    "provider": "Signal Foundation"
-  },
-  "harvard-crypto-blockchain": {
-    "title": "加密货币与区块链：技术与挑战",
-    "description": "哈佛延伸课程，探讨加密货币技术、监管挑战与社会影响。",
-    "provider": "Harvard Extension"
-  },
-  "stanford-cs251": {
-    "title": "加密货币与区块链技术",
-    "description": "斯坦福课程：加密货币基础、共识机制、智能合约与区块链可扩展性。",
-    "provider": "Stanford University"
-  },
-  "cryptocurrency-security-coursera": {
-    "title": "加密货币安全：冷存储与纸钱包",
-    "description": "实用课程：通过冷存储、硬件钱包保护加密货币，并避免常见安全陷阱。",
-    "provider": "Coursera"
-  },
-  "binance-academy": {
-    "title": "Binance Academy",
-    "description": "免费教育文章，涵盖区块链基础、密码学、共识与钱包安全。建议筛选技术内容而非交易内容。",
-    "provider": "Binance Academy"
-  },
-  "ethereum-classic-cypherpunks": {
-    "title": "以太坊经典课程：密码朋克",
-    "description": "密码朋克运动历史课程——邮件列表、关键人物、宣言及去中心化系统背后的哲学。",
-    "provider": "Ethereum Classic"
-  },
-  "fungibility-monero": {
-    "title": "理解可替代性（Moneropedia）",
-    "description": "深入探讨可替代性对健全货币的重要性，以及门罗币如何通过默认隐私实现可替代性。",
-    "provider": "Monero Project"
-  },
-  "ring-signatures-monero": {
-    "title": "环签名（Moneropedia）",
-    "description": "环签名密码学讲解——门罗币如何在可能签名者群体中隐匿真实签名者。",
-    "provider": "Monero Project"
-  },
-  "randomx-monero": {
-    "title": "RandomX 工作量证明（Moneropedia）",
-    "description": "面向 CPU 优化、抗 ASIC 的工作量证明算法，旨在公平挖矿与网络去中心化。",
-    "provider": "Monero Project"
-  },
-  "tail-emission-monero": {
-    "title": "尾部发行（Moneropedia）",
-    "description": "门罗币为何维持永久区块补贴以保障长期网络安全，而非仅依赖交易手续费。",
-    "provider": "Monero Project"
-  },
-  "coinjoin-bitcoin": {
-    "title": "CoinJoin（比特币开发者指南）",
-    "description": "CoinJoin 交易模式技术概述，通过协作交易提升比特币交易隐私。",
-    "provider": "Bitcoin.org"
-  },
-  "joinmarket": {
-    "title": "JoinMarket",
-    "description": "比特币开源 CoinJoin 实现——作为做市商赚取手续费，或作为接受方付费获取隐私。",
-    "provider": "JoinMarket"
-  },
-  "wasabi-wallet-docs": {
-    "title": "Wasabi 钱包文档",
-    "description": "注重隐私的比特币钱包，内置 CoinJoin（WabiSabi）、Tor 集成及硬件钱包支持。",
-    "provider": "zkSNACKs"
-  },
-  "samourai-wallet": {
-    "title": "Samourai 钱包与 Whirlpool",
-    "description": "专注交易隐私的移动比特币钱包，提供 Stonewall、Ricochet 与 Whirlpool CoinJoin 池。",
-    "provider": "Samourai Wallet"
-  },
-  "nostr-protocol": {
-    "title": "Nostr 协议（NIPs）",
-    "description": "使用密码学密钥的去中心化社交协议——无中心服务器的抗审查通讯。",
-    "provider": "Nostr Protocol"
-  },
-  "freenode-cypherpunk-archive": {
-    "title": "密码朋克邮件列表档案",
-    "description": "密码朋克邮件列表（1992 年至今）历史档案——塑造现代密码学与数字权利的辩论。",
-    "provider": "Cryptoanarchy.wiki"
-  },
-  "neo-cypherpunk-summit-2026": {
-    "title": "新密码朋克峰会 2026",
-    "description": "汇聚隐私倡导者、开发者与研究者，在当代推进密码朋克理想的会议。",
-    "provider": "Neo-Cypherpunk Summit"
-  },
-  "stephan-livera-podcast": {
-    "title": "Stephan Livera 播客",
-    "description": "长期运行的比特币播客，深度技术与哲学访谈，嘉宾包括开发者、经济学家与密码朋克。",
-    "provider": "Stephan Livera"
-  },
-  "tales-from-the-crypt": {
-    "title": "Tales from the Crypt",
-    "description": "探索比特币隐私、开源开发与密码朋克文化的播客，对话生态建设者。",
-    "provider": "Marty Bent / TFTC"
-  },
-  "monero-talk": {
-    "title": "Monero Talk",
-    "description": "社区播客，涵盖门罗币开发、隐私研究及更广泛的可替代性运动。",
-    "provider": "Monero Talk"
-  },
-  "what-bitcoin-did": {
-    "title": "What Bitcoin Did",
-    "description": "访谈播客，对话比特币开发者、经济学家与思想家——覆盖面广，技术向集数突出。",
-    "provider": "Peter McCormack"
-  },
-  "btc-session-tutorials": {
-    "title": "BTC Sessions（YouTube）",
-    "description": "实用比特币教程——硬件钱包、节点、闪电网络、多重签名及面向非技术用户的自托管。",
-    "provider": "BTC Sessions"
-  },
-  "andreas-antonopoulos-talks": {
-    "title": "aantonop（YouTube）",
-    "description": "数百场免费演讲与问答，涵盖比特币、开放区块链、隐私及去中心化货币哲学。",
-    "provider": "Andreas Antonopoulos"
-  },
-  "jameson-lopp-knowledge": {
-    "title": "Jameson Lopp 的比特币资源",
-    "description": "精心整理的比特币资源大全——书籍、文章、播客、工具与教育材料，由 Casa 联合创始人维护。",
-    "provider": "Jameson Lopp"
-  },
-  "bitcoin-fungibility-wiki": {
-    "title": "比特币维基 — 隐私与可替代性",
-    "description": "社区维基文章，涵盖比特币隐私技术、可替代性挑战及持续改进。",
-    "provider": "Bitcoin Wiki"
-  },
-  "ccs-monero": {
-    "title": "门罗币社区众筹系统",
-    "description": "门罗币开发提案的透明众筹——了解开源隐私项目如何自筹资金。",
-    "provider": "Monero Project"
-  },
-  "bitcoin-foundation-education": {
-    "title": "为何比特币教育至关重要（2026）",
-    "description": "比特币基金会视角：在监管与机构格局变化下，比特币素养日益重要。",
-    "provider": "Bitcoin Foundation"
-  },
-  "pgp-best-practices": {
-    "title": "OpenPGP 最佳实践",
-    "description": "社区指南：安全使用 OpenPGP——密钥长度、子密钥、过期设置及常见错误规避。",
-    "provider": "Riseup.net"
-  },
-  "qubes-os-intro": {
-    "title": "Qubes OS — 通过隔离实现安全",
-    "description": "基于 Xen 虚拟化的操作系统，将活动隔离到安全隔间——高级操作安全的基础。",
-    "provider": "Qubes OS Project"
-  },
-  "tails-os": {
-    "title": "Tails — 失忆隐身 Live 系统",
-    "description": "从 USB 启动的 Live 系统，所有流量经 Tor 路由且不留痕迹。高风险隐私场景的标准工具。",
-    "provider": "Tails Project"
-  },
-  "crypto-and-cypherpunk-ethics": {
-    "title": "密码学与密码朋克伦理（教学模块）",
-    "description": "大学教学模块，探讨密码学、监控与密码朋克运动的伦理维度。",
-    "provider": "Bemidji State University"
-  },
-  "mit-ocw-cryptography": {
-    "title": "MIT 6.875 — 密码学基础",
-    "description": "严谨的研究生级密码学课程，涵盖可证明安全、零知识证明与现代密码学原语。",
-    "provider": "MIT OpenCourseWare"
-  },
-  "danboneh-cryptography-coursera": {
-    "title": "密码学 I（Coursera）",
-    "description": "斯坦福 Dan Boneh 讲授核心密码学——分组密码、MAC、公钥加密与 TLS。重要的理论基础。",
-    "provider": "Stanford / Coursera"
-  },
-  "class-central-crypto": {
-    "title": "Class Central — 加密货币课程",
-    "description": "150+ 门加密货币课程聚合站。使用 Cypherpunk Code 的密码朋克评分筛选，在交易噪音中找到信号。",
-    "provider": "Class Central"
   },
   "mit-blockchain-and-money": {
     "title": "MIT 15.S12 — 区块链与货币",
@@ -339,49 +194,149 @@
     "description": "MIT 数字货币倡议课程，涵盖比特币协议设计、密码学、共识、挖矿、隐私和扩展——公开幻灯片、阅读材料和作业。",
     "provider": "MIT Digital Currency Initiative"
   },
-  "chaincode-bitcoin-curriculum": {
-    "title": "Chaincode 比特币协议开发课程",
-    "description": "比特币协议开发教学大纲与学习小组——从白皮书到软分叉、mempool 策略和点对点网络。",
-    "provider": "Chaincode Labs"
+  "monero-developer-guides": {
+    "title": "门罗币开发者指南",
+    "description": "面向门罗币开发者的技术文档——守护进程、钱包 RPC、密码学原语及集成模式。",
+    "provider": "Monero Project"
   },
-  "chaincode-lightning-curriculum": {
-    "title": "Chaincode 闪电网络协议开发课程",
-    "description": "面向闪电网络协议开发者的完整课程——通道管理、路由、HTLC 和实现概念。",
-    "provider": "Chaincode Labs"
+  "monero-docs": {
+    "title": "门罗币文档",
+    "description": "全面技术文档——使用 systemd 运行节点、Tor/I2P 集成、钱包操作及网络配置。",
+    "provider": "Monero Project"
   },
-  "chaincode-bitcoin-seminar": {
-    "title": "Chaincode 比特币协议开发研讨会",
-    "description": "Chaincode Residency 七部分视频研讨会，涵盖比特币协议开发——比特币课程的配套材料。",
-    "provider": "Chaincode Labs"
+  "monero-how": {
+    "title": "Monero.how",
+    "description": "社区资源，解释门罗币概念、配置指南及面向日常用户的隐私教程。",
+    "provider": "Monero.how"
   },
-  "crypto101": {
-    "title": "Crypto 101",
-    "description": "面向程序员的免费密码学入门课程——分组密码、哈希函数、TLS、公钥密码学和动手破解常见漏洞的练习。",
-    "provider": "Crypto 101 / lvh"
+  "monero-research-lab": {
+    "title": "门罗币研究实验室",
+    "description": "门罗币隐私协议的学术研究——Bulletproofs、CLSAG、Seraphis、Triptych 及持续密码学改进。",
+    "provider": "Monero Research Lab"
   },
-  "learning-bitcoin-cli": {
-    "title": "Learning Bitcoin from the Command Line",
-    "description": "完整的命令行比特币编程课程——Bitcoin Core 配置、钱包、原始交易、多签、PSBT 和脚本。Blockchain Commons 出品。",
-    "provider": "Blockchain Commons"
+  "monero-talk": {
+    "title": "Monero Talk",
+    "description": "社区播客，涵盖门罗币开发、隐私研究及更广泛的可替代性运动。",
+    "provider": "Monero Talk"
   },
-  "bitcoin-ed-foundation-curriculum": {
-    "title": "Bitcoin Education Foundation 课程",
-    "description": "免费六模块比特币课程（CC BY-SA）——货币基础、比特币原理、实际应用和安全思维。含课堂工作表。",
-    "provider": "Bitcoin Education Foundation"
+  "monero-tor-wallet": {
+    "title": "通过 Tor 连接门罗币钱包",
+    "description": "官方指南：通过 Tor 路由门罗币钱包，保护 IP 元数据并增强交易隐私。",
+    "provider": "Monero Project"
   },
-  "bushido-opsec-101": {
-    "title": "操作安全（OPSEC）101",
-    "description": "实用 OPSEC 指南——社交媒体安全、账户卫生、设备安全、Tor、Signal、虚拟机和面向公众人士的高级建议。",
-    "provider": "BushidoUK"
+  "monero-user-guides": {
+    "title": "门罗币用户指南",
+    "description": "官方指南：钱包、挖矿、节点、Tor 集成、只读钱包、多重签名及区块链导入。",
+    "provider": "Monero Project"
   },
-  "code-orange-sovereign-bitcoiner": {
-    "title": "主权比特币人速成课",
-    "description": "5–10 周免费课程（CC0），涵盖比特币哲学、运行节点、挖矿基础、多签和隐私——Code Orange Dev School。",
-    "provider": "Code Orange Dev School"
+  "monero-whonix-qubes": {
+    "title": "Qubes + Whonix 上的门罗币",
+    "description": "高级指南：使用 Qubes OS 与 Whonix 实现钱包-守护进程隔离——面向高威胁模型的隔离式门罗币使用。",
+    "provider": "Monero Project"
   },
-  "code-orange-bitcoin-dojo": {
-    "title": "Bitcoin Dojo",
-    "description": "7 周开发者训练营（CC0），涵盖有限域、椭圆曲线、比特币密钥、序列化、Script 和 SegWit——Code Orange Dev School。",
-    "provider": "Code Orange Dev School"
+  "moneropedia": {
+    "title": "Moneropedia",
+    "description": "社区维护的门罗币术语百科——环签名、隐匿地址、RingCT、RandomX、可替代性等。",
+    "provider": "Monero Project"
+  },
+  "nakamoto-institute-library": {
+    "title": "中本聪研究所图书馆",
+    "description": "密码朋克与比特币奠基文献档案——宣言、邮件列表帖子、早期密码学论文及历史文献。",
+    "provider": "Satoshi Nakamoto Institute"
+  },
+  "nostr-protocol": {
+    "title": "Nostr 协议（NIPs）",
+    "description": "使用密码学密钥的去中心化社交协议——无中心服务器的抗审查通讯。",
+    "provider": "Nostr Protocol"
+  },
+  "pgp-best-practices": {
+    "title": "OpenPGP 最佳实践",
+    "description": "社区指南：安全使用 OpenPGP——密钥长度、子密钥、过期设置及常见错误规避。",
+    "provider": "Riseup.net"
+  },
+  "princeton-bitcoin-coursera": {
+    "title": "比特币与加密货币技术",
+    "description": "普林斯顿大学综合课程，涵盖比特币技术基础、密码学、共识、挖矿、钱包、匿名性、监管与山寨币。",
+    "provider": "Princeton University / Coursera"
+  },
+  "privacy-guides": {
+    "title": "Privacy Guides",
+    "description": "社区驱动的隐私友好工具推荐——操作系统、浏览器与通讯应用。",
+    "provider": "Privacy Guides"
+  },
+  "qubes-os-intro": {
+    "title": "Qubes OS — 通过隔离实现安全",
+    "description": "基于 Xen 虚拟化的操作系统，将活动隔离到安全隔间——高级操作安全的基础。",
+    "provider": "Qubes OS Project"
+  },
+  "randomx-monero": {
+    "title": "RandomX 工作量证明（Moneropedia）",
+    "description": "面向 CPU 优化、抗 ASIC 的工作量证明算法，旨在公平挖矿与网络去中心化。",
+    "provider": "Monero Project"
+  },
+  "ring-signatures-monero": {
+    "title": "环签名（Moneropedia）",
+    "description": "环签名密码学讲解——门罗币如何在可能签名者群体中隐匿真实签名者。",
+    "provider": "Monero Project"
+  },
+  "sethforprivacy-monero-node": {
+    "title": "运行门罗币节点",
+    "description": "隐私倡导者 Seth For Privacy 撰写的分步指南，运行自有门罗币节点以实现最大隐私与网络健康。",
+    "provider": "Seth For Privacy"
+  },
+  "signal-protocol": {
+    "title": "Signal 协议规范",
+    "description": "Signal 协议技术规范——双棘轮、X3DH 密钥协商及消息中的前向保密。",
+    "provider": "Signal Foundation"
+  },
+  "stanford-cs251": {
+    "title": "加密货币与区块链技术",
+    "description": "斯坦福课程：加密货币基础、共识机制、智能合约与区块链可扩展性。",
+    "provider": "Stanford University"
+  },
+  "stephan-livera-podcast": {
+    "title": "Stephan Livera 播客",
+    "description": "长期运行的比特币播客，深度技术与哲学访谈，嘉宾包括开发者、经济学家与密码朋克。",
+    "provider": "Stephan Livera"
+  },
+  "tail-emission-monero": {
+    "title": "尾部发行（Moneropedia）",
+    "description": "门罗币为何维持永久区块补贴以保障长期网络安全，而非仅依赖交易手续费。",
+    "provider": "Monero Project"
+  },
+  "tails-os": {
+    "title": "Tails — 失忆隐身 Live 系统",
+    "description": "从 USB 启动的 Live 系统，所有流量经 Tor 路由且不留痕迹。高风险隐私场景的标准工具。",
+    "provider": "Tails Project"
+  },
+  "tales-from-the-crypt": {
+    "title": "Tales from the Crypt",
+    "description": "探索比特币隐私、开源开发与密码朋克文化的播客，对话生态建设者。",
+    "provider": "Marty Bent / TFTC"
+  },
+  "tor-project-docs": {
+    "title": "Tor 项目文档",
+    "description": "Tor 官方文档——洋葱服务、网桥、可插拔传输及匿名网络的操作安全。",
+    "provider": "Tor Project"
+  },
+  "umbrel-bitcoin-node": {
+    "title": "Umbrel — 个人服务器",
+    "description": "简易自托管比特币节点与应用平台。降低运行自有基础设施以实现主权的门槛。",
+    "provider": "Umbrel"
+  },
+  "wasabi-wallet-docs": {
+    "title": "Wasabi 钱包文档",
+    "description": "注重隐私的比特币钱包，内置 CoinJoin（WabiSabi）、Tor 集成及硬件钱包支持。",
+    "provider": "zkSNACKs"
+  },
+  "what-bitcoin-did": {
+    "title": "What Bitcoin Did",
+    "description": "访谈播客，对话比特币开发者、经济学家与思想家——覆盖面广，技术向集数突出。",
+    "provider": "Peter McCormack"
+  },
+  "why-wont-jim-encrypt": {
+    "title": "为什么 Johnny 不会加密",
+    "description": "关于加密工具在实践中为何失败的里程碑式可用性研究——构建与使用隐私技术的重要背景。",
+    "provider": "Whitten & Tygar"
   }
 }

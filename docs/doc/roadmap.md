@@ -10,7 +10,7 @@ Where Cypherpunk Code is headed — freedom education for learners.
 
 | Milestone | Status |
 | --- | --- |
-| 67+ curated resources across Bitcoin, Monero, OpSec & cypherpunk history | ✅ Done |
+| 68 curated resources across Bitcoin, Monero, OpSec & cypherpunk history | ✅ Done |
 | Searchable catalog with Cypherpunk Score filter | ✅ Done |
 | 6 structured learning paths | ✅ Done |
 | Freedom education catalog — free to browse, no accounts required | ✅ Done |
@@ -45,7 +45,7 @@ Where Cypherpunk Code is headed — freedom education for learners.
 | Contributor credits for submitted resources | 2028 |
 | Export catalog data (JSON/CSV) | 2028 |
 | Onchain quizzes with verifiable progress | 2028 |
-| Free verifiable certificates (Soulbound tokens on Solana) | 2028 |
+| Free verifiable certificates (open credentials) | 2028 |
 
 ---
 
@@ -57,25 +57,23 @@ Where Cypherpunk Code is headed — freedom education for learners.
 | Nostr-based update notifications | 2029+ |
 | Community curation workflow | 2029+ |
 | Mirror-friendly static archive dumps | 2029+ |
-| **Solana Seeker dApp Store launch** | 2029+ |
 | Gamification: badges, achievements, streaks | 2029+ |
 
 ---
 
-## Solana Seeker dApp — Strategic Position
+## Distribution strategy
 
-The Solana Seeker dApp Store is planned as a **secondary distribution channel**, not the primary platform. Our strategy:
+Web-first remains the primary channel:
 
 ```
 Phase 1: Web + PWA (primary)     →  Maximum reach, all devices
 Phase 2: Community & data        →  Submissions, open catalog data
-Phase 3: Seeker dApp (secondary) →  Crypto-native mobile users
+Phase 3: Better discovery        →  Feeds, exports, multilingual tags
 ```
 
 **Why web-first?**
 
 - Education grows fastest on web + social (X, YouTube, Nostr)
-- Seeker user base is smaller than general web audience
 - Free education needs maximum accessibility
 - dApp development adds cost with limited extra reach for pure education
 

@@ -5,6 +5,9 @@ on:
     - cron: "0 14 * * *" # 9:00 AM America/Toronto (EST, UTC-5)
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   deliver:
     runs-on: ubuntu-latest

@@ -1,14 +1,8 @@
 import type { NextConfig } from "next";
+import removedResources from "./src/data/removed-resources.json";
 
 const nextConfig: NextConfig = {
   images: { unoptimized: true },
-  transpilePackages: [
-    "@solana/wallet-adapter-base",
-    "@solana/wallet-adapter-react",
-    "@solana/wallet-adapter-react-ui",
-    "@solana/wallet-adapter-phantom",
-    "@solana/wallet-adapter-solflare",
-  ],
   async rewrites() {
     return [
       { source: "/doc", destination: "/doc/index.html" },
@@ -67,6 +61,11 @@ const nextConfig: NextConfig = {
         destination: "/doc/doc/roadmap.html",
         permanent: true,
       },
+      ...removedResources.map((id) => ({
+        source: `/resource/${id}`,
+        destination: "/catalog",
+        permanent: true,
+      })),
     ];
   },
 };

@@ -10,37 +10,49 @@ const SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
-  "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+  "Permissions-Policy":
+    "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   "Cross-Origin-Opener-Policy": "same-origin",
   "Cross-Origin-Resource-Policy": "same-site",
+  "X-DNS-Prefetch-Control": "off",
 };
 
 function buildCsp(pathname: string) {
+  const isProd = process.env.NODE_ENV === "production";
+  const scriptSrc = isProd
+    ? "script-src 'self' 'unsafe-inline'"
+    : "script-src 'self' 'unsafe-inline' 'unsafe-eval'";
   const isDoc = pathname.startsWith("/doc");
   if (isDoc) {
     return [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      scriptSrc,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: https:",
       "connect-src 'self'",
+      "object-src 'none'",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
+      "upgrade-insecure-requests",
     ].join("; ");
   }
 
+  const connectSrc = isProd ? "connect-src 'self'" : "connect-src 'self' https:";
+
   return [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    scriptSrc,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
-    "connect-src 'self' https:",
+    connectSrc,
+    "object-src 'none'",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
+    "upgrade-insecure-requests",
   ].join("; ");
 }
 

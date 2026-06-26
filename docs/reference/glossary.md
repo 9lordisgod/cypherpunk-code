@@ -96,7 +96,7 @@ Key terms used throughout Cypherpunk Code documentation and the broader cypherpu
 
 **Seed phrase** — A human-readable backup of a wallet's private keys (typically 12 or 24 words).
 
-**Seeker** — Solana's crypto-focused mobile device with integrated Seed Vault hardware security.
+
 
 **SegWit** — Segregated Witness. A Bitcoin protocol upgrade that separates signature data from transaction data.
 

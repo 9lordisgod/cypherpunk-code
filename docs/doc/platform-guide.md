@@ -46,7 +46,7 @@ Bookmark `/paths` and return weekly. Paths are updated as new high-quality resou
 
 **Best for:** Self-directed learners who know what they want.
 
-The catalog is a searchable, filterable database of 67+ curated resources.
+The catalog is a searchable, filterable database of 68 curated resources.
 
 ### Search
 

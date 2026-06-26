@@ -10,7 +10,11 @@
       "freenode-cypherpunk-archive",
       "eff-surveillance-self-defense"
     ],
-    "topics": ["cypherpunk", "privacy", "cryptography"]
+    "topics": [
+      "cypherpunk",
+      "privacy",
+      "cryptography"
+    ]
   },
   {
     "id": "bitcoin-sovereignty",
@@ -24,7 +28,11 @@
       "bitcoin-full-node",
       "btc-session-tutorials"
     ],
-    "topics": ["bitcoin", "nodes", "wallets"]
+    "topics": [
+      "bitcoin",
+      "nodes",
+      "wallets"
+    ]
   },
   {
     "id": "monero-privacy",
@@ -39,21 +47,29 @@
       "monero-tor-wallet",
       "sethforprivacy-monero-node"
     ],
-    "topics": ["monero", "privacy", "nodes"]
+    "topics": [
+      "monero",
+      "privacy",
+      "nodes"
+    ]
   },
   {
     "id": "practical-opsec",
     "title": "Practical OpSec Path",
     "description": "Hands-on operational security — GPG, Tor, Tails, and compartmentalized computing.",
     "resourceIds": [
-      "cypherpunk-school-101",
+      "bushido-opsec-101",
       "gnu-privacy-handbook",
       "pgp-best-practices",
       "tor-project-docs",
       "tails-os",
       "qubes-os-intro"
     ],
-    "topics": ["opsec", "privacy", "cryptography"]
+    "topics": [
+      "opsec",
+      "privacy",
+      "cryptography"
+    ]
   },
   {
     "id": "bitcoin-privacy",
@@ -63,10 +79,13 @@
       "bitcoin-fungibility-wiki",
       "coinjoin-bitcoin",
       "wasabi-wallet-docs",
-      "joinmarket",
-      "samourai-wallet"
+      "joinmarket"
     ],
-    "topics": ["bitcoin", "privacy", "wallets"]
+    "topics": [
+      "bitcoin",
+      "privacy",
+      "wallets"
+    ]
   },
   {
     "id": "deep-cryptography",
@@ -74,11 +93,13 @@
     "description": "Mathematical foundations for understanding protocols under the hood — university-level theory.",
     "resourceIds": [
       "danboneh-cryptography-coursera",
-      "mit-ocw-cryptography",
+      "crypto101",
       "applied-cryptography-schneier",
       "monero-research-lab",
       "signal-protocol"
     ],
-    "topics": ["cryptography"]
+    "topics": [
+      "cryptography"
+    ]
   }
 ]

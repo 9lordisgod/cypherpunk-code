@@ -59,7 +59,7 @@ Privacy is not a feature you toggle on — it is a practice:
 
 | Order | Topic | Outcome |
 | --- | --- | --- |
-| 1 | Cypherpunk School 101 | Hands-on OpSec basics |
+| 1 | Operational Security (OPSEC) 101 | Hands-on OpSec basics |
 | 2 | GNU Privacy Handbook | GPG encryption and signing |
 | 3 | Tor Project Docs | Anonymous networking |
 | 4 | Tails OS | Amnesic, incognito computing |
@@ -79,7 +79,7 @@ Bitcoin is transparent by default. Privacy requires deliberate technique:
 | 1 | Moneropedia | Private money concepts |
 | 2 | Bitcoin Fungibility Wiki | Why transparency hurts fungibility |
 | 3 | CoinJoin guides | Collaborative transaction privacy |
-| 4 | Wasabi / Samourai docs | Privacy-focused wallet tooling |
+| 4 | Wasabi / JoinMarket docs | Privacy-focused wallet tooling |
 
 **Paths:** [Monero Privacy](https://cypherpunk-code.com/paths#monero-privacy) and [Bitcoin Privacy Techniques](https://cypherpunk-code.com/paths#bitcoin-privacy).
 
@@ -94,7 +94,7 @@ For those who want to understand protocols under the hood:
 | Order | Topic | Outcome |
 | --- | --- | --- |
 | 1 | Dan Boneh Cryptography (Coursera) | Mathematical foundations |
-| 2 | MIT OCW Cryptography | University-level theory |
+| 2 | Crypto 101 | Hands-on cryptography for programmers |
 | 3 | Applied Cryptography (Schneier) | Reference textbook |
 | 4 | Monero Research Lab papers | Applied privacy research |
 

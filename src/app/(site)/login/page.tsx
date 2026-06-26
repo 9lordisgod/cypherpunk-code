@@ -1,7 +1,5 @@
-import { privatePageMetadata } from "@/lib/seo/metadata";
-
-export const metadata = privatePageMetadata("/login", "Sign In");
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
-  return null;
+  redirect("/catalog");
 }

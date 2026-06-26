@@ -1,9 +1,17 @@
 import resourcesData from "@/data/resources.json";
 import pathsData from "@/data/paths.json";
 import siteData from "@/data/site.json";
+import { assertCatalogUrl } from "@/lib/security/link-policy";
 import type { LearningPath, Resource, SiteMeta } from "./types";
 
-export const resources: Resource[] = resourcesData as Resource[];
+function validateCatalog(data: Resource[]): Resource[] {
+  for (const resource of data) {
+    assertCatalogUrl(resource.url);
+  }
+  return data;
+}
+
+export const resources: Resource[] = validateCatalog(resourcesData as Resource[]);
 export const learningPaths: LearningPath[] = pathsData as LearningPath[];
 export const site: SiteMeta = siteData as SiteMeta;
 

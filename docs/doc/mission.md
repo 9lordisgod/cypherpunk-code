@@ -83,12 +83,11 @@ Cypherpunk Code is curated and maintained by [@CHxmrBrother](https://x.com/CHxmr
 
 The initial database was seeded from public sources including:
 
-- Cypherpunk School
 - Nakamoto Institute
 - Monero Project documentation
 - MIT OpenCourseWare
 - Princeton Coursera courses
-- Class Central aggregations
+- Chaincode Labs curricula
 - Community guides and wikis
 
 New resources are added through curator review and community suggestions. If any rights holder is unhappy with a listing, contact us — content will be reviewed and removed promptly.
@@ -100,7 +99,7 @@ New resources are added through curator review and community suggestions. If any
 1. **Web-first platform** — excellent PWA experience accessible to everyone
 2. **Interactive learning** — hands-on labs, structured paths, and practice-first modules
 3. **Community growth** — Nostr integration, private in-person community
-4. **Solana Seeker dApp** — secondary distribution channel for crypto-native learners
+4. **Open catalog data** — exportable JSON/CSV for mirrors and community tools
 5. **Sustainable funding** — sponsorships, grants, and affiliates (never from learners)
 
 See [Project Roadmap](roadmap.md) for public milestones and [Openness Policy](openness-policy.md) for how we open the data layer before the codebase.
