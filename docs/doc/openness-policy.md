@@ -1,20 +1,16 @@
 # Openness Policy
 
-How Cypherpunk Code balances transparency with a private codebase during early development.
+How Cypherpunk Code balances transparency with sustainable development.
 
-> We teach sovereignty and verifiability. This policy explains what is open today, what stays private for now, and what opens next — without overpromising a full open-source date.
+> We teach sovereignty and verifiability. This policy explains what is open in this repository and how forks can extend the project.
 
 ---
 
 ## Bottom line
 
-**The application codebase is closed source at this stage — and that is intentional.**
+**The full application is open source under AGPL-3.0.**
 
-Cypherpunk Code is an early-stage project with admin tooling and production infrastructure still maturing. Keeping the implementation private while we stabilize security and architecture is the right call for now.
-
-**The risk is not being private. The risk is staying private too long without compensating transparency** — especially as community curation and the open data layer go live.
-
-This policy is our commitment to open the parts that matter first.
+The original hosted site at cypherpunk-code.com has been **retired**. This GitHub repository is the canonical public source. Anyone may fork, self-host, modify, and deploy their own freedom education index.
 
 ---
 
@@ -22,91 +18,58 @@ This policy is our commitment to open the parts that matter first.
 
 | Layer | Status | Where |
 | --- | --- | --- |
-| The live platform | Open | [cypherpunk-code.com](https://cypherpunk-code.com) — free to browse, no accounts required |
-| Mission, values, and roadmap | Open | [DOC](/doc/) |
-| Editorial philosophy (CP Score) | Open | [Cypherpunk Score](/doc/reference/cypherpunk-score.html) |
-| Security reporting process | Open | [Platform Security](/doc/reference/security.html) |
-| How to contribute suggestions | Open | [About](/about#contact) — resources, broken links, feedback |
+| Application source code | Open | This repository — `src/` |
+| Catalog data | Open | `src/data/resources.json`, `paths.json`, `site.json` |
+| Documentation | Open | `docs/` |
+| UI reference | Open | `demo/screenshots/` |
+| Fork & extension guide | Open | `docs/FORK_GUIDE.md` |
+| Roadmap with AI prompts | Open | `docs/roadmap/forward-steps.md`, `wiki-codex-gameplan.md` |
 
-Learners do not need access to our repository to use the archive. The education layer is public.
+Learners using a deployed fork get the full platform without needing separate data dumps.
 
 ---
 
-## What stays private (for now)
+## What you configure locally
 
-| Layer | Why |
+| Layer | Notes |
 | --- | --- |
-| Application source code | Auth, admin, rate limiting, and deployment are still evolving |
-| Infrastructure and secrets | Standard operational security |
-| Unfinished product strategy | Seeker dApp and onchain roadmap details stay internal until ready |
+| Deployment URL | Set `NEXT_PUBLIC_SITE_URL` in production |
+| Donation addresses | Optional — edit `src/data/site.json` |
+| Database | SQLite locally; Turso/libSQL for production scale |
+| Security vault | Optional encrypted config — see `.env.example` |
 
-The repository is **private and proprietary**. We do not accept public pull requests, forks, or redistribution of the codebase at this stage.
-
----
-
-## How we will open — data first, code second
-
-We will not flip a single “open source everything” switch. Openness will roll out in layers, tied to real milestones.
-
-### Trigger: Q3 2027 (Phase 2)
-
-When we ship the **resource submission form** and begin formal community curation, we will **publish the catalog data layer** under an open license:
-
-- `resources.json` — curated resource database
-- `paths.json` — learning path sequences
-- `site.json` — public site metadata (name, handles, donation addresses)
-
-This is the highest-leverage transparency step: the editorial work — CP Scores, paths, and catalog structure — becomes independently verifiable and mirrorable without exposing auth or admin internals.
-
-### After the data layer
-
-Application code will open in stages as features stabilize:
-
-1. **Catalog tooling** — export scripts, link checkers, submission workflows
-2. **Core platform** — when architecture is stable enough to welcome maintainers
-
-We are **not** committing to a specific date for full application open source. We *are* committing to this order: **public data and docs before private implementation details**.
-
-See [Project Roadmap](roadmap.md) for milestone timing.
+Never commit `.env.local`, vault keys, or API tokens.
 
 ---
 
-## Why this order
+## How to contribute
 
-| Principle | How we apply it |
+1. Fork the repository
+2. Create a feature branch
+3. Open a pull request with a clear description
+4. Ensure `npm test` and `npm run lint` pass
+
+Resource suggestions and feedback: [@CHxmrBrother](https://x.com/CHxmrBrother) on X or GitHub Issues.
+
+See [CONTRIBUTING.md](../CONTRIBUTING.md) and [FORK_GUIDE.md](../FORK_GUIDE.md).
+
+---
+
+## Licensing
+
+| Asset | License |
 | --- | --- |
-| Code is speech | We index tools that empower self-hosting; our catalog data should be freely reusable |
-| Sovereignty over convenience | Learners and mirrors should not depend on our deployment alone |
-| Security | Opening half-baked auth/admin code helps attackers more than users |
-| Editorial focus | The catalog *is* the public good; the Next.js app is how we serve it today |
+| Application code | [AGPL-3.0](../../LICENSE) |
+| Catalog data (`resources.json`, `paths.json`, `site.json`) | AGPL-3.0 (same repo) |
+| Documentation (`docs/`) | AGPL-3.0 |
+| Demo screenshots (`demo/`) | AGPL-3.0 |
 
----
-
-## How you can help without repo access
-
-- **Suggest a resource** — URL and why it belongs in the catalog
-- **Report a broken link** — resource name and what happens when you click
-- **Share feedback** — catalog, courses, paths, or documentation ideas
-- **Spread the word** — share paths and resources with learners
-
-Contact [@sapherpunk](https://x.com/sapherpunk) on X or use the [contact section](https://cypherpunk-code.com/about#contact).
-
----
-
-## Licensing (planned)
-
-| Asset | Current | Target |
-| --- | --- | --- |
-| Catalog data (`resources.json`, `paths.json`, `site.json`) | Proprietary (bundled with private repo) | Open license — **from Q3 2027** |
-| Documentation (`docs/`) | Proprietary (bundled with private repo) | Open license — **with or before data release** |
-| Application code | Proprietary, all rights reserved | Staged open release — **date TBD** |
-
-Licensing inquiries: [@sapherpunk](https://x.com/sapherpunk).
+Network-deployed modified versions must provide source to users per AGPL terms.
 
 ---
 
 ## Review
 
-This policy will be updated when milestones are reached. Major changes will be noted on the [roadmap](roadmap.md).
+This policy is updated when major openness milestones are reached. See [Project Roadmap](roadmap.md).
 
-*Transparency is selective revelation. We open what learners and the community need to verify — on a deliberate schedule, not as an afterthought.*
+*Transparency is selective revelation — we now open the full stack so the community can verify, fork, and build.*

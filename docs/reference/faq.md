@@ -26,6 +26,10 @@ No. Browse the entire catalog, all learning paths, and all documentation without
 
 No. This is an education index. Nothing here constitutes financial, investment, or legal advice.
 
+### What happened to cypherpunk-code.com?
+
+The original hosted site has been retired. The project is now fully open source on [GitHub](https://github.com/9lordisgod/cypherpunk-code). Fork and self-host your own instance.
+
 ---
 
 ## Studying
@@ -33,8 +37,8 @@ No. This is an education index. Nothing here constitutes financial, investment, 
 ### Where do I start?
 
 1. Read [How to Study](../doc/how-to-study.md)
-2. Follow the [Cypherpunk Foundations](https://cypherpunk-code.com/paths#cypherpunk-foundations) path
-3. Then move to [Bitcoin Sovereignty](https://cypherpunk-code.com/paths#bitcoin-sovereignty)
+2. Follow the Cypherpunk Foundations path at `/paths#cypherpunk-foundations`
+3. Then move to Bitcoin Sovereignty at `/paths#bitcoin-sovereignty`
 
 ### How long does it take to complete all paths?
 
@@ -62,11 +66,11 @@ The platform UI and resource metadata are available in English, French, Japanese
 
 ### How do I suggest a resource?
 
-Contact [@sapherpunk](https://x.com/sapherpunk) on X with the URL and why it belongs in the catalog.
+Open a GitHub Issue or contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X with the URL and why it belongs in the catalog.
 
 ### How do I report a broken link?
 
-Contact [@sapherpunk](https://x.com/sapherpunk) on X. Include the resource name and what happens when you click the link.
+Open a GitHub Issue or contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X. Include the resource name and what happens when you click the link.
 
 ### Is my browsing tracked?
 
@@ -74,11 +78,11 @@ No third-party trackers, ad cookies, or behavioral profiling. Anonymous page-vie
 
 ### Can I export the catalog data?
 
-Not yet. The catalog database (`resources.json`, `paths.json`) will be published under an open license in **Q3 2027**, when the submission form ships. Full JSON/CSV export tooling is planned for Phase 3. See [Openness Policy](../doc/openness-policy.md).
+Yes. `src/data/resources.json`, `paths.json`, and `site.json` are in this repository under AGPL-3.0.
 
 ### Is the project open source?
 
-**Not yet.** The application codebase is private while admin tooling and production infrastructure mature. The live site, documentation, mission, and roadmap are public. We open **data first, code second** — catalog data in Q3 2027; application source in stages afterward. See [Openness Policy](../doc/openness-policy.md).
+**Yes.** The full application, catalog data, and documentation are open source under AGPL-3.0. See [Openness Policy](../doc/openness-policy.md) and [Fork Guide](../FORK_GUIDE.md).
 
 ---
 
@@ -86,15 +90,15 @@ Not yet. The catalog database (`resources.json`, `paths.json`) will be published
 
 ### How do I join the community?
 
-The community is private. Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X. Membership requires meeting in person, face to face.
+Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X.
 
 ### Can I contribute?
 
-Resource suggestions and feedback are welcome. Contact [@sapherpunk](https://x.com/sapherpunk) on X.
+Yes. Fork the repo, open pull requests, or suggest resources via GitHub Issues.
 
 ### How do I donate?
 
-Bitcoin and Monero addresses are on the [About page](https://cypherpunk-code.com/about#donate). No payment processors, no KYC.
+Configure donation addresses in `src/data/site.json` on your fork. The upstream repo ships without addresses by default.
 
 ---
 
@@ -106,12 +110,12 @@ The web platform is already mobile-responsive. Future mobile improvements will s
 
 ### Will there be onchain certificates?
 
-Yes — free verifiable certificates are planned for 2028. See [Project Roadmap](../doc/roadmap.md).
+Verifiable credentials are planned in the [forward steps roadmap](../roadmap/forward-steps.md).
 
 ### Will you add more resources?
 
-Yes. The catalog is maintained and expanded continuously. Community submissions will be formalized in Phase 2.
+Yes. The catalog is maintained and expanded continuously. Community submissions are formalized in the Phase 2 roadmap.
 
 ### Will you ever charge for content?
 
-No. The platform will always be free for learners. The project is sustained through sponsorships, grants, donations, and related channels — never learner fees.
+No. The platform will always be free for learners. Sustained through sponsorships, grants, donations, and related channels — never learner fees.

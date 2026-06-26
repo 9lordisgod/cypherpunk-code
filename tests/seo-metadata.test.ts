@@ -12,10 +12,10 @@ describe("seo metadata", () => {
     });
 
     expect(metadata.alternates?.canonical).toBe(
-      "https://www.cypherpunk-code.com/topics/bitcoin"
+      "http://localhost:3000/topics/bitcoin"
     );
     expect(metadata.openGraph?.url).toBe(
-      "https://www.cypherpunk-code.com/topics/bitcoin"
+      "http://localhost:3000/topics/bitcoin"
     );
     expect(metadata.openGraph?.title).toBe("Bitcoin Learning Resources");
     expect(metadata.robots).toEqual({ index: true, follow: true });

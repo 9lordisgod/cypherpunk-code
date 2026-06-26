@@ -10,6 +10,12 @@
 * [Openness Policy](doc/openness-policy.md)
 * [Project Roadmap](doc/roadmap.md)
 
+## Fork & Extend
+
+* [Fork Guide](FORK_GUIDE.md)
+* [Forward Steps Roadmap](roadmap/forward-steps.md)
+* [Wiki.js Codex Game Plan](roadmap/wiki-codex-gameplan.md)
+
 ## Reference
 
 * [Cypherpunk Score Explained](reference/cypherpunk-score.md)

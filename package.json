@@ -1,8 +1,8 @@
 {
   "name": "cypherpunk-code",
   "version": "0.1.0",
-  "private": true,
-  "license": "UNLICENSED",
+  "private": false,
+  "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && npm run docs:build && next build && node scripts/sync-out-branding.mjs",

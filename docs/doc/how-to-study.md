@@ -29,7 +29,7 @@ Before touching Bitcoin or any wallet, understand the *why*:
 | 3 | Nakamoto Institute Library | Historical context of Bitcoin's birth |
 | 4 | EFF Surveillance Self-Defense | Practical threat model basics |
 
-**Path:** [Cypherpunk Foundations](https://cypherpunk-code.com/paths#cypherpunk-foundations) on the platform.
+**Path:** [Cypherpunk Foundations](/paths#cypherpunk-foundations) on the platform.
 
 **Goal:** You can explain *why* privacy matters without referencing price or trading.
 
@@ -47,7 +47,7 @@ Now you are ready for Bitcoin — technically, not financially:
 | 4 | Getting Started with Bitcoin | Practical wallet basics |
 | 5 | Full Node Guide | Run your own validation |
 
-**Path:** [Bitcoin Sovereignty Path](https://cypherpunk-code.com/paths#bitcoin-sovereignty) on the platform.
+**Path:** [Bitcoin Sovereignty Path](/paths#bitcoin-sovereignty) on the platform.
 
 **Goal:** You understand how Bitcoin works without trusting any third party.
 
@@ -64,7 +64,7 @@ Privacy is not a feature you toggle on — it is a practice:
 | 3 | Tor Project Docs | Anonymous networking |
 | 4 | Tails OS | Amnesic, incognito computing |
 
-**Path:** [Practical OpSec Path](https://cypherpunk-code.com/paths#practical-opsec) on the platform.
+**Path:** [Practical OpSec Path](/paths#practical-opsec) on the platform.
 
 **Goal:** You can communicate and browse with basic operational security.
 
@@ -81,7 +81,7 @@ Bitcoin is transparent by default. Privacy requires deliberate technique:
 | 3 | CoinJoin guides | Collaborative transaction privacy |
 | 4 | Wasabi / JoinMarket docs | Privacy-focused wallet tooling |
 
-**Paths:** [Monero Privacy](https://cypherpunk-code.com/paths#monero-privacy) and [Bitcoin Privacy Techniques](https://cypherpunk-code.com/paths#bitcoin-privacy).
+**Paths:** [Monero Privacy](/paths#monero-privacy) and [Bitcoin Privacy Techniques](/paths#bitcoin-privacy).
 
 **Goal:** You understand the difference between anonymity and privacy, and can use basic privacy tools.
 
@@ -98,7 +98,7 @@ For those who want to understand protocols under the hood:
 | 3 | Applied Cryptography (Schneier) | Reference textbook |
 | 4 | Monero Research Lab papers | Applied privacy research |
 
-**Path:** [Deep Cryptography](https://cypherpunk-code.com/paths#deep-cryptography) on the platform.
+**Path:** [Deep Cryptography](/paths#deep-cryptography) on the platform.
 
 **Goal:** You can read protocol specifications and academic papers.
 

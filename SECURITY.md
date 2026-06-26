@@ -1,35 +1,34 @@
 # Security Policy
 
-Cypherpunk Code is a private, closed-source project. Security reports are handled confidentially by the maintainers.
+Cypherpunk Code is an open-source project under AGPL-3.0. Security reports are handled responsibly through public or private channels.
 
 ## Supported Versions
 
-Security fixes are applied to the latest `main` branch and deployed through Vercel.
+Security fixes are applied to the latest `main` branch.
 
 ## Reporting a Vulnerability
 
-If you believe you have found a security vulnerability in Cypherpunk Code, please report it responsibly.
+If you believe you have found a security vulnerability, please report it responsibly.
 
-**Do not** disclose security vulnerabilities publicly — including on X, forums, public GitHub issues, or social channels.
+**Preferred channels:**
 
-**Report privately via:**
-
-- [@sapherpunk](https://x.com/sapherpunk) on X, or
-- the contact form at [cypherpunk-code.com/about#contact](https://cypherpunk-code.com/about#contact)
+- Open a [GitHub Security Advisory](https://github.com/9lordisgod/cypherpunk-code/security/advisories) (private disclosure), or
+- Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X
 
 Please include:
+
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
 - Any suggested fixes (optional)
 
-We will acknowledge receipt within 48 hours and aim to provide a fix timeline. We appreciate responsible disclosure and will credit reporters (unless they prefer to remain anonymous).
+We aim to acknowledge receipt within 48 hours. We appreciate responsible disclosure and will credit reporters unless they prefer anonymity.
 
 ## Scope
 
 This policy covers the code in this repository, particularly client-side persistence, API routes, and general application logic.
 
-Out of scope: Third-party services (Vercel, external APIs, etc.), social engineering, or issues in dependencies unless they directly affect this codebase in a novel way.
+Out of scope: Third-party hosting providers, external APIs, social engineering, or issues in dependencies unless they directly affect this codebase in a novel way.
 
 ## Thank You
 

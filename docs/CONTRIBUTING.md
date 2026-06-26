@@ -1,61 +1,66 @@
-# Contributing to DOC
+# Contributing to Cypherpunk Code
 
-The documentation lives in `docs/` and is built with [Honkit](https://github.com/honkit/honkit) (GitBook-compatible).
+Thank you for helping build high-signal freedom education tooling.
 
-## Local preview
+## Quick links
+
+- [Fork Guide](FORK_GUIDE.md) — deploy your own instance
+- [Forward Steps Roadmap](roadmap/forward-steps.md) — phased features with AI prompts
+- [Wiki Codex Game Plan](roadmap/wiki-codex-gameplan.md) — encyclopedia implementation
+
+## Development setup
 
 ```bash
-# From project root
+git clone https://github.com/9lordisgod/cypherpunk-code.git
+cd cypherpunk-code
 npm install
-npm run docs:dev
+cp .env.example .env.local
+npm run db:push
+npm run dev
 ```
 
-Open [http://localhost:4000](http://localhost:4000).
+## Documentation
 
-## Build for the main site
+The documentation lives in `docs/` and is built with [Honkit](https://github.com/honkit/honkit).
 
 ```bash
-npm run docs:build
+npm run docs:dev    # Preview at http://localhost:4000
+npm run docs:build  # Output to public/doc/
 ```
 
-Output is copied to `public/doc/` and served at `/doc/` by Next.js.
-
-## Structure
+### Structure
 
 | File / folder | Purpose |
-|---------------|---------|
+| --- | --- |
 | `README.md` | Welcome page |
 | `SUMMARY.md` | Sidebar navigation |
-| `book.json` | Honkit configuration |
-| `styles/website.css` | Custom cypherpunk theme |
-| `doc/` | Start-here guides (study, platform, mission, roadmap) |
-| `reference/` | CP Score, paths index, FAQ, glossary |
+| `doc/` | Mission, platform guide, roadmap |
+| `reference/` | CP Score, paths, FAQ, glossary |
+| `roadmap/` | Forward steps + Wiki.js Codex plan |
+| `FORK_GUIDE.md` | Fork, deploy, extend |
 
-## Adding a page
+## Pull requests
 
-1. Create the markdown file
-2. Add an entry to `SUMMARY.md`
-3. Preview with `npm run docs:dev`
-4. Build with `npm run docs:build`
+1. Fork and branch from `main`
+2. Keep changes focused — one feature or fix per PR
+3. Run `npm test` and `npm run lint`
+4. Update docs if behavior or config changes
 
 ## Editorial guidelines
 
-- Keep content aligned with the cypherpunk mission: privacy, sovereignty, cryptography
-- Link to platform resources at `https://cypherpunk-code.com` where relevant
-- Maintain the web-first strategy; Seeker dApp is a secondary channel
-- All education content must remain 100% free — no paywall language
-- Credit [@CHxmrBrother](https://x.com/CHxmrBrother) as curator where appropriate
+- Align with the cypherpunk mission: privacy, sovereignty, cryptography
+- No trading noise, no hype, no paywall language
+- Credit [@CHxmrBrother](https://x.com/CHxmrBrother) as original curator where appropriate
+- All education content must remain 100% free
 
-## Who can edit
+## Suggesting resources
 
-This repository is **private and closed source**. Direct edits to code or documentation require maintainer access.
+Open a GitHub Issue or contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X with:
 
-Public transparency commitments — including opening the catalog data layer in Q3 2027 — are documented in [`doc/openness-policy.md`](doc/openness-policy.md).
+- URL of the resource
+- Why it belongs in the catalog
+- Suggested CP Score (1–10) and topics
 
-## Suggesting changes
+## Security
 
-Anyone can suggest improvements. Contact [@sapherpunk](https://x.com/sapherpunk) on X with:
-
-- The page you want changed
-- What should be updated and why
-- Any new resources or links to include
+See [SECURITY.md](../SECURITY.md) for vulnerability reporting.

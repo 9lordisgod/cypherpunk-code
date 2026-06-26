@@ -91,33 +91,39 @@ export function AboutContent() {
             </ul>
           </section>
 
-          <section id="donate">
-            <h2 className="text-xl font-semibold">{t("aboutSupport")}</h2>
-            <p className="mt-2 leading-relaxed text-muted">
-              {t("aboutSupportText", { name: site.name })}
-            </p>
-            <div className="mt-4 space-y-4 rounded-lg border border-border bg-card/90 p-6 backdrop-blur-sm">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
-                  {t("aboutBitcoin")}
-                </p>
-                <p className="mt-1 break-all font-mono text-sm">
-                  <a
-                    href={`bitcoin:${site.donations.bitcoin}`}
-                    className="text-accent hover:underline"
-                  >
-                    {site.donations.bitcoin}
-                  </a>
-                </p>
+          {(site.donations.bitcoin || site.donations.monero) && (
+            <section id="donate">
+              <h2 className="text-xl font-semibold">{t("aboutSupport")}</h2>
+              <p className="mt-2 leading-relaxed text-muted">
+                {t("aboutSupportText", { name: site.name })}
+              </p>
+              <div className="mt-4 space-y-4 rounded-lg border border-border bg-card/90 p-6 backdrop-blur-sm">
+                {site.donations.bitcoin && (
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
+                      {t("aboutBitcoin")}
+                    </p>
+                    <p className="mt-1 break-all font-mono text-sm">
+                      <a
+                        href={`bitcoin:${site.donations.bitcoin}`}
+                        className="text-accent hover:underline"
+                      >
+                        {site.donations.bitcoin}
+                      </a>
+                    </p>
+                  </div>
+                )}
+                {site.donations.monero && (
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
+                      {t("aboutMonero")}
+                    </p>
+                    <p className="mt-1 break-all font-mono text-sm">{site.donations.monero}</p>
+                  </div>
+                )}
               </div>
-              <div>
-                <p className="font-mono text-xs uppercase tracking-wider text-accent-orange">
-                  {t("aboutMonero")}
-                </p>
-                <p className="mt-1 break-all font-mono text-sm">{site.donations.monero}</p>
-              </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           <section id="contact">
             <h2 className="text-xl font-semibold">{t("aboutContactUs")}</h2>

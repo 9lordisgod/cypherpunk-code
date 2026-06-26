@@ -73,4 +73,5 @@ export interface SiteMeta {
     bitcoin: string;
     monero: string;
   };
+  repository?: string;
 }

@@ -1,7 +1,7 @@
 {
   "name": "Cypherpunk Code",
-  "domain": "www.cypherpunk-code.com",
-  "url": "https://www.cypherpunk-code.com",
+  "domain": "localhost:3000",
+  "url": "http://localhost:3000",
   "tagline": "Freedom education",
   "description": "A curated freedom education index — courses, papers, guides, and documentation for cryptocurrency, privacy technology, and cypherpunk philosophy. No trading noise, just signal.",
   "creator": {
@@ -10,12 +10,13 @@
   },
   "contact": {
     "x": {
-      "handle": "sapherpunk",
-      "url": "https://x.com/sapherpunk"
+      "handle": "CHxmrBrother",
+      "url": "https://x.com/CHxmrBrother"
     }
   },
   "donations": {
-    "bitcoin": "bc1qre5ureack5s6alknv8s7etza5z0rjupwkzctg6",
-    "monero": "43knj6uNiWHWfQ62WahXgV9UUgsouDif2CN6wbqN9X1eibab8EQRoAhTYdBwbctzenCW9jb6QNDUXJV7p39RGTjj2K1CZwH"
-  }
+    "bitcoin": "",
+    "monero": ""
+  },
+  "repository": "https://github.com/9lordisgod/cypherpunk-code"
 }

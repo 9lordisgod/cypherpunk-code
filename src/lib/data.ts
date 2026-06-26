@@ -13,7 +13,19 @@ function validateCatalog(data: Resource[]): Resource[] {
 
 export const resources: Resource[] = validateCatalog(resourcesData as Resource[]);
 export const learningPaths: LearningPath[] = pathsData as LearningPath[];
-export const site: SiteMeta = siteData as SiteMeta;
+function resolveSiteMeta(): SiteMeta {
+  const base = siteData as SiteMeta;
+  const publicUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  if (!publicUrl) return base;
+  try {
+    const host = new URL(publicUrl).host;
+    return { ...base, url: publicUrl, domain: host };
+  } catch {
+    return base;
+  }
+}
+
+export const site: SiteMeta = resolveSiteMeta();
 
 export function getResourceById(id: string): Resource | undefined {
   return resources.find((r) => r.id === id);

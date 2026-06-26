@@ -1,43 +1,31 @@
-# Cypherpunk Code Documentation
+# Cypherpunk Code — Documentation
 
-> **100% free. Privacy-first. Built for sovereignty.**
+Welcome to the official documentation for **Cypherpunk Code** — freedom education for Bitcoin, Monero, cryptography, and cypherpunk sovereignty.
 
-Welcome to the official documentation for [Cypherpunk Code](https://cypherpunk-code.com) — freedom education for Bitcoin, Monero, cryptography, and cypherpunk sovereignty.
+> The original site at cypherpunk-code.com has been retired. This repository is the canonical open-source source.
 
-This documentation explains **how to study effectively**, **how to get the most from our platform**, and where the project is headed.
+**Curated by [@CHxmrBrother](https://x.com/CHxmrBrother)**
 
----
+## Quick links
 
-## Who this is for
-
-| You are… | Start here |
+| Guide | Description |
 | --- | --- |
-| A complete beginner | [How to Study](doc/how-to-study.md) |
-| Returning to crypto after trading noise | [Platform Guide](doc/platform-guide.md) |
-| A contributor or curator | [Mission & Values](doc/mission.md) |
-| Curious about what's next | [Project Roadmap](doc/roadmap.md) |
+| [Fork Guide](FORK_GUIDE.md) | Deploy your own instance |
+| [Forward Steps](roadmap/forward-steps.md) | Phased roadmap with AI prompts |
+| [Wiki Codex Plan](roadmap/wiki-codex-gameplan.md) | Encyclopedia implementation |
+| [Demo screenshots](../demo/screenshots/README.md) | UI/UX reference images |
 
----
+## Start here
 
-## Quick principles
+1. [How to Study](doc/how-to-study.md)
+2. [Platform Guide](doc/platform-guide.md)
+3. [Mission & Values](doc/mission.md)
+4. [Openness Policy](doc/openness-policy.md)
 
-1. **Study foundations before tools** — philosophy and cryptography before wallets and nodes.
-2. **Follow structured paths** — our learning paths are curated sequences, not random links.
-3. **Filter by Cypherpunk Score** — cut trading fluff; surface privacy and sovereignty signal.
-4. **Learn by doing** — run a node, set up Tor, practice OpSec. Theory without practice is incomplete.
-5. **Stay free forever** — this platform will always be free for learners. No paywalls, no KYC.
+## Local preview
 
----
+```bash
+npm run docs:dev
+```
 
-## Platform at a glance
-
-<div class="cp-glance">
-  <div class="cp-glance__item"><strong>Catalog</strong><span>Search 68 curated resources</span></div>
-  <div class="cp-glance__item"><strong>Paths</strong><span>Progressive study sequences</span></div>
-  <div class="cp-glance__item"><strong>CP Score</strong><span>Editorial relevance filter (1–10)</span></div>
-  <div class="cp-glance__item"><strong>DOC</strong><span>This documentation (you are here)</span></div>
-</div>
-
----
-
-*Curated by [@CHxmrBrother](https://x.com/CHxmrBrother)*
+Open [http://localhost:4000](http://localhost:4000).

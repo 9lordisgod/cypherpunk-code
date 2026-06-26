@@ -65,10 +65,9 @@ next-env.d.ts
 # logo experiments (use scripts/deploy-logo.py with a source PNG)
 /logo-review/
 
-# marketing manager (local bot + generated media)
-/tools/marketing-manager/.env
-/tools/marketing-manager/.venv/
-/tools/marketing-manager/__pycache__/
-/tools/marketing-manager/**/__pycache__/
-/tools/marketing-manager/output/
-/tools/marketing-manager/state/
+# local env backups (never commit secrets)
+.env.turso
+.env.local
+
+# removed operator tooling (leftover local artifacts)
+/tools/marketing-manager/

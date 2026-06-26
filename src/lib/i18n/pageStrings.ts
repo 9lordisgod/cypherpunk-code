@@ -63,13 +63,13 @@ export const pageStringsEn = {
     "{name} is a freedom education index for cypherpunk and cryptocurrency learning. We curate and organize material so learners can find signal without wading through trading noise. This is a reference tool — not financial advice, not a course provider, and not affiliated with the projects listed unless noted.",
   aboutArchiveMission2:
     "The catalog is reviewed and updated on an ongoing basis. If any rights holder, author, or project is unhappy with a listing, contact {handle} and the content will be pulled or corrected without delay.",
-  aboutOpennessTitle: "Openness policy",
+  aboutOpennessTitle: "Open source",
   aboutOpennessLead:
-    "The application codebase is closed source at this stage — auth, wallet sign-in, and admin tooling are still maturing. That is intentional.",
+    "This project is open source under AGPL-3.0. Fork it, self-host it, and build on the catalog, paths, and documentation.",
   aboutOpennessDataFirst:
-    "We open what matters first: the live site, documentation, mission, and roadmap are public today. When the resource submission form ships (Q3 2026), we will publish the catalog data layer — resources, paths, and site metadata — under an open license.",
+    "The catalog data layer — resources, paths, and site metadata — ships in this repository. Documentation, demo screenshots, and contributor guides are included for independent deployment.",
   aboutOpennessCodeSecond:
-    "Application code will follow in stages as features stabilize. We are not overpromising a full open-source date; we are committing to data before code.",
+    "The original hosted site at cypherpunk-code.com has been retired. Run your own instance from this repo and point learners to your deployment.",
   aboutOpennessLink: "Read the full openness policy",
   aboutWhatIsThis: "What is this?",
   aboutWhatIsThisText:
@@ -120,7 +120,7 @@ export const pageStringsEn = {
   roadmapPhase1Item2: "Searchable catalog with Cypherpunk Score filter",
   roadmapPhase1Item3: "6 structured learning paths",
   roadmapPhase1Item4: "Freedom education catalog — free to browse; no sign-in required",
-  roadmapPhase1Item5: "Deploy at cypherpunk-code.com",
+  roadmapPhase1Item5: "Open-source release on GitHub",
   roadmapPhase2Label: "Phase 2 — Grow the database",
   roadmapPhase2Item1: "Expand catalog with community submissions",
   roadmapPhase2Item2: "Resource submission form (no X scraping required)",
@@ -140,7 +140,7 @@ export const pageStringsEn = {
   roadmapPhase4Item3: "Community curation workflow",
   roadmapPhase4Item4: "Mirror-friendly static archive dumps",
   roadmapPhase4Item5:
-    "Launch utility coin for our project with tokenomics release soon",
+    "Optional community governance experiments — only if clear non-speculative use cases emerge",
   roadmapSuggestTitle: "Suggest a milestone",
   roadmapSuggestText:
     "Have an idea for the roadmap or a resource to add? Reach out to {handle}.",
@@ -389,13 +389,13 @@ export const pageStringsZhCN = {
     "{name} 是一个面向密码朋克和加密货币学习的自由教育索引。我们策划和组织材料，让学习者能在交易杂音中找到信号。这是一个参考工具 — 非财务建议，非课程提供商，除非注明，否则与所列项目无关联。",
   aboutArchiveMission2:
     "目录持续审查和更新。如有权利持有人、作者或项目对列载不满，请联系 {handle}，内容将立即撤下或更正。",
-  aboutOpennessTitle: "开放政策",
+  aboutOpennessTitle: "开源",
   aboutOpennessLead:
-    "应用代码库目前为闭源 — 认证、钱包登录和管理工具仍在完善中。这是有意为之。",
+    "本项目在 AGPL-3.0 许可下开源。可自由 fork、自托管，并基于目录、学习路径与文档进行扩展。",
   aboutOpennessDataFirst:
-    "我们先开放最重要的部分：网站、文档、使命和路线图现已公开。当资源提交表单上线（2026年第三季度）时，我们将以开放许可发布目录数据层 — 资源、路径和站点元数据。",
+    "目录数据层 — 资源、路径与站点元数据 — 已包含在本仓库中。文档、演示截图与贡献指南支持独立部署。",
   aboutOpennessCodeSecond:
-    "应用代码将随功能稳定分阶段开放。我们不承诺具体的全面开源日期；我们承诺数据先于代码。",
+    "原托管站点 cypherpunk-code.com 已下线。请从本仓库运行自己的实例，并将学习者引导至你的部署地址。",
   aboutOpennessLink: "阅读完整开放政策",
   aboutWhatIsThis: "这是什么？",
   aboutWhatIsThisText:
@@ -442,7 +442,7 @@ export const pageStringsZhCN = {
   roadmapPhase1Item2: "可搜索目录，带密码朋克评分筛选",
   roadmapPhase1Item3: "6 条结构化学习路径",
   roadmapPhase1Item4: "自由教育目录 — 免费浏览；无需登录",
-  roadmapPhase1Item5: "部署于 cypherpunk-code.com",
+  roadmapPhase1Item5: "在 GitHub 上开源发布",
   roadmapPhase2Label: "第二阶段 — 扩展数据库",
   roadmapPhase2Item1: "通过社区提交扩展目录",
   roadmapPhase2Item2: "资源提交表单（无需 X 抓取）",
@@ -699,13 +699,13 @@ export const pageStringsJa = {
     "{name} はサイファーパンクと暗号通貨学習のためのフリーダム教育インデックスです。資料をキュレーション・整理し、学習者がトレードのノイズに溺れずにシグナルを見つけられるようにします。参考ツールであり — 金融アドバイスでも、コース提供者でもなく、特記がない限り掲載プロジェクトと提携していません。",
   aboutArchiveMission2:
     "カタログは継続的にレビュー・更新されます。権利者、著者、プロジェクトが掲載に不満がある場合は {handle} にご連絡ください。コンテンツは遅延なく削除または修正されます。",
-  aboutOpennessTitle: "オープン方針",
+  aboutOpennessTitle: "オープンソース",
   aboutOpennessLead:
-    "アプリケーションのコードベースは現段階でクローズドソースです — 認証、ウォレットサインイン、管理ツールはまだ成熟途上です。これは意図的な判断です。",
+    "このプロジェクトは AGPL-3.0 の下でオープンソースです。フォーク、セルフホスト、カタログ・パス・ドキュメントの上に構築できます。",
   aboutOpennessDataFirst:
-    "重要なものから開放します：ライブサイト、ドキュメント、使命、ロードマップはすでに公開されています。リソース投稿フォームの公開時（2026年Q3）に、カタログデータ層 — リソース、パス、サイトメタデータ — をオープンライセンスで公開します。",
+    "カタログデータ層 — リソース、パス、サイトメタデータ — はこのリポジトリに含まれています。ドキュメント、デモスクリーンショット、貢献ガイドで独立デプロイを支援します。",
   aboutOpennessCodeSecond:
-    "アプリケーションコードは機能が安定するにつれ段階的に開放します。全面オープンソースの具体的日程は約束しません。データをコードより先に開放することは約束します。",
+    "元のホストサイト cypherpunk-code.com は終了しました。このリポジトリから独自インスタンスを運用し、学習者をあなたのデプロイ先へ案内してください。",
   aboutOpennessLink: "オープン方針の全文を読む",
   aboutWhatIsThis: "これは何？",
   aboutWhatIsThisText:
@@ -755,7 +755,7 @@ export const pageStringsJa = {
   roadmapPhase1Item2: "サイファーパンクスコアフィルター付き検索可能カタログ",
   roadmapPhase1Item3: "6つの構造化学習パス",
   roadmapPhase1Item4: "フリーダム教育カタログ — 無料閲覧、ログイン不要",
-  roadmapPhase1Item5: "cypherpunk-code.com にデプロイ",
+  roadmapPhase1Item5: "GitHub でのオープンソース公開",
   roadmapPhase2Label: "フェーズ 2 — データベース拡大",
   roadmapPhase2Item1: "コミュニティ投稿でカタログ拡張",
   roadmapPhase2Item2: "リソース投稿フォーム（Xスクレイピング不要）",
@@ -1021,13 +1021,13 @@ export const pageStringsFr = {
     "{name} est un index d'éducation libertaire pour l'apprentissage cypherpunk et cryptomonnaie. Nous organisons du matériel pour que les apprenants trouvent du signal sans le bruit du trading. C'est un outil de référence — pas un conseil financier, pas un fournisseur de cours, et non affilié aux projets listés sauf mention contraire.",
   aboutArchiveMission2:
     "Le catalogue est révisé et mis à jour en continu. Si un titulaire de droits, auteur ou projet n'est pas satisfait d'un listing, contactez {handle} et le contenu sera retiré ou corrigé sans délai.",
-  aboutOpennessTitle: "Politique d'ouverture",
+  aboutOpennessTitle: "Open source",
   aboutOpennessLead:
-    "Le code de l'application est fermé à ce stade — l'authentification, la connexion portefeuille et les outils d'administration sont encore en maturation. C'est intentionnel.",
+    "Ce projet est open source sous licence AGPL-3.0. Forkez-le, auto-hébergez-le et construisez sur le catalogue, les parcours et la documentation.",
   aboutOpennessDataFirst:
-    "Nous ouvrons d'abord ce qui compte : le site, la documentation, la mission et la feuille de route sont publics aujourd'hui. À la sortie du formulaire de soumission de ressources (T3 2026), nous publierons la couche de données du catalogue — ressources, parcours et métadonnées du site — sous licence ouverte.",
+    "La couche de données du catalogue — ressources, parcours et métadonnées du site — est incluse dans ce dépôt. Documentation, captures de démo et guides de contribution facilitent un déploiement indépendant.",
   aboutOpennessCodeSecond:
-    "Le code de l'application suivra par étapes au fur et à mesure que les fonctionnalités se stabilisent. Nous ne promettons pas de date pour une ouverture totale ; nous nous engageons à ouvrir les données avant le code.",
+    "Le site hébergé d'origine sur cypherpunk-code.com a été retiré. Exécutez votre propre instance depuis ce dépôt et dirigez les apprenants vers votre déploiement.",
   aboutOpennessLink: "Lire la politique d'ouverture complète",
   aboutWhatIsThis: "Qu'est-ce que c'est ?",
   aboutWhatIsThisText:
@@ -1080,7 +1080,7 @@ export const pageStringsFr = {
   roadmapPhase1Item2: "Catalogue consultable avec filtre Score Cypherpunk",
   roadmapPhase1Item3: "6 parcours d'apprentissage structurés",
   roadmapPhase1Item4: "Catalogue d'éducation libertaire — navigation gratuite, sans connexion",
-  roadmapPhase1Item5: "Déploiement sur cypherpunk-code.com",
+  roadmapPhase1Item5: "Publication open source sur GitHub",
   roadmapPhase2Label: "Phase 2 — Agrandir la base",
   roadmapPhase2Item1: "Élargir le catalogue avec les soumissions communautaires",
   roadmapPhase2Item2: "Formulaire de soumission (sans scraping X)",
