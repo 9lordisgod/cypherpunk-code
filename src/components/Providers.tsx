@@ -12,7 +12,6 @@ import {
 } from "@/components/auth/WalletConnectProvider";
 import { AnalyticsBeacon } from "@/components/AnalyticsBeacon";
 import { FeedbackFloater } from "@/components/FeedbackFloater";
-import { LanguagePicker } from "@/components/LanguagePicker";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
 function WalletConnectFloaterBridge() {
@@ -42,7 +41,6 @@ export function Providers({
             <FeedbackFloater />
           </WalletConnectProvider>
         </SolanaProvider>
-        <LanguagePicker />
       </LanguageProvider>
     </AuthSessionProvider>
   );

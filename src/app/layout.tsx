@@ -114,11 +114,6 @@ export default async function RootLayout({
       className={`${pixelFont.variable} ${pixelBody.variable} h-full`}
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var l=localStorage.getItem("cypherpunk-code-locale");if(l==="zh-TW")l="zh-CN";if(l==="zh-CN")document.documentElement.lang="zh-Hans";else if(l==="ja"||l==="fr")document.documentElement.lang=l;}catch(e){}})();`,
-          }}
-        />
         <JsonLd data={[buildWebsiteJsonLd(), buildOrganizationJsonLd()]} />
       </head>
       <body className="flex min-h-full flex-col">

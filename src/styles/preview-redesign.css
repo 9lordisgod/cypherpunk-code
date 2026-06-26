@@ -64,26 +64,6 @@ body:has(.preview-theme) {
   overflow-x: hidden;
 }
 
-html[lang="zh-Hans"] .preview-theme {
-  --font-preview-sans:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Microsoft YaHei",
-    var(--font-cjk-sc),
-    var(--font-latin),
-    sans-serif;
-}
-
-html[lang="ja"] .preview-theme {
-  --font-preview-sans:
-    "Hiragino Sans",
-    "Yu Gothic UI",
-    "Meiryo",
-    var(--font-cjk-ja),
-    var(--font-latin),
-    sans-serif;
-}
-
 .preview-theme .font-mono {
   font-family: var(--font-preview-sans) !important;
 }
