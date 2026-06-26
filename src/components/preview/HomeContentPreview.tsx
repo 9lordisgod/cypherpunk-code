@@ -17,7 +17,10 @@ function PreviewResourceCard({ resource }: { resource: Resource }) {
   const { typeLabels: types } = useTranslatedLabels();
 
   return (
-    <Link href={`/resource/${resource.id}`} className="preview-card preview-card--premium">
+    <Link
+      href={`/resource/${resource.id}`}
+      className="preview-card preview-card--premium preview-inview"
+    >
       <div className="preview-card__top">
         <span className="preview-card__meta">{types[resource.type]}</span>
         <span className="preview-card__score">CP {resource.cypherpunkScore}</span>
@@ -47,10 +50,15 @@ export function HomeContentPreview({
     { label: t("statFree"), value: freeCount },
   ];
 
-  const exploreLinks = [
+  const exploreLinks: {
+    href: string;
+    label: string;
+    desc: string;
+    external?: boolean;
+  }[] = [
     { href: "/catalog", label: t("navCatalog"), desc: `${resourceCount} curated resources` },
     { href: "/paths", label: t("navPaths"), desc: "Structured learning sequences" },
-    { href: "/doc/", label: t("navDoc"), desc: "Documentation & mission" },
+    { href: "/doc", label: t("navDoc"), desc: "Documentation & mission", external: true },
     { href: "/about", label: t("navAbout"), desc: "Project & policy" },
   ];
 
@@ -127,11 +135,11 @@ export function HomeContentPreview({
             </Link>
           </header>
           <div className="preview-path-list preview-path-list--compact">
-            {learningPaths.slice(0, 3).map((path) => (
+            {learningPaths.map((path) => (
               <Link
                 key={path.id}
                 href={`/paths#${path.id}`}
-                className="preview-path-item preview-path-item--premium"
+                className="preview-path-item preview-path-item--premium preview-inview"
               >
                 <div className="preview-path-item__body">
                   <p className="preview-path-item__title">
@@ -154,12 +162,19 @@ export function HomeContentPreview({
         <div className="preview-explore__inner">
           <h2 className="preview-explore__title">Explore the platform</h2>
           <div className="preview-explore__grid">
-            {exploreLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="preview-explore__card">
-                <span className="preview-explore__card-label">{link.label}</span>
-                <span className="preview-explore__card-desc">{link.desc}</span>
-              </Link>
-            ))}
+            {exploreLinks.map((link) =>
+              link.external ? (
+                <a key={link.href} href={link.href} className="preview-explore__card">
+                  <span className="preview-explore__card-label">{link.label}</span>
+                  <span className="preview-explore__card-desc">{link.desc}</span>
+                </a>
+              ) : (
+                <Link key={link.href} href={link.href} className="preview-explore__card">
+                  <span className="preview-explore__card-label">{link.label}</span>
+                  <span className="preview-explore__card-desc">{link.desc}</span>
+                </Link>
+              )
+            )}
           </div>
         </div>
       </section>

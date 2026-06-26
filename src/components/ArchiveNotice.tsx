@@ -40,7 +40,7 @@ export function ArchiveNotice({ variant = "compact" }: { variant?: Variant }) {
       <Link
         href="/about#policy"
         className="mt-4 inline-block text-xs hover:underline"
-        style={{ color: "var(--accent-cyan)" }}
+        style={{ color: "var(--accent-orange)" }}
       >
         {t("archiveReadPolicy")} →
       </Link>

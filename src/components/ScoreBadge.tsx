@@ -9,7 +9,7 @@ export function ScoreBadge({ score }: { score: number }) {
     score >= 9
       ? "text-accent border-accent/40 bg-accent/10"
       : score >= 7
-        ? "text-accent-blue border-accent-blue/40 bg-accent-blue/10"
+        ? "text-accent-orange border-accent-orange/40 bg-accent-orange/10"
         : score >= 5
           ? "text-accent-orange border-accent-orange/40 bg-accent-orange/10"
           : "text-muted border-border bg-card";

@@ -4,10 +4,16 @@ import Link from "next/link";
 import { PreviewSiteLogo } from "@/components/preview/PreviewSiteLogo";
 import { site } from "@/lib/data";
 
-const footerLinks = [
+type FooterLink = {
+  href: string;
+  label: string;
+  external?: boolean;
+};
+
+const footerLinks: FooterLink[] = [
   { href: "/catalog", label: "Catalog" },
   { href: "/paths", label: "Learning Path" },
-  { href: "/doc/", label: "Beacon" },
+  { href: "/doc", label: "Beacon", external: true },
   { href: "/about", label: "About" },
 ];
 
@@ -28,11 +34,17 @@ export function PreviewFooter() {
           <p className="preview-footer__desc">{site.description}</p>
         </div>
         <nav className="preview-footer__links" aria-label="Footer">
-          {footerLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="preview-footer__link">
-              {link.label}
-            </Link>
-          ))}
+          {footerLinks.map((link) =>
+            link.external ? (
+              <a key={link.href} href={link.href} className="preview-footer__link">
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} className="preview-footer__link">
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
       </div>
       <p className="preview-footer__bottom">

@@ -6,15 +6,22 @@ import { useEffect, useState } from "react";
 import { PreviewSiteLogo } from "@/components/preview/PreviewSiteLogo";
 import { site } from "@/lib/data";
 
-const navItems = [
+type NavItem = {
+  href: string;
+  label: string;
+  external?: boolean;
+};
+
+const navItems: NavItem[] = [
   { href: "/catalog", label: "Catalog" },
   { href: "/paths", label: "Learning Path" },
-  { href: "/doc/", label: "Beacon" },
+  { href: "/doc", label: "Beacon", external: true },
   { href: "/about", label: "About" },
 ];
 
 function isNavActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
+  if (href === "/doc") return pathname.startsWith("/doc");
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -37,6 +44,10 @@ export function PreviewHeader() {
   }, [menuOpen]);
 
   useEffect(() => {
+    setMenuPath(null);
+  }, [pathname]);
+
+  useEffect(() => {
     if (!menuOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -46,6 +57,11 @@ export function PreviewHeader() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
+
+  const navLinkClass = (href: string) =>
+    `preview-nav-link ${
+      isNavActive(pathname, href) ? "preview-nav-link--active" : ""
+    }`;
 
   return (
     <header
@@ -59,17 +75,25 @@ export function PreviewHeader() {
 
         <nav className="preview-header__nav" aria-label="Main">
           <div className="preview-header__nav-pill">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`preview-nav-link ${
-                  isNavActive(pathname, item.href) ? "preview-nav-link--active" : ""
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.external ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={navLinkClass(item.href)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={navLinkClass(item.href)}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
         </nav>
 
@@ -95,20 +119,34 @@ export function PreviewHeader() {
         hidden={!menuOpen}
       >
         <nav className="preview-mobile-nav__inner" aria-label="Mobile">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`preview-mobile-nav__link ${
-                isNavActive(pathname, item.href)
-                  ? "preview-mobile-nav__link--active"
-                  : ""
-              }`}
-              onClick={() => setMenuPath(null)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`preview-mobile-nav__link ${
+                  isNavActive(pathname, item.href)
+                    ? "preview-mobile-nav__link--active"
+                    : ""
+                }`}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`preview-mobile-nav__link ${
+                  isNavActive(pathname, item.href)
+                    ? "preview-mobile-nav__link--active"
+                    : ""
+                }`}
+                onClick={() => setMenuPath(null)}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
       </div>
     </header>

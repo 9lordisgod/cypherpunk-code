@@ -1,17 +1,20 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const REVEAL_SELECTOR = [
   ".preview-reveal",
   ".preview-section",
   ".preview-card",
-
+  ".preview-path-item",
   ".preview-doc-layout",
   ".preview-lab-card",
   ".preview-stagger-group",
   ".preview-visual-divider",
   ".preview-section__cta-center",
+  ".preview-explore",
+  ".preview-stats",
 ].join(", ");
 
 function isInViewport(el: Element) {
@@ -26,16 +29,21 @@ function markInView(el: Element) {
   );
 }
 
+function revealAll(root: Element) {
+  root.querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
+    markInView(el);
+  });
+  root.querySelectorAll(".preview-page").forEach((el) => {
+    el.classList.add("preview-inview");
+  });
+}
+
 export function PreviewMotion() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.querySelector(".preview-theme");
     if (!root) return;
-
-    const revealAll = () => {
-      root.querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
-        markInView(el);
-      });
-    };
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -44,7 +52,7 @@ export function PreviewMotion() {
     root.classList.add("preview-hero-ready");
 
     if (prefersReducedMotion) {
-      revealAll();
+      revealAll(root);
       return;
     }
 
@@ -84,7 +92,7 @@ export function PreviewMotion() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
     );
 
     const observeAll = () => {
@@ -99,11 +107,12 @@ export function PreviewMotion() {
     };
 
     observeAll();
+    revealAll(root);
 
     const mutation = new MutationObserver(observeAll);
     mutation.observe(root, { childList: true, subtree: true });
 
-    const fallback = window.setTimeout(revealAll, 1200);
+    const fallback = window.setTimeout(() => revealAll(root), 400);
 
     return () => {
       observer.disconnect();
@@ -114,6 +123,14 @@ export function PreviewMotion() {
       cancelAnimationFrame(parallaxFrame);
     };
   }, []);
+
+  useEffect(() => {
+    const root = document.querySelector(".preview-theme");
+    if (!root) return;
+
+    revealAll(root);
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, [pathname]);
 
   return null;
 }
