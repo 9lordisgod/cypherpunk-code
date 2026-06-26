@@ -4,13 +4,12 @@ import { PreviewFooter } from "@/components/preview/PreviewFooter";
 import { PreviewHeader } from "@/components/preview/PreviewHeader";
 import { PreviewAmbient } from "@/components/preview/PreviewAmbient";
 import { PreviewMotion } from "@/components/preview/PreviewMotion";
-import { ParticleField } from "@/components/preview/ParticleField";
 import "@/styles/preview-redesign.css";
 
 const siteSans = Inter({
   variable: "--font-latin",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export default function SiteLayout({
@@ -23,7 +22,6 @@ export default function SiteLayout({
       <PreviewChromeHider />
       <PreviewAmbient />
       <PreviewMotion />
-      <ParticleField />
       <PreviewHeader />
       <main className="flex-1">{children}</main>
       <PreviewFooter />

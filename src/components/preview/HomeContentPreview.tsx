@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
-import { HeroTitleReveal } from "@/components/preview/HeroTitleReveal";
-import { PreviewVisualDivider } from "@/components/preview/PreviewVisualDivider";
-import {
-  HeroIllustration,
-  ProtocolsIllustration,
-} from "@/components/preview/illustrations/PreviewIllustrations";
-import { site } from "@/lib/data";
+import { resources, site } from "@/lib/data";
 import type { LearningPath, Resource } from "@/lib/types";
 import { usePathText } from "@/lib/i18n/usePathText";
 import { useTranslatedLabels } from "@/lib/i18n/useTranslatedLabels";
@@ -23,11 +17,14 @@ function PreviewResourceCard({ resource }: { resource: Resource }) {
   const { typeLabels: types } = useTranslatedLabels();
 
   return (
-    <Link href={`/resource/${resource.id}`} className="preview-card">
-      <p className="preview-card__meta">{types[resource.type]}</p>
+    <Link href={`/resource/${resource.id}`} className="preview-card preview-card--premium">
+      <div className="preview-card__top">
+        <span className="preview-card__meta">{types[resource.type]}</span>
+        <span className="preview-card__score">CP {resource.cypherpunkScore}</span>
+      </div>
       <h3 className="preview-card__title">{resource.title}</h3>
       <p className="preview-card__desc">{resource.description}</p>
-      <p className="preview-card__footer">Read more →</p>
+      <span className="preview-card__footer">View resource</span>
     </Link>
   );
 }
@@ -40,56 +37,103 @@ export function HomeContentPreview({
   const { t } = useLanguage();
   const { getPathTitle, getPathDescription } = usePathText();
 
+  const freeCount = resources.filter((r) => r.pricing === "free").length;
+  const typeCount = new Set(resources.map((r) => r.type)).size;
+
+  const stats = [
+    { label: t("statResources"), value: resourceCount },
+    { label: t("statPaths"), value: learningPaths.length },
+    { label: t("statTypes"), value: typeCount },
+    { label: t("statFree"), value: freeCount },
+  ];
+
+  const exploreLinks = [
+    { href: "/catalog", label: t("navCatalog"), desc: `${resourceCount} curated resources` },
+    { href: "/paths", label: t("navPaths"), desc: "Structured learning sequences" },
+    { href: "/doc/", label: t("navDoc"), desc: "Documentation & mission" },
+    { href: "/about", label: t("navAbout"), desc: "Project & policy" },
+  ];
+
   return (
     <>
-      <section className="preview-hero preview-hero--split">
-        <div className="preview-hero__content">
-          <p className="preview-hero__brand">{site.name}</p>
-          <HeroTitleReveal
-            line1={t("heroTitle1")}
-            line2={t("heroTitle2")}
-          />
-          <p className="preview-hero__subtitle">{t("heroDescription")}</p>
-          <Link href="/catalog" className="preview-btn preview-btn--glow preview-hero__cta">
-            {t("heroBrowse", { count: resourceCount })}
-          </Link>
-        </div>
-        <div
-          className="preview-hero__visual preview-hero__visual--parallax preview-reveal"
-          aria-hidden="true"
+      <section className="preview-hero preview-hero--centered preview-inview">
+        <p className="preview-hero__eyebrow">{t("heroBadge")}</p>
+        <h1 className="preview-hero__title preview-hero__title--static">
+          <span className="preview-hero__title-line">{t("heroTitle1")}</span>
+          <span className="preview-hero__title-line preview-hero__title-accent">
+            {t("heroTitle2")}
+          </span>
+        </h1>
+        <p className="preview-hero__subtitle">{t("heroDescription")}</p>
+        <Link
+          href="/catalog"
+          className="preview-btn preview-btn--solid preview-hero__cta"
         >
-          <HeroIllustration className="preview-hero__illus preview-hero__illus--float" />
+          {t("heroBrowse", { count: resourceCount })}
+        </Link>
+        <p className="preview-hero__curator">
+          {t("heroCuratedBy")}{" "}
+          <a
+            href={site.creator.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="preview-hero__curator-link"
+          >
+            {site.creator.handle}
+          </a>
+        </p>
+      </section>
+
+      <section className="preview-stats preview-inview" aria-label="Platform metrics">
+        <div className="preview-stats__inner">
+          {stats.map((stat) => (
+            <div key={stat.label} className="preview-stat">
+              <p className="preview-stat__value">{stat.value}</p>
+              <p className="preview-stat__label">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <PreviewVisualDivider variant="nodes" />
-
-      <section className="preview-section preview-section--split preview-reveal">
+      <section className="preview-section preview-section--premium preview-inview">
         <div className="preview-section__inner">
-          <div className="preview-section__header preview-section__header--with-visual preview-stagger-group">
-            <div className="preview-stagger-group__item">
-              <p className="preview-section__eyebrow">Learning Path</p>
+          <header className="preview-section__header preview-section__header--row">
+            <div>
+              <p className="preview-section__eyebrow">{t("featuredSubtitle")}</p>
+              <h2 className="preview-section__title">{t("featuredTitle")}</h2>
+            </div>
+            <Link href="/catalog" className="preview-section__link">
+              {t("viewAll")}
+            </Link>
+          </header>
+          <div className="preview-grid preview-grid--3">
+            {featured.slice(0, 3).map((resource) => (
+              <PreviewResourceCard key={resource.id} resource={resource} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="preview-section preview-section--premium preview-section--surface preview-inview">
+        <div className="preview-section__inner">
+          <header className="preview-section__header preview-section__header--row">
+            <div>
+              <p className="preview-section__eyebrow">Curriculum</p>
               <h2 className="preview-section__title">{t("learningPathsTitle")}</h2>
               <p className="preview-section__desc">{t("learningPathsSubtitle")}</p>
-              <Link href="/paths" className="preview-section__link">
-                {t("allPaths")} →
-              </Link>
             </div>
-            <div
-              className="preview-section__visual preview-section__visual--compact preview-stagger-group__item"
-              data-parallax="0.14"
-            >
-              <ProtocolsIllustration className="preview-section__illus preview-section__illus--float" />
-            </div>
-          </div>
-          <div className="preview-path-list preview-stagger-group">
+            <Link href="/paths" className="preview-section__link">
+              {t("allPaths")}
+            </Link>
+          </header>
+          <div className="preview-path-list preview-path-list--compact">
             {learningPaths.slice(0, 3).map((path) => (
               <Link
                 key={path.id}
                 href={`/paths#${path.id}`}
-                className="preview-path-item preview-stagger-group__item"
+                className="preview-path-item preview-path-item--premium"
               >
-                <div>
+                <div className="preview-path-item__body">
                   <p className="preview-path-item__title">
                     {getPathTitle(path.id, path.title)}
                   </p>
@@ -106,27 +150,16 @@ export function HomeContentPreview({
         </div>
       </section>
 
-      <PreviewVisualDivider variant="encryption" />
-
-      <section className="preview-section preview-section--surface preview-reveal">
-        <div className="preview-section__inner">
-          <div className="preview-section__header preview-section__header--center preview-stagger-group">
-            <h2 className="preview-section__title preview-stagger-group__item">
-              {t("featuredTitle")}
-            </h2>
-            <p className="preview-section__desc preview-stagger-group__item">
-              {t("featuredSubtitle")}
-            </p>
-          </div>
-          <div className="preview-grid preview-grid--3">
-            {featured.slice(0, 3).map((resource) => (
-              <PreviewResourceCard key={resource.id} resource={resource} />
+      <section className="preview-explore preview-inview">
+        <div className="preview-explore__inner">
+          <h2 className="preview-explore__title">Explore the platform</h2>
+          <div className="preview-explore__grid">
+            {exploreLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="preview-explore__card">
+                <span className="preview-explore__card-label">{link.label}</span>
+                <span className="preview-explore__card-desc">{link.desc}</span>
+              </Link>
             ))}
-          </div>
-          <div className="preview-section__cta-center preview-reveal">
-            <Link href="/catalog" className="preview-btn preview-btn--glow">
-              {t("viewAll")} →
-            </Link>
           </div>
         </div>
       </section>

@@ -7,9 +7,9 @@ import { PreviewSiteLogo } from "@/components/preview/PreviewSiteLogo";
 import { site } from "@/lib/data";
 
 const navItems = [
-  { href: "/doc/", label: "Beacon" },
   { href: "/catalog", label: "Catalog" },
   { href: "/paths", label: "Learning Path" },
+  { href: "/doc/", label: "Beacon" },
   { href: "/about", label: "About" },
 ];
 
@@ -25,7 +25,7 @@ export function PreviewHeader() {
   const menuOpen = menuPath === pathname;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -53,22 +53,24 @@ export function PreviewHeader() {
     >
       <div className="preview-header__inner">
         <Link href="/" className="preview-header__brand">
-          <PreviewSiteLogo size="lg" />
+          <PreviewSiteLogo size="xl" />
           <span className="preview-header__name">{site.name}</span>
         </Link>
 
         <nav className="preview-header__nav" aria-label="Main">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`preview-nav-link ${
-                isNavActive(pathname, item.href) ? "preview-nav-link--active" : ""
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <div className="preview-header__nav-pill">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`preview-nav-link ${
+                  isNavActive(pathname, item.href) ? "preview-nav-link--active" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </nav>
 
         <button

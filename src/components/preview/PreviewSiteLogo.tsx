@@ -1,15 +1,16 @@
 import Image from "next/image";
 
 type PreviewSiteLogoProps = {
-  size?: "sm" | "md" | "lg" | "hero";
+  size?: "sm" | "md" | "lg" | "xl" | "hero";
   className?: string;
 };
 
 const sizes = {
-  sm: 40,
-  md: 48,
+  sm: 44,
+  md: 56,
   lg: 64,
-  hero: 120,
+  xl: 80,
+  hero: 128,
 } as const;
 
 export function PreviewSiteLogo({
@@ -25,7 +26,7 @@ export function PreviewSiteLogo({
       width={px}
       height={px}
       className={`preview-logo preview-logo--${size} ${className}`.trim()}
-      priority={size === "hero" || size === "lg"}
+      priority={size === "hero" || size === "xl" || size === "lg"}
       unoptimized
     />
   );

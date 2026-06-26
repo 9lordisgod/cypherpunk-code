@@ -20,10 +20,11 @@ export function PathsContent() {
 
   return (
     <div className="page-content">
-      <div className="mb-10">
-        <h1 className="section-title text-2xl sm:text-3xl">{t("pathsPageTitle")}</h1>
-        <p className="mt-2 max-w-2xl text-muted">{t("pathsPageDescription")}</p>
-      </div>
+      <header className="page-header">
+        <p className="page-header__eyebrow">Curriculum</p>
+        <h1 className="section-title page-header__title">{t("pathsPageTitle")}</h1>
+        <p className="page-header__desc">{t("pathsPageDescription")}</p>
+      </header>
 
       <div className="space-y-12">
         {learningPaths.map((path) => {

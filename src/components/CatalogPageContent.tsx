@@ -10,12 +10,13 @@ export function CatalogPageContent({ resources }: { resources: Resource[] }) {
 
   return (
     <div className="page-content">
-      <div className="mb-8">
-        <h1 className="section-title text-2xl sm:text-3xl">{t("catalogTitle")}</h1>
-        <p className="mt-2 max-w-2xl text-muted">
+      <header className="page-header">
+        <p className="page-header__eyebrow">Resource Index</p>
+        <h1 className="section-title page-header__title">{t("catalogTitle")}</h1>
+        <p className="page-header__desc">
           {t("catalogDescription", { count: resources.length })}
         </p>
-      </div>
+      </header>
       <Suspense
         fallback={
           <div className="pixel-panel p-12 text-center text-muted">
