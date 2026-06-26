@@ -51,6 +51,10 @@ const nextConfig: NextConfig = {
       { source: "/cypherscan/:path*", destination: "/", permanent: true },
       { source: "/scan", destination: "/", permanent: true },
       { source: "/scan/:path*", destination: "/", permanent: true },
+      { source: "/admin", destination: "/catalog", permanent: true },
+      { source: "/admin/:path*", destination: "/catalog", permanent: true },
+      { source: "/login", destination: "/catalog", permanent: true },
+      { source: "/account", destination: "/catalog", permanent: true },
       ...docLegacy.map(([file, destination]) => ({
         source: `/doc/${file}`,
         destination,

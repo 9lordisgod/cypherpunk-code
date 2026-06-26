@@ -38,26 +38,6 @@ export function shouldRedirectToCanonicalHost(host: string) {
   return isLegacyHost(normalized) || normalized === APEX_HOST;
 }
 
-export function normalizeAuthHost(host: string) {
-  const normalized = host.split(":")[0].toLowerCase();
-  if (isLegacyHost(normalized) || normalized === APEX_HOST) {
-    return CANONICAL_HOST;
-  }
-  return normalized;
-}
-
 export function buildCanonicalRedirectUrl(pathname: string, search = "") {
   return `${CANONICAL_ORIGIN}${pathname}${search}`;
-}
-
-export function ensureCanonicalAuthEnv() {
-  const authUrl = process.env.AUTH_URL ?? process.env.NEXTAUTH_URL ?? "";
-  const usesLegacyDomain =
-    authUrl.includes("cypherpunk-code.ca") ||
-    authUrl.includes(`://${APEX_HOST}`);
-
-  if (!authUrl || usesLegacyDomain) {
-    process.env.AUTH_URL = CANONICAL_ORIGIN;
-    process.env.NEXTAUTH_URL = CANONICAL_ORIGIN;
-  }
 }

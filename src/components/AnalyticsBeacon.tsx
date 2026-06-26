@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { useEffect, useRef } from "react";
 import { getOrCreateVisitorId } from "@/lib/analytics/visitor";
 
@@ -9,12 +8,10 @@ const DEDUPE_MS = 30_000;
 
 export function AnalyticsBeacon() {
   const pathname = usePathname();
-  const { status } = useSession();
   const lastSent = useRef<{ path: string; at: number } | null>(null);
 
   useEffect(() => {
-    if (!pathname || pathname.startsWith("/admin")) return;
-    if (status === "loading") return;
+    if (!pathname) return;
 
     const now = Date.now();
     if (
@@ -35,7 +32,7 @@ export function AnalyticsBeacon() {
       body: JSON.stringify({ visitorId, path: pathname }),
       keepalive: true,
     });
-  }, [pathname, status]);
+  }, [pathname]);
 
   return null;
 }

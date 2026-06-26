@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { auth } from "@/auth";
 import { site } from "@/lib/data";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/json-ld";
 import { absoluteUrl } from "@/lib/seo/metadata";
@@ -105,8 +104,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
   return (
     <html
       lang="en"
@@ -117,7 +114,7 @@ export default async function RootLayout({
         <JsonLd data={[buildWebsiteJsonLd(), buildOrganizationJsonLd()]} />
       </head>
       <body className="flex min-h-full flex-col">
-        <Providers session={session}>{children}</Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -6,7 +6,6 @@ export const DEFAULT_SECURITY_VAULT: SecurityVault = {
   honeypot: { field: "cp_confirm_url" },
   rateLimits: {
     "api:feedback": { windowMs: 3_600_000, max: 4 },
-    "api:admin": { windowMs: 60_000, max: 20 },
     "api:analytics": { windowMs: 60_000, max: 60 },
     "api:global": { windowMs: 60_000, max: 120 },
   },

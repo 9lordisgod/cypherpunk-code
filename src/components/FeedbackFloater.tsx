@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { FeedbackBox } from "@/components/FeedbackBox";
@@ -19,12 +18,9 @@ function getServerSnapshot() {
 }
 
 export function FeedbackFloater() {
-  const pathname = usePathname();
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const mounted = useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot);
-
-  const isAdminRoute = pathname.startsWith("/admin");
 
   useEffect(() => {
     if (!open) return;
@@ -37,7 +33,7 @@ export function FeedbackFloater() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  if (!mounted || isAdminRoute) return null;
+  if (!mounted) return null;
 
   return createPortal(
     <div

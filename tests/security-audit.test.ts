@@ -30,11 +30,6 @@ function walk(dir: string, files: string[] = []): string[] {
 
 describe("security audit", () => {
   afterEach(() => {
-    delete process.env.ADMIN_EMAIL;
-    delete process.env.ADMIN_PASSWORD;
-    delete process.env.ADMIN_PASSWORD_HASH;
-    delete process.env.AUTH_SECRET;
-    delete process.env.DEV_LOGIN_ENABLED;
     delete process.env.SECURITY_VAULT_KEY;
     delete process.env.SECURITY_VAULT_B64;
     delete process.env.NODE_ENV;
@@ -70,23 +65,10 @@ describe("security audit", () => {
     );
   });
 
-  it("requires admin credentials in production", () => {
+  it("warns when security vault is unset in production", () => {
     process.env.NODE_ENV = "production";
-    process.env.AUTH_SECRET = "test-secret";
 
     const issues = collectProductionSecurityIssues();
-    expect(issues.some((i) => i.code === "ADMIN_EMAIL_UNSET")).toBe(true);
-    expect(issues.some((i) => i.code === "ADMIN_PASSWORD_UNSET")).toBe(true);
-  });
-
-  it("flags dev login enabled in production config check", () => {
-    process.env.NODE_ENV = "production";
-    process.env.ADMIN_EMAIL = "admin@example.com";
-    process.env.ADMIN_PASSWORD = "secret";
-    process.env.AUTH_SECRET = "test-secret";
-    process.env.DEV_LOGIN_ENABLED = "true";
-
-    const issues = collectProductionSecurityIssues();
-    expect(issues.some((i) => i.code === "DEV_LOGIN_ENABLED")).toBe(true);
+    expect(issues.some((i) => i.code === "SECURITY_VAULT_DEFAULT")).toBe(true);
   });
 });

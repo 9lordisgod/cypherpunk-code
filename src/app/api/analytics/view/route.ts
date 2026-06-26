@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import { isValidVisitorId, parseAnalyticsPath } from "@/lib/analytics/parse-path";
 import { handleApiRoute } from "@/lib/api-handler";
 import { guardApiRequest } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
 
-const SKIP_PREFIXES = ["/admin", "/api", "/_next"];
+const SKIP_PREFIXES = ["/api", "/_next"];
 
 export async function POST(request: Request) {
   return handleApiRoute(async () => {
@@ -25,15 +24,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true, skipped: true });
     }
 
-    const session = await auth();
-    const signedIn = Boolean(session?.user?.id);
-
     await prisma.analyticsEvent.create({
       data: {
         visitorId,
         path: parsed.path,
         resourceId: parsed.resourceId,
-        signedIn,
+        signedIn: false,
       },
     });
 

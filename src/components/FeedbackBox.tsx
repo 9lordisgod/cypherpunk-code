@@ -1,15 +1,13 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { HONEYPOT_FIELD } from "@/lib/security/constants";
 
 export function FeedbackBox() {
-  const { data: session } = useSession();
   const { t } = useLanguage();
-  const [name, setName] = useState(session?.user?.name ?? "");
-  const [email, setEmail] = useState(session?.user?.email ?? "");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [xHandle, setXHandle] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [message, setMessage] = useState("");

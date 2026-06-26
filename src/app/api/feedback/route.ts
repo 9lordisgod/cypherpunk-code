@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import { handleApiRoute } from "@/lib/api-handler";
 import { guardApiRequest, isHoneypotTriggered } from "@/lib/security/guard";
 import { prisma } from "@/lib/db";
@@ -11,7 +10,6 @@ export async function POST(request: Request) {
     const blocked = guardApiRequest(request, "api:feedback");
     if (blocked) return blocked;
 
-    const session = await auth();
     const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
 
     if (isHoneypotTriggered(body)) {
@@ -36,7 +34,7 @@ export async function POST(request: Request) {
 
     const feedback = await prisma.feedback.create({
       data: {
-        userId: session?.user?.id ?? null,
+        userId: null,
         name,
         email,
         xHandle,
