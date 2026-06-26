@@ -44,10 +44,6 @@ export function PreviewHeader() {
   }, [menuOpen]);
 
   useEffect(() => {
-    setMenuPath(null);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!menuOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -129,6 +125,7 @@ export function PreviewHeader() {
                     ? "preview-mobile-nav__link--active"
                     : ""
                 }`}
+                onClick={() => setMenuPath(null)}
               >
                 {item.label}
               </a>
