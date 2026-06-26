@@ -14,7 +14,7 @@ export function AdminLoginContent() {
   }, [t]);
 
   return (
-    <div className="mx-auto max-w-lg px-4 py-12 sm:px-6">
+    <div className="page-content page-content--narrow">
       <p className="text-center text-sm text-muted">{t("adminLoginSubtitle")}</p>
       <div className="mt-6">
         <WalletConnectPanel mode="admin" />

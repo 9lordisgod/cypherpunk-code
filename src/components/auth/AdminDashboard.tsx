@@ -96,12 +96,12 @@ export function AdminDashboard() {
   }, [session?.user?.role, load]);
 
   if (status === "loading") {
-    return <p className="mx-auto max-w-6xl px-4 py-12 text-muted">{t("accountLoading")}</p>;
+    return <p className="page-content text-muted">{t("accountLoading")}</p>;
   }
 
   if (!session?.user || session.user.role !== "admin") {
     return (
-      <div className="mx-auto max-w-md px-4 py-12 text-center">
+      <div className="page-content page-content--narrow text-center">
         <p className="text-muted">{t("adminSignInRequired")}</p>
         <Link href="/admin/login" className="pixel-btn pixel-btn--planb mt-4 inline-block no-underline">
           {t("adminLoginTitle")}
@@ -122,7 +122,7 @@ export function AdminDashboard() {
     !["localhost", "127.0.0.1"].includes(window.location.hostname);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="page-content">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="section-title text-2xl">{t("adminTitle")}</h1>

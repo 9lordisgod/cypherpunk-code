@@ -31,7 +31,7 @@ export function AboutContent() {
         <div className="about-page-glow" />
         <div className="about-page-scrim" />
       </div>
-      <div className="about-page-content mx-auto max-w-3xl px-4 py-10 sm:px-6">
+      <div className="about-page-content page-content page-content--narrow">
         <h1 className="section-title text-2xl sm:text-3xl">
           {t("aboutPageTitle", { name: site.name })}
         </h1>

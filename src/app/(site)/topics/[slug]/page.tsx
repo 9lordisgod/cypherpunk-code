@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { PreviewPageWrap } from "@/components/preview/PreviewPageWrap";
 import { TopicPageContent } from "@/components/TopicPageContent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { resources } from "@/lib/data";
@@ -55,7 +56,9 @@ export default async function TopicPage({
           { name: seo.label, path: `/topics/${seo.slug}` },
         ])}
       />
-      <TopicPageContent topic={topic} seo={seo} resources={topicResources} />
+      <PreviewPageWrap>
+        <TopicPageContent topic={topic} seo={seo} resources={topicResources} />
+      </PreviewPageWrap>
     </>
   );
 }

@@ -24,7 +24,7 @@ export function ResourceDetail({ resource }: { resource: Resource }) {
   const provider = getResourceProvider(resource.id, resource.provider);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <div className="page-content page-content--narrow">
       <Link
         href="/catalog"
         className="mb-6 inline-block text-sm text-muted hover:text-accent"

@@ -84,7 +84,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
   }
 
   return (
-    <div className="catalog-layout flex flex-col gap-8 lg:flex-row">
+    <div className="catalog-layout">
       <button
         type="button"
         className="catalog-filters-toggle lg:hidden"
@@ -106,7 +106,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
 
       <aside
         id="catalog-filters-panel"
-        className={`catalog-filters w-full shrink-0 lg:w-64${filtersOpen ? " catalog-filters--open" : ""}`}
+        className={`catalog-filters${filtersOpen ? " catalog-filters--open" : ""}`}
       >
         <div className="catalog-filters__panel space-y-6 rounded-lg border border-border bg-card p-5 lg:sticky lg:top-20">
           <div>
@@ -289,8 +289,8 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
         </div>
       </aside>
 
-      <div className="catalog-results min-w-0 flex-1">
-        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="catalog-results">
+        <div className="catalog-results__toolbar mb-4">
           <p className="text-sm text-muted">
             {t("resourcesCount", { count: filtered.length })}
           </p>
@@ -317,7 +317,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
             <p className="text-muted">{t("catalogNoResults")}</p>
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="catalog-results__grid">
             {filtered.map((resource) => (
               <ResourceCard key={resource.id} resource={resource} />
             ))}

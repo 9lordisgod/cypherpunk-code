@@ -19,7 +19,7 @@ export function PathsContent() {
   }, [t]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="page-content">
       <div className="mb-10">
         <h1 className="section-title text-2xl sm:text-3xl">{t("pathsPageTitle")}</h1>
         <p className="mt-2 max-w-2xl text-muted">{t("pathsPageDescription")}</p>

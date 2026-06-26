@@ -17,7 +17,7 @@ export function TopicPageContent({
   );
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="page-content">
       <nav className="mb-6 text-sm text-muted" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-accent no-underline">
           Home
@@ -41,7 +41,7 @@ export function TopicPageContent({
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="catalog-results__grid resource-grid--3">
         {sorted.map((resource) => (
           <ResourceCard key={resource.id} resource={resource} />
         ))}

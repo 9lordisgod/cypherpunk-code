@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
+import { PreviewPageWrap } from "@/components/preview/PreviewPageWrap";
 
 export default function NotFound() {
   const { t } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+    <PreviewPageWrap>
+    <div className="page-content page-content--narrow text-center">
       <h1 className="section-title text-2xl">{t("notFoundTitle")}</h1>
       <p className="mt-4 text-muted">{t("notFoundDescription")}</p>
       <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -25,5 +27,6 @@ export default function NotFound() {
         </Link>
       </div>
     </div>
+    </PreviewPageWrap>
   );
 }

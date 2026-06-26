@@ -17,12 +17,12 @@ export function AccountContent() {
   }, [t]);
 
   if (status === "loading") {
-    return <p className="mx-auto max-w-3xl px-4 py-12 text-muted">{t("accountLoading")}</p>;
+    return <p className="page-content page-content--narrow text-muted">{t("accountLoading")}</p>;
   }
 
   if (!session?.user) {
     return (
-      <div className="mx-auto max-w-md px-4 py-12 text-center">
+      <div className="page-content page-content--narrow text-center">
         <p className="text-muted">{t("accountSignInRequired")}</p>
         <button
           type="button"
@@ -36,7 +36,7 @@ export function AccountContent() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <div className="page-content page-content--narrow">
       <h1 className="section-title text-2xl">{t("accountTitle")}</h1>
       <p className="mt-2 text-muted">
         {t("accountWelcome", {

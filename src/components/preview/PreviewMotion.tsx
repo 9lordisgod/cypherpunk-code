@@ -7,7 +7,6 @@ const REVEAL_SELECTOR = [
   ".preview-section",
   ".preview-card",
 
-  ".preview-page",
   ".preview-doc-layout",
   ".preview-lab-card",
   ".preview-stagger-group",

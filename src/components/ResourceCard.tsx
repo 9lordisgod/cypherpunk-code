@@ -15,7 +15,7 @@ export function ResourceCard({ resource }: { resource: Resource }) {
   return (
     <Link
       href={`/resource/${resource.id}`}
-      className="pixel-card group flex flex-col p-5 no-underline text-foreground"
+      className="pixel-card catalog-resource-card group flex flex-col p-5 no-underline text-foreground"
     >
       <div className="mb-3 flex items-start justify-between gap-3">
         <div className="flex flex-wrap gap-2">
