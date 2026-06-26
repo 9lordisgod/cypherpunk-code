@@ -23,3 +23,7 @@
 * [FAQ](reference/faq.md)
 * [Glossary](reference/glossary.md)
 * [Platform Security](reference/security.md)
+
+## Community
+
+* [Contributing](CONTRIBUTING.md)

@@ -13,6 +13,7 @@ Welcome to the official documentation for **Cypherpunk Code** — freedom educat
 | [Fork Guide](FORK_GUIDE.md) | Deploy your own instance |
 | [Forward Steps](roadmap/forward-steps.md) | Phased roadmap with AI prompts |
 | [Wiki Codex Plan](roadmap/wiki-codex-gameplan.md) | Encyclopedia implementation |
+| [Contributing](CONTRIBUTING.md) | Dev setup, PRs, resources, security |
 | [Demo screenshots](../demo/screenshots/README.md) | UI/UX reference images |
 
 ## Start here
