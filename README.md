@@ -1,34 +1,54 @@
 <div align="center">
 
-<img src=".github/app-icon-box.png" alt="Cypherpunk Code" width="128" />
+<img src=".github/app-icon-box.png" alt="Cypherpunk Code" width="96" />
 
 # Cypherpunk Code
 
-Freedom education for Bitcoin, Monero, and cypherpunk sovereignty.
-
 **Learn freedom. Skip the trading noise.**
 
+A curated freedom education index for Bitcoin, Monero, cryptography, and cypherpunk sovereignty.
+
+<br />
+
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
-[![GitHub](https://img.shields.io/badge/repo-9lordisgod%2Fcypherpunk--code-181717?logo=github)](https://github.com/9lordisgod/cypherpunk-code)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code&project-name=cypherpunk-code&env=NEXT_PUBLIC_SITE_URL&envDescription=Your%20public%20deployment%20URL%20(required%20for%20SEO%20and%20canonical%20links)&envLink=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code%23production-deploy)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code&project-name=cypherpunk-code&env=NEXT_PUBLIC_SITE_URL&envDescription=Your%20public%20deployment%20URL%20(required%20for%20SEO%20and%20canonical%20links)&envLink=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code%23quick-start)
 
 Curated by [@CHxmrBrother](https://x.com/CHxmrBrother)
 
 </div>
 
-> **Archive notice:** The original hosted site at [cypherpunk-code.com](https://www.cypherpunk-code.com) has been retired. This repository is the canonical public source. Fork it, self-host it, and run your own freedom education index.
+<br />
 
-## What this is
+The original site at [cypherpunk-code.com](https://www.cypherpunk-code.com) has been retired. **This repository is the canonical source** — fork it, self-host it, and run your own index.
 
-A Next.js freedom education index — 68 curated resources, 6 learning paths, multilingual UI, and editorial Cypherpunk Scores. No trading noise, just signal.
+---
 
-## Demo
+## Overview
 
-UI screenshots from the original platform are in [`demo/screenshots/`](demo/screenshots/README.md):
+| | |
+| --- | --- |
+| **68** curated resources | Papers, guides, docs, manifestos |
+| **6** learning paths | Philosophy → Bitcoin → Monero → OpSec |
+| **4** languages | EN · FR · JA · 中文 |
+| **CP Score** | Editorial filter against trading noise |
 
-| Homepage | Catalog | Learning paths |
-| --- | --- | --- |
-| ![Homepage](demo/screenshots/01-homepage.png) | ![Catalog](demo/screenshots/02-catalog.png) | ![Paths](demo/screenshots/03-paths.png) |
+Built with Next.js 16, Tailwind CSS, and JSON-first catalog data. No accounts required to browse.
+
+---
+
+## Preview
+
+<p align="center">
+  <img src="demo/screenshots/01-homepage.png" alt="Homepage" width="32%" />
+  <img src="demo/screenshots/02-catalog.png" alt="Catalog" width="32%" />
+  <img src="demo/screenshots/03-paths.png" alt="Learning paths" width="32%" />
+</p>
+
+<p align="center">
+  <sub>More in <a href="demo/screenshots/">demo/screenshots</a> · desktop &amp; mobile</sub>
+</p>
+
+---
 
 ## Quick start
 
@@ -41,66 +61,41 @@ npm run db:push
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+→ [http://localhost:3000](http://localhost:3000)
 
-### Production deploy
+### Deploy
 
-**One-click (fork first):** Use the **Deploy with Vercel** button above. Set `NEXT_PUBLIC_SITE_URL` to your Vercel domain (e.g. `https://your-project.vercel.app`).
+Fork the repo, then use **Deploy with Vercel** above. Set one env var:
 
-**Manual:**
-
-```bash
-NEXT_PUBLIC_SITE_URL=https://your-domain.example npm run build
-```
-
-Edit `src/data/site.json` for creator handle, contact, and optional donation addresses.
-
-**Optional — Turso database** (feedback + analytics persistence on serverless):
-
-```bash
-# Add to Vercel env vars:
-DATABASE_URL=libsql://your-db.turso.io
-DATABASE_AUTH_TOKEN=your-token
-# Then run once: npm run db:init:turso
-```
-
-The catalog and paths work without a database — data lives in `src/data/*.json`.
-
-## Fork & extend
-
-See **[docs/FORK_GUIDE.md](docs/FORK_GUIDE.md)** for:
-
-- How to fork and deploy your own instance
-- Phase-by-phase roadmap with copy-paste AI prompts
-- Wiki.js Codex implementation game plan
-- Reference files: `docs/roadmap/forward-steps.md` and `docs/roadmap/wiki-codex-gameplan.md`
-
-## Project structure
-
-| Path | Purpose |
+| Variable | Example |
 | --- | --- |
-| `src/data/resources.json` | Curated resource catalog |
-| `src/data/paths.json` | Learning path sequences |
-| `src/data/site.json` | Site metadata (name, handles, donations) |
-| `docs/` | Mission, roadmap, FAQ, contributor docs |
-| `demo/screenshots/` | UI/UX reference images |
+| `NEXT_PUBLIC_SITE_URL` | `https://your-project.vercel.app` |
 
-## Scripts
+Customize `src/data/site.json` for your handle, contact link, and optional donation addresses.
 
-```bash
-npm run dev          # Local development
-npm run build        # Production build (includes docs)
-npm run docs:dev     # Preview documentation at :4000
-npm run audit:catalog # Check catalog URLs
-npm run test         # Run tests
-```
+The catalog runs from `src/data/*.json` — no database required. For feedback and analytics on serverless, optionally add [Turso](https://turso.tech) (`DATABASE_URL`, `DATABASE_AUTH_TOKEN`).
+
+---
+
+## Extend
+
+| Guide | What it covers |
+| --- | --- |
+| [Fork Guide](docs/FORK_GUIDE.md) | Deploy, customize, contribute |
+| [Forward Steps](docs/roadmap/forward-steps.md) | Phased roadmap with AI prompts |
+| [Wiki Codex Plan](docs/roadmap/wiki-codex-gameplan.md) | Encyclopedia via Wiki.js |
+
+---
 
 ## Contributing
 
-Pull requests welcome. Read [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+Pull requests welcome.
 
-Questions or shout-outs: [@CHxmrBrother](https://x.com/CHxmrBrother) on X.
+- [Contributing](docs/CONTRIBUTING.md) · [Security](SECURITY.md) · [Documentation](docs/)
+- [Suggest a resource](https://github.com/9lordisgod/cypherpunk-code/issues/new?template=resource-suggestion.yml) · [Report a broken link](https://github.com/9lordisgod/cypherpunk-code/issues/new?template=broken-link.yml)
+
+---
 
 ## License
 
-[GNU Affero General Public License v3.0](LICENSE) — copyleft applies to network-deployed modified versions.
+[GNU Affero General Public License v3.0](LICENSE)
