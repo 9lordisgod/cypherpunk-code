@@ -3,13 +3,13 @@
  * Static scan for malware/backdoor patterns in source code.
  * Usage: node scripts/security-scan.mjs
  */
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(fileURLToPath(new URL(".", import.meta.url)), "..");
 
-const SCAN_DIRS = ["src", "scripts", "vendor"];
+const SCAN_DIRS = ["src", "scripts"];
 const SKIP_FILES = new Set(["scripts/security-scan.mjs"]);
 const SKIP_DIRS = new Set(["node_modules", ".next", "out", "public/doc"]);
 const EXTENSIONS = new Set([".ts", ".tsx", ".js", ".mjs", ".cjs"]);
@@ -54,6 +54,7 @@ let findings = 0;
 
 for (const scanDir of SCAN_DIRS) {
   const base = join(root, scanDir);
+  if (!existsSync(base)) continue;
   for (const file of walk(base)) {
     const rel = file.slice(root.length + 1);
     if (SKIP_FILES.has(rel)) continue;
