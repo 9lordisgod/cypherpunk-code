@@ -45,12 +45,13 @@ body:has(.preview-theme) {
   --duo-green: #f97316;
   --duo-green-dark: #fb923c;
   --pixel-shadow: transparent;
+  --font-preview-sans: var(--font-latin), system-ui, -apple-system, sans-serif;
   --font-pixel-body: var(--font-preview-sans);
   --font-pixel: var(--font-preview-sans);
 
   background: var(--preview-bg);
   color: var(--preview-fg-soft);
-  font-family: var(--font-preview-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-preview-sans);
   font-size: 16px;
   line-height: 1.6;
   min-height: 100dvh;
@@ -61,6 +62,30 @@ body:has(.preview-theme) {
   position: relative;
   isolation: isolate;
   overflow-x: hidden;
+}
+
+html[lang="zh-Hans"] .preview-theme {
+  --font-preview-sans:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    var(--font-cjk-sc),
+    var(--font-latin),
+    sans-serif;
+}
+
+html[lang="ja"] .preview-theme {
+  --font-preview-sans:
+    "Hiragino Sans",
+    "Yu Gothic UI",
+    "Meiryo",
+    var(--font-cjk-ja),
+    var(--font-latin),
+    sans-serif;
+}
+
+.preview-theme .font-mono {
+  font-family: var(--font-preview-sans) !important;
 }
 
 /* Animated geometric grid — scroll-reactive depth */

@@ -112,7 +112,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
           <div>
             <label
               htmlFor="catalog-search"
-              className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted"
+              className="mb-2 block text-xs uppercase tracking-wider text-muted"
             >
               {t("catalogSearch")}
             </label>
@@ -135,7 +135,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
           <div>
             <label
               htmlFor="catalog-min-score"
-              className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted"
+              className="mb-2 block text-xs uppercase tracking-wider text-muted"
             >
               {t("catalogMinCpScore", { score: filters.minCypherpunkScore })}
             </label>
@@ -163,7 +163,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
           <div>
             <p
               id="catalog-topics-label"
-              className="mb-2 font-mono text-xs uppercase tracking-wider text-muted"
+              className="mb-2 text-xs uppercase tracking-wider text-muted"
             >
               {t("catalogTopics")}
             </p>
@@ -193,7 +193,7 @@ export function CatalogClient({ resources }: { resources: Resource[] }) {
           <div>
             <p
               id="catalog-types-label"
-              className="mb-2 font-mono text-xs uppercase tracking-wider text-muted"
+              className="mb-2 text-xs uppercase tracking-wider text-muted"
             >
               {t("catalogType")}
             </p>

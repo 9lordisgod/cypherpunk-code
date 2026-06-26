@@ -98,12 +98,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [pickerOpen, setPickerOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.lang = localeToHtmlLang(locale);
+    const htmlLang = localeToHtmlLang(locale);
+    document.documentElement.lang = htmlLang;
+    document.documentElement.dataset.locale = locale;
   }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
     localStorage.setItem(STORAGE_KEY, next);
     document.documentElement.lang = localeToHtmlLang(next);
+    document.documentElement.dataset.locale = next;
     window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
   }, []);
 

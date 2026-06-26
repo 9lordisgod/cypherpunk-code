@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_JP, Noto_Sans_SC } from "next/font/google";
 import { PreviewChromeHider } from "@/components/preview/PreviewChromeHider";
 import { PreviewFooter } from "@/components/preview/PreviewFooter";
 import { PreviewHeader } from "@/components/preview/PreviewHeader";
@@ -7,10 +7,24 @@ import { PreviewMotion } from "@/components/preview/PreviewMotion";
 import { ParticleField } from "@/components/preview/ParticleField";
 import "@/styles/preview-redesign.css";
 
-const siteSans = Inter({
-  variable: "--font-preview-sans",
+const siteLatin = Inter({
+  variable: "--font-latin",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+const siteCjkSc = Noto_Sans_SC({
+  variable: "--font-cjk-sc",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  preload: false,
+});
+
+const siteCjkJa = Noto_Sans_JP({
+  variable: "--font-cjk-ja",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  preload: false,
 });
 
 export default function SiteLayout({
@@ -19,7 +33,9 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`preview-theme ${siteSans.variable}`}>
+    <div
+      className={`preview-theme ${siteLatin.variable} ${siteCjkSc.variable} ${siteCjkJa.variable}`}
+    >
       <PreviewChromeHider />
       <PreviewAmbient />
       <PreviewMotion />
