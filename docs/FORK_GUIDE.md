@@ -33,12 +33,16 @@ Edit `src/data/site.json`:
 
 ### Step 3 — Set production URL
 
+**Fastest path:** Click **Deploy with Vercel** in the [README](https://github.com/9lordisgod/cypherpunk-code#quick-start). Fork the repo first, then set `NEXT_PUBLIC_SITE_URL` to your Vercel URL.
+
+**Manual:**
+
 ```bash
 NEXT_PUBLIC_SITE_URL=https://your-domain.example npm run build
 npm start
 ```
 
-Deploy to Vercel, Railway, a VPS, or any Node.js host. SQLite works for small instances; Turso/libSQL scales better.
+Deploy to Vercel, Railway, a VPS, or any Node.js host. The catalog runs from JSON without a database. Add Turso (optional) for feedback and analytics persistence on serverless.
 
 ### Step 4 — Verify UI against demos
 

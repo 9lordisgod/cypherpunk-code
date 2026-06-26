@@ -1,0 +1,48 @@
+name: Broken link report
+description: Report a broken or outdated catalog link
+title: "[Broken link] "
+labels: ["broken-link"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help keep the catalog high-signal by reporting broken or redirected links.
+
+  - type: input
+    id: resource_id
+    attributes:
+      label: Resource ID or title
+      description: e.g. `cypherpunk-manifesto` or the title shown in the catalog
+      placeholder: cypherpunk-manifesto
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Catalog URL (if known)
+      description: The external URL listed in the catalog
+    validations:
+      required: false
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: What happens when you click?
+      options:
+        - 404 / page not found
+        - Redirects to unrelated site
+        - Paywall or login required (was free)
+        - Content removed or replaced
+        - SSL / certificate error
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional details
+      description: Error message, redirect destination, or suggested replacement URL
+    validations:
+      required: true

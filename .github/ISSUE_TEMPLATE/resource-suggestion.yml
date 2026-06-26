@@ -1,0 +1,115 @@
+name: Resource suggestion
+description: Suggest a high-signal resource for the curated catalog
+title: "[Resource] "
+labels: ["resource-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a freedom education resource for the catalog. We prioritize privacy, sovereignty, and cryptography — not trading noise.
+
+        Before submitting, check the [catalog](https://github.com/9lordisgod/cypherpunk-code/blob/main/src/data/resources.json) for duplicates.
+
+  - type: input
+    id: url
+    attributes:
+      label: Resource URL
+      description: Must be HTTPS. Official docs, papers, guides, courses, or manifestos preferred.
+      placeholder: https://example.com/resource
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Resource title
+      description: How it should appear in the catalog
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Resource type
+      options:
+        - course
+        - book
+        - paper
+        - guide
+        - wiki
+        - video
+        - documentation
+        - manifesto
+        - event
+        - podcast
+        - tool
+        - other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: topics
+    attributes:
+      label: Topics
+      description: Select all that apply
+      options:
+        - label: bitcoin
+        - label: monero
+        - label: privacy
+        - label: cryptography
+        - label: opsec
+        - label: cypherpunk
+        - label: lightning
+        - label: nodes
+        - label: wallets
+        - label: general-crypto
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cp_score
+    attributes:
+      label: Suggested Cypherpunk Score (1–10)
+      description: 10 = foundational philosophy or hands-on privacy tooling. 3 = mixed/trading content.
+      options:
+        - "10"
+        - "9"
+        - "8"
+        - "7"
+        - "6"
+        - "5"
+        - "4"
+        - "3"
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why does this belong in the catalog?
+      description: 2–4 sentences. What signal does it add? Who is it for?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: learning_path
+    attributes:
+      label: Suggested learning path (optional)
+      options:
+        - none
+        - cypherpunk-foundations
+        - bitcoin-sovereignty
+        - monero-privacy
+        - practical-opsec
+        - bitcoin-privacy
+        - deep-cryptography
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      options:
+        - label: This resource is primarily educational (not trading hype or affiliate spam)
+          required: true
+        - label: The link was working when I submitted this suggestion
+          required: true

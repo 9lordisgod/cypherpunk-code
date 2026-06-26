@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Fork & deploy guide
+    url: https://github.com/9lordisgod/cypherpunk-code/blob/main/docs/FORK_GUIDE.md
+    about: Deploy your own instance and extend the platform
+  - name: Shout out on X
+    url: https://x.com/CHxmrBrother
+    about: Questions, feedback, or community — curated by @CHxmrBrother

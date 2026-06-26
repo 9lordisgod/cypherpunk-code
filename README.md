@@ -10,6 +10,7 @@ Freedom education for Bitcoin, Monero, and cypherpunk sovereignty.
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/repo-9lordisgod%2Fcypherpunk--code-181717?logo=github)](https://github.com/9lordisgod/cypherpunk-code)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code&project-name=cypherpunk-code&env=NEXT_PUBLIC_SITE_URL&envDescription=Your%20public%20deployment%20URL%20(required%20for%20SEO%20and%20canonical%20links)&envLink=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code%23production-deploy)
 
 Curated by [@CHxmrBrother](https://x.com/CHxmrBrother)
 
@@ -44,13 +45,26 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Production deploy
 
-Set your public URL before building:
+**One-click (fork first):** Use the **Deploy with Vercel** button above. Set `NEXT_PUBLIC_SITE_URL` to your Vercel domain (e.g. `https://your-project.vercel.app`).
+
+**Manual:**
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://your-domain.example npm run build
 ```
 
 Edit `src/data/site.json` for creator handle, contact, and optional donation addresses.
+
+**Optional — Turso database** (feedback + analytics persistence on serverless):
+
+```bash
+# Add to Vercel env vars:
+DATABASE_URL=libsql://your-db.turso.io
+DATABASE_AUTH_TOKEN=your-token
+# Then run once: npm run db:init:turso
+```
+
+The catalog and paths work without a database — data lives in `src/data/*.json`.
 
 ## Fork & extend
 

@@ -55,11 +55,9 @@ npm run docs:build  # Output to public/doc/
 
 ## Suggesting resources
 
-Open a GitHub Issue or contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X with:
+Use the **[Resource suggestion](https://github.com/9lordisgod/cypherpunk-code/issues/new?template=resource-suggestion.yml)** issue template, or contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X.
 
-- URL of the resource
-- Why it belongs in the catalog
-- Suggested CP Score (1–10) and topics
+For broken links, use the **[Broken link report](https://github.com/9lordisgod/cypherpunk-code/issues/new?template=broken-link.yml)** template.
 
 ## Security
 
