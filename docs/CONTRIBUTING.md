@@ -81,14 +81,13 @@ On a running fork, open **`/doc/`** (e.g. [http://localhost:3000/doc/](http://lo
 
 - Align with the [cypherpunk mission](doc/mission.md): privacy, sovereignty, cryptography
 - No trading noise, no hype, no paywall language — see [Openness Policy](doc/openness-policy.md)
-- Credit [@CHxmrBrother](https://x.com/CHxmrBrother) as original curator where appropriate
 - All education content must remain **100% free**
 
 ---
 
 ## Suggesting resources
 
-Use the **[Resource suggestion](https://github.com/9lordisgod/cypherpunk-code/issues/new?template=resource-suggestion.yml)** issue template, or contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X.
+Use the **[Resource suggestion](https://github.com/9lordisgod/cypherpunk-code/issues/new?template=resource-suggestion.yml)** issue template.
 
 Before submitting, search the [catalog data](https://github.com/9lordisgod/cypherpunk-code/blob/main/src/data/resources.json) for duplicates.
 
@@ -105,7 +104,6 @@ Browse [open issues](https://github.com/9lordisgod/cypherpunk-code/issues) for e
 | Channel | Link |
 | --- | --- |
 | Private advisory (preferred) | [GitHub Security Advisories](https://github.com/9lordisgod/cypherpunk-code/security/advisories/new) |
-| Maintainer contact | [@CHxmrBrother](https://x.com/CHxmrBrother) on X |
 | Full policy | [SECURITY.md](https://github.com/9lordisgod/cypherpunk-code/blob/main/SECURITY.md) |
 | Platform hardening docs | [Platform Security](reference/security.md) |
 
@@ -116,4 +114,3 @@ Include a description, reproduction steps, and potential impact. We aim to ackno
 ## Questions?
 
 - [GitHub Issues](https://github.com/9lordisgod/cypherpunk-code/issues)
-- [@CHxmrBrother](https://x.com/CHxmrBrother) on X
