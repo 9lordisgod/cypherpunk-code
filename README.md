@@ -13,7 +13,7 @@ A curated freedom education index for Bitcoin, Monero, cryptography, and cypherp
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code&project-name=cypherpunk-code&env=NEXT_PUBLIC_SITE_URL&envDescription=Your%20public%20deployment%20URL%20(required%20for%20SEO%20and%20canonical%20links)&envLink=https%3A%2F%2Fgithub.com%2F9lordisgod%2Fcypherpunk-code%23quick-start"><img src="https://vercel.com/button" alt="Deploy with Vercel" height="20" /></a>
 
-Curated by [@CHxmrBrother](https://x.com/CHxmrBrother)
+
 
 </div>
 
