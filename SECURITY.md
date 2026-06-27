@@ -12,8 +12,7 @@ If you believe you have found a security vulnerability, please report it respons
 
 **Preferred channels:**
 
-- Open a [GitHub Security Advisory](https://github.com/9lordisgod/cypherpunk-code/security/advisories) (private disclosure), or
-- Contact [@CHxmrBrother](https://x.com/CHxmrBrother) on X
+- Open a [GitHub Security Advisory](https://github.com/9lordisgod/cypherpunk-code/security/advisories) (private disclosure).
 
 Please include:
 
